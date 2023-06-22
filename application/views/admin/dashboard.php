@@ -22,7 +22,7 @@
     <section class="content-header">
 
 		<h1>
-			Selamat Datang
+			Welcome
 			<small><?php echo $this->session->userdata('nama'); ?></small>
 		</h1>
       <ol class="breadcrumb">
