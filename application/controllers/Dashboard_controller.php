@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Dashboard_controller extends MY_Controller {
+class Dashboard_controller extends CI_Controller {
 
 	public function index()
 	{

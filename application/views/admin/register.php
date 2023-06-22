@@ -69,7 +69,8 @@
 					<?php echo form_error('password') ?>
 				</div>
 			</div>
-			<div class="form-group has-feedback">
+			<!--   -->
+					<div class="form-group has-feedback">
 				<input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text">
 				<div class="invalid-feedback">
 					<?php echo form_error('nama') ?>
@@ -96,7 +97,7 @@
 					<?php echo form_error('nohp') ?>
 				</div>
 			</div>
-
+	
 			<div class="row">
 				<!-- /.col -->
 				<div class="col-xs-4">
