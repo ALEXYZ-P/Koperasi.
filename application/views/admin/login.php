@@ -68,10 +68,12 @@
 				<div class="col-xs-4">
 					<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
 				</div>
-				<div class="col-xs-4 pull-right">
+				<!--
+					<div class="col-xs-4 pull-right">
 					<a href="<?php echo  base_url('Auth/add')?>" class="btn btn-success">
 						<span class="fa fa-plus"></span> Register</a>
 				</div>
+				-->
 				<!-- /.col -->
 			</div>
 
