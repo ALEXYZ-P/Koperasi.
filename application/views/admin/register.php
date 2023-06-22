@@ -39,7 +39,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
 	<div class="login-logo">
-		<a href="<?php echo base_url('Auth')?>"><b>Koperasi</b>Makmur</a>
+		<a href="<?php echo base_url('Auth')?>"><b>Koperasi</b>Terserah</a>
 	</div>
 
 	<div style="color: red;margin-bottom: 15px;">
@@ -56,14 +56,14 @@
 
 		<form action="<?php echo base_url('Auth/add')?>" method="post">
 			<div class="form-group has-feedback">
-				<input type="Username" class="form-control" placeholder="Username" name="username">
+				<input type="Username" class="form-control" placeholder="Username" name="username" required>
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				<div class="invalid-feedback">
 					<?php echo form_error('username') ?>
 				</div>
 			</div>
 			<div class="form-group has-feedback">
-				<input type="password" class="form-control" placeholder="Password" name="password">
+				<input type="password" class="form-control" placeholder="Password" name="password" required>
 				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				<div class="invalid-feedback">
 					<?php echo form_error('password') ?>
