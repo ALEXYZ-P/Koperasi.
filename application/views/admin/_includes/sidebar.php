@@ -29,7 +29,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
 
-        <li><a href="<?php echo base_url('') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
         <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Pegawai</span></a>
         <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Anggota</span></a>
         </li>
