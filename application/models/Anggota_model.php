@@ -14,6 +14,12 @@ class Anggota_model extends CI_Model
 	public $jenis_kelamin;
 	public $alamat;
 
+	public function get($username){
+		$this->db->where('username', $username);
+		$result = $this->db->get('anggota')->row();
+		return $result;
+	}
+
 	public function rules()
 	{
 		return [

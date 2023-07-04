@@ -11,7 +11,8 @@ class Auth extends CI_Controller {
 	}
 
 	public function index()
-	{
+	
+	{   
 		if ($this->session->userdata('authenticated'))
 			$this->load->view('Dashboard_controller');
 		$this->load->view('admin/login');
@@ -87,5 +88,6 @@ class Auth extends CI_Controller {
 	}
 
 }
+
 
 /* End of file Controllername.php */
