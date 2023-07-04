@@ -13,6 +13,7 @@ class Anggota_model extends CI_Model
 	public $nama;
 	public $jenis_kelamin;
 	public $alamat;
+	public $nohp;
 
 	public function get($username){
 		$this->db->where('username', $username);
@@ -45,23 +46,7 @@ class Anggota_model extends CI_Model
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function detail_anak($id){
-		$this->db->select('*');
-        $this->db->from('anak');
-        $this->db->join('anggota', 'anak.id_anggota = anggota.id_anggota');
-        $this->db->where('anggota.id_anggota', $id);
-        $query = $this->db->get();
-        return $query->result();
-	}
-
-	public function detail_pasangan($id){
-		$this->db->select('*');
-        $this->db->from('pasangan');
-        $this->db->join('anggota', 'pasangan.id_anggota = anggota.id_anggota');
-        $this->db->where('anggota.id_anggota', $id);
-        $query = $this->db->get();
-        return $query->result();
-	}
+	
 
 	public function getById($id){
 		return $this->db->get_where($this->_table, ["id_anggota" => $id])->row();
