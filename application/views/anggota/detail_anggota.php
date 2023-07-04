@@ -53,6 +53,7 @@
                       <th style="background-color: #7f8c8d">Nama</th>
                       <th style="background-color: #7f8c8d">Jenis Kelamin</th>
                       <th style="background-color: #7f8c8d">Alamat</th>
+                      <th style="background-color: #7f8c8d">No Handphone</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,6 +63,7 @@
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->nama ) ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->jenis_kelamin)  ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->alamat)  ?></td>
+                        <td style="background-color: #bdc3c7;"><?php cetak($anggota->nohp)  ?></td>
                       </tr>
                    
                   </tbody>
