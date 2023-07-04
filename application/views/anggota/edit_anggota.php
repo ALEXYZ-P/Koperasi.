@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                 <div class="form-group">
-                  <label>Alamat</label>
+                  <label>Alamaaaaqaaaaaaaqaast</label>
                   <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" value="<?php echo $anggota->alamat?>" type="text"/>
                   <div class="invalid-feedback">
                     <?php echo form_error('alamat')?>
@@ -95,11 +95,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
 
               <div class="form-group">
+<<<<<<< HEAD
                     <label>No Hp</label>
                     <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No HP" type="text"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nohp') ?>
                     </div>
+=======
+                  <label>No Handphone</label>
+                  <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No Handphone" value="<?php echo $anggota->nohp?>" type="text"/>
+                  <div class="invalid-feedback">
+                    <?php echo form_error('nohp')?>
+>>>>>>> 6b7e215eb4204aeb510f743703cafbea55a5d266
                   </div>
                 </div>
               <!-- /.box-body -->
