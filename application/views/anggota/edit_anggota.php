@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                 <div class="form-group">
-                  <label>Alamaaaaqaaaaaaaqaast</label>
+                  <label>Alamat</label>
                   <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" value="<?php echo $anggota->alamat?>" type="text"/>
                   <div class="invalid-feedback">
                     <?php echo form_error('alamat')?>
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
               
 
-              <div class="form-group">
+                <div class="form-group">
                   <label>No Handphone</label>
                   <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No Handphone" value="<?php echo $anggota->nohp?>" type="text"/>
                   <div class="invalid-feedback">
@@ -106,7 +106,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <div class="box-footer">
                 <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <button class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times"></i>Batal</button>
+                <button class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" onclick="goBack()"></i>Batal</button> 
+
+              <script>
+                function goBack() {
+                  window.location.href = "http://localhost/Koperasi.github.io/Anggota_controller";
+                }
+                </script>
               </div>
             </form>
           </div>
