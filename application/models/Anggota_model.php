@@ -59,6 +59,8 @@ class Anggota_model extends CI_Model
 		$this->nama = $post["nama"];
 		$this->jenis_kelamin = $post["jenis_kelamin"];
 		$this->alamat = $post["alamat"];
+		$this->tanggal = date('y-m-d');
+		$this->nohp = $post["nohp"];
 		$this->db->insert($this->_table, $this);
 	}
 	

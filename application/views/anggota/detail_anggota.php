@@ -63,7 +63,6 @@
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->nama ) ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->jenis_kelamin)  ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->alamat)  ?></td>
-                        <td style="background-color: #bdc3c7;"><?php cetak($anggota->nohp)  ?></td>
                       </tr>
                    
                   </tbody>
