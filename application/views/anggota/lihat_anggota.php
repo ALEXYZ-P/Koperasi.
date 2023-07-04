@@ -56,6 +56,7 @@
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
                       <th>Alamat</th>
+                      <th>No Handphone</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -68,11 +69,11 @@
                         <td><?php cetak($value->nama ) ?></td>
                         <td><?php cetak($value->jenis_kelamin)  ?></td>
                         <td><?php cetak($value->alamat)  ?></td>
+                        <td><?php cetak($value->nohp) ?></td>
                         <td>
                           <a class="btn btn-ref" href="<?php echo site_url('Anggota_controller/edit/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
                           <a href="#!" onclick="deleteConfirm('<?php echo site_url('Anggota_controller/delete/'.$value->id_anggota) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
-                          <a class="btn btn-primary" href="<?php echo site_url('Anak_controller/form_add/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-plus"></i>Anak</a>
-                          <a class="btn btn-primary" href="<?php echo site_url('Pasangan_controller/form_add/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-plus"></i>Pasangan</a>
+                  
                           <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
                         </td>
                       </tr>
@@ -80,10 +81,13 @@
                   </tbody>
                   <tfoot>
                     <tr>
+                    <th>No</th>
                       <th>NIK</th>
                       <th>Nama</th>
+                      <th>Jenis Kelamin</th>
                       <th>Alamat</th>
                       <th>No Handphone</th>
+                      <th>Aksi</th>
                     </tr>
                   </tfoot>
                 </table>

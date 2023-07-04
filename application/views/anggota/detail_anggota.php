@@ -67,7 +67,7 @@
                   </tbody>
                 </table>
               </div>
-            <div class="box-body table-responsive">
+            <!-- div class="box-body table-responsive">
               <div class="box-header">
                 <h3 class="label label-primary" style="font-size: 12px, margin-right: -20px !important;">--- Detail Anak ---</h3>
               </div>
@@ -132,7 +132,7 @@
                   </tbody>
                   
                 </table>
-              </div>
+              </div -->
               
               <!-- /.box-body -->
             </div>
