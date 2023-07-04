@@ -17,12 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <section class="content-header">
         <h1>
           Kelola
-          <small>Data Pegawai</small>
+          <small>Data Anggota</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pegawai</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/index') ?>">Lihat Data Pegawai</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/add') ?>">Tambah Data Pegawai</a></li>
+          <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Anggota</a></li>
+          <li><a href="<?php echo base_url('Pegawai_controller/index') ?>">Lihat Data Anggota</a></li>
+          <li><a href="<?php echo base_url('Pegawai_controller/add') ?>">Tambah Data Anggoata</a></li>
         </ol>
       </section>
 
@@ -79,6 +79,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <?php echo form_error('alamat')?>
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label>No Hp</label>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No HP" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('nohp') ?>
+                    </div>
+                  </div>
+                </div>
                   
 
                 </div>

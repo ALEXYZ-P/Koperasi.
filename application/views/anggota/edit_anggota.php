@@ -95,13 +95,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
 
               <div class="form-group">
-                  <label>No Handphone</label>
-                  <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No Handphone" value="<?php echo $anggota->nohp?>" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('alamat')?>
+                    <label>No Hp</label>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No HP" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('nohp') ?>
+                    </div>
                   </div>
                 </div>
-              </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
