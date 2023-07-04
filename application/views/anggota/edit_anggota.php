@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                 <div class="form-group">
-                  <label>Alamat</label>
+                  <label>Alamaaaaqaaaaaaaqaast</label>
                   <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" value="<?php echo $anggota->alamat?>" type="text"/>
                   <div class="invalid-feedback">
                     <?php echo form_error('alamat')?>
