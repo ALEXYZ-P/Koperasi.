@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php echo form_error('alamat')?>
                   </div>
                 </div>
-              </div>
+              
 
               <div class="form-group">
                   <label>No Handphone</label>
