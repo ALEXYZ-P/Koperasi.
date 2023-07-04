@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <label>No Handphone</label>
                   <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No Handphone" value="<?php echo $anggota->nohp?>" type="text"/>
                   <div class="invalid-feedback">
-                    <?php echo form_error('alamat')?>
+                    <?php echo form_error('nohp')?>
                   </div>
                 </div>
               </div>
