@@ -63,12 +63,17 @@
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->nama ) ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->jenis_kelamin)  ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->alamat)  ?></td>
+                        <td style="background-color: #bdc3c7;"><?php cetak($anggota->nohp)  ?></td>
                       </tr>
                    
                   </tbody>
                 </table>
               </div>
-            <!-- div class="box-body table-responsive">
+
+
+            <!-- 
+            
+            div class="box-body table-responsive">
               <div class="box-header">
                 <h3 class="label label-primary" style="font-size: 12px, margin-right: -20px !important;">--- Detail Anak ---</h3>
               </div>
@@ -133,7 +138,7 @@
                   </tbody>
                   
                 </table>
-              </div -->
+              </div                   a-->
               
               <!-- /.box-body -->
             </div>
