@@ -32,6 +32,7 @@
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota</a></li>
           <li><a href="<?php echo base_url('Anggota_controller') ?>">Lihat Data Anggota</a></li>
+          <a href="<?php echo base_url('Anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Back</a>
         </ol>
       </section>
 
@@ -45,6 +46,7 @@
               <div class="box-body table-responsive">
                <div class="box-header">
                 <h3 class="label label-primary" style="">--- Data Anggota ---</h3>
+                
               </div>
                 <table class="table table-bordered table-hover">
                   <thead>
@@ -54,6 +56,7 @@
                       <th style="background-color: #7f8c8d">Jenis Kelamin</th>
                       <th style="background-color: #7f8c8d">Alamat</th>
                       <th style="background-color: #7f8c8d">No Handphone</th>
+                      <th style="background-color: #7f8c8d">Tanggal Daftar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -64,81 +67,13 @@
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->jenis_kelamin)  ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->alamat)  ?></td>
                         <td style="background-color: #bdc3c7;"><?php cetak($anggota->nohp)  ?></td>
+                        <td style="background-color: #bdc3c7;"><?php cetak($anggota->tanggal)  ?></td>
                       </tr>
                    
                   </tbody>
                 </table>
               </div>
 
-
-            <!-- 
-            
-            div class="box-body table-responsive">
-              <div class="box-header">
-                <h3 class="label label-primary" style="font-size: 12px, margin-right: -20px !important;">--- Detail Anak ---</h3>
-              </div>
-                 <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Anak</th>
-                      <th>Jenjang Sekolah</th>
-                      <th>Nama Sekolah</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $no = 1;?>
-                    <?php foreach ($anak as $nilai): ?>
-                      <tr>
-                        <td><?php cetak($no++) ?></td>
-                        <td><?php cetak($nilai->nama_anak ) ?></td>
-                        <td><?php cetak($nilai->jenjang_sekolah)  ?></td>
-                        <td><?php cetak($nilai->nama_sekolah)  ?></td>
-                        <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Anak_controller/edit/'.$nilai->id_anak) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                          <a href="#!" onclick="deleteConfirm('<?php echo site_url('Anak_controller/delete/'.$nilai->id_anak) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                  </tbody>
-                  
-                </table>
-              </div>
-
-
-              <div class="box-body table-responsive">
-              <div class="box-header">
-                <h3 class="label label-primary" style="font-size: 12px, margin-right: -20px !important;">--- Detail Pasangan ---</h3>
-              </div>
-                 <table id="example1" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nama Anak</th>
-                      <th>Jenjang Sekolah</th>
-                      <th>Nama Sekolah</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $no = 1;?>
-                    <?php foreach ($pasangan as $nilai): ?>
-                      <tr>
-                        <td><?php cetak($no++) ?></td>
-                        <td><?php cetak($nilai->nama_pasangan) ?></td>
-                        <td><?php cetak($nilai->pekerjaan)  ?></td>
-                        <td><?php cetak($nilai->alamat)  ?></td>
-                        <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pasangan_controller/edit/'.$nilai->id_pasangan) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                          <a href="#!" onclick="deleteConfirm('<?php echo site_url('Pasangan_controller/delete/'.$nilai->id_pasangan) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                  </tbody>
-                  
-                </table>
-              </div                   a-->
               
               <!-- /.box-body -->
             </div>

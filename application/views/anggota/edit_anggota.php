@@ -106,13 +106,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <div class="box-footer">
                 <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <button class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" onclick="goBack()"></i>Batal</button> 
+                <a href="<?php echo base_url('Anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a> 
 
-              <script>
-                function goBack() {
-                  window.location.href = "http://localhost/Koperasi.github.io/Anggota_controller";
-                }
-                </script>
+              
               </div>
             </form>
           </div>
