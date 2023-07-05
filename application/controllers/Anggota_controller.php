@@ -22,8 +22,6 @@ class Anggota_controller extends MY_Controller
     public function detail($id){
 
         $anggota = $this->Anggota_model; 
-        $data['anak'] = $this->Anggota_model->detail_anak($id);
-        $data['pasangan'] = $this->Anggota_model->detail_pasangan($id);
         $data['anggota'] = $this->Anggota_model->getById($id);
 
         $this->load->view("anggota/detail_anggota", $data);
