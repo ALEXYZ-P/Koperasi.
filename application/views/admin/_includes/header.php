@@ -46,7 +46,7 @@
                 <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User sipo">
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  Alexander - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>

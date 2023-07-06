@@ -29,13 +29,13 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
 
-        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Pegawai</span></a>
         <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Anggota</span></a>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-fw fa-dollar"></i> <span>Simpanan</span>
+            <i class="fa fa-fw fa-tasks"></i> <span>Simpanan</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
