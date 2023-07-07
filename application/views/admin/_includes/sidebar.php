@@ -30,27 +30,29 @@
         <li class="header">Navigation</li>
 
         <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Pegawai</span></a>
-        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Anggota</span></a>
+        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Staff</span></a>
+        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Member</span></a>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-fw fa-tasks"></i> <span>Simpanan</span>
+            <i class="fa fa-fw fa-tasks"></i> <span>Transaction</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('SimpananPokok_controller') ?>"><i class="fa fa-circle-o"></i>Simpanan Pokok</a></li>
-            <li><a href="<?php echo base_url('SimpananWajib_controller') ?>"><i class="fa fa-circle-o"></i>Simpanan Wajib</a></li>
-            <li><a href="<?php echo base_url('SimpananSukarela_controller') ?>"><i class="fa fa-circle-o"></i>Simpanan Sukarela</a></li>
+            <li><a href="<?php echo base_url('SimpananPokok_controller') ?>"><i class="fa fa-circle-o"></i>Simpanan</a></li>
+            <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-circle-o"></i>Pinnjam</a></li>
+            <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Angsuran</a></li>
+            <li><a href="<?php echo base_url('Angsuran_controller/list_anggota') ?>"><i class="fa fa-circle-o"></i>Detail Angsuran</a></li>
           </ul>
         </li>
-        <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-fw fa-money"></i> <span>Pinjaman</span></a>
+        <!--
+        <li><a href="<?php echo base_url('') ?>"><i class="fa fa-fw fa-money"></i> <span>R</span></a>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-fw fa-dollar"></i> <span>Angsuran</span>
+            <i class="fa fa-fw fa-dollar"></i> <span>R</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -59,7 +61,7 @@
             <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Kelola Angsuran</a></li>
             <li><a href="<?php echo base_url('Angsuran_controller/list_anggota') ?>"><i class="fa fa-circle-o"></i>Detail Angsuran</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->

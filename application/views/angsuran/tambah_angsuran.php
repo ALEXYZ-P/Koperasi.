@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <div class="box-footer">
                 <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <button class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times"></i>Batal</button>
+                <a href="<?php echo base_url('Angsuran_controller/listPinjamanAnggota') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Batal</a>
               </div>
             </form>
           </div>
