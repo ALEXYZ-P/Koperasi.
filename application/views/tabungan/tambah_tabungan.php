@@ -1,4 +1,3 @@
-<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <!DOCTYPE html>
@@ -34,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <small>Data Simpanan Pokok</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('SimpananWajib_controller/index') ?>"><i class="fa fa-fw fa-child"></i>Lihat Data Anggota</a></li>
+        <li><a href="<?php echo base_url('SimpananPokok_controller/index') ?>"><i class="fa fa-fw fa-child"></i>Lihat Data Anggota</a></li>
         <li><a href="#">Tambah Simpanan Pokok</a></li>
       </ol>
     </section>
@@ -52,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('SimpananWajib_controller/add/'.$anggota->id_anggota) ?>" method="post">
+            <form role="form" action="<?php echo base_url('SimpananPokok_controller/add/'.$anggota->id_anggota) ?>" method="post">
               <input type="hidden" name="id_anggota" value="<?php echo $anggota->id_anggota?>" />
 
               <div class="box-body">
