@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('User_model');
-		$this->load->model('Register_model');
+		
 		$this->load->library('form_validation');
 	}
 
