@@ -41,7 +41,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('SimpananPokok_controller') ?>"><i class="fa fa-circle-o"></i>Tabungan</a></li>
+            <li><a href="<?php echo base_url('Tabungan_controller') ?>"><i class="fa fa-circle-o"></i>Tabungan</a></li>
             <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-circle-o"></i>Pinnjam</a></li>
             <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Angsuran</a></li>
             <li><a href="<?php echo base_url('Angsuran_controller/list_anggota') ?>"><i class="fa fa-circle-o"></i>Detail Angsuran</a></li>

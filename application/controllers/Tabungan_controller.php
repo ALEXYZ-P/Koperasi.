@@ -16,14 +16,14 @@ class SimpananPokok_controller extends MY_Controller
 
     public function index()
     {
-        $data["anggota"] = $this->Anggota_model->getAll();
+        $data["tabungan"] = $this->Anggota_model->getAll();
         $this->load->view("tabungan/lihat_tabungan", $data);
     }
 
     public function detail($id){
         // $data['anggota'] = $this->SimpananPokok_model->detail_simpanan_pokokall();
-        $data['tot'] = $this->SimpananPokok_model->total_simpanan_pokok($id);
-        $data['simpanan_pokok'] = $this->SimpananPokok_model->detail_simpanan_pokok($id);
+        $data['tot'] = $this->Tabungan_model->total_tabungan($id);
+        $data['tabungan'] = $this->Tabungan_model->detail_tabungan($id);
         $this->load->view("tabungan/detail_tabungan", $data);
     }
 
@@ -51,12 +51,12 @@ class SimpananPokok_controller extends MY_Controller
 
         if ($validation->run()) { //lakukan validasi form
             $simpanan_pokok->update($id); // update data
-            $this->session->set_flashdata('success', 'Data Simpanan Pokok Sebesar Rp. '.$simpanan_pokok->getById($id)->jumlah.' Berhasil Diubah');
+            $this->session->set_flashdata('success', 'Data Simpanan Pokok Sebesar Rp. '.$tabungan->getById($id)->jumlah.' Berhasil Diubah');
             redirect($_SERVER ['HTTP_REFERER']);
 
         }
-        $data['simpanan_pokok'] = $this->SimpananPokok_model->getById($id);
-        $this->load->view('simpanan_pokok/edit_simpanan_pokok', $data);
+        $data['tabungan_pokok'] = $this->Tabungan_model->getById($id);
+        $this->load->view('tabungan/edit_tabungan', $data);
     }
 
     public function hide($id){
@@ -66,7 +66,7 @@ class SimpananPokok_controller extends MY_Controller
     }
 
     public function delete($id){
-	    $this->SimpananPokok_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
+	    $this->Tabungan_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
 	    $this->session->set_flashdata('success', 'Data Simpanan Pokok Berhasil Dihapus');
 	    redirect($_SERVER['HTTP_REFERER']);
 	}

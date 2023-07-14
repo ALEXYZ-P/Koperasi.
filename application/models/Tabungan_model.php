@@ -3,109 +3,52 @@
 /**
 * 
 */
-class SimpananPokok_model extends CI_Model
+class Anggota_model extends CI_Model
 {
 	
-	private $_table= "tabungan";
+	private $_table= "user";
 
 	public $id_user;
-	public $jumlah;
+	public $nia;
+	public $nama;
+	public $jenis_kelamin;
+	public $alamat;
+	public $nohp;
+
+	public function get($username){
+		$this->db->where('username', $username);
+		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
+		$result = $this->db->get('anggota')->row();
+		return $result;
+	}
 
 	public function rules()
 	{
 		return [
-			['field' => 'id_user',
-			'label' => 'id_user',
+			['field' => 'nia',
+			'label' => 'nia',
 			'rules' => 'required'],
 
-			['field' => 'jumlah',
-			'label' => 'jumlah',
-			'rules' => 'required|numeric']
+			['field' => 'nama',
+			'label' => 'nama',
+			'rules' => 'required'],
+
+			['field' => 'jenis_kelamin',
+			'label' => 'jenis_kelamin',
+			'rules' => 'required'],
+
+			['field' => 'alamat',
+			'label' => 'alamat',
+			'rules' => 'required']
 		];
 	}
 
 	public function getALL(){
+		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function detail_tabungan($id){
-		$this->db->select('*');
-        $this->db->from('tabungan');
-        $this->db->join('user', 'tabungan.id_user = user.id_user');
-        $this->db->where('user.id_user', $id);
-        $query = $this->db->get();	
-        return $query->result();
-	}
-
-	public function total_simpanan_pokok($id){
-		$this->db->select_sum('1.jumlah');
-        $this->db->from('simpanan_pokok as 1');
-        $this->db->join('anggota as a', 's.id_anggota = a.id_anggota');
-        $this->db->where('a.id_anggota', $id);
-        $query = $this->db->get();
-        return $query->result();
-	}
-
-		// public function detail_simpanan_pokokall(){
-		// 	$this->db->select('*');
-	 //        $this->db->from('simpanan_pokok');
-	 //        $this->db->join('anggota', 'simpanan_pokok.id_anggota = anggota.id_anggota');
-	 //        // $this->db->where('anggota.id_anggota', $id);
-	 //        $query = $this->db->get();
-	 //        return $query->result();
-		// }
-
-		// public function detail_simpanan_pokok2($id){
-		// 	$this->db->select('*');
-	 //        $this->db->from('simpanan_pokok');
-	 //        $this->db->join('anggota', 'simpanan_pokok.id_anggota = anggota.id_anggota');
-	 //        $this->db->where('simpanan_pokok.id_simpanan_pokok', $id);
-	 //        $query = $this->db->get();
-	 //        return $query->result();
-		// }
-
-	public function detail_pasangan($id){
-		$this->db->select('*');
-        $this->db->from('pasangan');
-        $this->db->join('anggota', 'pasangan.id_anggota = anggota.id_anggota');
-        $this->db->where('anggota.id_anggota', $id);
-        $query = $this->db->get();
-        return $query->result();
-	}
-
-	public function getById($id){
-		return $this->db->get_where($this->_table, ["id_simpanan_pokok" => $id])->row();
-	}
-
-	public function save(){
-		$post = $this->input->post();
-		$this->id_anggota = $post["id_anggota"];
-		$this->jumlah = $post["jumlah"];
-		$this->db->insert($this->_table, $this);
-	}
-	
-	public function update($id){
-		$data = array(
-			"id_anggota" => $this->input->post('id_anggota'),
-			"jumlah" => $this->input->post('jumlah')
-		);
-
-		$this->db->where('id_simpanan_pokok', $id);
-	    $this->db->update('simpanan_pokok', $data); // Untuk mengeksekusi perintah update data
-	}
-
-	public function hide($id){
-		$this->db->where('id_anggota', $id);
-		$this->_table->update('set_aktif == False');
-
-	}
-
-	// Fungsi untuk melakukan menghapus data siswa berdasarkan NIS siswa
-	public function delete($id){
-		$this->db->where('id_simpanan_pokok', $id);
-    $this->db->delete('simpanan_pokok'); // Untuk mengeksekusi perintah delete data
-	}
+	// Bagian kode lainnya...
 }
-
 
 ?>

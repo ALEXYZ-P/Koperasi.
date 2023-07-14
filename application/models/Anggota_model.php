@@ -6,9 +6,9 @@
 class Anggota_model extends CI_Model
 {
 	
-	private $_table= "anggota";
+	private $_table= "user";
 
-	public $id_anggota;
+	public $id_user;
 	public $nia;
 	public $nama;
 	public $jenis_kelamin;
@@ -17,6 +17,7 @@ class Anggota_model extends CI_Model
 
 	public function get($username){
 		$this->db->where('username', $username);
+		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		$result = $this->db->get('anggota')->row();
 		return $result;
 	}
@@ -43,51 +44,11 @@ class Anggota_model extends CI_Model
 	}
 
 	public function getALL(){
+		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		return $this->db->get($this->_table)->result();
 	}
 
-	
-
-	public function getById($id){
-		return $this->db->get_where($this->_table, ["id_anggota" => $id])->row();
-	}
-
-	public function save(){
-		$post = $this->input->post();
-		$this->id_anggota = uniqid();
-		$this->nia = $post["nia"];
-		$this->nama = $post["nama"];
-		$this->jenis_kelamin = $post["jenis_kelamin"];
-		$this->alamat = $post["alamat"];
-		$this->tanggal = date('y-m-d');
-		$this->nohp = $post["nohp"];
-		$this->db->insert($this->_table, $this);
-	}
-	
-	public function update($id){
-		$data = array(
-			"nia" => $this->input->post('nia'),
-			"nama" => $this->input->post('nama'),
-			"jenis_kelamin" => $this->input->post('jenis_kelamin'),
-			"alamat" => $this->input->post('alamat')
-		);
-
-		$this->db->where('id_anggota', $id);
-	    $this->db->update('anggota', $data); // Untuk mengeksekusi perintah update data
-	}
-
-	public function hide($id){
-		$this->db->where('id_anggota', $id);
-		$this->_table->update('set_aktif == False');
-
-	}
-
-	// Fungsi untuk melakukan menghapus data siswa berdasarkan NIS siswa
-	public function delete($id){
-		$this->db->where('id_anggota', $id);
-    $this->db->delete('anggota'); // Untuk mengeksekusi perintah delete data
-	}
+	// Bagian kode lainnya...
 }
-
 
 ?>

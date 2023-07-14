@@ -52,7 +52,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
+                      <th>NIA</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
                       <th>Alamat</th>
