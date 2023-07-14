@@ -6,42 +6,70 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('User_model');
-		
+		$this->load->model('Register_model');
 		$this->load->library('form_validation');
 	}
+	private function is_admin() {
+    return $this->session->userdata('level') === 'admin'; // Ganti 'admin' dengan peran (role) yang sesuai untuk pengguna admin
+	}
+
+	private function is_member() {
+	return $this->session->userdata('level') === 'member'; 
+			}
+
 
 	public function index()
 	
 	{   
-		if ($this->session->userdata('authenticated'))
-			$this->load->view('Dashboard_controller');
-		$this->load->view('admin/login');
-	}
+		
+    if($this->session->userdata('authenticated')) {
+        if($this->is_admin()) {
+            redirect('Dashboard_controller');
+        } else if($this->is_member()) {
+            redirect('Pegawai_controller');
+        }
+    } else {
+        $this->load->view("admin/login");
+    }
+}
 
-	public function login(){
-		$username = $this->input->post('username'); // Ambil isi dari inputan username pada form login
-		$password = ($this->input->post('password')); // Ambil isi dari inputan password pada form login dan encrypt dengan md5
-		$user = $this->User_model->get($username); // Panggil fungsi get yang ada di UserModel.php
-		if(empty($user)){ // Jika hasilnya kosong / user tidak ditemukan
-			$this->session->set_flashdata('message', 'Username tidak ditemukan'); // Buat session flashdata
-			redirect('Auth'); // Redirect ke halaman login
-		}else{
-			if($password == $user->password){ // Jika password yang diinput sama dengan password yang didatabase
-				$session = array(
-					'authenticated'=>true, // Buat session authenticated dengan value true
-					'username'=>$user->username,  // Buat session username
-					'nama'=>$user->nama, // Buat session authenticated
-					'id_user'=>$user->id_user
-				);
-				$this->session->set_userdata($session); // Buat session sesuai $session
-				redirect('Dashboard_controller', $user);
+	
 
-			}else{
-				$this->session->set_flashdata('message', 'Password salah'); // Buat session flashdata
-				redirect('Auth'); // Redirect ke halaman login
-			}
-		}
-	}
+	public function login() {
+    $username = $this->input->post('username');
+    $password = md5($this->input->post('password')); // Mengenkripsi kata sandi menggunakan MD5
+
+    $admin = $this->User_model->get_by_username_and_role($username, 'admin');
+    $member = $this->User_model->get_by_username_and_role($username, 'member');
+
+    if(!empty($admin) && $password == $admin->password) {
+        $session = array(
+            'authenticated' => true,
+            'username' => $admin->username,
+            'nama' => $admin->nama,
+            'id_user' => $admin->id_user,
+            'role' => 'admin'
+        );
+        $this->session->set_userdata($session);
+        redirect('Dashboard_controller', $admin);
+    } elseif(!empty($member) && $password == $member->password) {
+        $session = array(
+            'authenticated' => true,
+            'username' => $member->username,
+            'nama' => $member->nama,
+            'id_user' => $member->id_user,
+            'role' => 'member'
+        );
+        $this->session->set_userdata($session);
+        redirect('Pegawai_controller', $member);
+    } else {
+        $this->session->set_flashdata('message', 'Username atau password salah');
+        redirect('Auth');
+    }
+}
+
+
+
 
 	public  function  logout(){
 		$this->session->sess_destroy();
@@ -52,5 +80,3 @@ class Auth extends CI_Controller {
 
 
 /* End of file Controllername.php */
-
-

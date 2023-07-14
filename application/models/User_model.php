@@ -7,6 +7,11 @@ class User_model extends CI_Model
 		$result = $this->db->get('user')->row();
 		return $result;
 	}
+	public function get_by_username_and_role($username, $level) {
+    	$this->db->where('username', $username);
+    	$this->db->where('level', $level);
+    	return $this->db->get('user')->row();
+}
 
 }
 
