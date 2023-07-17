@@ -24,6 +24,7 @@
 		<h1>
 			Welcome
 			<small><?php echo $this->session->userdata('nama'); ?></small>
+      <small><?php echo $this->session->userdata('level'); ?></small>
 		</h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
