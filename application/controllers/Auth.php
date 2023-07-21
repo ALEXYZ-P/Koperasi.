@@ -26,7 +26,7 @@ class Auth extends CI_Controller {
         if($this->is_admin()) {
             redirect('Dashboard_controller');
         } else if($this->is_member()) {
-            redirect('Anggota_controller');
+            redirect('Dasgota_controller');
         }
     } else {
         $this->load->view("admin/login");
@@ -61,7 +61,7 @@ class Auth extends CI_Controller {
             'role' => 'member'
         );
         $this->session->set_userdata($session);
-        redirect('Anggota_controller', $member);
+        redirect('Dasgota_controller', $member);
     } else {
         $this->session->set_flashdata('message', 'Username atau password salah');
         redirect('Auth');
