@@ -48,7 +48,11 @@ class Auth extends CI_Controller {
             'username' => $admin->username,
             'nama' => $admin->nama,
             'id_user' => $admin->id_user,
+<<<<<<< HEAD
+            'level' => $admin->level,
+=======
             'level' => 'admin'
+>>>>>>> 2650a47abb85353f4cde498a0ed732f6eb0ac323
         );
         $this->session->set_userdata($session);
         redirect('Dashboard_controller', $admin);
@@ -58,7 +62,11 @@ class Auth extends CI_Controller {
             'username' => $member->username,
             'nama' => $member->nama,
             'id_user' => $member->id_user,
+<<<<<<< HEAD
+            'level' => $member->level,
+=======
             'level' => 'member'
+>>>>>>> 2650a47abb85353f4cde498a0ed732f6eb0ac323
         );
         $this->session->set_userdata($session);
         redirect('Dasgota_controller', $member);
