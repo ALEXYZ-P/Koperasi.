@@ -1,6 +1,6 @@
  <header class="main-header">
     <!-- Logo -->
-    <a href="http://localhost/Koperasi.github.io/Dashboard_controller" class="logo">
+    <a class="logo"  onClick="document.location.reload(true)">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>K</b>Ts</span>
       <!-- logo for regular state and mobile devices -->
@@ -38,7 +38,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs">Admin Koperasi</span>
+              <span class="hidden-xs"><?php echo $this->session->userdata('nama'); ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -46,8 +46,8 @@
                 <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User sipo">
 
                 <p>
-                  Alexander - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <?php echo $this->session->userdata('nama') ?> - <?php echo $this->session->userdata('level') ?> 
+                  <small>Since </small><?php echo $this->session->userdata('tanggal'); ?> 
                 </p>
               </li>
               <!-- Menu Body -->
