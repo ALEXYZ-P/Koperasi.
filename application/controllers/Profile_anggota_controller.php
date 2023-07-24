@@ -16,7 +16,7 @@ class Anggota_controller extends MY_Controller
     public function index()
     {
         $data["anggota"] = $this->Anggota_model->getAll();
-        $this->load->view("anggota/profile_anggota", $data);
+        $this->load->view("dasgota/profile_anggota", $data);
     }
 
     public function detail($id){
@@ -24,7 +24,7 @@ class Anggota_controller extends MY_Controller
         $anggota = $this->Anggota_model; 
         $data['anggota'] = $this->Anggota_model->getById($id);
 
-        $this->load->view("anggota/profile_anggota", $data);
+        $this->load->view("dasgota/profile_anggota", $data);
     }
 
     public function add()
