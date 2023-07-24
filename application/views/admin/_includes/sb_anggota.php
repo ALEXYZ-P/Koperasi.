@@ -30,7 +30,7 @@
         <li class="header">Navigation</li>
 
         <li><a href="<?php echo base_url('Dasgota_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Profile</span></a>
+        <li><a href="<?php echo base_url('Profile_anggota_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Profile</span></a>
         
         </li>
         <li class="treeview">
