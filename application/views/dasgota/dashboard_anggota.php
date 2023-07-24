@@ -4,7 +4,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>
-<?php $this->load->view("admin/_includes/sidebar.php") ?>
+<?php $this->load->view("admin/_includes/sb_anggota.php") ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <!-- Alert -->
@@ -92,7 +92,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            
+            <a href="#" class="small-box-footer">Member <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
