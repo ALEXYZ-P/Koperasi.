@@ -9,13 +9,13 @@ class Profile_anggota_controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("Anggota_model");
+        $this->load->model('Anggota_model');
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $data["anggota"] = $this->Anggota_model->getAll();
+        $data['anggota'] = $this->Anggota_model->getAll();
         $this->load->view("dasgota/profile_anggota", $data);
     }
 

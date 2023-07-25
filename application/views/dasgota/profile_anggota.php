@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/Profile.css">
-    <?php $this->load->view("admin/_includes/head.php") ?>
 	<title></title>
 </head>
+<?php $this->load->view("admin/_includes/head.php") ?>
+
+
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>
 <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-	  <!-- Alert -->
-	  <?php if ($this->session->flashdata('success')): ?>
-		  <div class="box-body">
-			  <div class="alert alert-info alert-dismissible">
-				  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				  <h4><i class="icon fa fa-info"></i>Alert!</h4>
-				  <?php echo $this->session->flashdata('success'); ?>
-			  </div>
-		  </div>
-	  <?php endif; ?>
-	  <!-- Alert -->
+    <!-- Alert -->
+    <?php if ($this->session->flashdata('success')): ?>
+      <div class="box-body">
+        <div class="alert alert-info alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-info"></i>Alert!</h4>
+          <?php echo $this->session->flashdata('success'); ?>
+        </div>
+      </div>
+    <?php endif; ?>
+    <!-- Alert -->
     <!-- Content Header (Page header) -->
     <section class="content-header">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
               </a>
               <h1><?php echo $this->session->userdata('nama'); ?></h1>
-              <p>deydey@theEmail.com</p>
+              <p><?php echo $this->session->userdata('email'); ?></p>
           </div>
 
           <ul class="nav nav-pills nav-stacked">
@@ -50,53 +50,35 @@
   </div>
   <div class="profile-info col-md-9">
       <div class="panel">
+         
           
-          <footer class="panel-footer">
-              <button class="btn btn-warning pull-right">Post</button>
-              <ul class="nav nav-pills">
-                  <li>
-                      <a href="#"><i class="fa fa-map-marker"></i></a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="fa fa-camera"></i></a>
-                  </li>
-                  <li>
-                      <a href="#"><i class=" fa fa-film"></i></a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="fa fa-microphone"></i></a>
-                  </li>
-              </ul>
-          </footer>
       </div>
       <div class="panel">
-
+          
           <div class="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>Profile</h1>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>First Name </span>: Camila</p>
+                      <p><span>Nama </span>: <?php echo $this->session->userdata('nama'); ?></p>
+                  </div>
+                  
+                  <div class="bio-row">
+                      <p><span>Alamat </span>: <?php echo $this->session->userdata('alamat'); ?></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Last Name </span>: Smith</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Country </span>: Australia</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Birthday</span>: 13 July 1983</p>
+                      <p><span>Birthday</span>: <?php echo $this->session->userdata('tanggal'); ?></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Occupation </span>: UI Designer</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Email </span>: jsmith@flatlab.com</p>
+                      <p><span>Email </span>: <?php echo $this->session->userdata('email'); ?></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Mobile </span>: (12) 03 4567890</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Phone </span>: 88 (02) 123456</p>
+                      <p><span>Phone </span>: <?php echo $this->session->userdata('nohp'); ?></p>
                   </div>
               </div>
           </div>
@@ -164,16 +146,7 @@
   </div>
 </div>
 </div>
-</section>
-    <!-- /.content -->
-</div>
-  <!-- /.content-wrapper -->s
-<?php $this->load->view("admin/_includes/footer.php") ?>
-<?php $this->load->view("admin/_includes/control_sidebar.php") ?>
-<?php $this->load->view("admin/_includes/bottom_script.php") ?>
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+
 
 
 
