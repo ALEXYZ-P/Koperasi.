@@ -48,6 +48,10 @@ class Auth extends CI_Controller {
             'username' => $admin->username,
             'nama' => $admin->nama,
             'id_user' => $admin->id_user,
+            'alamat' => $admin->alamat,
+            'tanggal' => $admin->tanggal,
+            'email' => $admin->email,
+            'nohp' => $admin->nohp,
             'level' => 'admin'
         );
         $this->session->set_userdata($session);
@@ -58,6 +62,10 @@ class Auth extends CI_Controller {
             'username' => $member->username,
             'nama' => $member->nama,
             'id_user' => $member->id_user,
+            'alamat' => $member->alamat,
+            'tanggal' => $member->tanggal,
+            'email' => $member->email,
+            'nohp' => $member->nohp,
             'level' => 'member'
         );
         $this->session->set_userdata($session);

@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
-<?php $this->load->view("admin/_includes/head.php") ?>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 </head>
-<body>
+<?php $this->load->view("admin/_includes/head.php") ?>
+
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+<?php $this->load->view("admin/_includes/header.php") ?>
+<?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Alert -->
+    <?php if ($this->session->flashdata('success')): ?>
+      <div class="box-body">
+        <div class="alert alert-info alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-info"></i>Alert!</h4>
+          <?php echo $this->session->flashdata('success'); ?>
+        </div>
+      </div>
+    <?php endif; ?>
+    <!-- Alert -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">
 <div class="row">
@@ -16,8 +37,8 @@
               <a href="#">
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
               </a>
-              <h1>Camila Smith</h1>
-              <p>deydey@theEmail.com</p>
+              <h1><?php echo $this->session->userdata('nama'); ?></h1>
+              <p><?php echo $this->session->userdata('email'); ?></p>
           </div>
 
           <ul class="nav nav-pills nav-stacked">
@@ -29,57 +50,35 @@
   </div>
   <div class="profile-info col-md-9">
       <div class="panel">
-          <form>
-              <textarea placeholder="Whats in your mind today?" rows="2" class="form-control input-lg p-text-area"></textarea>
-          </form>
-          <footer class="panel-footer">
-              <button class="btn btn-warning pull-right">Post</button>
-              <ul class="nav nav-pills">
-                  <li>
-                      <a href="#"><i class="fa fa-map-marker"></i></a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="fa fa-camera"></i></a>
-                  </li>
-                  <li>
-                      <a href="#"><i class=" fa fa-film"></i></a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="fa fa-microphone"></i></a>
-                  </li>
-              </ul>
-          </footer>
+         
+          
       </div>
       <div class="panel">
-          <div class="bio-graph-heading">
-              Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.
-          </div>
+          
           <div class="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>Profile</h1>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>First Name </span>: Camila</p>
+                      <p><span>Nama </span>: <?php echo $this->session->userdata('nama'); ?></p>
+                  </div>
+                  
+                  <div class="bio-row">
+                      <p><span>Alamat </span>: <?php echo $this->session->userdata('alamat'); ?></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Last Name </span>: Smith</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Country </span>: Australia</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Birthday</span>: 13 July 1983</p>
+                      <p><span>Birthday</span>: <?php echo $this->session->userdata('tanggal'); ?></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Occupation </span>: UI Designer</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Email </span>: jsmith@flatlab.com</p>
+                      <p><span>Email </span>: <?php echo $this->session->userdata('email'); ?></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Mobile </span>: (12) 03 4567890</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Phone </span>: 88 (02) 123456</p>
+                      <p><span>Phone </span>: <?php echo $this->session->userdata('nohp'); ?></p>
                   </div>
               </div>
           </div>

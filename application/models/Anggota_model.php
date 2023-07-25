@@ -13,12 +13,14 @@ class Anggota_model extends CI_Model
 	public $nama;
 	public $jenis_kelamin;
 	public $alamat;
+	public $tanggal;
+	public $email;
 	public $nohp;
 
 	public function get($username){
 		$this->db->where('username', $username);
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
-		$result = $this->db->get('anggota')->row();
+		$result = $this->db->get('user')->row();
 		return $result;
 	}
 
@@ -39,6 +41,18 @@ class Anggota_model extends CI_Model
 
 			['field' => 'alamat',
 			'label' => 'alamat',
+			'rules' => 'required'],
+
+			['field' => 'tanggal',
+			'label' => 'tanggal',
+			'rules' => 'required'],
+
+			['field' => 'email',
+			'label' => 'email',
+			'rules' => 'required'],
+
+			['field' => 'nohp',
+			'label' => 'nohp',
 			'rules' => 'required']
 		];
 	}
