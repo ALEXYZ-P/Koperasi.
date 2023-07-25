@@ -36,11 +36,11 @@
   <div class="profile-nav col-md-3">
       <div class="panel">
           <div class="user-heading round">
-              <a href="#">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-              </a>
-              <h1><?php echo $this->session->userdata('username'); ?></h1>
-              <p><?php echo $this->session->userdata('email'); ?></p>
+              <a href="#"><center>
+                  <img src="assetAdmin/dist/img/avatar.png" alt="">
+              </a></center>
+              <h1><center><?php echo $this->session->userdata('username'); ?></center></h1>
+              <p><center><?php echo $this->session->userdata('email'); ?></center></p>
               
           </div>
 
