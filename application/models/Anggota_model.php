@@ -14,6 +14,7 @@ class Anggota_model extends CI_Model
 	public $jenis_kelamin;
 	public $alamat;
 	public $tanggal;
+	public $birthday;
 	public $email;
 	public $nohp;
 
@@ -45,6 +46,10 @@ class Anggota_model extends CI_Model
 
 			['field' => 'tanggal',
 			'label' => 'tanggal',
+			'rules' => 'required'],
+
+			['field' => 'birthday',
+			'label' => 'birthday',
 			'rules' => 'required'],
 
 			['field' => 'email',

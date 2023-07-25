@@ -50,6 +50,7 @@ class Auth extends CI_Controller {
             'id_user' => $admin->id_user,
             'alamat' => $admin->alamat,
             'tanggal' => $admin->tanggal,
+            'birthday' => $admin->birthday,
             'email' => $admin->email,
             'nohp' => $admin->nohp,
             'level' => 'admin'
@@ -64,6 +65,7 @@ class Auth extends CI_Controller {
             'id_user' => $member->id_user,
             'alamat' => $member->alamat,
             'tanggal' => $member->tanggal,
+            'birthday' => $member->birthday,
             'email' => $member->email,
             'nohp' => $member->nohp,
             'level' => 'member'

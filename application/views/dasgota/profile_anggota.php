@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head>
 <?php $this->load->view("admin/_includes/head.php") ?>
 
 
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/Profile.css">
+    <?php $this->load->view("admin/_includes/head.php") ?>
+  <title></title>
+</head>
+<body>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>
@@ -35,35 +37,36 @@
       <div class="panel">
           <div class="user-heading round">
               <a href="#">
-                  <img src="assetAdmin/dist/img/user2-160x160.jpg" alt="">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
               </a>
-              <h1><?php echo $this->session->userdata('nama'); ?></h1>
-              <p><?php echo $this->session->userdata('username') ?></p>
+              <h1><?php echo $this->session->userdata('username'); ?></h1>
               <p><?php echo $this->session->userdata('email'); ?></p>
+              
           </div>
 
           <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
+              <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
               <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
           </ul>
       </div>
   </div>
   <div class="profile-info col-md-9">
-     
+      
       <div class="panel">
           
+
           <div class="panel-body bio-graph-info">
-              <h1>Profile</h1>
+              <h1>Bio Graph</h1>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>Nama </span>: <?php echo $this->session->userdata('nama'); ?></p>
+                      <p><span>Nama lengkap </span>: <?php echo $this->session->userdata('nama'); ?></p>
                   </div>
-                  
                   <div class="bio-row">
                       <p><span>Alamat </span>: <?php echo $this->session->userdata('alamat'); ?></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Birthday</span>: <?php echo $this->session->userdata('tanggal'); ?></p>
+                      <p><span>Birthday</span>: <?php echo $this->session->userdata('birthday'); ?></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Occupation </span>: UI Designer</p>
@@ -72,10 +75,7 @@
                       <p><span>Email </span>: <?php echo $this->session->userdata('email'); ?></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Mobile </span>: (12) 03 4567890</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Phone </span>: <?php echo $this->session->userdata('nohp'); ?></p>
+                      <p><span>No telp </span>: <?php echo $this->session->userdata('nohp'); ?></p>
                   </div>
               </div>
           </div>
@@ -144,6 +144,16 @@
 </div>
 </div>
 
+</section>
+    <!-- /.content -->
+</div>
+  <!-- /.content-wrapper -->s
+<?php $this->load->view("admin/_includes/footer.php") ?>
+<?php $this->load->view("admin/_includes/control_sidebar.php") ?>
+<?php $this->load->view("admin/_includes/bottom_script.php") ?>
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
 
 
 
