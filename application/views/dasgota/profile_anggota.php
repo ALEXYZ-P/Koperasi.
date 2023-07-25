@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
-<?php $this->load->view("admin/_includes/head.php") ?>
+
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/Profile.css">
+    <?php $this->load->view("admin/_includes/head.php") ?>
 	<title></title>
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+<?php $this->load->view("admin/_includes/header.php") ?>
+<?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <!-- Alert -->
+	  <?php if ($this->session->flashdata('success')): ?>
+		  <div class="box-body">
+			  <div class="alert alert-info alert-dismissible">
+				  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				  <h4><i class="icon fa fa-info"></i>Alert!</h4>
+				  <?php echo $this->session->flashdata('success'); ?>
+			  </div>
+		  </div>
+	  <?php endif; ?>
+	  <!-- Alert -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">
 <div class="row">
@@ -17,7 +37,7 @@
               <a href="#">
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
               </a>
-              <h1>Camila Smith</h1>
+              <h1><?php echo $this->session->userdata('nama'); ?></h1>
               <p>deydey@theEmail.com</p>
           </div>
 
@@ -30,9 +50,7 @@
   </div>
   <div class="profile-info col-md-9">
       <div class="panel">
-          <form>
-              <textarea placeholder="Whats in your mind today?" rows="2" class="form-control input-lg p-text-area"></textarea>
-          </form>
+          
           <footer class="panel-footer">
               <button class="btn btn-warning pull-right">Post</button>
               <ul class="nav nav-pills">
@@ -52,9 +70,7 @@
           </footer>
       </div>
       <div class="panel">
-          <div class="bio-graph-heading">
-              Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.
-          </div>
+
           <div class="panel-body bio-graph-info">
               <h1>Bio Graph</h1>
               <div class="row">
@@ -148,7 +164,16 @@
   </div>
 </div>
 </div>
-
+</section>
+    <!-- /.content -->
+</div>
+  <!-- /.content-wrapper -->s
+<?php $this->load->view("admin/_includes/footer.php") ?>
+<?php $this->load->view("admin/_includes/control_sidebar.php") ?>
+<?php $this->load->view("admin/_includes/bottom_script.php") ?>
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
 
 
 

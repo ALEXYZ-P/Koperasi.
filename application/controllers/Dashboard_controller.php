@@ -8,6 +8,11 @@ class Dashboard_controller extends MY_Controller {
 		$this->load->view("admin/dashboard");
 	}
 
+	public function anggota()
+	{
+		$this->load->view("dasgota/dashboard_anggota");
+	}
+
 }
 
 /* End of file Controllername.php */
