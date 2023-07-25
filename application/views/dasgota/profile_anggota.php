@@ -38,12 +38,12 @@
                   <img src="assetAdmin/dist/img/user2-160x160.jpg" alt="">
               </a>
               <h1><?php echo $this->session->userdata('nama'); ?></h1>
+              <p><?php echo $this->session->userdata('username') ?></p>
               <p><?php echo $this->session->userdata('email'); ?></p>
           </div>
 
           <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
               <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
           </ul>
       </div>
