@@ -35,7 +35,7 @@
       <div class="panel">
           <div class="user-heading round">
               <a href="#">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                  <img src="assetAdmin/dist/img/user2-160x160.jpg" alt="">
               </a>
               <h1><?php echo $this->session->userdata('nama'); ?></h1>
               <p><?php echo $this->session->userdata('email'); ?></p>
@@ -49,10 +49,7 @@
       </div>
   </div>
   <div class="profile-info col-md-9">
-      <div class="panel">
-         
-          
-      </div>
+     
       <div class="panel">
           
           <div class="panel-body bio-graph-info">
