@@ -4,7 +4,7 @@
 * author inogalwargan
 */
 
-class SimpananPokok_controller extends MY_Controller
+class Tabungan_controller extends MY_Controller
 {
     public function __construct()
     {

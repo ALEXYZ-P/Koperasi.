@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Anggota_model extends CI_Model
+class Tabungan_model extends CI_Model
 {
 	
 	private $_table= "user";
