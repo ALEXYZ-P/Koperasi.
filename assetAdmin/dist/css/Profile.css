@@ -130,11 +130,22 @@ body {
     margin: 0 0 20px;
 }
 
+.bio-table {
+    
+    border-collapse: collapse; /* Menggabungkan batas sel */
+    width: 100%; /* Atur lebar tabel jika perlu */
+}
+
+.bio-table td {
+    padding: 111px; /* Atur jumlah padding sesuai kebutuhan */
+    border: 1px solid #000; /* Atur gaya border jika diperlukan */
+}
+
 .bio-row {
     width: 50%;
-    float: left;
+    margin-left: 15px;
     margin-bottom: 10px;
-    padding:0 15px;
+    padding: 15px 15px;
 }
 
 .bio-row p span {
