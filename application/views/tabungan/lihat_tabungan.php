@@ -52,6 +52,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
+                      <th>id_member</th>
                       <th>Nama</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
@@ -61,13 +62,14 @@
                   </thead>
                   <tbody>
                     <?php $no = 1;?>
-                    <?php foreach ($anggota as $value): ?>
+                    <?php foreach ($tabungan as $value): ?>
                       <tr>
-                        <td><?php cetak($no++) ?></td>
-                        <td><?php cetak($value->nia)  ?></td>
+                        <td><?php cetak($value->id_tabungan) ?></td>
+                        <td><?php cetak($value->id_user)  ?></td>
                         <td><?php cetak($value->nama ) ?></td>
-                        <td><?php cetak($value->jenis_kelamin)  ?></td>
-                        <td><?php cetak($value->alamat)  ?></td>
+                        <td><?php cetak($value->jumlah_tabungan)  ?></td>
+                        <td><?php cetak($value->tanggal_tabung) ?></td>
+                        <td><?php cetak($value->id_jenis_tabungan)  ?></td>
                         <td>
                           <a class="btn btn-primary" href="<?php echo site_url('SimpananPokok_controller/add/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-plus"></i>Simpanan Pokok</a>
                           <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Simpanan Pokok</a>
