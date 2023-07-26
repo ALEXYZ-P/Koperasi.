@@ -6,39 +6,43 @@
 class Tabungan_model extends CI_Model
 {
 	
-	private $_table= "user";
+	private $_table= "tabungan";
 
 	public $id_user;
-	public $nia;
-	public $nama;
-	public $jenis_kelamin;
-	public $alamat;
+	public $id_tabungan;
+	public $jumlah_tabungan;
+	public $tanggal_tabung;
+	public $id_jenis_tabungan;
 	public $nohp;
 
 	public function get($username){
 		$this->db->where('username', $username);
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
-		$result = $this->db->get('anggota')->row();
+		$result = $this->db->get('tabungan')->row();
 		return $result;
 	}
 
 	public function rules()
 	{
 		return [
-			['field' => 'nia',
-			'label' => 'nia',
+			['field' => 'id_user',
+			'label' => 'id_user',
 			'rules' => 'required'],
 
-			['field' => 'nama',
-			'label' => 'nama',
+			['field' => 'id_tabungan',
+			'label' => 'id_tabungan',
 			'rules' => 'required'],
 
-			['field' => 'jenis_kelamin',
-			'label' => 'jenis_kelamin',
+			['field' => 'jumlah_tabungan',
+			'label' => 'jumlah_tabungan',
 			'rules' => 'required'],
 
-			['field' => 'alamat',
-			'label' => 'alamat',
+			['field' => 'tanggal_tabung',
+			'label' => 'tanggal_tabung',
+			'rules' => 'required'],
+
+			['field' => 'id_jenis_tabungan',
+			'label' => 'id_jenis_tabungan',
 			'rules' => 'required']
 		];
 	}

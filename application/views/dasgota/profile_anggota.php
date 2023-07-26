@@ -37,7 +37,7 @@
       <div class="panel">
           <div class="user-heading round">
               <a href="#">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                  <img src="assetAdmin/dist/img/user1-128x128.jpg" alt="">
               </a>
               <h1><?php echo $this->session->userdata('username'); ?></h1>
               <p><?php echo $this->session->userdata('email'); ?></p>
@@ -46,8 +46,7 @@
 
           <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
-              <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
+                <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
           </ul>
       </div>
   </div>
@@ -57,7 +56,7 @@
           
 
           <div class="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>Profile</h1>
               <div class="row">
                   <div class="bio-row">
                       <p><span>Nama lengkap </span>: <?php echo $this->session->userdata('nama'); ?></p>
