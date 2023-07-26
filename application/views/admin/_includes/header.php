@@ -49,11 +49,11 @@
                 <?php echo $this->session->userdata('nama') ?> - <?php echo $this->session->userdata('level') ?> 
                   <small>Since <?php echo $this->session->userdata('tanggal'); ?> </small>
                 </p>
-              </li>
+              </li> 
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
-                 
+                  
                 </div>
                 <!-- /.row -->
               </li>

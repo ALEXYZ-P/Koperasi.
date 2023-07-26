@@ -52,10 +52,10 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIA</th>
                       <th>Nama</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Alamat</th>
+                      <th>Jumlah</th>
+                      <th>Tanggal</th>
+                      <th>Jenis Tabungan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
