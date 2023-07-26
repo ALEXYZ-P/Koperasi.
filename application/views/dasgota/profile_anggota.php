@@ -9,6 +9,21 @@
     <link rel="stylesheet" type="text/css" href="css/Profile.css">
     <?php $this->load->view("admin/_includes/head.php") ?>
   <title></title>
+
+  <style>
+    /* Add padding to all <td> elements in the table */
+    table.bio-table td {
+      padding: 4px;
+      padding-left: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: medium;
+    }
+
+    #img-circle {
+        padding: 50px;
+       
+    }
+  </style>
 </head>
 <body>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -30,24 +45,33 @@
     <!-- Alert -->
     <!-- Content Header (Page header) -->
     <section class="content-header">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
 <div class="container bootstrap snippets bootdey">
 <div class="row">
   <div class="profile-nav col-md-3">
       <div class="panel">
           <div class="user-heading round">
-              <a href="#">
-                  <img src="assetAdmin/dist/img/user1-128x128.jpg" alt="">
-              </a>
-              <h1><?php echo $this->session->userdata('username'); ?></h1>
-              <p><?php echo $this->session->userdata('email'); ?></p>
+              <a href="#"><center>
+              <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle" id="img-circle" alt="User Image">
+              </a></center> 
+              <h1><center><?php echo $this->session->userdata('username'); ?></center></h1>
+              <p><center><?php echo $this->session->userdata('level'); ?></center></p>
+              <br>
               
           </div>
+         <div>
+          <table class="bio-table" >
+            <tr>
+                <td class="active"><i class="fa fa-phone"></i></a></td>
+                <td><right><?php echo $this->session->userdata('email'); ?></right></td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-envelope"></i></a></td>
+                <td><right><?php echo $this->session->userdata('nohp'); ?></right></td>
+            </tr>
+          </table>
+         </div>
 
-          <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
-          </ul>
       </div>
   </div>
   <div class="profile-info col-md-9">
@@ -56,26 +80,41 @@
           
 
           <div class="panel-body bio-graph-info">
-              <h1>Profile</h1>
+              <h1><b>Profile</b></h1>
               <div class="row">
-                  <div class="bio-row">
-                      <p><span>Nama lengkap </span>: <?php echo $this->session->userdata('nama'); ?></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Alamat </span>: <?php echo $this->session->userdata('alamat'); ?></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Birthday</span>: <?php echo $this->session->userdata('birthday'); ?></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Occupation </span>: UI Designer</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Email </span>: <?php echo $this->session->userdata('email'); ?></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>No telp </span>: <?php echo $this->session->userdata('nohp'); ?></p>
-                  </div>
+    <table class="bio-table">
+        <tr class="bio-row">
+            <td><span>Nama lengkap</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('nama'); ?></td>
+        </tr>
+        <tr class="bio-row">
+            <td><span>Alamat</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('alamat'); ?></td>
+        </tr>
+        <tr class="bio-row">
+            <td><span>Birthday</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('birthday'); ?></td>
+        </tr>
+        <tr class="bio-row">
+            <td><span>Occupation</span></td>
+            <td> : </td>
+            <td>UI Designer</td>
+        </tr>
+        <tr class="bio-row">
+            <td><span>Email</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('email'); ?></td>
+        </tr>
+        <tr class="bio-row">
+            <td><span>No telp</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('nohp'); ?></td>
+        </tr>
+    </table>
+
               </div>
           </div>
       </div>

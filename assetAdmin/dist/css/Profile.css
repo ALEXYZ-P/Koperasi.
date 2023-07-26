@@ -14,7 +14,20 @@ body {
     margin-top:30px;   
 }
 
+table.bio-table td {
+    padding: 4px;
+    padding-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+  }
+
+  #img-circle {
+      padding: 50px;
+     
+  }
+
 .profile-nav .user-heading {
+    
     background: #fbc02d;
     color: #fff;
     border-radius: 4px 4px 0 0;
@@ -24,6 +37,7 @@ body {
 }
 
 .profile-nav .user-heading.round a  {
+    
     border-radius: 50%;
     -webkit-border-radius: 50%;
     border: 10px solid rgba(255,255,255,0.3);
@@ -31,6 +45,7 @@ body {
 }
 
 .profile-nav .user-heading a img {
+    
     width: 112px;
     height: 112px;
     border-radius: 50%;
@@ -385,3 +400,31 @@ ul.summary-list > li:last-child  {
 .activity-desk .album a:last-child{
     margin-right: 0px;
 }
+
+  .nav.nav-pills.nav-stacked {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .nav.nav-pills.nav-stacked > li {
+    display: table-row;
+  }
+
+  .nav.nav-pills.nav-stacked > li > a {
+    display: table-cell;
+    padding: 10px;
+  }
+
+  .nav.nav-pills.nav-stacked > li.active > a {
+    background-color: #f0f0f0;
+  }
+
+  .nav.nav-pills.nav-stacked > li i {
+    margin-right: 5px;
+  }
+
+  .nav.nav-pills.nav-stacked > li td:last-child {
+    text-align: right;
+  }
