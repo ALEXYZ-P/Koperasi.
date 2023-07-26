@@ -30,7 +30,7 @@
         <li class="header">Navigation</li>
 
         <li><a href="<?php echo base_url('Dashboard_controller/anggota') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Profile_anggota_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Profile</span></a>
+        <li><a href="<?php echo base_url('Profile_anggota_controller') ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a>
         
         </li>
         <li class="treeview">

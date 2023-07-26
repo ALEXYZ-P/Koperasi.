@@ -15,11 +15,13 @@
     table.bio-table td {
       padding: 4px;
       padding-left: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: medium;
     }
 
     #img-circle {
-        padding: 5px;
-        padding-top: 50px;
+        padding: 50px;
+       
     }
   </style>
 </head>
@@ -51,16 +53,25 @@
           <div class="user-heading round">
               <a href="#"><center>
               <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle" id="img-circle" alt="User Image">
-              </a></center>
+              </a></center> 
               <h1><center><?php echo $this->session->userdata('username'); ?></center></h1>
-              <p><center><?php echo $this->session->userdata('email'); ?></center></p>
+              <p><center><?php echo $this->session->userdata('level'); ?></center></p>
+              <br>
               
           </div>
+         <div>
+          <table class="bio-table" >
+            <tr>
+                <td class="active"><i class="fa fa-phone"></i></a></td>
+                <td><right><?php echo $this->session->userdata('email'); ?></right></td>
+            </tr>
+            <tr>
+                <td><i class="fa fa-envelope"></i></a></td>
+                <td><right><?php echo $this->session->userdata('nohp'); ?></right></td>
+            </tr>
+          </table>
+         </div>
 
-          <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
-          </ul>
       </div>
   </div>
   <div class="profile-info col-md-9">
