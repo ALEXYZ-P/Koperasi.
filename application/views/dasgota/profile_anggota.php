@@ -16,6 +16,11 @@
       padding: 4px;
       padding-left: 15px;
     }
+
+    #img-circle {
+        padding: 5px;
+        padding-top: 50px;
+    }
   </style>
 </head>
 <body>
@@ -45,7 +50,7 @@
       <div class="panel">
           <div class="user-heading round">
               <a href="#"><center>
-                  <img src="assetAdmin/dist/img/avatar.png" alt="">
+              <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle" id="img-circle" alt="User Image">
               </a></center>
               <h1><center><?php echo $this->session->userdata('username'); ?></center></h1>
               <p><center><?php echo $this->session->userdata('email'); ?></center></p>
@@ -54,7 +59,6 @@
 
           <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
               <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
           </ul>
       </div>
