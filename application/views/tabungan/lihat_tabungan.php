@@ -52,7 +52,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>id_member</th>
+                      <th>NIK</th>
                       <th>Nama</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
@@ -65,7 +65,7 @@
                     <?php foreach ($tabungan as $value): ?>
                       <tr>
                         <td><?php cetak($value->id_tabungan) ?></td>
-                        <td><?php cetak($value->id_user)  ?></td>
+                        <td><?php cetak($value->nia)  ?></td>
                         <td><?php cetak($value->nama ) ?></td>
                         <td><?php cetak($value->jumlah_tabungan)  ?></td>
                         <td><?php cetak($value->tanggal_tabung) ?></td>
@@ -82,8 +82,9 @@
                       <th>No</th>
                       <th>NIK</th>
                       <th>Nama</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Alamat</th>
+                      <th>Jumlah</th>
+                      <th>Tanggal</th>
+                      <th>Jenis Tabungan</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
