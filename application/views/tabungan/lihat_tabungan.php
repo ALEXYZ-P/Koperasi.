@@ -5,7 +5,7 @@
   <div class="wrapper">
 
     <?php $this->load->view("admin/_includes/header.php") ?>
-    <?php $this->load->view("admin/_includes/sidebar.php") ?>
+    <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
 
 
     <!-- Content Wrapper. Contains page content -->
