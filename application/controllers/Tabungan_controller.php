@@ -11,6 +11,7 @@ class Tabungan_controller extends MY_Controller
         parent::__construct();
         $this->load->model("Tabungan_model");
         $this->load->model("Anggota_model");
+        $this->load->model("Jenis_model");
         $this->load->library('form_validation');
     }
 
@@ -18,6 +19,7 @@ class Tabungan_controller extends MY_Controller
     {
         $data["user"] = $this->Anggota_model->getAll();
         $data["tabungan"] = $this->Tabungan_model->getAll();
+        $data["jenis_tabungan"] = $this->Jenis_model->getAll();
         $this->load->view("tabungan/lihat_tabungan", $data);
     }
 

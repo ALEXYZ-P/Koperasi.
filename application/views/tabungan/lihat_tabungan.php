@@ -5,7 +5,7 @@
   <div class="wrapper">
 
     <?php $this->load->view("admin/_includes/header.php") ?>
-    <?php $this->load->view("admin/_includes/sidebar.php") ?>
+    <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -63,20 +63,24 @@
                   <tbody>
                     <?php foreach ($user as $users): ?>
                     <?php foreach ($tabungan as $value): ?>
+                    <?php foreach ($Jenis_tabungan as $jenis):?>
                     <?php if ($value->id_user === $users->id_user) : ?>
+                    <?php if ($value->id_jenis_tabungan === $jenis->id_jenis_tabungan): ?>
                       <tr>
                         <td><?php cetak($value->id_tabungan) ?></td>
                         <td><?php cetak($users->nia)  ?></td>
                         <td><?php cetak($users->nama ) ?></td>
                         <td><?php cetak($value->jumlah_tabungan)  ?></td>
                         <td><?php cetak($value->tanggal_tabung) ?></td>
-                        <td><?php cetak($value->id_jenis_tabungan)  ?></td>
+                        <td><?php cetak($jenis->nama_jenis_tabungan)  ?></td>
                         <td>
                           <a class="btn btn-primary" href="<?php echo site_url('SimpananPokok_controller/add/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-plus"></i>Simpanan Pokok</a>
                           <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Simpanan Pokok</a>
                         </td>
                       </tr>
                     <?php endif; ?>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
                     <?php endforeach; ?>
                   <?php endforeach; ?>
                   </tbody>
