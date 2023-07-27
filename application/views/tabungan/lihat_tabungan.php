@@ -61,12 +61,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no = 1;?>
+                    <?php foreach ($user as $users): ?>
                     <?php foreach ($tabungan as $value): ?>
+                    <?php if ($value->id_user === $users->id_user) : ?>
                       <tr>
                         <td><?php cetak($value->id_tabungan) ?></td>
-                        <td><?php cetak($value->nia)  ?></td>
-                        <td><?php cetak($value->nama ) ?></td>
+                        <td><?php cetak($users->nia)  ?></td>
+                        <td><?php cetak($users->nama ) ?></td>
                         <td><?php cetak($value->jumlah_tabungan)  ?></td>
                         <td><?php cetak($value->tanggal_tabung) ?></td>
                         <td><?php cetak($value->id_jenis_tabungan)  ?></td>
@@ -75,7 +76,9 @@
                           <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Simpanan Pokok</a>
                         </td>
                       </tr>
+                    <?php endif; ?>
                     <?php endforeach; ?>
+                  <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>

@@ -13,14 +13,9 @@ class Tabungan_model extends CI_Model
 	public $jumlah_tabungan;
 	public $tanggal_tabung;
 	public $id_jenis_tabungan;
-	public $nohp;
+	
 
-	public function get($username){
-		$this->db->where('username', $username);
-		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
-		$result = $this->db->get('tabungan')->row();
-		return $result;
-	}
+	
 
 	public function rules()
 	{
@@ -48,7 +43,7 @@ class Tabungan_model extends CI_Model
 	}
 
 	public function getALL(){
-		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
+		
 		return $this->db->get($this->_table)->result();
 	}
 
