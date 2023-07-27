@@ -5,7 +5,7 @@
   <div class="wrapper">
 
     <?php $this->load->view("admin/_includes/header.php") ?>
-    <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+    <?php $this->load->view("admin/_includes/sidebar.php") ?>
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -42,7 +42,9 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <!-- random -->
+                <a href="<?php echo base_url('Anggota_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
+                <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
+                <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
               </div>
               <!-- /.box-header -->
               <div class="box-body table-responsive">
@@ -70,7 +72,10 @@
                         <td><?php cetak($value->jumlah_tabungan)  ?></td>
                         <td><?php cetak($value->tanggal_tabung) ?></td>
                         <td><?php cetak($value->id_jenis_tabungan)  ?></td>
-                       
+                        <td>
+                          <a class="btn btn-primary" href="<?php echo site_url('SimpananPokok_controller/add/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-plus"></i>Simpanan Pokok</a>
+                          <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Simpanan Pokok</a>
+                        </td>
                       </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>
