@@ -10,8 +10,12 @@ class Auth extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 	private function is_admin() {
-    return $this->session->userdata('level') === 'admin'; // Ganti 'admin' dengan peran (role) yang sesuai untuk pengguna admin
+    return $this->session->userdata('level') === 'admin';
 	}
+
+    private function is_staff() {
+        return $this->session->userdata('level') === 'staff'; 
+        }
 
 	private function is_member() {
 	return $this->session->userdata('level') === 'member'; 
@@ -25,7 +29,9 @@ class Auth extends CI_Controller {
     if($this->session->userdata('authenticated')) {
         if($this->is_admin()) {
             redirect('Dashboard_controller');
-        } else if($this->is_member()) {
+        } else if($this->is_staff()) {  
+            redirect('Dashboard_controller/staff');
+        } else if($this->is_member()) {  
             redirect('Dashboard_controller/anggota');
         }
     } else {
@@ -40,6 +46,7 @@ class Auth extends CI_Controller {
     $password = md5($this->input->post('password')); // Mengenkripsi kata sandi menggunakan MD5
 
     $admin = $this->User_model->get_by_username_and_role($username, 'admin');
+    $staff = $this->User_model->get_by_username_and_role($username, 'staff');
     $member = $this->User_model->get_by_username_and_role($username, 'member');
 
     if(!empty($admin) && $password == $admin->password) {
@@ -57,7 +64,24 @@ class Auth extends CI_Controller {
         );
         $this->session->set_userdata($session);
         redirect('Dashboard_controller', $admin);
-    } elseif(!empty($member) && $password == $member->password) {
+
+    } elseif(!empty($staff) && $password == $staff->password) {
+        $session = array(
+            'authenticated' => true,
+            'username' => $member->username,
+            'nama' => $member->nama,
+            'id_user' => $member->id_user,
+            'alamat' => $member->alamat,
+            'tanggal' => $member->tanggal,
+            'birthday' => $member->birthday,
+            'email' => $member->email,
+            'nohp' => $member->nohp,
+            'level' => 'staff'
+        );
+        $this->session->set_userdata($session);
+        redirect('Dashboard_controller/staff', $staff);
+
+    }elseif(!empty($member) && $password == $member->password) {
         $session = array(
             'authenticated' => true,
             'username' => $member->username,
@@ -72,6 +96,7 @@ class Auth extends CI_Controller {
         );
         $this->session->set_userdata($session);
         redirect('Dashboard_controller/anggota', $member);
+
     } else {
         $this->session->set_flashdata('message', 'Username atau password salah');
         redirect('Auth');

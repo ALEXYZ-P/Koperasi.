@@ -5,10 +5,10 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle"     alt="User Image">
+        <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?php echo $this->session->userdata('nama'); ?></p>
+        <p><span class="hidden-xs"><?php echo $this->session->userdata('nama'); ?></span></p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -29,9 +29,8 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
 
-        <li><a href="<?php echo base_url('Dashboard_controller/anggota') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Profile_anggota_controller') ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a>
-        
+        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Member</span></a>
         </li>
         <li class="treeview">
           <a href="#">

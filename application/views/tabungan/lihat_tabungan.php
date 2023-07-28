@@ -62,7 +62,10 @@
                     <?php $no = 1;?>
                     <?php foreach ($user as $users): ?>
                     <?php foreach ($tabungan as $value): ?>
-                    <?php if ($value->id_user === $users->id_user) : ?>
+                    <?php foreach ($jenis_tabungan as $jt): ?>
+                      <?php if ($value->id_user === $users->id_user) : ?>
+                      <?php elseif ($value->jt === $users->jt) : ?>
+                    
                       <tr>
                         <td><?php cetak($value->id_tabungan) ?></td>
                         <td><?php cetak($users->nia)  ?></td>
@@ -72,7 +75,9 @@
                         <td><?php cetak($value->id_jenis_tabungan)  ?></td>
                        
                       </tr>
+                      
                     <?php endif; ?>
+                      s<?php endforeach; ?>
                     <?php endforeach; ?>
                   <?php endforeach; ?>
                   </tbody>
