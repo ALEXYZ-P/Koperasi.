@@ -1,7 +1,5 @@
-<head>
 <?php $this->load->view("admin/_includes/head.php") ?>
-<title>Koperasi Terserah</title>
-</head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>

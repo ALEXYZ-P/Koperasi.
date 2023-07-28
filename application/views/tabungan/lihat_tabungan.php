@@ -7,7 +7,6 @@
     <?php $this->load->view("admin/_includes/header.php") ?>
     <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
 
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -42,7 +41,7 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <!-- random -->
+                
               </div>
               <!-- /.box-header -->
               <div class="box-body table-responsive">
@@ -55,31 +54,28 @@
                       <th>Jumlah</th>
                       <th>Tanggal</th>
                       <th>Jenis Tabungan</th>
-                      <th>Aksi</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no = 1;?>
+                    <?php $no = 1; ?>
                     <?php foreach ($user as $users): ?>
-                    <?php foreach ($tabungan as $value): ?>
-                    <?php foreach ($jenis_tabungan as $jt): ?>
-                      <?php if ($value->id_user === $users->id_user) : ?>
-                      <?php elseif ($value->jt === $users->jt) : ?>
-                    
-                      <tr>
-                        <td><?php cetak($value->id_tabungan) ?></td>
-                        <td><?php cetak($users->nia)  ?></td>
-                        <td><?php cetak($users->nama ) ?></td>
-                        <td><?php cetak($value->jumlah_tabungan)  ?></td>
-                        <td><?php cetak($value->tanggal_tabung) ?></td>
-                        <td><?php cetak($value->id_jenis_tabungan)  ?></td>
-                       
-                      </tr>
-                      
-                    <?php endif; ?>
-                      s<?php endforeach; ?>
+                      <?php foreach ($tabungan as $value): ?>
+                        <?php foreach ($jenis_tabungan as $jenis): ?>
+                          <?php if ($value->id_user === $users->id_user && $value->id_jenis_tabungan === $jenis->id_jenis_tabungan): ?>
+                            <tr>
+                              <td><?php echo $no++ ?></td>
+                              <td><?php echo $users->nia ?></td>
+                              <td><?php echo $users->nama ?></td>
+                              <td><?php echo $value->jumlah_tabungan ?></td>
+                              <td><?php echo $value->tanggal_tabung ?></td>
+                              <td><?php echo $jenis->nama_jenis_tabungan ?></td>
+                              
+                            </tr>
+                          <?php endif; ?>
+                        <?php endforeach; ?>
+                      <?php endforeach; ?>
                     <?php endforeach; ?>
-                  <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>
@@ -89,7 +85,7 @@
                       <th>Jumlah</th>
                       <th>Tanggal</th>
                       <th>Jenis Tabungan</th>
-                      <th>Aksi</th>
+                      
                     </tr>
                   </tfoot>
                 </table>

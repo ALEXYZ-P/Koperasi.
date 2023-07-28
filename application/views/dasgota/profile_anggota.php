@@ -73,6 +73,25 @@
          </div>
 
       </div>
+
+      <div class="panel">
+          <div class="user-heading round">
+              <h3>Registered</h3>
+              <br>
+              
+          </div>
+         <div>
+          <table class="bio-table" >
+            <tr>
+                <td class="active"><i class="fa fa-calendar"></i></a></td>
+                <td><right><?php echo $this->session->userdata('tanggal'); ?></right></td>
+            </tr>
+            
+          </table>
+         </div>
+
+      </div>
+
   </div>
   <div class="profile-info col-md-9">
       
@@ -84,12 +103,17 @@
               <div class="row">
     <table class="bio-table">
         <tr class="bio-row">
-            <td><span>Nama lengkap</span></td>
+            <td><span>Full name</span></td>
             <td> : </td>
             <td><?php echo $this->session->userdata('nama'); ?></td>
         </tr>
         <tr class="bio-row">
-            <td><span>Alamat</span></td>
+            <td><span>NIK</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('nia'); ?></td>
+        </tr>
+        <tr class="bio-row">
+            <td><span>Adress</span></td>
             <td> : </td>
             <td><?php echo $this->session->userdata('alamat'); ?></td>
         </tr>
@@ -99,27 +123,30 @@
             <td><?php echo $this->session->userdata('birthday'); ?></td>
         </tr>
         <tr class="bio-row">
-            <td><span>Occupation</span></td>
+            <td><span>Gender</span></td>
             <td> : </td>
-            <td>UI Designer</td>
-        </tr>
-        <tr class="bio-row">
-            <td><span>Email</span></td>
-            <td> : </td>
-            <td><?php echo $this->session->userdata('email'); ?></td>
-        </tr>
-        <tr class="bio-row">
-            <td><span>No telp</span></td>
-            <td> : </td>
-            <td><?php echo $this->session->userdata('nohp'); ?></td>
+            <td><?php echo $this->session->userdata('jenis_kelamin'); ?></td>
         </tr>
     </table>
 
-              </div>
+             </div>
+           </div>
           </div>
-      </div>
-      <div>
-                 
+         <div>
+              <div class="col-md-6">
+                  <div class="panel">
+                      <div class="panel-body">
+                          <div class="bio-chart">
+                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                          </div>
+                          <div class="bio-desk">
+                              <h4 class="terques">ThemeForest CMS </h4>
+                              <p>Started : 15 July</p>
+                              <p>Deadline : 15 August</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
               <div class="col-md-6">
                   <div class="panel">
                       <div class="panel-body">
