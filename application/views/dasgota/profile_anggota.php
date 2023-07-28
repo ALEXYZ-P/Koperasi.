@@ -118,21 +118,8 @@
               </div>
           </div>
       </div>
-      
-              <div class="col-md-6">
-                  <div class="panel">
-                      <div class="panel-body">
-                          <div class="bio-chart">
-                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>
-                          </div>
-                          <div class="bio-desk">
-                              <h4 class="terques">ThemeForest CMS </h4>
-                              <p>Started : 15 July</p>
-                              <p>Deadline : 15 August</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+      <div>
+                 
               <div class="col-md-6">
                   <div class="panel">
                       <div class="panel-body">
@@ -176,7 +163,7 @@
                   </div>
               </div>
           </div>
-      
+      </div>
   </div>
 </div>
 </div>
