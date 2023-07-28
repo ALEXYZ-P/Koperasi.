@@ -9,6 +9,7 @@ class Tabungan_controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        
         $this->load->model("Tabungan_model");
         $this->load->model("Anggota_model");
         $this->load->model("Jenis_model");
@@ -17,6 +18,7 @@ class Tabungan_controller extends MY_Controller
 
     public function index()
     {
+        $data["tabungan"] = $this->Anggota_model->getAll();
         $data["user"] = $this->Anggota_model->getAll();
         $data["tabungan"] = $this->Tabungan_model->getAll();
         $data["jenis_tabungan"] = $this->Jenis_model->getAll();
