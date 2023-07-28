@@ -25,6 +25,7 @@ class Jenis_model extends CI_Model
 			['field' => 'nama_jenis_tabungan',
 			'label' => 'nama_jenis_tabungan',
 			'rules' => 'required']
+
 		];
 	}
 
