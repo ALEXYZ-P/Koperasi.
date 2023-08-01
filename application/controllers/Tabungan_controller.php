@@ -13,6 +13,7 @@ class Tabungan_controller extends MY_Controller
         $this->load->model("Tabungan_model");
         $this->load->model("Anggota_model");
         $this->load->model("Jenis_model");
+        $this->load->model("User_model");
         $this->load->library('form_validation');
     }
 
@@ -21,8 +22,18 @@ class Tabungan_controller extends MY_Controller
         $data["tabungan"] = $this->Anggota_model->getAll();
         $data["user"] = $this->Anggota_model->getAll();
         $data["tabungan"] = $this->Tabungan_model->getAll();
+
+        $id_user = $this->session->userdata('id_user');
+        $level = $this->session->userdata('level');
         $data["jenis_tabungan"] = $this->Jenis_model->getAll();
-        $this->load->view("tabungan/lihat_tabungan", $data);
+        
+        if ($level === 'member') {
+            $data['tabungan'] = $this->Tabungan_model->getTabunganByUserId($id_user);
+            $this->load->view('tabungan/lihat_tabungan', $data);
+        } else {
+            // Jika pengguna bukan "member", lakukan tindakan lain, misalnya arahkan ke halaman lain.
+            redirect('halaman_lain');
+        }
     }
 
     public function detail($id){

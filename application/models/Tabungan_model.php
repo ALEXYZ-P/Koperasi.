@@ -42,10 +42,15 @@ class Tabungan_model extends CI_Model
 		];
 	}
 
-	public function getALL(){
+		public function getAll(){
+			return $this->db->get($this->_table)->result();
+		}
 		
-		return $this->db->get($this->_table)->result();
-	}
+		public function getTabunganByUserId($id_user)
+    {
+        $this->db->where('id_user', $id_user);
+        return $this->db->get($this->_table)->result();
+    }
 
 	// Bagian kode lainnya...
 }
