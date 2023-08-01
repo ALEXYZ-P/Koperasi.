@@ -110,7 +110,7 @@
         <tr class="bio-row">
             <td><span>NIK</span></td>
             <td> : </td>
-            <td><?php echo $this->session->set_userdata('nia'); ?></td>
+            <td><?php echo $this->session->userdata('nia'); ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Address</span></td>
@@ -125,7 +125,7 @@
         <tr class="bio-row">
             <td><span>Gender</span></td>
             <td> : </td>
-            <td><?php print_r($this->session->userdata('jenis_kelamin'));?></td>
+            <td><?php echo $this->session->userdata('jenis_kelamin');?></td>
         </tr>
     </table>
 
