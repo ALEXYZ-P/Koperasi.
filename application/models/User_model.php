@@ -5,6 +5,10 @@ class User_model extends CI_Model
 	public function get($username){
 		$this->db->where('username', $username);
 		$result = $this->db->get('user')->row();
+	
+		// Debugging: print the last executed query
+		echo $this->db->last_query();
+	
 		return $result;
 	}
 	public function get_by_username_and_role($username, $level) {
