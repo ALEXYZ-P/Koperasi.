@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php $this->load->view("admin/_includes/head.php") ?>
+
 
 
 <head>
@@ -21,8 +21,11 @@
 
     #img-circle {
         padding: 50px;
-       
     }
+
+    h3  {
+    margin-left: 15px;
+}
   </style>
 </head>
 <body>
@@ -102,15 +105,15 @@
               <h1><b>Profile</b></h1>
               <div class="row">
     <table class="bio-table">
+    <tr class="bio-row">
+            <td><span>NIK</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('nia'); ?></td>
+        </tr>
         <tr class="bio-row">
             <td><span>Full name</span></td>
             <td> : </td>
             <td><?php echo $this->session->userdata('nama'); ?></td>
-        </tr>
-        <tr class="bio-row">
-            <td><span>NIK</span></td>
-            <td> : </td>
-            <td><?php echo $this->session->userdata('nia'); ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Address</span></td>
@@ -118,15 +121,16 @@
             <td><?php echo $this->session->userdata('alamat'); ?></td>
         </tr>
         <tr class="bio-row">
-            <td><span>Birthday</span></td>
-            <td> : </td>
-            <td><?php echo $this->session->userdata('birthday'); ?></td>
-        </tr>
-        <tr class="bio-row">
             <td><span>Gender</span></td>
             <td> : </td>
             <td><?php echo $this->session->userdata('jenis_kelamin');?></td>
         </tr>
+        <tr class="bio-row">
+            <td><span>Birthday</span></td>
+            <td> : </td>
+            <td><?php echo $this->session->userdata('birthday'); ?></td>
+        </tr>
+        
     </table>
 
              </div>
@@ -137,26 +141,12 @@
                   <div class="panel">
                       <div class="panel-body">
                           <div class="bio-chart">
-                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                              
                           </div>
-                          <div class="bio-desk">
-                              <h4 class="terques">ThemeForest CMS </h4>
-                              <p>Started : 15 July</p>
-                              <p>Deadline : 15 August</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <div class="panel">
-                      <div class="panel-body">
-                          <div class="bio-chart">
-                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>
-                          </div>
-                          <div class="bio-desk">
-                              <h4 class="terques">ThemeForest CMS </h4>
-                              <p>Started : 15 July</p>
-                              <p>Deadline : 15 August</p>
+                              <div class="bio-desk">
+                              <h4 class="terques">Tabungan Pokok</h4>
+                              <p>Lorem</p>
+                              <p>ipsum</p>
                           </div>
                       </div>
                   </div>
@@ -165,12 +155,12 @@
                   <div class="panel">
                       <div class="panel-body">
                           <div class="bio-chart">
-                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="75" data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                              
                           </div>
                           <div class="bio-desk">
-                              <h4 class="green">VectorLab Portfolio</h4>
-                              <p>Started : 15 July</p>
-                              <p>Deadline : 15 August</p>
+                              <h4 class="terques">Qurban </h4>
+                              <p>Lorem</p>
+                              <p>ipsum</p>
                           </div>
                       </div>
                   </div>
@@ -179,12 +169,54 @@
                   <div class="panel">
                       <div class="panel-body">
                           <div class="bio-chart">
-                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="50" data-fgcolor="#cba4db" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(203, 164, 219); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                              
                           </div>
                           <div class="bio-desk">
-                              <h4 class="purple">Adobe Muse Template</h4>
-                              <p>Started : 15 July</p>
-                              <p>Deadline : 15 August</p>
+                              <h4 class="green">Umrah</h4>
+                              <p>Lorem</p>
+                              <p>ipsum</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="panel">
+                      <div class="panel-body">
+                          <div class="bio-chart">
+                             
+                          </div>
+                          <div class="bio-desk">
+                              <h4 class="purple">Haji</h4>
+                              <p>Lorem</p>
+                              <p>ipsum</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="panel">
+                      <div class="panel-body">
+                          <div class="bio-chart">
+                             
+                          </div>
+                          <div class="bio-desk">
+                              <h4 class="purple">Pinjaman</h4>
+                              <p>Lorem</p>
+                              <p>ipsum</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="panel">
+                      <div class="panel-body">
+                          <div class="bio-chart">
+                             
+                          </div>
+                          <div class="bio-desk">
+                              <h4 class="purple">Angsuran</h4>
+                              <p>Lorem</p>
+                              <p>ipsum</p>
                           </div>
                       </div>
                   </div>
