@@ -55,6 +55,8 @@ class Auth extends CI_Controller {
             'username' => $admin->username,
             'nama' => $admin->nama,
             'id_user' => $admin->id_user,
+            'nia' => $admin->nia,
+            'jenis_kelamin' => $admin->jenis_kelamin,
             'alamat' => $admin->alamat,
             'tanggal' => $admin->tanggal,
             'birthday' => $admin->birthday,
@@ -68,14 +70,16 @@ class Auth extends CI_Controller {
     } elseif(!empty($staff) && $password == $staff->password) {
         $session = array(
             'authenticated' => true,
-            'username' => $member->username,
-            'nama' => $member->nama,
-            'id_user' => $member->id_user,
-            'alamat' => $member->alamat,
-            'tanggal' => $member->tanggal,
-            'birthday' => $member->birthday,
-            'email' => $member->email,
-            'nohp' => $member->nohp,
+            'username' => $staff->username,
+            'nama' => $staff->nama,
+            'id_user' => $staff->id_user,
+            'nia' => $staff->nia,
+            'jenis_kelamin' => $staff->jenis_kelamin,
+            'alamat' => $staff->alamat,
+            'tanggal' => $staff->tanggal,
+            'birthday' => $staff->birthday,
+            'email' => $staff->email,
+            'nohp' => $staff->nohp,
             'level' => 'staff'
         );
         $this->session->set_userdata($session);
@@ -87,6 +91,8 @@ class Auth extends CI_Controller {
             'username' => $member->username,
             'nama' => $member->nama,
             'id_user' => $member->id_user,
+            'nia' => $member->nia,
+            'jenis_kelamin' => $member->jenis_kelamin,
             'alamat' => $member->alamat,
             'tanggal' => $member->tanggal,
             'birthday' => $member->birthday,
