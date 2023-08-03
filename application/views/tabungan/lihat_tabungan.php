@@ -2,16 +2,17 @@
 <html>
 <?php $this->load->view("admin/_includes/head.php") ?>
 <body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
+<div class="wrapper">
 
-    <?php $this->load->view("admin/_includes/header.php") ?>
-    <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+  <?php $this->load->view("admin/_includes/header.php") ?>
+  <?php $this->load->view("admin/_includes/sidebar.php") ?>
+  
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
 
-      <!-- Alert -->
+     <!-- Alert -->
       <?php if ($this->session->flashdata('success')): ?>
         <div class="box-body">
           <div class="alert alert-info alert-dismissible">
@@ -23,92 +24,95 @@
       <?php endif; ?>
       <!-- Alert -->
 
-      <section class="content-header">
-        <h1>
-          Kelola
-          <small>Data Anggota Koperasi</small>
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota</a></li>
-          <li><a href="#">Lihat Data Anggota</a></li>
-        </ol>
-      </section>
 
+    <section class="content-header">
+      <h1>
+        Kelola
+        <small>Data Pinjaman</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pinjaman</a></li>
+        <li><a href="#">Lihat Data Pinjaman</a></li>
+      </ol>
+    </section>
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="box">
-              <div class="box-header">
-                
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body table-responsive">
-                <table id="example1" class="table table-bordered table-hover">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <a href="<?php echo base_url('Pinjaman_controller/list_anggota') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
+              <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
+              <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+              <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
-                      <th>Jenis Tabungan</th>
-                      
+                      <th>Nama Peminjam</th>
+                      <th>No Pinjaman</th>
+                      <th>Jumlah Pinjaman</th>
+                      <th>Tanggal Peminjaman</th>
+                      <th>Lama</th>
+                      <th>Total Bunga</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no = 1; ?>
-                    <?php foreach ($user as $users): ?>
-                      <?php foreach ($tabungan as $value): ?>
-                        <?php foreach ($jenis_tabungan as $jenis): ?>
-                          <?php if ($value->id_user === $users->id_user && $value->id_jenis_tabungan === $jenis->id_jenis_tabungan): ?>
-                            <tr>
-                              <td><?php echo $no++ ?></td>
-                              <td><?php echo $users->nia ?></td>
-                              <td><?php echo $users->nama ?></td>
-                              <td><?php echo $value->jumlah_tabungan ?></td>
-                              <td><?php echo $value->tanggal_tabung ?></td>
-                              <td><?php echo $jenis->nama_jenis_tabungan ?></td>
-                              
-                            </tr>
-                          <?php endif; ?>
-                        <?php endforeach; ?>
-                      <?php endforeach; ?>
+                    <?php $no = 1;?>
+                    <?php foreach ($pinjaman as $value): ?>
+                      <tr>
+                        <td><?php cetak($no++) ?></td>
+                         <td><?php cetak($value->nama)  ?></td>
+                        <td><?php cetak($value->no_pinjaman)  ?></td>
+                        <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
+                        <td><?php cetak($value->tanggal_peminjaman)  ?></td>
+                        <td><?php cetak($value->lama)  ?></td>
+                        <td><?php cetak($value->bunga)  ?></td>
+                        <td>
+                          <a class="btn btn-ref" href="<?php echo site_url('Pinjaman_controller/edit/'.$value->id_pinjaman) ?>"><i class="fa fa-fw fa-edit"></i></a>
+                          <a href="#!" onclick="deleteConfirm('<?php echo site_url('Pinjaman_controller/delete/'.$value->id_pinjaman) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i></a>
+                          
+                        </td>
+                      </tr>
                     <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
-                      <th>Jenis Tabungan</th>
-                      
+                      <th>Nama Peminjam</th>
+                      <th>No Pinjaman</th>
+                      <th>Jumlah Pinjaman</th>
+                      <th>Tanggal Peminjaman</th>
+                      <th>Lama</th>
+                      <th>Total Bunga</th>
+                      <th>Aksi</th>
                     </tr>
                   </tfoot>
                 </table>
-              </div>
-              <!-- /.box-body -->
             </div>
-            <!-- /.box -->
+            <!-- /.box-body -->
           </div>
-          <!-- /.col -->
+          <!-- /.box -->
         </div>
-        <!-- /.row -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <?php $this->load->view("admin/_includes/footer.php") ?>
-    <?php $this->load->view("admin/_includes/control_sidebar.php") ?>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <?php $this->load->view("admin/_includes/footer.php") ?>
+  <?php $this->load->view("admin/_includes/control_sidebar.php") ?>
   <!-- Add the sidebar's background. This div must be placed
-   immediately after the control sidebar -->
-   <div class="control-sidebar-bg"></div>
- </div>
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
 
- <!-- Logout Delete Confirmation-->
+<!-- Logout Delete Confirmation-->
  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
