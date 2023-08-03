@@ -60,6 +60,7 @@ class Auth extends CI_Controller {
             'alamat' => $admin->alamat,
             'tanggal' => $admin->tanggal,
             'birthday' => $admin->birthday,
+            'tempat_lahir' => $admin->tempat_lahir,
             'email' => $admin->email,
             'nohp' => $admin->nohp,
             'level' => 'admin'
@@ -78,6 +79,7 @@ class Auth extends CI_Controller {
             'alamat' => $staff->alamat,
             'tanggal' => $staff->tanggal,
             'birthday' => $staff->birthday,
+            'tempat_lahir' => $staff->tempat_lahir,
             'email' => $staff->email,
             'nohp' => $staff->nohp,
             'level' => 'staff'
@@ -96,6 +98,7 @@ class Auth extends CI_Controller {
             'alamat' => $member->alamat,
             'tanggal' => $member->tanggal,
             'birthday' => $member->birthday,
+            'tempat_lahir' => $member->tempat_lahir,
             'email' => $member->email,
             'nohp' => $member->nohp,
             'level' => 'member'
