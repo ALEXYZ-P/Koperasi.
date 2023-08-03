@@ -39,20 +39,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form role="form" action="<?php echo base_url('Anggota_controller/add') ?>" method="post">
+              <form role="form" action="<?php echo base_url('Profile_anggota_controller/add') ?>" method="post">
                 <div class="box-body">
                   <div class="form-group">
                     <label>NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIA" type="text"/>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text"/>
                     <div class="invalid-feedback">
-                      <?php echo form_error('alamat') ?>
+                      <?php echo form_error('nia') ?>
                     </div>
                   </div>
+
                   <div class="form-group">
                     <label>Nama</label>
                     <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text">
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input name="nama" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Masukan password" type="password">
+                    <div class="invalid-feedback">
+                      <?php echo form_error('password') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Tanggal lahir</label>
+                    <input name="nama" class="form-control <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Masukan Tanggal Lahir" type="date">
+                    <div class="invalid-feedback">
+                      <?php echo form_error('birthdays') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Tempat lahir</label>
+                    <input name="nama" class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Masukan Tempat Lahir" type="text">
+                    <div class="invalid-feedback">
+                      <?php echo form_error('tempat_lahir') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Alamat</label>
+                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('alamat')?>
                     </div>
                   </div>
 
@@ -73,10 +106,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                   <div class="form-group">
-                    <label>Alamat</label>
-                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" type="text"/>
+                    <label>Email</label>
+                    <input name="alamat" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Masukan Email" type="email"/>
                     <div class="invalid-feedback">
-                      <?php echo form_error('alamat')?>
+                      <?php echo form_error('email')?>
                     </div>
                   </div>
 
@@ -95,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                  <a href="<?php echo base_url('Anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
+                  <a href="<?php echo base_url('Profile_anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
                 </div>
               </form>
             </div>

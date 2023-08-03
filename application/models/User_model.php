@@ -11,6 +11,13 @@ class User_model extends CI_Model
 	
 		return $result;
 	}
+
+	public function save($data)
+    {
+        $this->db->insert('nama_tabel_anggota', $data);
+        return $this->db->insert_id();
+    }
+
 	public function get_by_username_and_role($username, $level) {
     	$this->db->where('username', $username);
     	$this->db->where('level', $level);

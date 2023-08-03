@@ -35,8 +35,8 @@ class Profile_anggota_controller extends MY_Controller
 
         if ($validation->run()) {
             $anggota->save();
-            $this->session->set_flashdata('success', 'Tambah Anggota '.$anggota->nama.' Berhasil Disimpan');
-            redirect('Anggota_controller/index');
+            $this->session->set_flashdata('success', 'Tambah Anggota '.$users->nama.' Berhasil Disimpan');
+            redirect('Profile_anggota_controller/index');
         }
 
         $this->load->view("anggota/tambah_anggota");
@@ -72,4 +72,3 @@ class Profile_anggota_controller extends MY_Controller
 
 	
 }
-  
