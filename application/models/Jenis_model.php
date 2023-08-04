@@ -31,7 +31,7 @@ class Jenis_model extends CI_Model
 
 	public function getALL(){
 		
-		return $this->db->get($this->_table)->result();
+		
 	}
 
 	// Bagian kode lainnya...

@@ -5,7 +5,7 @@
 <div class="wrapper">
 
   <?php $this->load->view("admin/_includes/header.php") ?>
-  <?php $this->load->view("admin/_includes/sidebar.php") ?>
+  <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
   
 
   <!-- Content Wrapper. Contains page content -->
@@ -69,9 +69,9 @@
                          <td><?php cetak($value->nama)  ?></td>
                         <td><?php cetak($value->no_pinjaman)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->tanggal_peminjaman)  ?></td>
+                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->lama)  ?></td>
-                        <td><?php cetak($value->bunga)  ?></td>
+                        <td><?php echo ($value->bunga)."%"  ?></td>
                         <td>
                           <a class="btn btn-ref" href="<?php echo site_url('Pinjaman_controller/edit/'.$value->id_pinjaman) ?>"><i class="fa fa-fw fa-edit"></i></a>
                           <a href="#!" onclick="deleteConfirm('<?php echo site_url('Pinjaman_controller/delete/'.$value->id_pinjaman) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i></a>

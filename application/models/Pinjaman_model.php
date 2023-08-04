@@ -9,10 +9,10 @@ class Pinjaman_model extends CI_Model
 	private $_table= "pinjaman";
 
 	public $id_pinjaman;
-	public $id_anggota;
+	public $id_user;
 	public $no_pinjaman;
 	public $jumlah_pinjaman;
-	public $tanggal_peminjaman;
+	public $tanggal_pinjaman;
 	public $lama;
 	public $bunga;
 
@@ -21,8 +21,8 @@ class Pinjaman_model extends CI_Model
 	public function rules()
 	{
 		return [
-			['field' => 'id_anggota',
-			'label' => 'id_anggota',
+			['field' => 'id_user',
+			'label' => 'id_user',
 			'rules' => 'required'],
 
 			['field' => 'no_pinjaman',
@@ -50,8 +50,8 @@ class Pinjaman_model extends CI_Model
 
 	public function getListPinjaman(){
 		$this->db->select('*');
-		$this->db->from('anggota');
-		$this->db->join('pinjaman', 'anggota.id_anggota = pinjaman.id_anggota');
+		$this->db->from('user');
+		$this->db->join('pinjaman', 'user.id_user = pinjaman.id_user');
 		$query = $this->db->get();
 		return $query->result();
 	}
