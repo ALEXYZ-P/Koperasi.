@@ -41,56 +41,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <!-- form start -->
               <form role="form" action="<?php echo base_url('Profile_anggota_controller/add') ?>" method="post">
                 <div class="box-body">
-                  <div class="form-group">
-                    <label>NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text"/>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="nama" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email">
                     <div class="invalid-feedback">
-                      <?php echo form_error('nia') ?>
+                      <?php echo form_error('email') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Nama</label>
-                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text">
+                    <label>Mobile Phone</label>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Mobile Phone" type="text"/>
                     <div class="invalid-feedback">
-                      <?php echo form_error('nama') ?>
+                      <?php echo form_error('nohp') ?>
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input name="nama" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="Username" type="text">
+                    <div class="invalid-feedback">
+                      <?php echo form_error('username') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label>Password</label>
-                    <input name="nama" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Masukan password" type="password">
+                    <input name="nama" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Password" type="password">
                     <div class="invalid-feedback">
                       <?php echo form_error('password') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Tanggal lahir</label>
-                    <input name="nama" class="form-control <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Masukan Tanggal Lahir" type="date">
+                    <label>Name</label>
+                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Name" type="text">
                     <div class="invalid-feedback">
-                      <?php echo form_error('birthdays') ?>
+                      <?php echo form_error('nama') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Tempat lahir</label>
-                    <input name="nama" class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Masukan Tempat Lahir" type="text">
+                    <label>NIK</label>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('nia') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Place of birth</label>
+                    <input name="nama" class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Place of birth" type="text">
                     <div class="invalid-feedback">
                       <?php echo form_error('tempat_lahir') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
+                    <label>Date of birth</label>
+                    <input name="nama" class="form-control <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Date of birth" type="date">
+                    <div class="invalid-feedback">
+                      <?php echo form_error('birthdays') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label>Alamat</label>
-                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" type="text"/>
+                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Address" type="text"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('alamat')?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Jenis Kelamin</label>
+                    <label>Gender</label>
                     <div class="radio">
                       <label>
                         <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" checked="">
@@ -105,29 +130,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input name="alamat" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Masukan Email" type="email"/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('email')?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>No Hp</label>
-                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No HP" type="text"/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('nohp') ?>
-                    </div>
-                  </div>
                 </div>
                   
-
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
+                  <?php
+                                    
+                    if ($this->session->flashdata('error')) {
+                        echo '<div class="error" id="errror">' . $this->session->flashdata('error') . '</div>';
+
+                    }elseif ($this->session->flashdata('error2')) {
+                        echo '<div class="error">' . $this->session->flashdata('error2') . '</div>'; 
+
+                    }elseif ($this->session->flashdata('error2')) {
+                        echo '<div class="error">' . $this->session->flashdata('error3') . '</div>'; 
+
+                    }else {
+
+                    if($this->session->flashdata('error4')) {
+                        echo '<div class="error">' . $this->session->flashdata('error4') . '</div>';
+
+                    }
+                }
+                ?>
+
                   <a href="<?php echo base_url('Profile_anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
                 </div>
               </form>

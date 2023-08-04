@@ -11,6 +11,11 @@ class Register_model extends CI_Model
 	public $jenis_kelamin;
 	public $nohp;
 
+	function daftar($data)
+    {
+         $this->db->insert('user',$data);
+    }
+
 	public function rules()
 	{
 		return [

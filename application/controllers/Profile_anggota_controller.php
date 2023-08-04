@@ -10,7 +10,8 @@ class Profile_anggota_controller extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Anggota_model');
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation')); 
+        $this->load->helper(array('url','form'));
     }
 
     public function index()
@@ -29,6 +30,85 @@ class Profile_anggota_controller extends MY_Controller
 
     public function add()
     {
+        $this->load->library('session');
+        $this->load->helper('url'); 
+        $this->form_validation->set_rules('nama', 'NAMA','required');
+        $data = array(
+            'username' => $this->input->post('username'), 
+            'email' => $this->input->post('email')  
+        );
+       $data1 = array('username' => $this->input->post('username') );
+       $data2 = array('email' => $this->input->post('email') );
+       $this->form_validation->set_rules('password','PASSWORD','required');
+      
+
+       $result1 = $this->Register_model->checkData($data1);
+       $result2 = $this->Register_model->checkData($data2);
+
+       
+       
+
+       if ($result1 > 0 and $result2 > 0) {
+            $this->session->set_flashdata('error', '  Oops! Username & Email have been registered.');
+        redirect(base_url("login_c/reg"));
+        } elseif ($result1 > 0) {
+            $this->session->set_flashdata('error', '  Oops! Username have been registered.');
+        redirect(base_url("login_c/reg"));
+         
+        } elseif ($result2 > 0) {
+            $this->session->set_flashdata('error', '  Oops! Email have been registered.');
+        redirect(base_url("login_c/reg"));
+
+        
+
+        
+
+        }else{
+
+       if($this->form_validation->run() == FALSE) {
+           $this->load->view('anggota/tambah_anggotas');
+       }else{
+
+        $data['email'] =    $this->input->post('email');
+
+        $data['nohp'] =    $this->input->post('nohp');
+
+        $data['username'] =    $this->input->post('username');
+
+        $data['password'] =    md5($this->input->post('password'));
+
+           $this->Register_model->daftar($data);
+
+        $data['nama'] =    $this->input->post('nama');
+
+        $data['nia'] =    $this->input->post('nia');
+           
+        $data['tempat_lahir'] =    $this->input->post('tempat_lahir');
+           
+        $data['birthdays'] =    $this->input->post('birthdays');
+
+        $data['birthdays'] =    $this->input->post('alamat');
+
+        $data['birthdays'] =    $this->input->post('jenis_kelamin');
+
+        $pesan['message'] =    "Pendaftaran berhasil";
+
+           $this->load->view('Profile_anggota_controller/index',$pesan);
+          }
+        }
+      }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         $anggota = $this->Anggota_model;
         $validation = $this->form_validation;
         $validation->set_rules($anggota->rules());
