@@ -1,7 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
 * author inogalwargan
 */
+
 class Tabungan_controller extends MY_Controller
 {
     public function __construct()
@@ -17,7 +19,7 @@ class Tabungan_controller extends MY_Controller
     {
         $data["user"] = $this->Anggota_model->getAll();
         $data["tabungan"] = $this->Tabungan_model->getListTabungan();
-        $data["jenis_tabungan"] = $this->Tabungan_model->getListJenis();
+        $data["jenis_tabungan"] = $this->Jenis_model->getAll();
         $this->load->view("tabungan/lihat_tabungan", $data);
     }
     public function detail($id){
