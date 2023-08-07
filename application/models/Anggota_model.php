@@ -66,6 +66,10 @@ class Anggota_model extends CI_Model
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		return $this->db->get($this->_table)->result();
 	}
+
+	public function add(){
+		$this->db->insert('user', $data);
+	}
 	public function delete($id)
     {
         // Ganti "data_anggota" dengan nama tabel Anda

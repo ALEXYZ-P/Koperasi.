@@ -29,17 +29,26 @@ class Anggota_controller extends MY_Controller
 
     public function add()
     {
-        $anggota = $this->Anggota_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($anggota->rules());
+        if($this->input->post('submit')){
 
-        if ($validation->run()) {
-            $anggota->save();
-            $this->session->set_flashdata('success', 'Tambah Anggota '.$anggota->nama.' Berhasil Disimpan');
-            redirect('Anggota_controller/index');
-        }
-
-        $this->load->view("anggota/tambah_anggota");
+        	$data=array(
+        		'email' => $this->input->post('email'),
+        		'nohp' => $this->input->podt('nohp'),
+        		'username' => $this->input->post('username'),
+        		'password' => $this->input->post('password'),
+        		'nama' => $this->input->post('nama'),
+        		'nia' => $this->input->post('nia'),
+        		'tanggal' => $this->input->post('tanggal'),
+        		'tempat_lahir' => $this->input->post('tempat_lahir'),
+        		'birthday' => $this->input->post('birthday'),
+        		'alamat' => $this->input->post('alamat'),
+        		'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+        	);
+        	$this->Anggota_model->add($data);
+        	redirect('Anggota_controller');
+        	} else {
+        		$this->load->view('anggota/tambah_anggota', $data);
+        	}
     }
 
     public function edit($id){

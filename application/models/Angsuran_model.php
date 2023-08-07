@@ -43,8 +43,8 @@ class Angsuran_model extends CI_Model
 	public function getListAngsuran()
 	{
 		$this->db->select('*');
-		$this->db->from('anggota');
-		$this->db->join('pinjaman', 'anggota.id_anggota = pinjaman.id_anggota');
+		$this->db->from('user');
+		$this->db->join('pinjaman', 'user.id_user = pinjaman.id_user');
 		$this->db->join('angsuran', 'angsuran.id_pinjaman = pinjaman.id_pinjaman');
 		$query = $this->db->get();
 		return $query->result();
