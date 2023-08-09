@@ -126,7 +126,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label>Gender</label>
                     <div class="radio">
                       <label>
+<<<<<<< Updated upstream
                         <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki">
+=======
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" >
+>>>>>>> Stashed changes
                         Laki-Laki
                       </label>
                     </div>
@@ -145,26 +149,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                  <?php
-                                    
-                    if ($this->session->flashdata('error')) {
-                        echo '<div class="error" id="errror">' . $this->session->flashdata('error') . '</div>';
-
-                    }elseif ($this->session->flashdata('error2')) {
-                        echo '<div class="error">' . $this->session->flashdata('error2') . '</div>'; 
-
-                    }elseif ($this->session->flashdata('error2')) {
-                        echo '<div class="error">' . $this->session->flashdata('error3') . '</div>'; 
-
-                    }else {
-
-                    if($this->session->flashdata('error4')) {
-                        echo '<div class="error">' . $this->session->flashdata('error4') . '</div>';
-
-                    }
-                }
-                ?>
-
                   <a href="<?php echo base_url('Profile_anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
                 </div>
               </form>

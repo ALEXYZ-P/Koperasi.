@@ -16,6 +16,13 @@ class Register_model extends CI_Model
          $this->db->insert('user',$data);
     }
 
+	public function checkData($data)
+    {
+        $this->db->where($data);
+        $query = $this->db->get('user');
+        return $query->num_rows();
+    }  
+
 	public function rules()
 	{
 		return [

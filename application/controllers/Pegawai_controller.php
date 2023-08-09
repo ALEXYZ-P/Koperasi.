@@ -12,24 +12,42 @@ class Pegawai_controller extends MY_Controller
 
     public function index()
     {
-        $data["pegawai"] = $this->Pegawai_model->getAll();
+        $data["user"] = $this->Pegawai_model->getAll();
         $this->load->view("pegawai/lihat_pegawai", $data);
     }
 
     public function add()
-    {
-        $pegawai = $this->Pegawai_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pegawai->rules());
+{	
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules($this->Pegawai_model->rules());
 
-        if ($validation->run()) {
-            $pegawai->save();
-            $this->session->set_flashdata('success', 'Tambah Pegawai '.$pegawai->nama.' Berhasil Disimpan');
-            redirect('Pegawai_controller/index');
-        }
+    if ($this->form_validation->run()) {
+        $user_data = array(
+            'email' => $this->input->post('email'),
+            'nohp' => $this->input->post('nohp'),
+            'username' => $this->input->post('username'),
+            'password' => $this->input->post('password'),
+            'nia' => $this->input->post('nia'),
+            'nama' => $this->input->post('nama'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'agama' => $this->input->post('agama'),
+            'tempat_lahir' => $this->input->post('tempat_lahir'),
+            'birthday' => $this->input->post('birthday'),
+            'alamat' => $this->input->post('alamat'),
+            'pekerjaan' => $this->input->post('pekerjaan'),
+            'level' => 'staff'
+        );
 
-        $this->load->view("pegawai/tambah_pegawai");
+        $this->Pegawai_model->save($user_data);
+
+        $this->session->set_flashdata('success', 'Tambah Pegawai ' . $user_data['nama'] . ' Berhasil Disimpan');
+        redirect('Pegawai_controller/index');
     }
+	$this->load->view("pegawai/tambah_pegawai");
+    
+}
+
+
 
     public function edit($id){
 
