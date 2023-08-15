@@ -11,7 +11,7 @@ class Profile_anggota_controller extends MY_Controller
         parent::__construct();
         $this->load->model('Anggota_model');
         $this->load->library('form_validation'); 
-        $this->load->helper('url','form');
+        $this->load->helper('url','form','xss');
     }
 
     public function index()
@@ -50,14 +50,14 @@ class Profile_anggota_controller extends MY_Controller
 
        if ($result1 > 0 and $result2 > 0) {
             $this->session->set_flashdata('error', '  Oops! Username & Email have been registered.');
-        redirect(base_url("login_c/reg;"));
+        redirect(base_url("anggota/tambah_anggota;"));
         } elseif ($result1 > 0) {
             $this->session->set_flashdata('error', '  Oops! Username have been registered.');
-        redirect(base_url("login_c/reg"));
+        redirect(base_url("anggota/tambah_anggota"));
          
         } elseif ($result2 > 0) {
             $this->session->set_flashdata('error', '  Oops! Email have been registered.');
-        redirect(base_url("login_c/reg"));
+        redirect(base_url("anggota/tambah_anggota"));
 
         
 
@@ -66,7 +66,7 @@ class Profile_anggota_controller extends MY_Controller
         }else{
 
        if($this->form_validation->run() == FALSE) {
-           $this->load->view('anggota/tambah_anggotas');
+           $this->load->view('anggota/tambah_anggota');
        }else{
 
         $data['email'] =    $this->input->post('email');
