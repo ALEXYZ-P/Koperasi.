@@ -50,7 +50,7 @@ class Profile_anggota_controller extends MY_Controller
 
        if ($result1 > 0 and $result2 > 0) {
             $this->session->set_flashdata('error', '  Oops! Username & Email have been registered.');
-        redirect(base_url("login_c/reg"));
+        redirect(base_url("login_c/reg;"));
         } elseif ($result1 > 0) {
             $this->session->set_flashdata('error', '  Oops! Username have been registered.');
         redirect(base_url("login_c/reg"));
