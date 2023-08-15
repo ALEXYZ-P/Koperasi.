@@ -10,8 +10,8 @@ class Profile_anggota_controller extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Anggota_model');
-        $this->load->library(array('form_validation')); 
-        $this->load->helper(array('url','form'));
+        $this->load->library('form_validation'); 
+        $this->load->helper('url','form');
     }
 
     public function index()
@@ -87,9 +87,9 @@ class Profile_anggota_controller extends MY_Controller
            
         $data['birthdays'] =    $this->input->post('birthdays');
 
-        $data['birthdays'] =    $this->input->post('alamat');
+        $data['alamat'] =    $this->input->post('alamat');
 
-        $data['birthdays'] =    $this->input->post('jenis_kelamin');
+        $data['jenis_kelamin'] =    $this->input->post('jenis_kelamin');
 
         $pesan['message'] =    "Pendaftaran berhasil";
 
