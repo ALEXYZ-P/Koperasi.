@@ -126,11 +126,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label>Gender</label>
                     <div class="radio">
                       <label>
-<<<<<<< Updated upstream
+
                         <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki">
-=======
+
                         <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" >
->>>>>>> Stashed changes
+
                         Laki-Laki
                       </label>
                     </div>

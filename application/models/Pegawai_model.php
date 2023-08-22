@@ -77,7 +77,8 @@ class Pegawai_model extends CI_Model
 		];
 	}
 
-	public function getALL(){
+	public function getAll(){
+		$this->db->where('level', 'staff'); // Tambahkan kondisi untuk level
 		return $this->db->get($this->_table)->result();
 	}
 
