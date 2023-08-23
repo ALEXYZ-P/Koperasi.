@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <!DOCTYPE html>
 <html>
-<style>
+<style>/** */
     * {
     margin: 0;
     padding: 0;
