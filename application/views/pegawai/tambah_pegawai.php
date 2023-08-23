@@ -3,6 +3,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <!DOCTYPE html>
 <html>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.input-container {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Align items vertically */
+    padding: 0px; /* Add some padding for better spacing */
+    border: 1px none;
+    background-color: white;
+}
+
+/* Style the form container */
+.half-width-form {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Align items vertically */
+    width: 49%; /* Take full width of the container */
+    padding: 7px; /* Add some padding for better spacing */
+    border: 1px solid #ccc;
+    background-color: white; /* Make sure the color is lowercased */
+}
+
+
+
+
+  </style>
 <?php $this->load->view("admin/_includes/head.php") ?>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -43,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="box-body">
 
                 <div class="form-group">
-                    <label>email</label>
+                    <label>Email</label>
                     <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('email') ?>
@@ -107,30 +138,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                   <div class="form-group">
-                    <label>Agama</label>
-                    <input name="agama" class="form-control <?php echo form_error('agama') ? 'is-invalid':'' ?>" placeholder="agama" type="text"/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('agama') ?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Tempat Lahir</label>
-                    <input name="tempat_lahir" class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text"/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('tempat_lahir')?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Tanggal Lahir</label>
-                    <input name="tempat_lahir" class="form-control <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date"/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('birthday')?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
                     <label>Alamat</label>
                     <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text"/>
                     <div class="invalid-feedback">
@@ -138,17 +145,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label>Pekerjaan</label>
-                    <input name="nohp" class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" placeholder="Pekerjaan" type="text"/>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('pekerjaan') ?>
-                    </div>
-                  </div>
-                    <input type="hidden" name="tanggal" value="">
-                    <input type="hidden" name="level" value="">
 
-                </div>
+                  <div class="form-group">
+                    <label>Tempat, tanggal Lahir</label>
+                    <div class="input-container " >
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text"/>
+                      <div class="invalid-feedback">
+                      <?php echo form_error('tempat_lahir')?>
+                      </div>
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date"/>
+                      <div class="invalid-feedback">
+                      <?php echo form_error('birthday')?>
+                      </div>
+                    </div>
+                    
+                    
+                   </div>
+                  </div>
+
+
+                  
+
+                  
                 <!-- /.box-body -->
 
                 <div class="box-footer">

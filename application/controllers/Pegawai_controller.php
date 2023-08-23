@@ -6,8 +6,9 @@ class Pegawai_controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("Pegawai_model");
+		$this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->model("Pegawai_model");
     }
 
     public function index()
@@ -16,36 +17,33 @@ class Pegawai_controller extends MY_Controller
         $this->load->view("pegawai/lihat_pegawai", $data);
     }
 
-    public function add()
-{	
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules($this->Pegawai_model->rules());
-
-    if ($this->form_validation->run()) {
-        $user_data = array(
-            'email' => $this->input->post('email'),
-            'nohp' => $this->input->post('nohp'),
-            'username' => $this->input->post('username'),
-            'password' => $this->input->post('password'),
-            'nia' => $this->input->post('nia'),
-            'nama' => $this->input->post('nama'),
-            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-            'agama' => $this->input->post('agama'),
-            'tempat_lahir' => $this->input->post('tempat_lahir'),
-            'birthday' => $this->input->post('birthday'),
-            'alamat' => $this->input->post('alamat'),
-            'pekerjaan' => $this->input->post('pekerjaan'),
-            'level' => 'staff'
-        );
-
-        $this->Pegawai_model->save($user_data);
-
-        $this->session->set_flashdata('success', 'Tambah Pegawai ' . $user_data['nama'] . ' Berhasil Disimpan');
-        redirect('Pegawai_controller/index');
+    public function add() {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        // Set rules for other fields as well
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('pegawai/tambah_pegawai');
+        } else {
+            $data = array(
+                'email' => $this->input->post('email'),
+                'nohp' => $this->input->post('nohp'),
+        		'username' => $this->input->post('username'),
+        		'password' => $this->input->post('password'),
+				'nia' => $this->input->post('nia'),
+        		'nama' => $this->input->post('nama'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'alamat' => $this->input->post('alamat'),
+        		'tempat_lahir' => $this->input->post('tempat_lahir'),
+        		'birthday' => $this->input->post('birthday'),
+                'level' => 'staff' // Set level as 'member'
+            );
+            
+            $this->Pegawai_model->insert_user($data); // Insert data into the database
+            
+			redirect('Pegawai_controller/index');
+            // You can redirect to a success page or display a success message here
+        }
     }
-	$this->load->view("pegawai/tambah_pegawai");
-    
-}
 
 
 

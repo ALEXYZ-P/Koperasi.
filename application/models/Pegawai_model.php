@@ -24,6 +24,14 @@ class Pegawai_model extends CI_Model
 	public $tanggal;
 	public $level;
 
+
+	public function insert_user($data) {
+        $this->db->insert('user', $data);
+    }
+
+
+
+	/** 
 	public function rules()
 	{
 		return [
@@ -76,6 +84,7 @@ class Pegawai_model extends CI_Model
 			'rules' => 'required'],
 		];
 	}
+	*/
 
 	public function getAll(){
 		$this->db->where('level', 'staff'); // Tambahkan kondisi untuk level
