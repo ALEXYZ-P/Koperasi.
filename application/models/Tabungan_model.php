@@ -38,13 +38,10 @@ class Tabungan_model extends CI_Model
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function getListTabungan(){
-		$this->db->select('*');
-		$this->db->from('user');
-		$this->db->join('tabungan', 'user.id_user = tabungan.id_user');
-		$query = $this->db->get();
-		return $query->result();
-	// Bagian kode lainnya...
+	public function getTabunganByIdMember($id_user){
+		$this->db->where('id_user', $id_user);
+        $query = $this->db->get('tabungan');
+        return $query->result();
 }
 
 public function getListJenis(){

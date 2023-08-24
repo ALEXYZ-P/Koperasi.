@@ -20,13 +20,20 @@ class Anggota_model extends CI_Model
 	public $nohp;
 	public $tempat_lahir;
 
+	public function insert_user($data) {
+        $this->db->insert('user', $data);
+    }
+
+	/** 
 	public function get($username){
 		$this->db->where('username', $username);
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		$result = $this->db->get('user')->row();
 		return $result;
 	}
+	*/
 
+	/** 
 	public function rules()
 	{
 		return [
@@ -63,6 +70,7 @@ class Anggota_model extends CI_Model
 			'rules' => 'required']
 		];
 	}
+	*/
 
 	public function getAll(){
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level

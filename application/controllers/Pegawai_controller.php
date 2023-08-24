@@ -12,65 +12,66 @@ class Pegawai_controller extends MY_Controller
 
     public function index()
     {
-        $data["user"] = $this->Pegawai_model->getAll();
+        $data["user"] = $this->Pegawai_model->getstaff();
         $this->load->view("pegawai/lihat_pegawai", $data);
     }
 
-    public function add()
-{	
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules($this->Pegawai_model->rules());
+       public function add() {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        // Set rules for other fields as well
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('pegawai/tambah_pegawai');
+        } else {
+            $data = array(
+                'email' => $this->input->post('email'),
+                'nohp' => $this->input->post('nohp'),
+        		'username' => $this->input->post('username'),
+        		'password' => md5($this->input->post('password')),
+				'nia' => $this->input->post('nia'),
+        		'nama' => $this->input->post('nama'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'alamat' => $this->input->post('alamat'),
+        		'tempat_lahir' => $this->input->post('tempat_lahir'),
+        		'birthday' => $this->input->post('birthday'),
+                'level' => 'staff' // Set level as 'member'
+            );
+            
+            $this->Pegawai_model->insert_user($data); // Insert data into the database
+            
+			redirect('Pegawai_controller/index');
+            // You can redirect to a success page or display a success message here
+        }
+    }
 
-    if ($this->form_validation->run()) {
-        $user_data = array(
-            'email' => $this->input->post('email'),
-            'nohp' => $this->input->post('nohp'),
-            'username' => $this->input->post('username'),
-            'password' => $this->input->post('password'),
-            'nia' => $this->input->post('nia'),
-            'nama' => $this->input->post('nama'),
-            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-            'agama' => $this->input->post('agama'),
-            'tempat_lahir' => $this->input->post('tempat_lahir'),
-            'birthday' => $this->input->post('birthday'),
-            'alamat' => $this->input->post('alamat'),
-            'pekerjaan' => $this->input->post('pekerjaan'),
-            'level' => 'staff'
-        );
+    public function update($id_user) {
+			$data = array(
+                'email' => $this->input->post('email'),
+                'nohp' => $this->input->post('nohp'),
+        		'username' => $this->input->post('username'),
+        		'password' => md5($this->input->post('password')),
+				'nia' => $this->input->post('nia'),
+        		'nama' => $this->input->post('nama'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'alamat' => $this->input->post('alamat'),
+        		'tempat_lahir' => $this->input->post('tempat_lahir'),
+        		'birthday' => $this->input->post('birthday'),
+                'level' => 'staff' // Set level as 'member'
+            );
 
-        $this->Pegawai_model->save($user_data);
-
-        $this->session->set_flashdata('success', 'Tambah Pegawai ' . $user_data['nama'] . ' Berhasil Disimpan');
+        $this->Pegawai_model->update_user($id_user, $data);
         redirect('Pegawai_controller/index');
     }
-	$this->load->view("pegawai/tambah_pegawai");
-    
-}
 
-
-
-    public function edit($id){
-
-    	$pegawai = $this->Pegawai_model; //object model
-        $validation = $this->form_validation; //object validasi
-        $validation->set_rules($pegawai->rules()); //terapkan rules di Pegawai_model.php
-
-        if ($validation->run()) { //lakukan validasi form
-            $pegawai->update($id); // update data
-            $this->session->set_flashdata('success', 'Data Pegawai '.$pegawai->getById($id)->nama.' Berhasil Diubah');
-            redirect('Pegawai_controller/index');
-        }
-
-        $data['pegawai'] = $this->Pegawai_model->getById($id);
+   public function edit($id_user) {
+        $data['user'] = $this->Pegawai_model->get_user_by_id($user_id);
         $this->load->view('pegawai/edit_pegawai', $data);
     }
 
-    public function delete($id){
-	    $this->Pegawai_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
-	    $this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
-	    redirect('Pegawai_controller/index');
-	}
-
+    public function delete($id_user) {
+        $this->Pegawai_model->delete_user($id_user);
+        redirect('Pegawai_controller/index');
+}
 	public function form(){
 		$data = array(); // Buat variabel $data sebagai array
 

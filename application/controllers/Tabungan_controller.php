@@ -4,7 +4,7 @@
 * author inogalwargan
 */
 
-class Tabungan_admin_controller extends MY_Controller
+class Tabungan_controller extends MY_Controller
 {
     public function __construct()
     {

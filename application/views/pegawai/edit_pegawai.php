@@ -47,45 +47,105 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('Pegawai_controller/edit/'.$pegawai->id_pegawai) ?>" method="post">
-              <input type="hidden" name="id_pegawai" value="<?php echo $pegawai->id_pegawai?>" />
-              <div class="box-body">
-                <div class="form-group">
-                  <label>NIK</label>
-                  <input name="nik" class="form-control <?php echo form_error('nik') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" value="<?php echo $pegawai->nik?>" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('alamat') ?>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Nama</label>
-                  <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" value="<?php echo $pegawai->nama?>" type="text">
-                  <div class="invalid-feedback">
-                    <?php echo form_error('nama') ?>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Alamat</label>
-                  <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Masukan Alamat" value="<?php echo $pegawai->alamat?>" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('alamat')?>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>No Hp</label>
-                  <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Masukan No HP" value="<?php echo $pegawai->nohp?>" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('nohp') ?>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
+            <form role="form" action="<?php echo base_url('Pegawai_controller/update') ?>" method="POST">
+                <div class="box-body">
 
-              <div class="box-footer">
-                <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Batal</a>
-              </div>
-            </form>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('email') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('nohp') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('username') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Password</label>
+                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('password') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>NIK</label>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('nia') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text">
+                    <div class="invalid-feedback">
+                      <?php echo form_error('nama') ?>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" >
+                        Laki-Laki
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Perempuan">
+                        Perempuan
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Alamat</label>
+                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('alamat')?>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label>Tempat, tanggal Lahir</label>
+                    <div class="input-container " >
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text"/>
+                      <div class="invalid-feedback">
+                      <?php echo form_error('tempat_lahir')?>
+                      </div>
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date"/>
+                      <div class="invalid-feedback">
+                      <?php echo form_error('birthday')?>
+                      </div>
+                    </div>
+                    
+                    
+                   </div>
+                  </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                  <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
+                  <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
+                </div>
+              </form>
           </div>
           <!-- /.box -->
 

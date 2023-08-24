@@ -4,7 +4,7 @@
 * author inogalwargan
 */
 
-class Pinjaman_controller extends MY_Controller
+class Pinjaman_anggota_controller extends MY_Controller
 {
     public function __construct()
     {
@@ -16,8 +16,12 @@ class Pinjaman_controller extends MY_Controller
 
     public function index()
     {
-        $data["user"] = $this->Anggota_model->getAll();
-        $data["pinjaman"] = $this->Pinjaman_model->getListPinjaman();
+
+        $id_user = $this->session->userdata('id_user');
+        $nama = $this->session->userdata('nama');
+        $data["user"] = $this->Anggota_model->get($nama);
+        $data["pinjaman"] = $this->Pinjaman_model->getPinjamanByIdMember($id_user);
+        
         $this->load->view("pinjaman/lp_anggota", $data);
     }
 

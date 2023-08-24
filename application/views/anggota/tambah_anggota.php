@@ -3,6 +3,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <!DOCTYPE html>
 <html>
+<style>/** */
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.input-container {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Align items vertically */
+    padding: 0px; /* Add some padding for better spacing */
+    border: 1px none;
+    background-color: white;
+}
+
+/* Style the form container */
+.half-width-form {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Align items vertically */
+    width: 49%; /* Take full width of the container */
+    padding: 7px; /* Add some padding for better spacing */
+    border: 1px solid #ccc;
+    background-color: white; /* Make sure the color is lowercased */
+}
+
+
+
+
+  </style>
 <?php $this->load->view("admin/_includes/head.php") ?>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -21,8 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Anggota</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/index') ?>">Lihat Data Anggota</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/add') ?>">Tambah Data Anggoata</a></li>
+          <li><a href="<?php echo base_url('Anggota_controller/index') ?>">Lihat Data Anggota</a></li>
+          <li><a href="<?php echo base_url('Anggota_controller/add') ?>">Tambah Data Anggoata</a></li>
         </ol>
       </section>
 
@@ -39,86 +70,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form role="form" action="<?php echo base_url('Profile_anggota_controller/add') ?>" method="post">
+              <form role="form" action="<?php echo base_url('Anggota_controller/add') ?>" method="POST">
                 <div class="box-body">
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input name="email" id="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email" required>
+                    <label>Email</label>
+                    <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('email') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="nohp">Mobile Phone</label>
-                    <input name="nohp" id="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Mobile Phone" type="text"required>
+                    <label>Phone Number</label>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nohp') ?>
                     </div>
                   </div>
 
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input name="username" id="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="Username" type="text" required>
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('username') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="password">Password</label>
-                    <input name="password" id="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Password" type="password" required>
+                    <label>Password</label>
+                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('password') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="nama">Name</label>
-                    <input name="nama" id="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Name" type="text" required>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('nama') ?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="nia">NIK</label>
-                    <input name="nia" id="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="text" required>
+                    <label>NIK</label>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text"/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nia') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="tempat_lahir">Place of birth</label>
-                    <input name="tempat_lahir" id="tempat_lahir" class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Place of birth" type="text" required>
+                    <label>Nama</label>
+                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text">
                     <div class="invalid-feedback">
-                      <?php echo form_error('tempat_lahir') ?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="birthday">Date of birth</label>
-                    <input name="birthday" id="bithday" class="form-control <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Date of birth" type="date" required>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('birthday') ?>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <input name="tanggal" id="tanggal" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" value="<?php echo date('Y-m-d'); ?>" placeholder="" type="date" required>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('tanggal') ?>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="alamat">Alamat</label>
-                    <input name="alamat" id="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Address" type="text" required>
-                    <div class="invalid-feedback">
-                      <?php echo form_error('alamat')?>
+                      <?php echo form_error('nama') ?>
                     </div>
                   </div>
 
@@ -126,11 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label>Gender</label>
                     <div class="radio">
                       <label>
-
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki">
-
                         <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" >
-
                         Laki-Laki
                       </label>
                     </div>
@@ -142,14 +137,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                   </div>
 
-                </div>
-                  
-                </div>
+                  <div class="form-group">
+                    <label>Alamat</label>
+                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text"/>
+                    <div class="invalid-feedback">
+                      <?php echo form_error('alamat')?>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label>Tempat, tanggal Lahir</label>
+                    <div class="input-container " >
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text"/>
+                      <div class="invalid-feedback">
+                      <?php echo form_error('tempat_lahir')?>
+                      </div>
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date"/>
+                      <div class="invalid-feedback">
+                      <?php echo form_error('birthday')?>
+                      </div>
+                    </div>
+                    
+                    
+                   </div>
+                  </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                  <a href="<?php echo base_url('Profile_anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
+                  <a href="<?php echo base_url('Anggota_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times" ></i>Batal</a>
                 </div>
               </form>
             </div>

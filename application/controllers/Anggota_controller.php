@@ -27,28 +27,32 @@ class Anggota_controller extends MY_Controller
         $this->load->view("anggota/detail_anggota", $data);
     }
 
-    public function add()
-    {
-        if($this->input->post('submit')){
-
-        	$data=array(
-        		'email' => $this->input->post('email'),
-        		'nohp' => $this->input->podt('nohp'),
+    public function add() {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        // Set rules for other fields as well
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('anggota/tambah_anggota');
+        } else {
+            $data = array(
+                'email' => $this->input->post('email'),
+                'nohp' => $this->input->post('nohp'),
         		'username' => $this->input->post('username'),
-        		'password' => $this->input->post('password'),
+        		'password' => md5($this->input->post('password')),
+				'nia' => $this->input->post('nia'),
         		'nama' => $this->input->post('nama'),
-        		'nia' => $this->input->post('nia'),
-        		'tanggal' => $this->input->post('tanggal'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'alamat' => $this->input->post('alamat'),
         		'tempat_lahir' => $this->input->post('tempat_lahir'),
         		'birthday' => $this->input->post('birthday'),
-        		'alamat' => $this->input->post('alamat'),
-        		'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-        	);
-        	$this->Anggota_model->add($data);
-        	redirect('Anggota_controller');
-        	} else {
-        		$this->load->view('anggota/tambah_anggota', $data);
-        	}
+                'level' => 'member' // Set level as 'member'
+            );
+            
+            $this->Anggota_model->insert_user($data); // Insert data into the database
+            
+			redirect('Anggota_controller/index');
+            // You can redirect to a success page or display a success message here
+        }
     }
 
     public function edit($id){
@@ -63,7 +67,7 @@ class Anggota_controller extends MY_Controller
             redirect('Anggota_controller/index');
 
         }
-        $data['anggota'] = $this->Anggota_model->getById($id);
+        $data['user'] = $this->Anggota_model->getById($id);
         $this->load->view('anggota/edit_anggota', $data);
     }
 

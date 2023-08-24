@@ -49,41 +49,37 @@
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
                   <table id="example1" class="table table-bordered table-hover">
-                    <thead>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>NIK</th>
+                      <th>Nama</th>
+                      <th>Jenis Kelamin</th>
+                      <th>Alamat</th>
+                      <th>No Handphone</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $no = 1;?>
+                    <?php foreach ($user as $value): ?>
                       <tr>
-                        <th>No</th>
-                        <th>NIK</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>No Handphone</th>
-                        <th>Aksi</th>
+                        <td><?php cetak($no++) ?></td>
+                        <td><?php cetak($value->nia)  ?></td>
+                        <td><?php cetak($value->nama ) ?></td>
+                        <td><?php cetak($value->jenis_kelamin)  ?></td>
+                        <td><?php cetak($value->alamat)  ?></td>
+                        <td><?php cetak($value->nohp) ?></td>
+                        <td>
+                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                          <a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
+                  
+                          <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      <?php $no = 1;?>
-                      <?php foreach ($pegawai as $value): ?>
-                        <tr>
-                          <td><?php echo $no++; ?></td>
-                          <td><?php echo $value->nik ?></td>
-                          <td><?php echo $value->nama ?></td>
-                          <td><?php echo $value->alamat ?></td>
-                          <td><?php echo $value->nohp ?></td>
-                          <td>
-                            <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_pegawai) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                            <a href="#!" onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_pegawai) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>NIK</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>No Handphone</th>
-                      </tr>
-                    </tfoot>
-                  </table>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
                 </div>
                 <!-- /.box-body -->
               </div>
