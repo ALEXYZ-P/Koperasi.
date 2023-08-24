@@ -31,8 +31,8 @@
         <small>Data Angsuran</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pinjaman</a></li>
-        <li><a href="#">Lihat Data Pinjaman</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Angsuran</a></li>
+        <li><a href="#">Lihat Data Angsuran</a></li>
       </ol>
     </section>
 
@@ -42,7 +42,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <a href="<?php echo base_url('Angsuran_controller/listPinjamanAnggota') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
+              <a href="<?php echo base_url('Angsuran_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
               <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
               <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
             </div>
@@ -68,7 +68,7 @@
                     <?php foreach ($angsuran as $value): ?>
                       <tr>
                         <td><?php cetak($no++) ?></td>
-                         <td><?php cetak($value->nama)  ?></td>
+                        <td><?php cetak($value->nama)  ?></td>
                         <td><?php cetak($value->no_pinjaman)  ?></td>
                         <td><?php cetak($value->no_angsuran)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>

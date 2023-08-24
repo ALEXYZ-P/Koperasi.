@@ -24,12 +24,14 @@ class Anggota_model extends CI_Model
         $this->db->insert('user', $data);
     }
 
+	/** 
 	public function get($username){
 		$this->db->where('username', $username);
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		$result = $this->db->get('user')->row();
 		return $result;
 	}
+	*/
 
 	/** 
 	public function rules()

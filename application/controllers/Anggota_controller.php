@@ -32,13 +32,13 @@ class Anggota_controller extends MY_Controller
         // Set rules for other fields as well
         
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('pegawai/tambah_pegawai');
+            $this->load->view('anggota/tambah_anggota');
         } else {
             $data = array(
                 'email' => $this->input->post('email'),
                 'nohp' => $this->input->post('nohp'),
         		'username' => $this->input->post('username'),
-        		'password' => $this->input->post('password'),
+        		'password' => md5($this->input->post('password')), 
 				'nia' => $this->input->post('nia'),
         		'nama' => $this->input->post('nama'),
 				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
@@ -48,9 +48,9 @@ class Anggota_controller extends MY_Controller
                 'level' => 'member' // Set level as 'member'
             );
             
-            $this->Pegawai_model->insert_user($data); // Insert data into the database
+            $this->Anggota_model->insert_user($data); // Insert data into the database
             
-			redirect('Pegawai_controller/index');
+			redirect('Anggota_controller/index');
             // You can redirect to a success page or display a success message here
         }
     }

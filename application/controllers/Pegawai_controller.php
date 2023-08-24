@@ -13,7 +13,7 @@ class Pegawai_controller extends MY_Controller
 
     public function index()
     {
-        $data["user"] = $this->Pegawai_model->getAll();
+        $data["user"] = $this->Pegawai_model->getstaff();
         $this->load->view("pegawai/lihat_pegawai", $data);
     }
 
@@ -28,7 +28,7 @@ class Pegawai_controller extends MY_Controller
                 'email' => $this->input->post('email'),
                 'nohp' => $this->input->post('nohp'),
         		'username' => $this->input->post('username'),
-        		'password' => $this->input->post('password'),
+        		'password' => md5($this->input->post('password')), 
 				'nia' => $this->input->post('nia'),
         		'nama' => $this->input->post('nama'),
 				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
@@ -48,19 +48,19 @@ class Pegawai_controller extends MY_Controller
 
 
     public function edit($id){
-
-    	$pegawai = $this->Pegawai_model; //object model
+		$this->load->view('pegawai/edit_pegawai', $data);
+    	$user = $this->Pegawai_model; //object model
         $validation = $this->form_validation; //object validasi
-        $validation->set_rules($pegawai->rules()); //terapkan rules di Pegawai_model.php
+        
 
         if ($validation->run()) { //lakukan validasi form
-            $pegawai->update($id); // update data
-            $this->session->set_flashdata('success', 'Data Pegawai '.$pegawai->getById($id)->nama.' Berhasil Diubah');
+            $user->update($id); // update data
+            $this->session->set_flashdata('success', 'Data Pegawai '.$user->getById($id)->nama.' Berhasil Diubah');
             redirect('Pegawai_controller/index');
         }
 
-        $data['pegawai'] = $this->Pegawai_model->getById($id);
-        $this->load->view('pegawai/edit_pegawai', $data);
+        $data['user'] = $this->Pegawai_model->getById($id);
+        
     }
 
     public function delete($id){

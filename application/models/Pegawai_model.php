@@ -86,10 +86,13 @@ class Pegawai_model extends CI_Model
 	}
 	*/
 
-	public function getAll(){
+	public function getstaff(){
 		$this->db->where('level', 'staff'); // Tambahkan kondisi untuk level
-		return $this->db->get($this->_table)->result();
+		$query = $this->db->get('user');
+		return $query->result();
+
 	}
+	
 
 	public function getById($id){
 		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
@@ -117,10 +120,16 @@ class Pegawai_model extends CI_Model
 	
 	public function update($id){
 		$data = array(
-			"nik" => $this->input->post('nia'),
-			"nama" => $this->input->post('nama'),
-			"alamat" => $this->input->post('alamat'),
-			"nohp" => $this->input->post('nohp')
+				'email' => $this->input->post('email'),
+                'nohp' => $this->input->post('nohp'),
+        		'username' => $this->input->post('username'),
+        		'password' => md5($this->input->post('password')), 
+				'nia' => $this->input->post('nia'),
+        		'nama' => $this->input->post('nama'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+				'alamat' => $this->input->post('alamat'),
+        		'tempat_lahir' => $this->input->post('tempat_lahir'),
+        		'birthday' => $this->input->post('birthday')
 		);
 
 		$this->db->where('id_user', $id);
@@ -128,10 +137,11 @@ class Pegawai_model extends CI_Model
 	}
 
 	// Fungsi untuk melakukan menghapus data siswa berdasarkan NIS siswa
-	public function delete($id){
-		$this->db->where('id_user', $id);
-    $this->db->delete('user'); // Untuk mengeksekusi perintah delete data
+	public function delete_user($id_user) {
+		$this->db->where('id_user', $id_user);
+		$this->db->delete('user');
 	}
+	
 
 	// Fungsi untuk melakukan proses upload file
 	public function upload_file($filename){

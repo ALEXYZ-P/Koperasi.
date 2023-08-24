@@ -43,6 +43,7 @@ class Angsuran_controller extends MY_Controller
 
 	public function add($id)
 	{
+		$this->load->view("angsuran/tambah_angsuran", $data);
 		$anggota = $this->Anggota_model;
 		$angsuran = $this->Angsuran_model;
 		$validation = $this->form_validation;
@@ -54,7 +55,7 @@ class Angsuran_controller extends MY_Controller
 			redirect('Angsuran_controller/index');
 		}
 		$data['angsuran'] = $this->Pinjaman_model->getById($id);
-		$this->load->view("angsuran/tambah_angsuran", $data);
+		
 	}
 
 	public function edit($id)
