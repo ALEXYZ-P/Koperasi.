@@ -16,7 +16,7 @@ class Angsuran_controller extends MY_Controller
 
 	public function index()
 	{
-		$data["angsuran"] = $this->Angsuran_model->getListAngsuran();
+		$data["angsuran"] = $this->Angsuran_model->getALL();
 		// var_dump($data);
 		$this->load->view("angsuran/lihat_angsuran", $data);
 	}

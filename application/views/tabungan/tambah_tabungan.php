@@ -1,5 +1,4 @@
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+
 <!DOCTYPE html>
 <html>
 <?php $this->load->view("admin/_includes/head.php") ?>
@@ -51,25 +50,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('SimpananPokok_controller/add/'.$anggota->id_anggota) ?>" method="post">
-              <input type="hidden" name="id_anggota" value="<?php echo $anggota->id_anggota?>" />
+            <form action="<?php echo base_url('Tabungan_controller/add/'.$tabungan->id_tabungan) ?>" method="post">
 
-              <div class="box-body">
-                <div class="form-group">
-                  <label>Jumlah</label>
-                  <input name="jumlah" class="form-control <?php echo form_error('jumlah') ? 'is-invalid':'' ?>" placeholder="Masukan Jumlah Simpanan Pokok" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('jumlah') ?>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
+        <div class="box-body">
+          <div class="form-group">
+            <label for="id_user">UserAlex Gay</label>
+            <select name="id_user" id="id_user">
+                <?php foreach ($users as $user) : ?>
+                    <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
 
-              <div class="box-footer">
-                <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <button class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times"></i>Batal</button>
-              </div>
-            </form>
+        <div class="box-body">
+          <div class="form-group">
+        <label for="jumlah_tabungan">Jumlah Tabungan:</label>
+        <input type="text" name="jumlah_tabungan" id="jumlah_tabungan">
+          </div>
+        </div>
+
+        <div class="box-body">
+          <div class="form-group">
+        <label for="id_jenis_tabungan">Jenis Tabungan:</label>
+        <select name="id_jenis_tabungan" id="id_jenis_tabungan">
+            <?php foreach ($jenis_tabungan as $jenis) : ?>
+                <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
+            <?php endforeach; ?>
+        </select>
+          </div>
+        </div>
+        
+        <input type="submit" name="submit" value="Submit">
+    </form>
           </div>
           <!-- /.box -->
 

@@ -52,8 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Anggota</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/index') ?>">Lihat Data Anggota</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/add') ?>">Tambah Data Anggoata</a></li>
+          <li><a href="<?php echo base_url('Anggota_controller/index') ?>">Lihat Data Anggota</a></li>
+          <li><a href="<?php echo base_url('Anggota_controller/add') ?>">Tambah Data Anggoata</a></li>
         </ol>
       </section>
 

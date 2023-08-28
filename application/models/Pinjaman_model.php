@@ -48,12 +48,11 @@ class Pinjaman_model extends CI_Model
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function getListPinjaman(){
-		$this->db->select('*');
-		$this->db->from('user');
-		$this->db->join('pinjaman', 'user.id_user = pinjaman.id_user');
-		$query = $this->db->get();
-		return $query->result();
+	public function getPinjamanByIdMember($id_user){
+		$this->db->where('id_user', $id_user);
+		
+        $query = $this->db->get('pinjaman');
+        return $query->result();
 	}
 
 	public function detail_simpanan_wajib($id){

@@ -64,9 +64,12 @@
                   <tbody>
                     <?php $no = 1;?>
                     <?php foreach ($pinjaman as $value): ?>
+                    <?php foreach ($user as $users): {
+                      # code...
+                    } ?>
                       <tr>
                         <td><?php cetak($no++) ?></td>
-                         <td><?php cetak($value->nama)  ?></td>
+                         <td><?php cetak($users->nama)  ?></td>
                         <td><?php cetak($value->no_pinjaman)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
                         <td><?php cetak($value->tanggal_pinjaman)  ?></td>
@@ -78,6 +81,7 @@
                           
                         </td>
                       </tr>
+                    <?php endforeach; ?>
                     <?php endforeach; ?>
                   </tbody>
                   <tfoot>

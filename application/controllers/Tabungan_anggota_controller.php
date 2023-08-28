@@ -4,7 +4,7 @@
 * author inogalwargan
 */
 
-class Tabungan_controller extends MY_Controller
+class Tabungan_anggota_controller extends MY_Controller
 {
     public function __construct()
     {
@@ -17,8 +17,10 @@ class Tabungan_controller extends MY_Controller
     }
     public function index()
     {
+        $id_user = $this->session->userdata('id_user');
+
         $data["user"] = $this->Anggota_model->getAll();
-        $data["tabungan"] = $this->Tabungan_model->getListTabungan();
+        $data["tabungan"] = $this->Tabungan_model->getTabunganByIdMember($id_user);
         $data["jenis_tabungan"] = $this->Jenis_model->getAll();
         $this->load->view("tabungan/lihat_tabungan", $data);
     }

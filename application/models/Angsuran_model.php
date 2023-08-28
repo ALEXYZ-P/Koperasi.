@@ -31,10 +31,14 @@ class Angsuran_model extends CI_Model
 		];
 	}
 
-	public function getALL()
-	{
-		return $this->db->get($this->_table)->result();
-	}
+	public function getALL() {
+    $this->db->select('angsuran.*, pinjaman.no_pinjaman, pinjaman.jumlah_pinjaman, pinjaman.tanggal_pinjaman, pinjaman.lama, pinjaman.bunga, user.nama');
+    $this->db->from('angsuran');
+    $this->db->join('pinjaman', 'angsuran.id_pinjaman = pinjaman.id_pinjaman');
+    $this->db->join('user', 'pinjaman.id_user = user.id_user'); // Gabungkan tabel pinjaman dengan tabel user
+    $query = $this->db->get();
+    return $query->result();
+}
 
 
 	/**

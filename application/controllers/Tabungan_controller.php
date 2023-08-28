@@ -4,7 +4,7 @@
 * author inogalwargan
 */
 
-class Tabungan_admin_controller extends MY_Controller
+class Tabungan_controller extends MY_Controller
 {
     public function __construct()
     {
@@ -32,20 +32,21 @@ class Tabungan_admin_controller extends MY_Controller
         $this->load->view("tabungan/detail_tabungan", $data);
     }
 
-    public function add($id)
-    {   
-        $anggota = $this->Anggota_model;
-        $tabungan = $this->Tabungan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($tabungan->rules());
+    public function add(){ 'Alex gay'
+        $data['users'] = $this->Tabungan_model->get_users();
+        $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 
-        if ($validation->run()) {
-            $simpanan_pokok->save();
-            $this->session->set_flashdata('success', 'Tambah Simpanan Sebesar Rp. '.$tabungan->jumlah.' Berhasil Disimpan');
-            redirect('Tabungan_admin_controller/index');
+        if ($this->input->post('submit')) {
+            $tabungan_data = array(
+                'id_user' => $this->input->post('id_user'),
+                'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
+                'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
+            );
+
+            $this->tabungan_model->insert_tabungan($tabungan_data);
         }
-        $data['anggota'] = $this->Anggota_model->getById($id);
-        $this->load->view("tabungan/tambah_tabungan", $data);
+
+        $this->load->view('tabungan/tambah_tabungan', $data);
     }
 
     public function edit($id){

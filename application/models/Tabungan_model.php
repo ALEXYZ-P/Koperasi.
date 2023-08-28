@@ -12,39 +12,30 @@ class Tabungan_model extends CI_Model
 	public $tanggal_tabung;
 	public $id_jenis_tabungan;
 	
-	
-	public function rules()
-	{
-		return [
-			['field' => 'id_user',
-			'label' => 'id_user',
-			'rules' => 'required'],
-			['field' => 'id_tabungan',
-			'label' => 'id_tabungan',
-			'rules' => 'required'],
-			['field' => 'jumlah_tabungan',
-			'label' => 'jumlah_tabungan',
-			'rules' => 'required'],
-			['field' => 'tanggal_tabung',
-			'label' => 'tanggal_tabung',
-			'rules' => 'required'],
-			['field' => 'id_jenis_tabungan',
-			'label' => 'id_jenis_tabungan',
-			'rules' => 'required']
-		];
-	}
 	public function getALL(){
 		
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function getListTabungan(){
-		$this->db->select('*');
-		$this->db->from('user');
-		$this->db->join('tabungan', 'user.id_user = tabungan.id_user');
-		$query = $this->db->get();
-		return $query->result();
-	// Bagian kode lainnya...
+	public function get_users() {
+		$this->db->where('level', 'member');
+        $query = $this->db->get('user');
+        return $query->result_array();
+    }
+
+    public function get_jenis_tabungan() { 
+        $query = $this->db->get('jenis_tabungan');
+        return $query->result_array(); 'Alex Gay'
+    }
+
+    public function insert_tabungan($data) {
+        $this->db->insert('tabungan', $data);
+    }
+
+	public function getTabunganByIdMember($id_user){
+		$this->db->where('id_user', $id_user);
+        $query = $this->db->get('tabungan');
+        return $query->result();
 }
 
 public function getListJenis(){
@@ -53,7 +44,7 @@ public function getListJenis(){
 		$this->db->join('tabugan', 'jenis_tabungan.id_jenis_tabungan = tabungan.id_jenis_tabungan');
 		$query = $this->db->get();
 		return $query->result();
-}
+	}
 }
 
 ?>
