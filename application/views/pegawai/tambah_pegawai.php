@@ -157,21 +157,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <div class="invalid-feedback">
                       <?php echo form_error('birthday')?>
                       </div>
-                    </div>
-                    
-                    
+                    </div>            
                    </div>
                   </div>
-
-
-                  
-
-                  
+                 
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                  <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                  <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Batal</a>
+                  <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
+                  <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancle</a>
                 </div>
               </form>
             </div>
