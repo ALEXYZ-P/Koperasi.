@@ -5,7 +5,7 @@
 <div class="wrapper">
 
   <?php $this->load->view("admin/_includes/header.php") ?>
-  <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+  <?php $this->load->view("admin/_includes/sidebar.php") ?>
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -72,7 +72,7 @@
                         <td><?php cetak($value->no_pinjaman)  ?></td>
                         <td><?php cetak($value->no_angsuran)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->tanggal_peminjaman)  ?></td>
+                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_angsuran,2,',','.')) ?></td>
