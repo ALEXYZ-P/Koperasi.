@@ -30,7 +30,7 @@
           <small>Data Anggota Koperasi</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota</a></li>
+          <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota t</a></li>
           <li><a href="#">Lihat Data Anggota</a></li>
         </ol>
       </section>
