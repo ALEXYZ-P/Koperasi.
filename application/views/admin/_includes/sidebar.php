@@ -29,15 +29,10 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
 
-<<<<<<< Updated upstream
-        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Staff</span></a>
-        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Member</span></a>
-=======
+
         <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
         <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Pegawai</span></a>
         <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Anggota</span></a>
->>>>>>> Stashed changes
         </li>
         <li class="treeview">
           <a href="#">

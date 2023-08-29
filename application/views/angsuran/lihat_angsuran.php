@@ -77,7 +77,7 @@
                         <td><?php cetak($value->bunga)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_angsuran,2,',','.')) ?></td>
                         <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Angsuran_controller/edit/'.$value->id_angsuran) ?>"><i class="fa fa-fw fa-edit"></i></a><br><br>
+                          <a class="btn btn-ref" href="<?php echo site_url('Angsuran_controller/edit/'.$value->id_angsuran) ?>"><i class="fa fa-fw fa-edit"></i></a>
                           <a href="#!" onclick="deleteConfirm('<?php echo site_url('Angsuran_controller/delete/'.$value->id_angsuran) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i></a>
                         </td>
                       </tr>
