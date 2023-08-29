@@ -28,12 +28,12 @@
 
     <section class="content-header">
       <h1>
-        Kelola
-        <small>Data Simpanan Pokok</small>
+        Tambah
+        <small>Tabungan</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('SimpananPokok_controller/index') ?>"><i class="fa fa-fw fa-child"></i>Lihat Data Anggota</a></li>
-        <li><a href="#">Tambah Simpanan Pokok</a></li>
+        <li><a href="<?php echo base_url('') ?>"><i class="fa fa-fw fa-child"></i>Kelola Tabnungan</a></li>
+        <li><a href="#">Tambah Tabungan</a></li>
       </ol>
     </section>
     
@@ -46,45 +46,50 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Pengisian Form</h3>
+              <h3 class="box-title">Form tambah tabungan</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form action="<?php echo base_url('Tabungan_controller/add/'.$tabungan->id_tabungan) ?>" method="post">
+            <div class="box-body">
 
-        <div class="box-body">
-          <div class="form-group">
-            <label for="id_user">User</label>
-            <select name="id_user" id="id_user">
-                <?php foreach ($users as $user) : ?>
+            <div class="form-group">
+              <label for="id_user">User</label>
+                <select name="id_user" id="id_user" class="form-control" <?php echo form_error('id_user') ? 'is-invalid':'' ?>>
+                  <?php foreach ($users as $user) : ?>
                     <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>
-                <?php endforeach; ?>
-            </select>
-          </div>
-        </div>
+                  <?php endforeach; ?>
+                </select>
+                  <div class="invalid-feedback">
+                    <?php echo form_error('id_user') ?>
+                  </div>
+            </div>
 
-        <div class="box-body">
-          <div class="form-group">
-        <label for="jumlah_tabungan">Jumlah Tabungan:</label>
-        <input type="text" name="jumlah_tabungan" id="jumlah_tabungan">
-          </div>
-        </div>
+            <div class="form-group">
+              <label for="jumlah_tabungan">Jumlah Tabungan : </label>
+                <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Jumlah tabungan" type="text"/>
+                  <div class="invalid-feedback">
+                    <?php echo form_error('jumlah_tabungan') ?>
+                  </div>
+            </div>
 
-        <div class="box-body">
-          <div class="form-group">
-        <label for="id_jenis_tabungan">Jenis Tabungan:</label>
-        <select name="id_jenis_tabungan" id="id_jenis_tabungan">
-            <?php foreach ($jenis_tabungan as $jenis) : ?>
-                <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
-            <?php endforeach; ?>
-        </select>
-          </div>
-        </div>
+            <div class="form-group">
+              <label for="id_jenis_tabungan">Jenis Tabungan:</label>
+                <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control" <?php echo form_error('id_jenis_tabungan') ? 'is-invalid':'' ?>>
+                  <?php foreach ($jenis_tabungan as $jenis) : ?>
+                      <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
+                  <?php endforeach; ?>
+                </select>
+                  <div class="invalid-feedback">
+                    <?php echo form_error('id_jenis_tabungan') ?>
+                  </div>
+            </div>
         
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
                   <a href="<?php echo base_url('Tabungan_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancel</a>
-                </div>    </form>
+                </div>    
+              </form>
           </div>
           <!-- /.box -->
 

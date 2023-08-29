@@ -27,10 +27,10 @@
       <section class="content-header">
         <h1>
           Kelola
-          <small>Data Anggota Koperasi</small>
+          <small>Data Tabungan</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota   </a></li>
+          <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota</a></li>
           <li><a href="#">Lihat Data Anggota</a></li>
         </ol>
       </section>
@@ -55,8 +55,8 @@
                       <th>NIK</th>
                       <th>Nama</th>
                       <th>Jumlah</th>
-                      <th>Tanggal</th>
                       <th>Jenis Tabungan</th>
+                      <th>Tanggal</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -90,8 +90,9 @@
                               <td><?php echo $users->nia ?></td>
                               <td><?php echo $users->nama ?></td>
                               <td><?php echo $value->jumlah_tabungan ?></td>
-                              <td><?php echo $value->tanggal_tabung ?></td>
                               <td><?php echo $jenis->nama_jenis_tabungan ?></td>
+                              <td><?php echo $value->tanggal_tabung ?></td>
+                             
                               <td>
                                 <a class="btn btn-primary" href="<?php echo site_url('SimpananPokok_controller/add/'.$value->id_anggota) ?>"><i class="fa fa-fw fa-plus"></i>Simpanan Pokok</a>
                                 <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Simpanan Pokok</a>
@@ -109,8 +110,8 @@
                       <th>NIK</th>
                       <th>Nama</th>
                       <th>Jumlah</th>
-                      <th>Tanggal</th>
                       <th>Jenis Tabungan</th>
+                      <th>Tanggal</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
