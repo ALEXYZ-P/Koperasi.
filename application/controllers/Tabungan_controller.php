@@ -37,13 +37,13 @@ class Tabungan_controller extends MY_Controller
         $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 
         if ($this->input->post('submit')) {
-            $tabungan_data = array(
+            $data = array(
                 'id_user' => $this->input->post('id_user'),
                 'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
                 'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
             );
 
-            $this->tabungan_model->insert_tabungan($tabungan_data);
+            $this->tabungan_model->insert_tabungan($data);
         }
 
         $this->load->view('tabungan/tambah_tabungan', $data);

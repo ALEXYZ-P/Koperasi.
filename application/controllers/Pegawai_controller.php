@@ -10,7 +10,7 @@ class Pegawai_controller extends MY_Controller
         $this->load->library('form_validation');
         $this->load->model("Pegawai_model");
     }
-
+//Dapaag
     public function index()
     {
         $data["user"] = $this->Pegawai_model->getstaff();

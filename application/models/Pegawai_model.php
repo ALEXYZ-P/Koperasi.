@@ -5,7 +5,7 @@
 */
 class Pegawai_model extends CI_Model
 {
-	
+	//Dapaag
 	private $_table= "user";
 
 	public $id_user;
