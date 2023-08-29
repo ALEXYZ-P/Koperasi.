@@ -32,7 +32,7 @@ class Tabungan_controller extends MY_Controller
         $this->load->view("tabungan/detail_tabungan", $data);
     }
 
-    public function add(){ 'Alex gay'
+    public function add(){ 
         $data['users'] = $this->Tabungan_model->get_users();
         $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 

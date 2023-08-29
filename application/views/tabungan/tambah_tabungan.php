@@ -54,7 +54,7 @@
 
         <div class="box-body">
           <div class="form-group">
-            <label for="id_user">UserAlex Gay</label>
+            <label for="id_user">User</label>
             <select name="id_user" id="id_user">
                 <?php foreach ($users as $user) : ?>
                     <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>

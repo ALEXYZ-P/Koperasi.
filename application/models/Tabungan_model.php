@@ -25,7 +25,7 @@ class Tabungan_model extends CI_Model
 
     public function get_jenis_tabungan() { 
         $query = $this->db->get('jenis_tabungan');
-        return $query->result_array(); 'Alex Gay'
+        return $query->result_array(); 
     }
 
     public function insert_tabungan($data) {
