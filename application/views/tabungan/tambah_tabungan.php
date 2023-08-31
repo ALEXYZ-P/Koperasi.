@@ -50,46 +50,48 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form action="<?php echo base_url('Tabungan_controller/add/'.$tabungan->id_tabungan) ?>" method="post">
-            <div class="box-body">
+            <?php if ($this->session->flashdata('success')): ?>
+        <div class="alert alert-success">
+            <?php echo $this->session->flashdata('success'); ?>
+        </div>
+    <?php endif; ?>
 
-            <div class="form-group">
-              <label for="id_user">User</label>
-                <select name="id_user" id="id_user" class="form-control" <?php echo form_error('id_user') ? 'is-invalid':'' ?>>
-                  <?php foreach ($users as $user) : ?>
+    <form action="<?php echo base_url('Tabungan_controller/add'); ?>" method="post">
+        <div class="form-group">
+            <label for="id_user">User</label>
+            <select name="id_user" id="id_user" class="form-control" <?php echo form_error('id_user') ? 'is-invalid':'' ?>>
+                <?php foreach ($users as $user) : ?>
                     <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>
-                  <?php endforeach; ?>
-                </select>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('id_user') ?>
-                  </div>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">
+                <?php echo form_error('id_user') ?>
             </div>
+        </div>
 
-            <div class="form-group">
-              <label for="jumlah_tabungan">Jumlah Tabungan : </label>
-                <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Jumlah tabungan" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('jumlah_tabungan') ?>
-                  </div>
+        <div class="form-group">
+            <label for="jumlah_tabungan">Jumlah Tabungan</label>
+            <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control <?php echo form_error('jumlah_tabungan') ? 'is-invalid':'' ?>" placeholder="Jumlah tabungan" type="text"/>
+            <div class="invalid-feedback">
+                <?php echo form_error('jumlah_tabungan') ?>
             </div>
+        </div>
 
-            <div class="form-group">
-              <label for="id_jenis_tabungan">Jenis Tabungan:</label>
-                <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control" <?php echo form_error('id_jenis_tabungan') ? 'is-invalid':'' ?>>
-                  <?php foreach ($jenis_tabungan as $jenis) : ?>
-                      <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
-                  <?php endforeach; ?>
-                </select>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('id_jenis_tabungan') ?>
-                  </div>
+        <div class="form-group">
+            <label for="id_jenis_tabungan">Jenis Tabungan</label>
+            <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control" <?php echo form_error('id_jenis_tabungan') ? 'is-invalid':'' ?>>
+                <?php foreach ($jenis_tabungan as $jenis) : ?>
+                    <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">
+                <?php echo form_error('id_jenis_tabungan') ?>
             </div>
-        
-                <div class="box-footer">
-                  <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
-                  <a href="<?php echo base_url('Tabungan_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancel</a>
-                </div>    
-              </form>
+        </div>
+
+        <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
+        <a href="<?php echo base_url('Tabungan_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"></i>Cancel</a>
+    </form>
           </div>
           <!-- /.box -->
 

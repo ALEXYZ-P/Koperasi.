@@ -97,6 +97,7 @@ class Pegawai_controller extends MY_Controller
     }
 	*/
 
+<<<<<<< HEAD
 	public function delete($id=null)
 	{
 		if (!isset($id)) show_404();
@@ -105,6 +106,18 @@ class Pegawai_controller extends MY_Controller
 			redirect(site_url('Pegawai_controller/index'));
 		}
 	}
+=======
+    public function deleteAndMove($id) {
+        $userData = $this->Pegawai_model->getById($id);
+
+        if ($userData) {
+            /*$this->Pegawai_model->move($userData); // Pindahkan ke trash*/
+            $this->Pegawai_model->delete($id); // Hapus dari user
+
+            redirect('Pegawai_controller/index'); // Alihkan ke halaman yang sesuai
+        }
+    }
+>>>>>>> 598e047d90bb018e0a2e113bbd94e563e3d524d8
 
 	/**public function delete($id_user) {
         $this->db->where('id_user', $id_user);
