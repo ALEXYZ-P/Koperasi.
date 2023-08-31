@@ -33,21 +33,23 @@ class Tabungan_controller extends MY_Controller
     }
 
     public function add(){ 
-        $data['users'] = $this->Tabungan_model->get_users();
-        $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
+    $data['users'] = $this->Tabungan_model->get_users();
+    $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 
-        if ($this->input->post('submit')) {
-            $data = array(
-                'id_user' => $this->input->post('id_user'),
-                'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
-                'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
-            );
+    if ($this->input->post('submit')) {
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
+            'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
+        );
 
-            $this->tabungan_model->insert_tabungan($data);
-        }
-
-        $this->load->view('tabungan/tambah_tabungan', $data);
+        $this->Tabungan_model->insert_tabungan($data);
+        $this->session->set_flashdata('success', 'Data tabungan berhasil ditambahkan');
+        redirect('Tabungan_controller/index'); // Redirect to tabungan list page
     }
+
+    $this->load->view('tabungan/tambah_tabungan', $data);
+}
 
     public function edit($id){
         $anggota = $this->Anggota_model; //object model

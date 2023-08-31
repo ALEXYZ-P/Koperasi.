@@ -63,11 +63,16 @@ class Pegawai_controller extends MY_Controller
         
     }
 
-    public function delete($id){
-	    $this->Pegawai_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
-	    $this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
-	    redirect('Pegawai_controller/index');
-	}
+    public function deleteAndMove($id) {
+        $userData = $this->Pegawai_model->getById($id);
+
+        if ($userData) {
+            /*$this->Pegawai_model->move($userData); // Pindahkan ke trash*/
+            $this->Pegawai_model->delete($id); // Hapus dari user
+
+            redirect('Pegawai_controller/index'); // Alihkan ke halaman yang sesuai
+        }
+    }
 
 	public function form(){
 		$data = array(); // Buat variabel $data sebagai array

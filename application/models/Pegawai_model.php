@@ -20,7 +20,7 @@ class Pegawai_model extends CI_Model
 	public $tempat_lahir;
 	public $birthday;
 	public $alamat;
-	public $pekkerjaan;
+	public $pekerjaan;
 	public $tanggal;
 	public $level;
 
@@ -92,11 +92,18 @@ class Pegawai_model extends CI_Model
 		return $query->result();
 
 	}
-	
 
-	public function getById($id){
-		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
-	}
+	/*public function move($data) {
+        $this->db->insert('trash', $data);
+    }*/
+
+    public function delete($id) {
+        $this->db->delete('user', array('id_user' => $id));
+    }
+
+    public function getById($id) {
+        return $this->db->get_where('user', array('id_user' => $id))->row();
+    }
 
 	public function save($user_data) {
 		$this->email = $user_data['email'];
@@ -137,8 +144,8 @@ class Pegawai_model extends CI_Model
 	}
 
 	// Fungsi untuk melakukan menghapus data siswa berdasarkan NIS siswa
-	public function delete_user($id_user) {
-		$this->db->where('id_user', $id_user);
+	public function delete_user($id) {
+		$this->db->where('id_user', $id);
 		$this->db->delete('user');
 	}
 	

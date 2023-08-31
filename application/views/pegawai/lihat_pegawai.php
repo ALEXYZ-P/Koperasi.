@@ -72,7 +72,9 @@
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
                           <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                          <a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
+                          <a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/deleteAndMove/'.$value->id_user); ?>" onclick="return confirm('Are you sure you want to delete this data and move it to trash?')">
+                            <i class="fa fa-fw fa-trash"></i> Hapus </a>
+                                              
                   
                           <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
                         </td>
