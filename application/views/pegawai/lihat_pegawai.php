@@ -13,15 +13,15 @@
       <!-- Content Header (Page header) -->
       <!--Dapaag-->
       <!-- Alert -->
-        <?php if ($this->session->flashdata('success')): ?>
-        <div class="box-body">
-          <div class="alert alert-info alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-info"></i>Alert!</h4>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        </div>
-        <?php endif; ?>
+      <?php if ($this->session->flashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success') ?>
+    </div>
+<?php elseif ($this->session->flashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error') ?>
+    </div>
+<?php endif; ?> 
       <!-- Alert -->
 
 
@@ -71,9 +71,12 @@
                         <td><?php cetak($value->alamat)  ?></td>
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                          <a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>
-                  
+                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/update/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                          <!--<a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>-->
+                          
+                          <a onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Hapus</a>
+
+    
                           <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
                         </td>
                       </tr>
@@ -100,6 +103,7 @@
  </div>
 
  <!-- Logout Delete Confirmation-->
+
  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -117,14 +121,32 @@
     </div>
   </div>
 </div>
+
+ <!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>-->
 <!-- ./wrapper -->
 <?php $this->load->view("admin/_includes/bottom_script_view.php") ?>
 <!-- page script -->
 <script>
-  function deleteConfirm(url){
-    $('#btn-delete').attr('href', url);
-    $('#deleteModal').modal();
-  }
+function deleteConfirm(url){
+	$('#btn-delete').attr('href', url);
+	$('#deleteModal').modal();
+}
 </script>
 </body>
 </html>

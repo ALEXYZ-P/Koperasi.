@@ -17,9 +17,24 @@ class Pegawai_controller extends MY_Controller
         $this->load->view("pegawai/lihat_pegawai", $data);
     }
 
+ 	/**public function add()
+    {
+        $user = $this->Pegawai_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($user->rules());
+
+        if ($validation->run()) {
+            $user->save();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+
+        $this->load->view("pegawai/tambah_pegawai");
+    }
+*/
     public function add() {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        // Set rules for other fields as well
+        $validation = $this->form_validation;
+        //$validation->set_rules($user->rules());
         
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('pegawai/tambah_pegawai');
@@ -45,9 +60,27 @@ class Pegawai_controller extends MY_Controller
         }
     }
 
+	public function update($id = null)
+    {
+        if (!isset($id)) redirect('Pegawai_controller/index');
+       
+        $user = $this->Pegawai_model;
+        $validation = $this->form_validation;
+        //$validation->set_rules($user->rules());
 
+        if ($validation->run()) {
+            $user->update();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+			redirect('Pegawai_controller/index');
+        }
 
-    public function edit($id){
+        $data["user"] = $user->getById($id);
+        if (!$data["user"]) show_404();
+        
+        $this->load->view("pegawai/edit_pegawai", $data);
+    }
+
+    /**public function update($id){
 		$this->load->view('pegawai/edit_pegawai', $data);
     	$user = $this->Pegawai_model; //object model
         $validation = $this->form_validation; //object validasi
@@ -62,12 +95,33 @@ class Pegawai_controller extends MY_Controller
         $data['user'] = $this->Pegawai_model->getById($id);
         
     }
+	*/
 
-    public function delete($id){
-	    $this->Pegawai_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
-	    $this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
-	    redirect('Pegawai_controller/index');
+	public function delete($id=null)
+	{
+		if (!isset($id)) show_404();
+			
+		if ($this->Pegawai_model->delete($id)) {
+			redirect(site_url('Pegawai_controller/index'));
+		}
 	}
+
+	/**public function delete($id_user) {
+        $this->db->where('id_user', $id_user);
+        $this->db->delete('user');
+    
+    if ($this->db->affected_rows() > 0) {
+		$this->session->set_flashdata('success', 'Data berhasil dihapus.');
+    } else {
+        // Jika gagal menghapus
+        $this->session->set_flashdata('error', 'Gagal menghapus data.');
+    }
+
+	
+    
+    redirect('Pegawai_controller/index');
+    }
+	*/
 
 	public function form(){
 		$data = array(); // Buat variabel $data sebagai array

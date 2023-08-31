@@ -31,13 +31,13 @@ class Pegawai_model extends CI_Model
 
 
 
-	/** 
-	public function rules()
+	
+	/**public function rules()
 	{
 		return [
 			['field' => 'email',
 			'label' => 'email',
-			'rules' => 'required'],
+			'rules' => 'required|valid_email'],
 
 			['field' => 'nohp',
 			'label' => 'nohp',
@@ -53,7 +53,7 @@ class Pegawai_model extends CI_Model
 
 			['field' => 'nia',
 			'label' => 'nia',
-			'rules' => 'required'],
+			'rules' => 'numeric'],
 
 			['field' => 'nama',
 			'label' => 'nama',
@@ -63,9 +63,14 @@ class Pegawai_model extends CI_Model
 			'label' => 'jenis_kelamin',
 			'rules' => 'required'],
 
-			['field' => 'agama',
+			['field' => 'alamat',
+			'label' => 'alamat',
+			'rules' => 'required'],
+
+			/**['field' => 'agama',
 			'label' => 'agama',
 			'rules' => 'required'],
+			
 
 			['field' => 'tempat_lahir',
 			'label' => 'tempat_lahir',
@@ -73,18 +78,15 @@ class Pegawai_model extends CI_Model
 
 			['field' => 'birthday',
 			'label' => 'birthday',
-			'rules' => 'required'],
+			'rules' => 'required']
 
-			['field' => 'alamat',
-			'label' => 'alamat',
-			'rules' => 'required'],
-
-			['field' => 'pekerjaan',
+			/**['field' => 'pekerjaan',
 			'label' => 'pekerjaan',
-			'rules' => 'required'],
+			'rules' => 'required']
+			
 		];
-	}
-	*/
+	}*/
+	
 
 	public function getstaff(){
 		$this->db->where('level', 'staff'); // Tambahkan kondisi untuk level
@@ -97,6 +99,27 @@ class Pegawai_model extends CI_Model
 	public function getById($id){
 		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
 	}
+	/**public function add()
+    {
+        $post = $this->input->post();
+        $this->id_user = uniqid();
+		$this->email = $post['email'];
+		$this->nohp = $post['nohp'];
+		$this->username = $post['username'];
+		$this->password = $post['password'];
+		$this->nia = $post['nia'];
+		$this->nama = $post['nama'];
+		$this->jenis_kelamin = $post['jenis_kelamin'];
+		//$this->agama = $post['agama'];
+		$this->alamat = $post['alamat'];
+		$this->tempat_lahir = $post['tempat_lahir'];
+		$this->birthday = $post['birthday'];
+		
+		//$this->pekerjaan = $post['pekerjaan'];
+		$this->level = $post['level'];
+        
+        return $this->db->insert($this->_table, $this);
+    }*/
 
 	public function save($user_data) {
 		$this->email = $user_data['email'];
@@ -106,19 +129,38 @@ class Pegawai_model extends CI_Model
 		$this->nia = $user_data['nia'];
 		$this->nama = $user_data['nama'];
 		$this->jenis_kelamin = $user_data['jenis_kelamin'];
-		$this->agama = $user_data['agama'];
+		//$this->agama = $user_data['agama'];
 		$this->tempat_lahir = $user_data['tempat_lahir'];
 		$this->birthday = $user_data['birthday'];
 		$this->alamat = $user_data['alamat'];
-		$this->pekerjaan = $user_data['pekerjaan'];
+		//$this->pekerjaan = $user_data['pekerjaan'];
 		$this->level = $user_data['level'];
 	
 		
 		$this->db->insert('_table', $this);
 	}
 	
+	public function update(){
+    
+        $post = $this->input->post();
+        $this->id_user = $post["id"];
+		$this->email = $user_data['email'];
+		$this->nohp = $user_data['nohp'];
+		$this->username = $user_data['username'];
+		$this->password = $user_data['password'];
+		$this->nia = $user_data['nia'];
+		$this->nama = $user_data['nama'];
+		$this->jenis_kelamin = $user_data['jenis_kelamin'];
+		//$this->agama = $user_data['agama'];
+		$this->tempat_lahir = $user_data['tempat_lahir'];
+		$this->birthday = $user_data['birthday'];
+		$this->alamat = $user_data['alamat'];
+		//$this->pekerjaan = $user_data['pekerjaan'];
+		$this->level = $user_data['level'];
+        return $this->db->update($this->_table, $this, array('id_user' => $post['id']));
+    }
 	
-	public function update($id){
+	/**public function update($id){
 		$data = array(
 				'email' => $this->input->post('email'),
                 'nohp' => $this->input->post('nohp'),
@@ -135,13 +177,20 @@ class Pegawai_model extends CI_Model
 		$this->db->where('id_user', $id);
 	    $this->db->update('staff', $data); // Untuk mengeksekusi perintah update data
 	}
+	*/
 
-	// Fungsi untuk melakukan menghapus data siswa berdasarkan NIS siswa
-	public function delete_user($id_user) {
+	public function delete($id)
+    {
+        return $this->db->delete($this->_table, array("id_user" => $id));
+    }
+	
+	/**public function delete($id_user) {
 		$this->db->where('id_user', $id_user);
 		$this->db->delete('user');
+
+		
 	}
-	
+	*/
 
 	// Fungsi untuk melakukan proses upload file
 	public function upload_file($filename){

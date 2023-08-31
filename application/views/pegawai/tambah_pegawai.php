@@ -74,55 +74,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="box-body">
 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email"/>
+                    <label for="email" >Email</label>
+                    <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('email') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Phone Number</label>
-                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text"/>
+                    <label for="nohp" >Phone Number</label>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nohp') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Username</label>
-                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text"/>
+                    <label for="username" >Username</label>
+                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('username') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Password</label>
-                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password"/>
+                    <label for="password" >Password</label>
+                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('password') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text"/>
+                    <label for="nia" >NIK</label>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nia') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Nama</label>
-                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text">
+                    <label for="nama" >Nama</label>
+                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label>Gender</label>
+                    <label for="jenis_kelamin" >Gender</label>
                     <div class="radio">
                       <label>
                         <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" >
@@ -138,8 +138,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                   <div class="form-group">
-                    <label>Alamat</label>
-                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text"/>
+                    <label for="alamat" >Alamat</label>
+                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('alamat')?>
                     </div>
@@ -147,13 +147,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                   <div class="form-group">
-                    <label>Tempat, tanggal Lahir</label>
+                    <label for="tempat_lahir" >Tempat, </label><label for="birthday" > tanggal Lahir</label>
                     <div class="input-container " >
-                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text"/>
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text" required/>
                       <div class="invalid-feedback">
                       <?php echo form_error('tempat_lahir')?>
                       </div>
-                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date"/>
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date" required/>
                       <div class="invalid-feedback">
                       <?php echo form_error('birthday')?>
                       </div>
