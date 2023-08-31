@@ -40,66 +40,48 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-8">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Form tambah tabungan</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Form tambah tabungan</h3>
+                        </div>
+                        <div class="box-body">
+                            <?php echo validation_errors('<div class="alert alert-danger">', '</div>'); ?>
+                            <?php echo $this->session->flashdata('success'); ?>
+
+                            <form action="<?php echo base_url('Tabungan_controller/add'); ?>" method="post">
+                                <div class="form-group">
+                                    <label for="id_user">User</label>
+                                    <select name="id_user" id="id_user" class="form-control">
+                                        <?php foreach ($users as $user) : ?>
+                                            <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jumlah_tabungan">Jumlah Tabungan</label>
+                                    <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control" placeholder="Jumlah tabungan" type="text"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="id_jenis_tabungan">Jenis Tabungan</label>
+                                    <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control">
+                                        <?php foreach ($jenis_tabungan as $jenis) : ?>
+                                            <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-success" type="submit" name="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
+                                <a href="<?php echo base_url('Tabungan_controller/index') ?>" class="btn btn-danger" type="button"><i style="margin-left: -3px;"></i>Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <?php if ($this->session->flashdata('success')): ?>
-        <div class="alert alert-success">
-            <?php echo $this->session->flashdata('success'); ?>
-        </div>
-    <?php endif; ?>
-
-    <form action="<?php echo base_url('Tabungan_controller/add'); ?>" method="post">
-        <div class="form-group">
-            <label for="id_user">User</label>
-            <select name="id_user" id="id_user" class="form-control" <?php echo form_error('id_user') ? 'is-invalid':'' ?>>
-                <?php foreach ($users as $user) : ?>
-                    <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>
-                <?php endforeach; ?>
-            </select>
-            <div class="invalid-feedback">
-                <?php echo form_error('id_user') ?>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="jumlah_tabungan">Jumlah Tabungan</label>
-            <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control <?php echo form_error('jumlah_tabungan') ? 'is-invalid':'' ?>" placeholder="Jumlah tabungan" type="text"/>
-            <div class="invalid-feedback">
-                <?php echo form_error('jumlah_tabungan') ?>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="id_jenis_tabungan">Jenis Tabungan</label>
-            <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control" <?php echo form_error('id_jenis_tabungan') ? 'is-invalid':'' ?>>
-                <?php foreach ($jenis_tabungan as $jenis) : ?>
-                    <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
-                <?php endforeach; ?>
-            </select>
-            <div class="invalid-feedback">
-                <?php echo form_error('id_jenis_tabungan') ?>
-            </div>
-        </div>
-
-        <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
-        <a href="<?php echo base_url('Tabungan_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"></i>Cancel</a>
-    </form>
-          </div>
-          <!-- /.box -->
-
-        </div>
-        <!--/.col (left) -->
-      </div>
-      <!-- /.row -->
-    </section>
+        </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
