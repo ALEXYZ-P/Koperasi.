@@ -32,24 +32,31 @@ class Tabungan_controller extends MY_Controller
         $this->load->view("tabungan/detail_tabungan", $data);
     }
 
-    public function add(){ 
-    $data['users'] = $this->Tabungan_model->get_users();
-    $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
+    public function add()
+    {
+        $data['users'] = $this->Tabungan_model->get_users();
+        $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 
-    if ($this->input->post('submit')) {
-        $data = array(
-            'id_user' => $this->input->post('id_user'),
-            'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
-            'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
-        );
+        if ($this->input->post('submit')) {
+            $this->form_validation->set_rules('id_user', 'User', 'required');
+            $this->form_validation->set_rules('jumlah_tabungan', 'Jumlah Tabungan', 'required|numeric');
+            $this->form_validation->set_rules('id_jenis_tabungan', 'Jenis Tabungan', 'required');
 
-        $this->Tabungan_model->insert_tabungan($data);
-        $this->session->set_flashdata('success', 'Data tabungan berhasil ditambahkan');
-        redirect('Tabungan_controller/index'); // Redirect to tabungan list page
+            if ($this->form_validation->run()) {
+                $insert_data = array(
+                    'id_user' => $this->input->post('id_user'),
+                    'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
+                    'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
+                );
+
+                $this->Tabungan_model->insert_tabungan($insert_data);
+                $this->session->set_flashdata('success', 'Data tabungan berhasil ditambahkan');
+                redirect('Tabungan_controller/index');
+            }
+        }
+
+        $this->load->view('tabungan/tambah_tabungan', $data);
     }
-
-    $this->load->view('tabungan/tambah_tabungan', $data);
-}
 
     public function edit($id){
         $anggota = $this->Anggota_model; //object model
