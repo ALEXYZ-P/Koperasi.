@@ -60,7 +60,77 @@ class Pegawai_controller extends MY_Controller
         }
     }
 
-	public function update($id = null)
+	/**public function edit($id)
+	{
+		//mengambil data dari model berdasarkan ID
+		$data['user'] = $this->model->get_data($this->table, ['id_user' => $id])->row();
+	
+		//mengirimkan data user tersebut ke view
+		$this->load->view('pegawai/edit_pegawai', $data);
+	}
+
+public function update()
+{
+	if(isset($_POST['edit']))
+	{
+		//mengambil data email, password, nama, dan id dari client side
+		$id_user = $this->input->post('id_user');
+		$email = $this->input->post('email');
+		$nohp = $this->input->post('nohp');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$nia = $this->input->post('nia');
+		$nama = $this->input->post('nama');
+		$jenis_kelamin = $this->input->post('jenis_kelamin');
+		$alamat = $this->input->post('alamat');
+		$tempat_lahir = $this->input->post('tempat_lahir');
+		$birthday = $this->input->post('birthday');
+		
+		
+
+
+		//untuk cek apakah email, password, dan nama sudah terisi
+		if($email && $nohp && $username && $password && $nia && $nama && $jenis_kelamin && $alamat && $tempat_lahir && $birthday )
+        {
+            if(strlen($password) > 3)
+            {
+                $data = [
+                    'email'=>$email,
+                    'nohp'=>$nohp,
+                    'username'=>$username,
+                    'password'=>$password,
+                    'nia'=>$nia,
+                    'nama'=>$nama,
+                    'jenis_kelamin'=>$jenis_kelamin,
+                    'alamat'=>$alamat,
+                    'tempat_lahir'=>$tempat_lahir,
+                    'birthday'=>$birthday
+                ];
+
+
+
+				//memanggil function update_data pada model
+				$this->model->update_data($this->table, $data, ['id_user' => $id_user]);
+			}
+		}
+		redirect('Pegawai_controller/index');
+	}
+}
+*/
+
+	function edit($id){
+		$where = array('id_user' => $id);
+		$data['user'] = $this->Pegawai_model->edit_data($where,'user')->result();
+		$this->load->view('pegawai/edit_pegawai', $data);
+	}
+
+	function update_data($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+
+		redirect(Pegawai_controller/index);
+	}	
+	/**public function update($id = null)
     {
         if (!isset($id)) redirect('Pegawai_controller/index');
        
@@ -71,7 +141,7 @@ class Pegawai_controller extends MY_Controller
         if ($validation->run()) {
             $user->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-			redirect('Pegawai_controller/index');
+			
         }
 
         $data["user"] = $user->getById($id);
@@ -79,6 +149,7 @@ class Pegawai_controller extends MY_Controller
         
         $this->load->view("pegawai/edit_pegawai", $data);
     }
+	*/
 
     /**public function update($id){
 		$this->load->view('pegawai/edit_pegawai', $data);
@@ -97,7 +168,6 @@ class Pegawai_controller extends MY_Controller
     }
 	*/
 
-<<<<<<< HEAD
 	public function delete($id=null)
 	{
 		if (!isset($id)) show_404();
@@ -106,18 +176,6 @@ class Pegawai_controller extends MY_Controller
 			redirect(site_url('Pegawai_controller/index'));
 		}
 	}
-=======
-    public function deleteAndMove($id) {
-        $userData = $this->Pegawai_model->getById($id);
-
-        if ($userData) {
-            /*$this->Pegawai_model->move($userData); // Pindahkan ke trash*/
-            $this->Pegawai_model->delete($id); // Hapus dari user
-
-            redirect('Pegawai_controller/index'); // Alihkan ke halaman yang sesuai
-        }
-    }
->>>>>>> 598e047d90bb018e0a2e113bbd94e563e3d524d8
 
 	/**public function delete($id_user) {
         $this->db->where('id_user', $id_user);

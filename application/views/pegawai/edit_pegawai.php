@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <section class="content-header">
       <h1>
-        Edit
+        Kelola
         <small>Data Pegawai</small>
       </h1>
       <ol class="breadcrumb">
@@ -86,19 +86,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <!--<form role="form" action="<?php echo base_url('Pegawai_controller/update/'.$user->id_user) ?>" method="post">-->
-            <form action="" method="post" enctype="multipart/form-data">
+            <?php foreach($user as $u){ ?>
+            <form action="<?php echo base_url(). 'Pegawai_controller/update'; ?>" method="post">
+
+            <!--<form role="form" action="<?php echo base_url('Pegawai_controller/update/'.$user->id_user) ?>" method="post">--->
+            <!--<form action="" method="post" enctype="multipart/form-data">-->
 						<!-- Note: atribut action dikosongkan, artinya action-nya akan diproses 
 							oleh controller tempat vuew ini digunakan. Yakni index.php/admin/products/edit/ID --->
 
               
               <div class="box-body">
-
-              <input type="hidden" name="id_user" value="<?php echo $user->id_user?>" />
+              
+              <input type="hidden" name="id_user" value="<?php echo $u->id_user?>">
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email" value="<?php echo $user->email ?>"/>
+                    <input name="email" class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" placeholder="Email" type="email" value="<?php echo $u->email ?>">
                     <div class="invalid-feedback">
                       <?php echo form_error('email') ?>
                     </div>
@@ -106,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label>Phone Number</label>
-                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text" value="<?php echo $user->nohp ?>"/>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text" value="<?php echo $u->nohp ?>">
                     <div class="invalid-feedback">
                       <?php echo form_error('nohp') ?>
                     </div>
@@ -114,7 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label>Username</label>
-                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text" value="<?php echo $user->username ?>"/>
+                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text" value="<?php echo $u->username ?>">
                     <div class="invalid-feedback">
                       <?php echo form_error('username') ?>
                     </div>
@@ -122,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label>Password</label>
-                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password" />
+                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password">
                     <div class="invalid-feedback">
                       <?php echo form_error('password') ?>
                     </div>
@@ -130,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label>NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text" value="<?php echo $user->nia ?>"/>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text" value="<?php echo $u->nia ?>">
                     <div class="invalid-feedback">
                       <?php echo form_error('nia') ?>
                     </div>
@@ -138,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label>Nama</label>
-                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text" value="<?php echo $user->nama ?>"/>
+                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text" value="<?php echo $u->nama ?>">
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
                     </div>
@@ -148,13 +151,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label>Gender</label>
                     <div class="radio">
                       <label>
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" value="<?php echo $user->jenis_kelamin ?>">
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki"  <?php if ($u->jenis_kelamin === 'Laki-Laki') echo 'checked' ?>>
                         Laki-Laki
                       </label>
                     </div>
                     <div class="radio">
                       <label>
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Perempuan"value="<?php echo $user->jenis_kelamin ?>">
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Perempuan" <?php if ($u->jenis_kelamin === 'Perempuan') echo 'checked' ?>>
                         Perempuan
                       </label>
                     </div>
@@ -162,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text" value="<?php echo $user->alamat ?>"/>
+                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text" value="<?php echo $u->alamat ?>">
                     <div class="invalid-feedback">
                       <?php echo form_error('alamat')?>
                     </div>
@@ -172,11 +175,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <div class="form-group">
                     <label>Tempat, tanggal Lahir</label>
                     <div class="input-container " >
-                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text" value="<?php echo $user->tempat_lahir ?>"/>
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text" value="<?php echo $u->tempat_lahir ?>">
                       <div class="invalid-feedback">
                       <?php echo form_error('tempat_lahir')?>
                       </div>
-                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date" value="<?php echo $user->birthday ?>"/>
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date" value="<?php echo $u->birthday ?>">
                       <div class="invalid-feedback">
                       <?php echo form_error('birthday')?>
                       </div>
@@ -186,10 +189,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Update</button>
+                <!--<button class="btn btn-success" name="save" type="save"><i class="fa fa-fw fa-plus"></i>Update</button>-->
+                <i class="fa fa-fw fa-plus"></i><input class="btn btn-success" name="save" type="submit" value="save">
                 <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>cancle</a>
               </div>
             </form>
+            <?php } ?>
           </div>
           <!-- /.box -->
 

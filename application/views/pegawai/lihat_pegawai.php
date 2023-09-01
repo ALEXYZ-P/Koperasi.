@@ -71,20 +71,12 @@
                         <td><?php cetak($value->alamat)  ?></td>
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
-<<<<<<< HEAD
-                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/update/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
                           <!--<a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>-->
                           
                           <a onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Hapus</a>
 
     
-=======
-                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                          <a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/deleteAndMove/'.$value->id_user); ?>" onclick="return confirm('Are you sure you want to delete this data and move it to trash?')">
-                            <i class="fa fa-fw fa-trash"></i> Hapus </a>
-                                              
-                  
->>>>>>> 598e047d90bb018e0a2e113bbd94e563e3d524d8
                           <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
                         </td>
                       </tr>
