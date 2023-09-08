@@ -20,7 +20,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="icon fa fa-info"></i>Alert!</h4>
             <?php echo $this->session->flashdata('success'); ?><br>
-            <a href="<?php echo base_url('Anggota_controller/detail/'.$pasangan->id_anggota) ?>">Saya Mengerti</a>
+            <a href="<?php echo base_url('Anggota_controller/detail/'.$user->id_user) ?>">Saya Mengerti</a>
           </div>
         </div>
       <?php endif; ?>

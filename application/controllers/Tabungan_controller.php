@@ -9,11 +9,12 @@ class Tabungan_controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        
+        $this->load->library('form_validation');
         $this->load->model("Tabungan_model");
         $this->load->model("Anggota_model");
         $this->load->model("Jenis_model");
-        $this->load->library('form_validation');
+        
+        
     }
 
     public function index()
@@ -32,15 +33,74 @@ class Tabungan_controller extends MY_Controller
         $this->load->view("tabungan/detail_tabungan", $data);
     }
 
-    public function add()
+    /**public function insertTabungan() {
+        $this->load->view('tabungan/tambah_tabungan');
+        $id_user = $this->input->post('id_user');
+        $jumlah_tabungan = $this->input->post('jumlah_tabungan');
+        $id_jenis_tabungan = $this->input->post('id_jenis_tabungan');
+
+        $nama_user = $this->Anggota_model->getUserNameById($id_user);
+        $jenis_tabungan = $this->Tabungan_model->getJenisTabunganNameById($id_jenis_tabungan);
+
+        if ($nama_user && $jenis_tabungan) {
+            $data = array(
+                'id_user' => $id_user,
+                'jumlah_tabungan' => $jumlah_tabungan,
+                'id_jenis_tabungan' => $id_jenis_tabungan
+            );
+
+            if ($this->Tabungan_model->insertTabungan($data)) {
+                echo "Data tabungan berhasil disimpan.";
+                redirect('Tabungan_controller/index');
+            } else {
+                echo "Gagal menyimpan data tabungan.";
+            }
+        } else {
+            echo "ID user atau ID jenis tabungan tidak valid.";
+        }
+        $this->load->view('tabungan/tambah_tabungan');
+    }
+    */
+
+    
+
+    
+
+    public function add() {  
+        $data['users'] = $this->Anggota_model->get_users();
+        $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
+    
+        $this->form_validation->set_rules('jumlah_tabungan', 'Jumlah Tabungan', 'required|numeric');
+        $validation = $this->form_validation;
+    
+        if ($this->form_validation->run() === FALSE) {
+            // Validation failed, show the form again with errors
+            $this->load->view('tabungan/tambah_tabungan', $data); // Pass $data to the view
+        } else {
+            
+            // Validation passed, insert data into the "tabungan" table
+            $tabungan_data = array( // Use a different variable name
+                'id_user' => $this->input->post('id_user'),
+                'jumlah_tabungan' => $this->input->post('jumlah_tabungan'),
+                'id_jenis_tabungan' => $this->input->post('id_jenis_tabungan')
+            );
+    
+            $this->Tabungan_model->insert_tabungan($tabungan_data); 
+            
+            $this->session->set_flashdata('success', 'Tabungan added successfully');
+            redirect('tabungan_controller/index');
+        }
+    }
+    
+    
+
+    /**public function add()
     {
-        $data['users'] = $this->Tabungan_model->get_users();
+        $data['users'] = $this->Anggota_model->get_users();
         $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 
         if ($this->input->post('submit')) {
-            $this->form_validation->set_rules('id_user', 'User', 'required');
-            $this->form_validation->set_rules('jumlah_tabungan', 'Jumlah Tabungan', 'required|numeric');
-            $this->form_validation->set_rules('id_jenis_tabungan', 'Jenis Tabungan', 'required');
+            $validation = $this->form_validation;
 
             if ($this->form_validation->run()) {
                 $insert_data = array(
@@ -56,7 +116,7 @@ class Tabungan_controller extends MY_Controller
         }
 
         $this->load->view('tabungan/tambah_tabungan', $data);
-    }
+    }*/
 
     public function edit($id){
         $anggota = $this->Anggota_model; //object model

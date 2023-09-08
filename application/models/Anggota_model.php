@@ -76,12 +76,17 @@ class Anggota_model extends CI_Model
 		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
 		return $this->db->get($this->_table)->result();
 	}
-
+	
 	public function get_users() {
+			$this->db->where('level', 'member');
+			$query = $this->db->get('user');
+			return $query->result_array();
+		}
+	/**public function get_users() {
         $this->db->select('id_user, nama'); // Select only id_user and nama columns
         $query = $this->db->get('user'); // Replace 'user' with your actual table name
         return $query->result();
-    }
+    }*/
 
 	public function add(){
 		$this->db->insert('user', $data);
@@ -94,7 +99,19 @@ class Anggota_model extends CI_Model
         $this->db->delete('user');
     }
 
-	// Bagian kode lainnya...
+	
+
+	/**public function getUserNameById($id_user) {
+        $this->db->select('nama');
+        $this->db->where('level', 'member');
+        $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            return $query->row()->nama;
+        }
+        return false;
+    }
+	*/
+
 }
 
 

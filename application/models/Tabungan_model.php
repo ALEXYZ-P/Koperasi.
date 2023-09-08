@@ -16,12 +16,12 @@ class Tabungan_model extends CI_Model
 		
 		return $this->db->get($this->_table)->result();
 	}
-
-	public function get_users() {
+    
+	/**public function get_users() {
 		$this->db->where('level', 'member');
         $query = $this->db->get('user');
         return $query->result_array();
-    }
+    }*/
 
     public function get_jenis_tabungan() { 
         $query = $this->db->get('jenis_tabungan');
@@ -45,6 +45,21 @@ public function getListJenis(){
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	/**public function insertTabungan($data) {
+        return $this->db->insert('tabungan', $data);
+    }
+
+    public function getJenisTabunganNameById($id_jenis_tabungan) {
+        $this->db->select('nama_jenis_tabungan');
+        $this->db->where('id_jenis_tabungan', $id_jenis_tabungan);
+        $query = $this->db->get('jenis_tabungan');
+        if ($query->num_rows() > 0) {
+            return $query->row()->nama_jenis_tabungan;
+        }
+        return false;
+    }
+	*/
 }
 
 ?>
