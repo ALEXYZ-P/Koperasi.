@@ -118,18 +118,35 @@ public function update()
 }
 */
 
-	function edit($id){
-		$where = array('id_user' => $id);
-		$data['user'] = $this->Pegawai_model->edit_data($where,'user')->result();
-		$this->load->view('pegawai/edit_pegawai', $data);
-	}
+	public function edit($id)
+{
+    $data['user'] = $this->Pegawai_model->getById($id);
+    $this->load->view('pegawai/edit_pegawai', $data);
+}
 
-	function update_data($where,$data,$table){
-		$this->db->where($where);
-		$this->db->update($table,$data);
+public function update($id)
+{
+    // Ambil data yang diinput dari form
+    $data = array(
+        'email' => $this->input->post('email'),
+        'nohp' => $this->input->post('nohp'),
+        'username' => $this->input->post('username'),
+        'password' => $this->input->post('password'),
+        'nia' => $this->input->post('nia'),
+        'nama' => $this->input->post('nama'),
+        'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+        'alamat' => $this->input->post('alamat'),
+        'tempat_lahir' => $this->input->post('tempat_lahir'),
+        'birthday' => $this->input->post('birthday')
+    );
 
-		redirect(Pegawai_controller/index);
-	}	
+    // Panggil model untuk melakukan update data
+    $this->Pegawai_model->update_data($id, $data);
+
+    // Redirect ke halaman daftar pegawai setelah update
+    redirect(base_url('Pegawai_controller/index'));
+}
+
 	/**public function update($id = null)
     {
         if (!isset($id)) redirect('Pegawai_controller/index');
