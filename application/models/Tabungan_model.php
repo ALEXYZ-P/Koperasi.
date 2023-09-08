@@ -29,7 +29,10 @@ class Tabungan_model extends CI_Model
     }
 
     public function insert_tabungan($data) {
-        $this->db->insert('tabungan', $data);
+        // Attempt to insert data into the "tabungan" table
+        $inserted = $this->db->insert('tabungan', $data);
+
+        return $inserted; // Return true if successful, false otherwise
     }
 
 	public function getTabunganByIdMember($id_user){

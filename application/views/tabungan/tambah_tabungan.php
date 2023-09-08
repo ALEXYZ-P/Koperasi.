@@ -55,7 +55,7 @@
                                     <label for="id_user">User</label>
                                     <select name="id_user" id="id_user" class="form-control">
                                         <?php foreach ($users as $user) : ?>
-                                            <option value="<?php echo $user['id']; ?>"><?php echo $user['nama']; ?></option>
+                                            <option value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -69,7 +69,7 @@
                                     <label for="id_jenis_tabungan">Jenis Tabungan</label>
                                     <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control">
                                         <?php foreach ($jenis_tabungan as $jenis) : ?>
-                                            <option value="<?php echo $jenis['id']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
+                                            <option value="<?php echo $jenis['id_jenis_tabungan']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
