@@ -104,24 +104,10 @@ class Pegawai_model extends CI_Model
 		return $this->db->get_where($_table,$where);
 	}
 
-	public function update_data($id, $data)
-{
-    // Tabel database yang digunakan (sesuaikan dengan nama tabel Anda)
-    $table = 'user';
-
-    // Mengecek apakah data dengan ID yang diberikan ada dalam database
-    $this->db->where('id_user', $id);
-    $query = $this->db->get($table);
-
-    if ($query->num_rows() > 0) {
-        // Data dengan ID tersebut ditemukan, lakukan update
+	public function update_data($id, $data) {
         $this->db->where('id_user', $id);
-        $this->db->update($table, $data);
-        return true; // Update berhasil
-    } else {
-        return false; // Data tidak ditemukan
+        $this->db->update('user', $data);
     }
-}
 
 
 	/**public function add()
