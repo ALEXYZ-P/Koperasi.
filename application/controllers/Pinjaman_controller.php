@@ -28,25 +28,37 @@ class Pinjaman_controller extends MY_Controller
         $this->load->view("simpanan_wajib/detail_simpanan_wajib", $data);
     }
 
-    public function list_anggota(){
-    	$data['anggota'] = $this->Anggota_model->getAll();
-        $this->load->view("pinjaman/list_anggota_pinjaman", $data);
-    }
-
-    public function add($id)
-    {   
-        $anggota = $this->Anggota_model;
-        $pinjaman = $this->Pinjaman_model;
+    public function add() {  
+        $data['users'] = $this->Anggota_model->get_users();
+    
+        $this->form_validation->set_rules('jumlah_pinjaman', 'jumlah_pinjaman', 'required|numeric');
         $validation = $this->form_validation;
-        $validation->set_rules($pinjaman->rules());
+    
+        if ($this->form_validation->run() === FALSE) {
+            // Validation failed, show the form again with errors
+            $this->load->view('pinjaman/tambah_pinjaman', $data); // Pass $data to the view
+        } else {
+            
+            // Validation passed, insert data into the "pinjaman" table
+            $pinjaman_data = array( // Use a different variable name
+                'id_user' => $this->input->post('id_user'),
+                'no_pinjaman' => $this->input->post('no_pinjaman'),
+                'jumlah_pinjaman' => $this->input->post('jumlah_pinjaman'),
+                'lama' => $this->input->post('lama'),
+                'bunga' => $this->input->post('bunga')
+            );
 
-        if ($validation->run()) {
-            $pinjaman->save();
-            $this->session->set_flashdata('success', 'Tambah Pinjaman Sebesar Rp. '.$pinjaman->jumlah_pinjaman.' Berhasil Disimpan');
-            redirect('Pinjaman_controller/index');
+            $cicilan = ($pinjaman_data['jumlah_pinjaman'] / $pinjaman_data['lama']) + (($pinjaman_data['jumlah_pinjaman'] * $pinjaman_data['bunga'] / 100) / $pinjaman_data['lama']);
+            $pinjaman_data['cicilan'] = $cicilan;
+
+            $total_pinjaman = ($pinjaman_data['cicilan'] * $pinjaman_data['lama']);
+            $pinjaman_data['total_pinjaman'] = $total_pinjaman;
+    
+            $this->Pinjaman_model->insert_pinjaman($pinjaman_data); 
+            
+            $this->session->set_flashdata('success', 'Pinjaman added successfully');
+            redirect('pinjaman_controller/index');
         }
-        $data['anggota'] = $this->Anggota_model->getById($id);
-        $this->load->view("pinjaman/tambah_pinjaman", $data);
     }
 
     public function edit($id){

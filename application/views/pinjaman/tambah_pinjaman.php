@@ -52,49 +52,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('Pinjaman_controller/add/'.$anggota->id_anggota) ?>" method="post">
-              <input type="hidden" name="id_anggota" value="<?php echo $anggota->id_anggota?>" />
+            <form action="<?php echo base_url('Pinjaman_controller/add'); ?>" method="post">
+                                <div class="form-group">
+                                    <label for="id_user">User</label>
+                                    <select name="id_user" id="id_user" class="form-control">
+                                        <?php foreach ($users as $user) : ?>
+                                            <option value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
 
-              <div class="box-body">
-                <div class="form-group">
-                  <label>No Pinjaman</label>
-                  <input name="no_pinjaman" class="form-control <?php echo form_error('no_pinjaman') ? 'is-invalid':'' ?>" placeholder="Masukan No Pinjaman" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('no_pinjaman') ?>
-                  </div>
-                </div>
+                                <div class="form-group">
+                                    <label for="no_pinjaman">No Pinjaman</label>
+                                    <input name="no_pinjaman" id="no_pinjaman" class="form-control" placeholder="No pinjaman" type="text" required />
+                                </div>
 
-                <div class="form-group">
-                  <label>Jumlah Pinjaman</label>
-                  <input name="jumlah_pinjaman" class="form-control <?php echo form_error('jumlah_pinjaman') ? 'is-invalid':'' ?>" placeholder="Masukan Jumlah Peminjaman Tanpa (.)" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('jumlah_pinjaman') ?>
-                  </div>
-                </div>
+                                <div class="form-group">
+                                    <label for="jumlah_pinjaman">Jumlah Pinjaman</label>
+                                    <input name="jumlah_pinjaman" id="jumlah_pinjaman" class="form-control" placeholder="Jumlah pinjaman" step="0,1" type="number" required />
+                                </div>
 
-                <div class="form-group">
-                  <label>Lama Peminjaman (Berapa Kali Angsuran)</label>
-                  <input name="lama" class="form-control <?php echo form_error('lama') ? 'is-invalid':'' ?>" placeholder="Masukan Lama Peminjaman" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('lama') ?>
-                  </div>
-                </div>
+                                <div class="form-group">
+                                    <label for="lama">Lama (bulan)</label>
+                                    <input name="lama" id="lama" class="form-control" placeholder="Lama (bulan)" type="number" required />
+                                </div>
 
-                <div class="form-group">
-                  <label>Bunga</label>
-                  <input name="bunga" class="form-control <?php echo form_error('bunga') ? 'is-invalid':'' ?>" placeholder="Masukan Jumlah Bunga" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('bunga') ?>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
+                                <div class="form-group">
+                                    <label for="bunga">Bunga (% per bulan)</label>
+                                    <input name="bunga" id="bunga" class="form-control" placeholder="Bunga (% per bulan)" type="number" required />
+                                </div>
 
-              <div class="box-footer">
-                <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <button class="btn btn-danger" type="reset"><i style="margin-left: -3px;" class="fa fa-fw fa-times"></i>Batal</button>
-              </div>
-            </form>
+                                <button class="btn btn-success" type="submit" name="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
+                                <a href="<?php echo base_url('Pinjaman_controller/index') ?>" class="btn btn-danger" type="button"><i style="margin-left: -3px;"></i>Cancel</a>
+                            </form>
           </div>
           <!-- /.box -->
 
