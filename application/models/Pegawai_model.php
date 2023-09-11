@@ -105,9 +105,9 @@ class Pegawai_model extends CI_Model
 	}
 
 	public function update_data($id, $data) {
-        $this->db->where('id_user', $id);
-        $this->db->update('user', $data);
-    }
+    $this->db->where('id_user', $id);
+    return $this->db->update('user', $data);
+}
 
 
 	/**public function add()

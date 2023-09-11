@@ -124,41 +124,25 @@ public function update()
        				$this->load->view('pegawai/edit_pegawai', $data);
                 }
                 
-                public function update($id)
-                {
-                    $this->form_validation->set_rules('email', 'email', 'required|valid_email');
-                    $this->form_validation->set_rules('nohp', 'nohp', 'required');
-                    $this->form_validation->set_rules('username', 'username', 'required');
-                    $this->form_validation->set_rules('password', 'password', 'required');
-                    $this->form_validation->set_rules('nia', 'nia', 'required');
-                    $this->form_validation->set_rules('nama', 'nama', 'required');
-                    $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'required');
-                    $this->form_validation->set_rules('alamat', 'alamat', 'required');
-                    $this->form_validation->set_rules('tempat_lahir', 'tempat_lahir', 'required');
-                    $this->form_validation->set_rules('birthday', 'birthday', 'required');
+                public function update() {
+   					 $id_user = $this->input->post('id_user');
+   					 
+   					 $data = array(
+   					     'email' => $this->input->post('email'),
+   					     'nohp' => $this->input->post('nohp'),
+   					     'username' => $this->input->post('username'),
+   					     'nia' => $this->input->post('nia'),
+   					     'nama' => $this->input->post('nama'),
+   					     'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+  					     'alamat' => $this->input->post('alamat'),
+   					     'tempat_lahir' => $this->input->post('tempat_lahir'),
+   					     'birthday' => $this->input->post('birthday')
+   					 );
+					
+   					 $this->Pegawai_model->update_data($id_user, $data);
 
-                    if ($this->form_validation->run() == FALSE) {
-                    	$data["pegawai"] = $this->Pegawai_model->getstaff();
-        				$this->load->view("pegawai/edit_pegawai", $data);
-                    } else {
-                    	$data = array(
-                    		'email' => $this->input->post('email'),
-                    		'nohp' => $this->input->post('nohp'),
-                    		'username' => $this->input->post('username'), 	
-                    		'password' => md5($this->input->post('password')),
-                    		'nia' => $this->input->post('nia'),
-                    		'nama' => $this->input->post('nama'),
-                    		'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-                    		'alamat' => $this->input->post('alamat'),
-                    		'tempat_lahir' => $this->input->post('tempat_lahir'),
-                    		'birthday' => $this->input->post('birthday')
-                    	);
-
-                    	$this->Pegawai_model->update_data($id, $data);
-
-                    	redirect('Pegawai_controller/index');
-                    }
-}
+  					 redirect('Pegawai_controller/index');
+}					
 
 	/**public function update($id = null)
     {
