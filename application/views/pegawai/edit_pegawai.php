@@ -70,8 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-             <?php foreach($pegawai as $pgw){ ?>
-            <form action="<?php echo base_url(). 'Pegawai_controller/update'; ?>" method="post">
+             <?php foreach($pegawai as $pgw) : ?>
+            <form action="<?php echo base_url('Pegawai_controller/update'); ?>" method="post">
               <div class="box-body">
               
               <input type="hidden" name="id_user" value="<?php echo $pgw->id_user?>">
@@ -171,7 +171,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>cancel</a>
               </div>
             </form>
-            <?php } ?>
+            <?php endforeach; ?>
             </div>
             <!-- /.box -->
 
