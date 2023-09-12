@@ -33,12 +33,9 @@ class Pinjaman_model extends CI_Model
         return $inserted; // Return true if successful, false otherwise
     }
 
-	public function getPinjamanByIdMember($id_user){
-		$this->db->where('id_user', $id_user);
-		
-        $query = $this->db->get('pinjaman');
-        return $query->result();
-	}
+	public function getPinjamanById($id_user) {
+        return $this->db->get_where('pinjaman', array('id_user' => $id_user))->result();
+    }
 
 	public function detail_simpanan_wajib($id){
 		$this->db->select('*');

@@ -63,13 +63,15 @@
                   </thead>
                   <tbody>
                     <?php $no = 1;?>
+                    <?php foreach ($user as $us) : ?>
                     <?php foreach ($pinjaman as $value): ?>
+                      <?php if ($value->id_user === $us->id_user): ?>
                       <tr>
                         <td><?php cetak($no++) ?></td>
-                         <td><?php cetak($value->nama)  ?></td>
+                        <td><?php cetak($us->nama)  ?></td>
                         <td><?php cetak($value->no_pinjaman)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->tanggal_peminjaman)  ?></td>
+                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
                         <td>
@@ -78,6 +80,8 @@
                           
                         </td>
                       </tr>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
                     <?php endforeach; ?>
                   </tbody>
                   <tfoot>

@@ -51,8 +51,8 @@ class Pinjaman_controller extends MY_Controller
             $cicilan = ($pinjaman_data['jumlah_pinjaman'] / $pinjaman_data['lama']) + (($pinjaman_data['jumlah_pinjaman'] * $pinjaman_data['bunga'] / 100) / $pinjaman_data['lama']);
             $pinjaman_data['cicilan'] = $cicilan;
 
-            $total_pinjaman = ($pinjaman_data['cicilan'] * $pinjaman_data['lama']);
-            $pinjaman_data['total_pinjaman'] = $total_pinjaman;
+            $total_pinjaman = $pinjaman_data['cicilan'] * $pinjaman_data['lama'];
+            $pinjaman_data['total_peminjaman'] = $total_pinjaman;
     
             $this->Pinjaman_model->insert_pinjaman($pinjaman_data); 
             
