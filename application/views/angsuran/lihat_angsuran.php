@@ -64,24 +64,30 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no = 1;?>
-                    <?php foreach ($angsuran as $value): ?>
-                      <tr>
-                        <td><?php cetak($no++) ?></td>
-                        <td><?php cetak($value->nama)  ?></td>
-                        <td><?php cetak($value->no_pinjaman)  ?></td>
-                        <td><?php cetak($value->no_angsuran)  ?></td>
-                        <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
-                        <td><?php cetak($value->lama)  ?></td>
-                        <td><?php cetak($value->bunga)  ?></td>
-                        <td><?php echo "Rp. " . (number_format($value->jumlah_angsuran,2,',','.')) ?></td>
-                        <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Angsuran_controller/edit/'.$value->id_angsuran) ?>"><i class="fa fa-fw fa-edit"></i></a>
-                          <a href="#!" onclick="deleteConfirm('<?php echo site_url('Angsuran_controller/delete/'.$value->id_angsuran) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i></a>
-                        </td>
-                      </tr>
+                    <?php $no = 1; ?>
+                    <?php foreach ($user as $users): ?>
+                      <?php foreach ($angsuran as $value): ?>
+                        <?php foreach ($pinjaman as $pinjam): ?>
+                          <?php if ($pinjam->id_user === $users->id_user && $value->id_pinjaman === $pinjam->id_pinjaman): ?>
+                            <tr>
+                              <td><?php echo $no++ ?></td>
+                              <td><?php echo $users->nama ?></td>
+                              <td><?php echo $pinjam->no_pinjaman ?></td>
+                              <td><?php echo $value->no_angsuran ?></td>
+                              <td><?php echo $pinjam->jumlah_pinjaman ?></td>
+                              <td><?php echo $pinjam->tanggal_pinjaman ?></td>
+                              <td><?php echo $pinjam->lama ?></td>
+                              <td><?php echo $pinjam->bunga ?></td>
+                              <td><?php echo $value->jumlah_angsuran ?></td>
+                             
+                              <td>
+                                <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Tabungan</a>
+                              </td>
+                            </tr>
+                          <?php endif; ?>
+                      <?php endforeach; ?>
                     <?php endforeach; ?>
+                  <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>

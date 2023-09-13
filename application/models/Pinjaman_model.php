@@ -16,44 +16,26 @@ class Pinjaman_model extends CI_Model
 	public $lama;
 	public $bunga;
 
-	
-
-	public function rules()
-	{
-		return [
-			['field' => 'id_user',
-			'label' => 'id_user',
-			'rules' => 'required'],
-
-			['field' => 'no_pinjaman',
-			'label' => 'no_pinjaman',
-			'rules' => 'required'],
-
-			['field' => 'jumlah_pinjaman',
-			'label' => 'jumlah_pinjaman',
-			'rules' => 'required|numeric'],
-
-			['field' => 'lama',
-			'label' => 'lama',
-			'rules' => 'required|numeric'],
-
-			['field' => 'bunga',
-			'label' => 'bunga',
-			'rules' => 'required|numeric'],
-
-		];
-	}
-
 	public function getALL(){
 		return $this->db->get($this->_table)->result();
 	}
 
-	public function getPinjamanByIdMember($id_user){
-		$this->db->where('id_user', $id_user);
-		
-        $query = $this->db->get('pinjaman');
-        return $query->result();
+	public function get_users() {
+    // Ambil daftar pengguna dari database
+    $query = $this->db->get('user');
+    return $query->result();
 	}
+
+	public function insert_pinjaman($pinjaman_data) {
+        // Attempt to insert data into the "tabungan" table
+        $inserted = $this->db->insert('pinjaman', $pinjaman_data);
+
+        return $inserted; // Return true if successful, false otherwise
+    }
+
+	public function getPinjamanById($id_user) {
+        return $this->db->get_where('pinjaman', array('id_user' => $id_user))->result();
+    }
 
 	public function detail_simpanan_wajib($id){
 		$this->db->select('*');
@@ -102,18 +84,6 @@ class Pinjaman_model extends CI_Model
 
 	public function getById($id){
 		return $this->db->get_where($this->_table, ["id_pinjaman" => $id])->row();
-	}
-
-	public function save(){
-		$post = $this->input->post();
-		$this->id_pinjaman = uniqid();
-		$this->id_anggota = $post["id_anggota"];
-		$this->no_pinjaman = $post["no_pinjaman"];
-		$this->jumlah_pinjaman = $post["jumlah_pinjaman"];
-		$this->tanggal_peminjaman = date('y-m-d');
-		$this->lama = $post["lama"];
-		$this->bunga = $post["bunga"];
-		$this->db->insert($this->_table, $this);
 	}
 	
 	public function update($id){
