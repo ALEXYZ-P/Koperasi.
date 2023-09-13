@@ -90,12 +90,10 @@ class Pegawai_model extends CI_Model
 
 	public function getstaff(){
 		$this->db->where('level', 'staff'); // Tambahkan kondisi untuk level
-		$query = $this->db->get('user');
-		return $query->result();
+		return $this->db->get($this->_table)->result();
 
 	}
 	
-
 	public function getById($id){
 		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
 	}
@@ -104,13 +102,45 @@ class Pegawai_model extends CI_Model
 		return $this->db->get_where($_table,$where);
 	}
 
+	public function get_staff_by_id($id_user) {
+        $this->db->where('id_user', $id_user);
+        $this->db->where('level', 'staff');
+        return $this->db->get('user')->row();
+    }
+
 	public function update_data($id, $data) {
     $this->db->where('id_user', $id);
     return $this->db->update('user', $data);
 }
 
+	function get_staff_id($id_user)
+	{
+		$query = $this->db->get_where('user', array('id_user' => $id_user));
+		return $query;
+	}
 
-	/**public function add()
+	function update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday)
+	{
+		
+		$data = array(
+		'id_user' => $id_user,
+		'email' => $email,
+		'nohp' => $nohp,
+		'username' => $username,	
+		'password' => $password,
+		'nia' => $nia,
+		'nama' => $nama,
+		'jenis_kelamin' => $jenis_kelamin,
+		'alamat' => $alamat,
+		'tempat_lahir' => $tempat_lahir,
+		'birthday' => $birthday,
+
+		);
+		$this->db->where('id_user', $id_user);
+		$this->db->update('user', $data);
+	}
+
+		/**public function add()
     {
         $post = $this->input->post();
         $this->id_user = uniqid();

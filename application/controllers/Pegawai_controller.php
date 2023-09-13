@@ -43,7 +43,7 @@ class Pegawai_controller extends MY_Controller
                 'email' => $this->input->post('email'),
                 'nohp' => $this->input->post('nohp'),
         		'username' => $this->input->post('username'),
-        		'password' => md5($this->input->post('password')), 
+        		'password' => md5($this->input->post('password')),
 				'nia' => $this->input->post('nia'),
         		'nama' => $this->input->post('nama'),
 				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
@@ -118,31 +118,49 @@ public function update()
                 }
                 */
                 
-                	public function edit($id)
-                {
-                    $data['pegawai'] = $this->Pegawai_model->getstaff();
-       				$this->load->view('pegawai/edit_pegawai', $data);
-                }
                 
-                public function update() {
-   					 $id_user = $this->input->post('id_user');
-   					 
-   					 $data = array(
-   					     'email' => $this->input->post('email'),
-   					     'nohp' => $this->input->post('nohp'),
-   					     'username' => $this->input->post('username'),
-   					     'nia' => $this->input->post('nia'),
-   					     'nama' => $this->input->post('nama'),
-   					     'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-  					     'alamat' => $this->input->post('alamat'),
-   					     'tempat_lahir' => $this->input->post('tempat_lahir'),
-   					     'birthday' => $this->input->post('birthday')
-   					 );
+				
+				function edit_data()
+				{
+					$id_user = $this->uri->segment(3);
+					$result = $this->Pegawai_model->get_staff_id($id_user);
+					if ($result->num_rows() > 0) {
+					$i = $result->row_array();
+					$data = array(
+						'id_user'		=> $i['id_user'],
+						'email'  		=> $i['email'],
+						'nohp'     		=> $i['nohp'],
+						'username' 		=> $i['username'],
+						'password'  	=> $i['password'],
+						'nia'     		=> $i['nia'],
+						'nama'     		=> $i['nama'],
+						'jenis_kelamin' => $i['jenis_kelamin'],
+						'alamat'     	=> $i['alamat'],
+						'tempat_lahir'  => $i['tempat_lahir'],
+						'birthday'    	=> $i['birthday'],
+					);
+					$this->load->view('pegawai/edit_pegawai', $data);
+					} else {
+					echo "Data Was Not Found";
+					}
+				}
+				function update()
+				{
+					$id_user = $this->input->post('id_user'); 
+					$email = $this->input->post('email');
+   					$nohp = $this->input->post('nohp');
+   					$username = $this->input->post('username');
+					$password = $this->input->post('password');
+   					$nia = $this->input->post('nia');
+   					$nama = $this->input->post('nama');
+   					$jenis_kelamin = $this->input->post('jenis_kelamin');
+  					$alamat = $this->input->post('alamat');
+   					$tempat_lahir = $this->input->post('tempat_lahir');
+   					$birthday = $this->input->post('birthday');
 					
-   					 $this->Pegawai_model->update_data($id_user, $data);
-
-  					 redirect('Pegawai_controller/index');
-}					
+					$this->Pegawai_model->update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday);
+					redirect('Pegawai_controller/index');
+				}
 
 	/**public function update($id = null)
     {
