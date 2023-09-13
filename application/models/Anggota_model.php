@@ -82,6 +82,10 @@ class Anggota_model extends CI_Model
 			$query = $this->db->get('user');
 			return $query->result_array();
 		}
+
+	public function get_user_by_id($id_user) {
+      		return $this->db->where('id_user', $id_user)->get('user')->row_array();
+    }
 	/**public function get_users() {
         $this->db->select('id_user, nama'); // Select only id_user and nama columns
         $query = $this->db->get('user'); // Replace 'user' with your actual table name

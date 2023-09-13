@@ -16,10 +16,30 @@ class Angsuran_controller extends MY_Controller
 
 	public function index()
 	{
-		$data["angsuran"] = $this->Angsuran_model->getALL();
-		// var_dump($data);
-		$this->load->view("angsuran/lihat_angsuran", $data);
-	}
+		$data['angsuran'] = $this->AngsuranModel->get_data_angsuran();
+
+        // Iterasi untuk mengisi data tambahan ke dalam array $data['angsuran']
+        foreach ($data['angsuran'] as &$angsuran) {
+            // Ambil data pinjaman berdasarkan id_pinjaman dari angsuran
+            $pinjaman = $this->PinjamanModel->get_pinjaman_by_id($angsuran['id_pinjaman']);
+            
+            // Ambil data user berdasarkan id_user dari pinjaman
+            $user = $this->UserModel->get_user_by_id($pinjaman['id_user']);
+            
+            // Tambahkan data tambahan ke dalam array $angsuran
+            $angsuran['nama'] = $user['nama'];
+            $angsuran['no_pinjaman'] = $pinjaman['no_pinjaman'];
+            $angsuran['no_angsuran'] = $angsuran['no_angsuran'];
+            $angsuran['jumlah_pinjaman'] = $pinjaman['jumlah_pinjaman'];
+            $angsuran['tanggal_pinjaman'] = $pinjaman['tanggal_pinjaman'];
+            $angsuran['lama'] = $pinjaman['lama'];
+            $angsuran['bunga'] = $pinjaman['bunga'];
+            $angsuran['jumlah_angsuran'] = $angsuran['jumlah_angsuran'];
+        }
+
+        // Load view untuk menampilkan informasi pinjaman dan angsuran
+        $this->load->view('angsuran/lihat_angsuran', $data);
+    }
 
 	public function detail($id)
 	{

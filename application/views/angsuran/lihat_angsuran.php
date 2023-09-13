@@ -65,28 +65,22 @@
                   </thead>
                   <tbody>
                     <?php $no = 1; ?>
-                    <?php foreach ($user as $users): ?>
-                      <?php foreach ($angsuran as $value): ?>
-                        <?php foreach ($pinjaman as $pinjam): ?>
-                          <?php if ($pinjam->id_user === $users->id_user && $value->id_pinjaman === $pinjam->id_pinjaman): ?>
+                    <?php foreach($angsuran as $value) : ?>
                             <tr>
                               <td><?php echo $no++ ?></td>
-                              <td><?php echo $users->nama ?></td>
-                              <td><?php echo $pinjam->no_pinjaman ?></td>
+                              <td><?php echo $value->nama ?></td>
+                              <td><?php echo $value->no_pinjaman ?></td>
                               <td><?php echo $value->no_angsuran ?></td>
-                              <td><?php echo $pinjam->jumlah_pinjaman ?></td>
-                              <td><?php echo $pinjam->tanggal_pinjaman ?></td>
-                              <td><?php echo $pinjam->lama ?></td>
-                              <td><?php echo $pinjam->bunga ?></td>
+                              <td><?php echo $value->jumlah_pinjaman ?></td>
+                              <td><?php echo $value->tanggal_pinjaman ?></td>
+                              <td><?php echo $value->lama ?></td>
+                              <td><?php echo $value->bunga ?></td>
                               <td><?php echo $value->jumlah_angsuran ?></td>
                              
                               <td>
                                 <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Tabungan</a>
                               </td>
                             </tr>
-                          <?php endif; ?>
-                      <?php endforeach; ?>
-                    <?php endforeach; ?>
                   <?php endforeach; ?>
                   </tbody>
                   <tfoot>

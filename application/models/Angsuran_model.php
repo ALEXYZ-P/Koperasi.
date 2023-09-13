@@ -13,24 +13,6 @@ class Angsuran_model extends CI_Model
 	public $jumlah_angsuran;
 	public $tanggal;
 
-	public function rules()
-	{
-		return [
-			['field' => 'id_pinjaman',
-				'label' => 'id_pinjaman',
-				'rules' => 'required'],
-
-			['field' => 'no_angsuran',
-				'label' => 'no_angsuran',
-				'rules' => 'required'],
-
-			['field' => 'jumlah_angsuran',
-				'label' => 'jumlah_angsuran',
-				'rules' => 'required|numeric'],
-
-		];
-	}
-
 	public function getALL() {
     $this->db->select('angsuran.*, pinjaman.no_pinjaman, pinjaman.jumlah_pinjaman, pinjaman.tanggal_pinjaman, pinjaman.lama, pinjaman.bunga, user.nama');
     $this->db->from('angsuran');
@@ -39,6 +21,10 @@ class Angsuran_model extends CI_Model
     $query = $this->db->get();
     return $query->result();
 }
+
+	 public function get_data_angsuran() {
+        return $this->db->get('angsuran')->result_array();
+    }
 
 
 	/**
