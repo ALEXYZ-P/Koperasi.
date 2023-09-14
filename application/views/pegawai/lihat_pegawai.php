@@ -72,6 +72,11 @@
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
                           <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit_data/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
+<<<<<<< HEAD
+=======
+                          <!--<a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>-->
+                          
+>>>>>>> d19fe09688c6af5ca2dffc0a855c193fa5550aaf
                           <a onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Hapus</a>
                           <a class="btn btn-warning" href="<?php echo site_url('Pegawai_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-user"></i>Profile</a>
                         </td>
