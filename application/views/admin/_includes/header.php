@@ -63,7 +63,7 @@
                   <!-- <a href="#" class="btn btn-default btn-flat">Profile</a> -->
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo base_url('Auth/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo base_url('Auth/logout') ?>" class="btn btn-default btn-flat">Sign out   <i class="fa fa-sign-out"></i></a>
                 </div>
               </li>
             </ul>

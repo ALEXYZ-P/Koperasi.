@@ -89,7 +89,7 @@ class Pegawai_model extends CI_Model
 	
 
 	public function getstaff(){
-		$this->db->where('level', 'staff'); // Tambahkan kondisi untuk level
+		$this->db->where('level', 'staff');
 		return $this->db->get($this->_table)->result();
 
 	}
@@ -98,20 +98,21 @@ class Pegawai_model extends CI_Model
 		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
 	}
 
-	function edit_data($where,$_table){		
+	/**function edit_data($where,$_table){		
 		return $this->db->get_where($_table,$where);
-	}
+	}*/
 
-	public function get_staff_by_id($id_user) {
-        $this->db->where('id_user', $id_user);
-        $this->db->where('level', 'staff');
-        return $this->db->get('user')->row();
+	public function detail($id_user) {
+		$this->db->where('level', 'staff');
+		$this->db->where('id_user', $id_user);
+		return $this->db->get($this->_table)->row_array();
     }
+    
 
-	public function update_data($id, $data) {
-    $this->db->where('id_user', $id);
-    return $this->db->update('user', $data);
-}
+	/**public function update_data($id, $data) {
+		$this->db->where('id_user', $id);
+		return $this->db->update('user', $data);
+	}*/
 
 	function get_staff_id($id_user)
 	{

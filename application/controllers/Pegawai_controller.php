@@ -2,7 +2,7 @@
 
 class Pegawai_controller extends MY_Controller
 {
-	private $filename = "import_data"; // Kita tentukan nama filenya
+	private $filename = "import_data";
     public function __construct()
     {
         parent::__construct();
@@ -10,28 +10,14 @@ class Pegawai_controller extends MY_Controller
         $this->load->library('form_validation');
         $this->load->model("Pegawai_model");
     }
-//Dapaag
+
     public function index()
     {
         $data["user"] = $this->Pegawai_model->getstaff();
         $this->load->view("pegawai/lihat_pegawai", $data);
     }
 
- 	/**public function add()
-    {
-        $user = $this->Pegawai_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($user->rules());
-
-        if ($validation->run()) {
-            $user->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-        }
-
-        $this->load->view("pegawai/tambah_pegawai");
-    }
-*/
-    public function add() {
+	public function add() {
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $validation = $this->form_validation;
         //$validation->set_rules($user->rules());
@@ -54,11 +40,111 @@ class Pegawai_controller extends MY_Controller
             );
             
             $this->Pegawai_model->insert_user($data); // Insert data into the database
-            
+            $this->session->set_flashdata('success', 'Staff berhasil di hapus');
 			redirect('Pegawai_controller/index');
             // You can redirect to a success page or display a success message here
         }
     }
+	function edit_data()
+	{
+		$id_user = $this->uri->segment(3);
+		$result = $this->Pegawai_model->get_staff_id($id_user);
+		if ($result->num_rows() > 0) {
+		$i = $result->row_array();
+			$data = array(
+				'id_user'		=> $i['id_user'],
+				'email'  		=> $i['email'],
+				'nohp'     		=> $i['nohp'],
+				'username' 		=> $i['username'],
+				'password'  	=> $i['password'],
+				'nia'     		=> $i['nia'],
+				'nama'     		=> $i['nama'],
+				'jenis_kelamin' => $i['jenis_kelamin'],
+				'alamat'     	=> $i['alamat'],
+				'tempat_lahir'  => $i['tempat_lahir'],
+				'birthday'    	=> $i['birthday'],
+			);
+		$this->load->view('pegawai/edit_pegawai', $data);
+		} else {
+			echo "Data Was Not Found";
+		}
+	}
+
+	function update()
+	{
+		$id_user 		= $this->input->post('id_user'); 
+		$email 			= $this->input->post('email');
+   		$nohp 			= $this->input->post('nohp');
+   		$username 		= $this->input->post('username');
+		$password 		= $this->input->post('password');
+   		$nia 			= $this->input->post('nia');
+   		$nama 			= $this->input->post('nama');
+   		$jenis_kelamin 	= $this->input->post('jenis_kelamin');
+  		$alamat 		= $this->input->post('alamat');
+   		$tempat_lahir 	= $this->input->post('tempat_lahir');
+   		$birthday 		= $this->input->post('birthday');
+					
+		$this->Pegawai_model->update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday);
+		$this->session->set_flashdata('success', 'Staff berhasil di hapus');
+		redirect('Pegawai_controller/index');
+	}
+
+	public function delete($id=null)
+	{
+		if (!isset($id)) show_404();
+			
+		if ($this->Pegawai_model->delete($id)) {
+			$this->session->set_flashdata('success', 'Staff berhasil di hapus');
+			redirect(site_url('Pegawai_controller/index'));
+		}
+	}
+
+	public function detail($id_user) {
+		$id_user = $this->uri->segment(3);
+		$result = $this->Pegawai_model->get_staff_id($id_user);
+
+		if ($result->num_rows() > 0) {
+			$i = $result->row_array();
+			$data = array(
+				'id_user'		=> $i['id_user'],
+				'email'  		=> $i['email'],
+				'nohp'     		=> $i['nohp'],
+				'username' 		=> $i['username'],
+				'password'  	=> $i['password'],
+				'nia'     		=> $i['nia'],
+				'nama'     		=> $i['nama'],
+				'jenis_kelamin' => $i['jenis_kelamin'],
+				'alamat'     	=> $i['alamat'],
+				'tempat_lahir'  => $i['tempat_lahir'],
+				'birthday'    	=> $i['birthday'],
+				'tanggal'		=> $i['tanggal'],
+				'level'			=> $i['level']
+			);
+            $this->load->view("pegawai/detail_pegawai", $data);
+        } else {
+            echo "staff tidak ditemukan";
+        }
+        
+    }
+
+	
+
+
+ 	/**public function add()
+    {s
+        $user = $this->Pegawai_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($user->rules());
+
+        if ($validation->run()) {
+            $user->save();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+
+        $this->load->view("pegawai/tambah_pegawai");
+    }
+*/
+    
 
 	/**public function edit($id)
 	{
@@ -120,47 +206,7 @@ public function update()
                 
                 
 				
-				function edit_data()
-				{
-					$id_user = $this->uri->segment(3);
-					$result = $this->Pegawai_model->get_staff_id($id_user);
-					if ($result->num_rows() > 0) {
-					$i = $result->row_array();
-					$data = array(
-						'id_user'		=> $i['id_user'],
-						'email'  		=> $i['email'],
-						'nohp'     		=> $i['nohp'],
-						'username' 		=> $i['username'],
-						'password'  	=> $i['password'],
-						'nia'     		=> $i['nia'],
-						'nama'     		=> $i['nama'],
-						'jenis_kelamin' => $i['jenis_kelamin'],
-						'alamat'     	=> $i['alamat'],
-						'tempat_lahir'  => $i['tempat_lahir'],
-						'birthday'    	=> $i['birthday'],
-					);
-					$this->load->view('pegawai/edit_pegawai', $data);
-					} else {
-					echo "Data Was Not Found";
-					}
-				}
-				function update()
-				{
-					$id_user = $this->input->post('id_user'); 
-					$email = $this->input->post('email');
-   					$nohp = $this->input->post('nohp');
-   					$username = $this->input->post('username');
-					$password = $this->input->post('password');
-   					$nia = $this->input->post('nia');
-   					$nama = $this->input->post('nama');
-   					$jenis_kelamin = $this->input->post('jenis_kelamin');
-  					$alamat = $this->input->post('alamat');
-   					$tempat_lahir = $this->input->post('tempat_lahir');
-   					$birthday = $this->input->post('birthday');
-					
-					$this->Pegawai_model->update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday);
-					redirect('Pegawai_controller/index');
-				}
+				
 
 	/**public function update($id = null)
     {
@@ -200,14 +246,7 @@ public function update()
     }
 	*/
 
-	public function delete($id=null)
-	{
-		if (!isset($id)) show_404();
-			
-		if ($this->Pegawai_model->delete($id)) {
-			redirect(site_url('Pegawai_controller/index'));
-		}
-	}
+	
 
 	/**public function delete($id_user) {
         $this->db->where('id_user', $id_user);

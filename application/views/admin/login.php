@@ -65,8 +65,8 @@
 			</div>
 			<div class="row">
 				<!-- /.col -->
-				<div class="col-xs-4">
-					<button type="submit" class="btn btn-primary btn-block btn-flat" >Sign In</button>
+				<div class="col-xs-4 pull-right">
+					<button type="submit" class="btn btn-primary btn-block btn-flat" >Sign In   <i class="icon fa fa-sign-in"></i></button>
 				</div>
 				<!--
 					<div class="col-xs-4 pull-right">

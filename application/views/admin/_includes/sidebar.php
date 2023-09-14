@@ -30,9 +30,9 @@
         <li class="header">Navigation</li>
 
 
-        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-book"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-user-plus"></i> <span>Pegawai</span></a>
-        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Anggota</span></a>
+        <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-male"></i> <span>Pegawai</span></a>
+        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-users"></i> <span>Anggota</span></a>
         </li>
         <li class="treeview">
           <a href="#">
