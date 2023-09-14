@@ -71,11 +71,11 @@
                               <td><?php echo $value->nama ?></td>
                               <td><?php echo $value->no_pinjaman ?></td>
                               <td><?php echo $value->no_angsuran ?></td>
-                              <td><?php echo $value->jumlah_pinjaman ?></td>
+                              <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
                               <td><?php echo $value->tanggal_pinjaman ?></td>
                               <td><?php echo $value->lama ?></td>
                               <td><?php echo $value->bunga ?></td>
-                              <td><?php echo $value->jumlah_angsuran ?></td>
+                              <td><?php echo "Rp. " . (number_format($value->jumlah_angsuran,2,',','.')) ?></td>
                              
                               <td>
                                 <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Tabungan</a>

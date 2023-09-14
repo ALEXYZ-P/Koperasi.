@@ -70,7 +70,7 @@
                               <td><?php echo $no++ ?></td>
                               <td><?php echo $users->nia ?></td>
                               <td><?php echo $users->nama ?></td>
-                              <td><?php echo $value->jumlah_tabungan ?></td>
+                              <td><?php echo "Rp. " . (number_format($value->jumlah_tabungan,2,',','.')) ?></td>
                               <td><?php echo $jenis->nama_jenis_tabungan ?></td>
                               <td><?php echo $value->tanggal_tabung ?></td>
                              

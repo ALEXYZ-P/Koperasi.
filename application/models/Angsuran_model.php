@@ -26,6 +26,13 @@ class Angsuran_model extends CI_Model
         return $this->db->get('angsuran')->result_array();
     }
 
+    public function insert_angsuran($angsuran_data) {
+        // Attempt to insert data into the "tabungan" table
+        $inserted = $this->db->insert('angsuran', $angsuran_data);
+
+        return $inserted; // Return true if successful, false otherwise
+    }
+
 
 	/**
 	 * @return mixed
@@ -110,17 +117,6 @@ class Angsuran_model extends CI_Model
 	public function getById($id)
 	{
 		return $this->db->get_where($this->_table, ["id_angsuran" => $id])->row();
-	}
-
-	public function save()
-	{
-		$post = $this->input->post();
-		$this->id_angsuran = uniqid();
-		$this->id_pinjaman = $post["id_pinjaman"];
-		$this->no_angsuran = $post["no_angsuran"];
-		$this->jumlah_angsuran = $post["jumlah_angsuran"];
-		$this->tanggal = date('y-m-d');
-		$this->db->insert($this->_table, $this);
 	}
 
 	public function update($id)

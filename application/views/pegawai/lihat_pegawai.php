@@ -71,7 +71,7 @@
                         <td><?php cetak($value->alamat)  ?></td>
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit_data/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
                           <!--<a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>-->
                           
                           <a onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Hapus</a>

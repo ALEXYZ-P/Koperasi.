@@ -16,29 +16,9 @@ class Angsuran_controller extends MY_Controller
 
 	public function index()
 	{
-		$data['angsuran'] = $this->AngsuranModel->get_data_angsuran();
-
-        // Iterasi untuk mengisi data tambahan ke dalam array $data['angsuran']
-        foreach ($data['angsuran'] as &$angsuran) {
-            // Ambil data pinjaman berdasarkan id_pinjaman dari angsuran
-            $pinjaman = $this->PinjamanModel->get_pinjaman_by_id($angsuran['id_pinjaman']);
-            
-            // Ambil data user berdasarkan id_user dari pinjaman
-            $user = $this->UserModel->get_user_by_id($pinjaman['id_user']);
-            
-            // Tambahkan data tambahan ke dalam array $angsuran
-            $angsuran['nama'] = $user['nama'];
-            $angsuran['no_pinjaman'] = $pinjaman['no_pinjaman'];
-            $angsuran['no_angsuran'] = $angsuran['no_angsuran'];
-            $angsuran['jumlah_pinjaman'] = $pinjaman['jumlah_pinjaman'];
-            $angsuran['tanggal_pinjaman'] = $pinjaman['tanggal_pinjaman'];
-            $angsuran['lama'] = $pinjaman['lama'];
-            $angsuran['bunga'] = $pinjaman['bunga'];
-            $angsuran['jumlah_angsuran'] = $angsuran['jumlah_angsuran'];
-        }
-
-        // Load view untuk menampilkan informasi pinjaman dan angsuran
-        $this->load->view('angsuran/lihat_angsuran', $data);
+		$data["angsuran"] = $this->Angsuran_model->getALL();
+		// var_dump($data);
+		$this->load->view("angsuran/lihat_angsuran", $data);
     }
 
 	public function detail($id)
@@ -57,24 +37,34 @@ class Angsuran_controller extends MY_Controller
 
 	public function listPinjamanAnggota()
 	{
-		$data["pinjaman_anggota"] = $this->Angsuran_model->listPinjamanAnggota();
-		$this->load->view("angsuran/list_pinjaman_anggota", $data);
+		$data["angsuran_anggota"] = $this->Angsuran_model->listPinjamanAnggota();
+		$this->load->view("angsuran/list_angsuran_anggota", $data);
 	}
 
-	public function add($id)
+	public function add()
 	{
-		$this->load->view("angsuran/tambah_angsuran", $data);
-		$anggota = $this->Anggota_model;
-		$angsuran = $this->Angsuran_model;
-		$validation = $this->form_validation;
-		$validation->set_rules($angsuran->rules());
+		$data['users'] = $this->Anggota_model->get_users();
+    
+        $this->form_validation->set_rules('jumlah_angsuran', 'jumlah_angsuran', 'required|numeric');
+        $validation = $this->form_validation;
+    
+        if ($this->form_validation->run() === FALSE) {
+            // Validation failed, show the form again with errors
+            $this->load->view('angsuran/tambah_angsuran', $data); // Pass $data to the view
+        } else {
+            
+            // Validation passed, insert data into the "angsuran" table
+            $angsuran_data = array( // Use a different variable name
+                'id_pinjaman' => $this->input->post('id_pinjaman'),
+                'no_angsuran' => $this->input->post('no_angsuran'),
+                'jumlah_angsuran' => $this->input->post('jumlah_angsuran')
+            );
 
-		if ($validation->run()) {
-			$angsuran->save();
-			$this->session->set_flashdata('success', 'Tambah Pinjaman Sebesar Rp. ' . $angsuran->jumlah_angsuran . ' Berhasil Disimpan');
-			redirect('Angsuran_controller/index');
-		}
-		$data['angsuran'] = $this->Pinjaman_model->getById($id);
+            $this->Angsuran_model->insert_angsuran($angsuran_data); 
+            
+            $this->session->set_flashdata('success', 'Pinjaman added successfully');
+            redirect('angsuran_controller/index');
+        }
 		
 	}
 

@@ -55,7 +55,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <form role="form" action="<?php echo base_url('Angsuran_controller/add/'.$angsuran->id_pinjaman) ?>" method="post">
               <input type="hidden" name="id_pinjaman" value="<?php echo $angsuran->id_pinjaman?>" />
 
-              <div class="box-body">
+              <div class="form-group">
+                  <label for="id_user">User</label>
+                  <select name="id_user" id="id_user" class="form-control">
+                     <?php foreach ($users as $user) : ?>
+                         <option value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
+                     <?php endforeach; ?>
+                  </select>
+              </div>
+
+              
                 <div class="form-group">
                   <label>No Angsuran</label>
                   <input name="no_angsuran" class="form-control <?php echo form_error('no_angsuran') ? 'is-invalid':'' ?>" placeholder="Masukan No Angsuran" type="text"/>
@@ -71,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php echo form_error('jumlah_angsuran') ?>
                   </div>
                 </div>
-              </div>
+              
               <!-- /.box-body -->
 
               <div class="box-footer">
