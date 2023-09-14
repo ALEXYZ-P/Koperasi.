@@ -13,24 +13,6 @@ class Angsuran_model extends CI_Model
 	public $jumlah_angsuran;
 	public $tanggal;
 
-	public function rules()
-	{
-		return [
-			['field' => 'id_pinjaman',
-				'label' => 'id_pinjaman',
-				'rules' => 'required'],
-
-			['field' => 'no_angsuran',
-				'label' => 'no_angsuran',
-				'rules' => 'required'],
-
-			['field' => 'jumlah_angsuran',
-				'label' => 'jumlah_angsuran',
-				'rules' => 'required|numeric'],
-
-		];
-	}
-
 	public function getALL() {
     $this->db->select('angsuran.*, pinjaman.no_pinjaman, pinjaman.jumlah_pinjaman, pinjaman.tanggal_pinjaman, pinjaman.lama, pinjaman.bunga, user.nama');
     $this->db->from('angsuran');
@@ -39,6 +21,17 @@ class Angsuran_model extends CI_Model
     $query = $this->db->get();
     return $query->result();
 }
+
+	 public function get_data_angsuran() {
+        return $this->db->get('angsuran')->result_array();
+    }
+
+    public function insert_angsuran($angsuran_data) {
+        // Attempt to insert data into the "tabungan" table
+        $inserted = $this->db->insert('angsuran', $angsuran_data);
+
+        return $inserted; // Return true if successful, false otherwise
+    }
 
 
 	/**
@@ -124,17 +117,6 @@ class Angsuran_model extends CI_Model
 	public function getById($id)
 	{
 		return $this->db->get_where($this->_table, ["id_angsuran" => $id])->row();
-	}
-
-	public function save()
-	{
-		$post = $this->input->post();
-		$this->id_angsuran = uniqid();
-		$this->id_pinjaman = $post["id_pinjaman"];
-		$this->no_angsuran = $post["no_angsuran"];
-		$this->jumlah_angsuran = $post["jumlah_angsuran"];
-		$this->tanggal = date('y-m-d');
-		$this->db->insert($this->_table, $this);
 	}
 
 	public function update($id)
