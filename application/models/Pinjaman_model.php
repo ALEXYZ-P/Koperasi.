@@ -104,6 +104,29 @@ class Pinjaman_model extends CI_Model
 	    $this->db->update('pinjaman', $data); // Untuk mengeksekusi perintah update data
 	}
 
+	// Pinjaman_model.php
+
+	// Add this method to fetch loan details
+	public function get_loan_details($id_pinjaman) {
+	    $this->db->where('id_pinjaman', $id_pinjaman);
+	    return $this->db->get('pinjaman')->row();
+	}
+
+	// Add this method to process the payment (deduct from total_peminjaman)
+	public function process_payment($id_pinjaman, $jumlah_angsuran) {
+	   
+	        // Insert the payment data into the angsuran table
+	        $payment_data = array(
+	            'id_pinjaman' => $id_pinjaman,
+	            'no_angsuran' => $no_angsuran,
+	            'jumlah_angsuran' => $jumlah_angsuran,
+	            // Add other payment details as needed
+	        );
+	        $this->db->insert('angsuran', $payment_data);
+	    }
+	
+
+
 	// public function hide($id){
 	// 	$this->db->where('id_anggota', $id);
 	// 	$this->_table->update('set_aktif == False');

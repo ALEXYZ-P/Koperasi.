@@ -11,17 +11,17 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-    
+      <!--Dapaag-->
       <!-- Alert -->
       <?php if ($this->session->flashdata('success')): ?>
-        <div class="box-body">
-          <div class="alert alert-info alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h4><i class="icon fa fa-info"></i>Alert!</h4>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        </div>
-      <?php endif; ?>
+    <div class="alert alert-success">
+        <?= $this->session->flashdata('success') ?>
+    </div>
+<?php elseif ($this->session->flashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?= $this->session->flashdata('error') ?>
+    </div>
+<?php endif; ?> 
       <!-- Alert -->
 
 
@@ -31,7 +31,7 @@
             <small>Data Pegawai</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-fw fa-male"></i>  Pegawai</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pegawai</a></li>
             <li><a href="#">Lihat Data Pegawai</a></li>
           </ol>
         </section>
@@ -71,9 +71,13 @@
                         <td><?php cetak($value->alamat)  ?></td>
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit_data/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>                          
+                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit_data/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
+                          <!--<a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>-->
+                          
                           <a onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Hapus</a>
-                          <a class="btn btn-warning" href="<?php echo site_url('Pegawai_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-user"></i>Profile</a>
+
+    
+                          <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
                         </td>
                       </tr>
                     <?php endforeach; ?>

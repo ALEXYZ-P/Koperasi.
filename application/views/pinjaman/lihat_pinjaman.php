@@ -75,8 +75,7 @@
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
                         <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pinjaman_controller/edit/'.$value->id_pinjaman) ?>"><i class="fa fa-fw fa-edit"></i></a>
-                          <a href="#!" onclick="deleteConfirm('<?php echo site_url('Pinjaman_controller/delete/'.$value->id_pinjaman) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i></a>
+                          <a class="btn btn-success" href="<?php echo site_url('Pinjaman_controller/tambah_angsuran/'.$value->id_pinjaman) ?>">Bayar Pinjaman</a>
                           
                         </td>
                       </tr>

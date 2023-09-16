@@ -52,18 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('Angsuran_controller/add/'.$angsuran->id_pinjaman) ?>" method="post">
+            <form role="form" action="<?php echo base_url('Pinjaman_controller/proses_angsuran/'.$angsuran->id_pinjaman) ?>" method="post">
               <input type="hidden" name="id_pinjaman" value="<?php echo $angsuran->id_pinjaman?>" />
-
-              <div class="form-group">
-                  <label for="id_user">User</label>
-                  <select name="id_user" id="id_user" class="form-control">
-                     <?php foreach ($users as $user) : ?>
-                         <option value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
-                     <?php endforeach; ?>
-                  </select>
-              </div>
-
               
                 <div class="form-group">
                   <label>No Angsuran</label>
