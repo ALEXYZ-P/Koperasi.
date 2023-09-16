@@ -11,28 +11,27 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <!--Dapaag-->
+      
       <!-- Alert -->
       <?php if ($this->session->flashdata('success')): ?>
-    <div class="alert alert-success">
-        <?= $this->session->flashdata('success') ?>
-    </div>
-<?php elseif ($this->session->flashdata('error')): ?>
-    <div class="alert alert-danger">
-        <?= $this->session->flashdata('error') ?>
-    </div>
-<?php endif; ?> 
+      <div class="alert alert-success">
+          <?= $this->session->flashdata('success') ?>
+      </div>
+      <?php elseif ($this->session->flashdata('error')): ?>
+          <div class="alert alert-danger">
+              <?= $this->session->flashdata('error') ?>
+          </div>
+      <?php endif; ?> 
       <!-- Alert -->
-
 
         <section class="content-header">
           <h1>
-            Kelola
-            <small>Data Pegawai</small>
+            Manage
+            <small>Staff</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pegawai</a></li>
-            <li><a href="#">Lihat Data Pegawai</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Staff</a></li>
+            <li><a href="#">See Staff</a></li>
           </ol>
         </section>
 
@@ -42,22 +41,22 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                  <a href="<?php echo base_url('Pegawai_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
-                  <a href="<?php echo base_url("Pegawai_controller/export"); ?>" class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</a>
-                  <a class="btn btn-ijo" href="<?php echo base_url("Pegawai_controller/form"); ?>"><i class="fa fa-fw fa-upload"></i>Import Data</a>
+                  <a href="<?php echo base_url('Staff_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Add</a>
+                  <a href="<?php echo base_url("Staff_controller/export"); ?>" class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</a>
+                  <a class="btn btn-ijo" href="<?php echo base_url("Staff_controller/form"); ?>"><i class="fa fa-fw fa-upload"></i>Import Data</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
-                  <table id="example1" class="table table-bordered table-hover">
+                  <table id="example1" class="table table-bordered table-hover"><!--search bar--> 
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th>Num</th>
                       <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jenis Kelamin</th>
-                      <th>Alamat</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>Address</th>
                       <th>No Handphone</th>
-                      <th>Aksi</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -71,17 +70,26 @@
                         <td><?php cetak($value->alamat)  ?></td>
                         <td><?php cetak($value->nohp) ?></td>
                         <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pegawai_controller/edit_data/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i>Edit</a>
-                          <!--<a class="btn btn-danger" href="<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i>Hapus</a>-->
-                          
-                          <a onclick="deleteConfirm('<?php echo site_url('Pegawai_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Hapus</a>
+                          <a class="btn btn-ref" href="<?php echo site_url('Staff_controller/edit_data/'.$value->id_user) ?>"><i class="fa fa-fw fa-edit"></i> Edit</a>
 
+                          <a onclick="deleteConfirm('<?php echo site_url('Staff_controller/delete/'.$value->id_user) ?>')" href="#!" class="btn btn-danger" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i> Delete</a>
     
-                          <a class="btn btn-warning" href="<?php echo site_url('Anggota_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
+                          <a class="btn btn-warning" href="<?php echo site_url('Staff_controller/detail/'.$value->id_user) ?>"><i class="fa fa-fw fa-users"></i>Detail</a>
                         </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
+                  <thead>
+                    <tr>
+                      <th>Num</th>
+                      <th>NIK</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>Address</th>
+                      <th>No Handphone</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
                 </table>
                 </div>
                 <!-- /.box-body -->
@@ -113,7 +121,7 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+      <div class="modal-body">Deleted data cannot be recovered.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
         <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>

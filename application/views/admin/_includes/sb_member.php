@@ -29,8 +29,8 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
 
-        <li><a href="<?php echo base_url('Dashboard_controller/anggota') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Profile_anggota_controller') ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a>
+        <li><a href="<?php echo base_url('Dashboard_controller/member') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="<?php echo base_url('Member_controller/profile') ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a>
         
         </li>
         <li class="treeview">
@@ -41,9 +41,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('Tabungan_anggota_controller') ?>"><i class="fa fa-circle-o"></i>Tabungan</a></li>
-            <li><a href="<?php echo base_url('Pinjaman_anggota_controller') ?>"><i class="fa fa-circle-o"></i>Pinnjam</a></li>
-            <li><a href="<?php echo base_url('Angsuran_anggota_controller') ?>"><i class="fa fa-circle-o"></i>Angsuran</a></li>
+            <li><a href="<?php echo base_url('Tabungan_anggota_controller') ?>"><i class="fa fa-circle-o"></i>Saving</a></li>
+            <li><a href="<?php echo base_url('Pinjaman_anggota_controller') ?>"><i class="fa fa-circle-o"></i>loan</a></li>
+            <li><a href="<?php echo base_url('Angsuran_anggota_controller') ?>"><i class="fa fa-circle-o"></i>Installments</a></li>
           </ul>
         </li>
         <!--

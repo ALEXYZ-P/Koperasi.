@@ -1,29 +1,138 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pegawai_controller extends MY_Controller
+class Staff_controller extends MY_Controller
 {
 	private $filename = "import_data";
     public function __construct()
     {
         parent::__construct();
-		$this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->model("Pegawai_model");
+		$this->load->library(array('form_validation','session'));
+       	$this->load->helper(array('url','form'));
+        $this->load->model("Staff_model");
     }
 
     public function index()
     {
-        $data["user"] = $this->Pegawai_model->getstaff();
-        $this->load->view("pegawai/lihat_pegawai", $data);
+        $data["user"] = $this->Staff_model->getstaff();
+        $this->load->view("staff/see_staff", $data);
     }
 
 	public function add() {
+		$this->load->library('session');
+       	$this->load->helper('url');
+		$validation = $this->form_validation;
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $validation = $this->form_validation;
-        //$validation->set_rules($user->rules());
         
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('pegawai/tambah_pegawai');
+		$data = array(
+			'email'		=>$this->input->post('email'),
+			'nohp'		=>$this->input->post('nohp'),
+            'username' 	=> $this->input->post('username'), 			
+            'nia' 		=> $this->input->post('nia'),
+        );
+    
+       $data1 = array('email' 		=> $this->input->post('email') );
+	   $data2 = array('nohp' 		=> $this->input->post('nohp') );
+	   $data3 = array('username'	=> $this->input->post('username') );
+	   $data4 = array('nia' 		=> $this->input->post('nia') );
+	  
+       //$this->form_validation->set_rules('password','PASSWORD','required');
+       //$this->form_validation->set_rules('cpassword','PASSWORD','required|matches[password]');
+
+       $result 	= $this->Staff_model->checkData($data);
+       $result1 = $this->Staff_model->checkData($data1);
+       $result2 = $this->Staff_model->checkData($data2);
+	   $result3 = $this->Staff_model->checkData($data3);
+       $result4 = $this->Staff_model->checkData($data4);
+	   
+       	if ($result1 > 0 and $result2> 0 and $result3 > 0 and $result4 > 0 ) {
+          	$this->session->set_flashdata('msg0', 'Oops! Email, Phone number, Username & NIK has been registered.');
+        redirect (base_url('Staff_controller/add'));
+		  
+        } elseif ($result2> 0 and $result3 > 0 and $result4 > 0 ) {
+			$this->session->set_flashdata('msg1', 'Oops! Phone number, Username & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+		
+        } elseif ($result1 > 0 and $result3 > 0 and $result4 > 0 ) {
+			$this->session->set_flashdata('msg2', 'Oops! Email, Username & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+		
+        } elseif ($result1 > 0 and $result2> 0 and $result4 > 0 ) {
+			$this->session->set_flashdata('msg3', 'Oops! Email, Phone number & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+		
+        } elseif ($result1 > 0 and $result2> 0 and $result3 > 0  ) {
+			$this->session->set_flashdata('msg4', 'Oops! Email, Phone number & Username has been registered.');
+		redirect (base_url('Staff_controller/add'));
+		
+		} elseif ($result3 > 0 and $result4 > 0 ) {
+			$this->session->set_flashdata('msg12', 'Oops! Email, Phone number, Username & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+
+		} elseif ($result2> 0 and $result4 > 0 ) {
+			$this->session->set_flashdata('msg13', 'Oops!  Phone number & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+
+		} elseif ($result2> 0 and $result3 > 0 ) {
+			$this->session->set_flashdata('msg14', 'Oops! Phone number & Username has been registered.');
+			redirect (base_url('Staff_controller/add'));
+
+		} elseif ($result1 > 0 and $result4 > 0 ) {
+			$this->session->set_flashdata('msg23', 'Oops! Email & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+
+		} elseif ($result1 > 0 and  $result3 > 0 ) {
+			$this->session->set_flashdata('msg24', 'Oops! Email & Username has been registered.');
+		redirect (base_url('Staff_controller/add'));
+
+		} elseif ($result1 > 0 and $result2 > 0 ) {
+			$this->session->set_flashdata('msg34', 'Oops! Username & NIK has been registered.');
+		redirect (base_url('Staff_controller/add'));
+		
+		}elseif ($result1 > 0 ) {
+			$this->session->set_flashdata('msg1s', 'Oops! Email has been registered.');
+	  	redirect (base_url('Staff_controller/add'));
+
+		}elseif ($result2> 0 ) {
+			$this->session->set_flashdata('msg2s', 'Oops! Phone number has been registered.');
+	  	redirect (base_url('Staff_controller/add'));
+
+		}elseif ($result3 > 0 ) {
+			$this->session->set_flashdata('msg3s', 'Oops! username has been registered.');
+	  	redirect (base_url('Staff_controller/add'));
+
+		}elseif ($result4 > 0 ) {
+			$this->session->set_flashdata('msg4s', 'Oops! NIK has been registered.');
+	  	redirect (base_url('Staff_controller/add'));
+		
+		} else{
+
+       if($this->form_validation->run() == FALSE) {
+           $this->load->view('staff/add_staff');
+       }else{
+		$data = array(
+			'email' => $this->input->post('email'),
+			'nohp' => $this->input->post('nohp'),
+			'username' => $this->input->post('username'),
+			'password' => md5($this->input->post('password')),
+			'nia' => $this->input->post('nia'),
+			'nama' => $this->input->post('nama'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+			'alamat' => $this->input->post('alamat'),
+			'tempat_lahir' => $this->input->post('tempat_lahir'),
+			'birthday' => $this->input->post('birthday'),
+			'level' => 'staff'
+		);
+		
+		$this->Staff_model->insert_user($data); 
+		$this->session->set_flashdata('success', 'Staff added successfully');
+		redirect('Staff_controller/index');	
+		
+		}
+       }
+	}
+        
+        /**if ($this->form_validation->run() == FALSE) {
+            $this->load->view('staff/tambah_staff');
         } else {
             $data = array(
                 'email' => $this->input->post('email'),
@@ -39,16 +148,17 @@ class Pegawai_controller extends MY_Controller
                 'level' => 'staff' // Set level as 'member'
             );
             
-            $this->Pegawai_model->insert_user($data); // Insert data into the database
-            $this->session->set_flashdata('success', 'Staff berhasil di hapus');
-			redirect('Pegawai_controller/index');
+            $this->Staff_model->insert_user($data); // Insert data into the database
+            $this->session->set_flashdata('success', 'Staff berhasil ditambahkan');
+			redirect('Staff_controller/index');
             // You can redirect to a success page or display a success message here
         }
-    }
+    }*/
+
 	function edit_data()
 	{
 		$id_user = $this->uri->segment(3);
-		$result = $this->Pegawai_model->get_staff_id($id_user);
+		$result = $this->Staff_model->get_staff_id($id_user);
 		if ($result->num_rows() > 0) {
 		$i = $result->row_array();
 			$data = array(
@@ -64,7 +174,7 @@ class Pegawai_controller extends MY_Controller
 				'tempat_lahir'  => $i['tempat_lahir'],
 				'birthday'    	=> $i['birthday'],
 			);
-		$this->load->view('pegawai/edit_pegawai', $data);
+		$this->load->view('staff/edit_staff', $data);
 		} else {
 			echo "Data Was Not Found";
 		}
@@ -84,24 +194,24 @@ class Pegawai_controller extends MY_Controller
    		$tempat_lahir 	= $this->input->post('tempat_lahir');
    		$birthday 		= $this->input->post('birthday');
 					
-		$this->Pegawai_model->update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday);
-		$this->session->set_flashdata('success', 'Staff berhasil di hapus');
-		redirect('Pegawai_controller/index');
+		$this->Staff_model->update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday);
+		$this->session->set_flashdata('success', 'The staff has been successfully changed');
+		redirect('Staff_controller/index');
 	}
 
 	public function delete($id=null)
 	{
 		if (!isset($id)) show_404();
 			
-		if ($this->Pegawai_model->delete($id)) {
-			$this->session->set_flashdata('success', 'Staff berhasil di hapus');
-			redirect(site_url('Pegawai_controller/index'));
+		if ($this->Staff_model->delete($id)) {
+			$this->session->set_flashdata('success', 'Staff has been successfully deleted');
+			redirect(site_url('Staff_controller/index'));
 		}
 	}
 
 	public function detail($id_user) {
 		$id_user = $this->uri->segment(3);
-		$result = $this->Pegawai_model->get_staff_id($id_user);
+		$result = $this->Staff_model->get_staff_id($id_user);
 
 		if ($result->num_rows() > 0) {
 			$i = $result->row_array();
@@ -120,7 +230,7 @@ class Pegawai_controller extends MY_Controller
 				'tanggal'		=> $i['tanggal'],
 				'level'			=> $i['level']
 			);
-            $this->load->view("pegawai/detail_pegawai", $data);
+            $this->load->view("staff/staff_detail", $data);
         } else {
             echo "staff tidak ditemukan";
         }
@@ -132,7 +242,7 @@ class Pegawai_controller extends MY_Controller
 
  	/**public function add()
     {s
-        $user = $this->Pegawai_model;
+        $user = $this->Staff_model;
         $validation = $this->form_validation;
         $validation->set_rules($user->rules());
 
@@ -141,7 +251,7 @@ class Pegawai_controller extends MY_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $this->load->view("pegawai/tambah_pegawai");
+        $this->load->view("staff/tambah_staff");
     }
 */
     
@@ -152,14 +262,14 @@ class Pegawai_controller extends MY_Controller
 		$data['user'] = $this->model->get_data($this->table, ['id_user' => $id])->row();
 	
 		//mengirimkan data user tersebut ke view
-		$this->load->view('pegawai/edit_pegawai', $data);
+		$this->load->view('staff/edit_staff', $data);
 	}
 
 public function update()
 {
 	if(isset($_POST['edit']))
 	{
-		//mengambil data email, password, nama, dan id dari client side
+		//mengambil data email, password, nama, & id dari client side
 		$id_user = $this->input->post('id_user');
 		$email = $this->input->post('email');
 		$nohp = $this->input->post('nohp');
@@ -175,7 +285,7 @@ public function update()
 		
 
 
-		//untuk cek apakah email, password, dan nama sudah terisi
+		//untuk cek apakah email, password, & nama sudah terisi
 		if($email && $nohp && $username && $password && $nia && $nama && $jenis_kelamin && $alamat && $tempat_lahir && $birthday )
         {
             if(strlen($password) > 3)
@@ -199,7 +309,7 @@ public function update()
                 				$this->model->update_data($this->table, $data, ['id_user' => $id_user]);
                 			}
                 		}
-                		redirect('Pegawai_controller/index');
+                		redirect('Staff_controller/index');
                 	}
                 }
                 */
@@ -210,9 +320,9 @@ public function update()
 
 	/**public function update($id = null)
     {
-        if (!isset($id)) redirect('Pegawai_controller/index');
+        if (!isset($id)) redirect('Staff_controller/index');
        
-        $user = $this->Pegawai_model;
+        $user = $this->Staff_model;
         $validation = $this->form_validation;
         //$validation->set_rules($user->rules());
 
@@ -225,23 +335,23 @@ public function update()
         $data["user"] = $user->getById($id);
         if (!$data["user"]) show_404();
         
-        $this->load->view("pegawai/edit_pegawai", $data);
+        $this->load->view("staff/edit_staff", $data);
     }
 	*/
 
     /**public function update($id){
-		$this->load->view('pegawai/edit_pegawai', $data);
-    	$user = $this->Pegawai_model; //object model
+		$this->load->view('staff/edit_staff', $data);
+    	$user = $this->Staff_model; //object model
         $validation = $this->form_validation; //object validasi
         
 
         if ($validation->run()) { //lakukan validasi form
             $user->update($id); // update data
-            $this->session->set_flashdata('success', 'Data Pegawai '.$user->getById($id)->nama.' Berhasil Diubah');
-            redirect('Pegawai_controller/index');
+            $this->session->set_flashdata('success', 'Data staff '.$user->getById($id)->nama.' Berhasil Diubah');
+            redirect('Staff_controller/index');
         }
 
-        $data['user'] = $this->Pegawai_model->getById($id);
+        $data['user'] = $this->Staff_model->getById($id);
         
     }
 	*/
@@ -261,7 +371,7 @@ public function update()
 
 	
     
-    redirect('Pegawai_controller/index');
+    redirect('Staff_controller/index');
     }
 	*/
 
@@ -270,7 +380,7 @@ public function update()
 
 		if(isset($_POST['preview'])){ // Jika user menekan tombol Preview pada form
 			// lakukan upload file dengan memanggil function upload yang ada di SiswaModel.php
-			$upload = $this->Pegawai_model->upload_file($this->filename);
+			$upload = $this->Staff_model->upload_file($this->filename);
 
 			if($upload['result'] == "success"){ // Jika proses upload sukses
 				// Load plugin PHPExcel nya
@@ -284,11 +394,11 @@ public function update()
 				// Variabel $sheet tersebut berisi data-data yang sudah diinput di dalam excel yang sudha di upload sebelumnya
 				$data['sheet'] = $sheet;
 			}else{ // Jika proses upload gagal
-				$data['upload_error'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
+				$data['upload_error'] = $upload['error']; // Ambil msg error uploadnya untuk dikirim ke file form & ditampilkan
 			}
 		}
 
-		$this->load->view('pegawai/validasi_import', $data);
+		$this->load->view('staff/validasi_import', $data);
 	}
 
 	public function import(){
@@ -310,7 +420,7 @@ public function update()
 			if($numrow > 1){
 				// Kita push (add) array data ke variabel data
 				array_push($data, array(
-					'id_pegawai'=> uniqid(),
+					'id_staff'=> uniqid(),
 					'nik'=>$row['A'], // Insert data nis dari kolom A di excel
 					'nama'=>$row['B'], // Insert data nama dari kolom B di excel
 					'alamat'=>$row['C'], // Insert data jenis kelamin dari kolom C di excel
@@ -321,9 +431,9 @@ public function update()
 			$numrow++; // Tambah 1 setiap kali looping
 		}
 		// Panggil fungsi insert_multiple yg telah kita buat sebelumnya di model
-		$this->Pegawai_model->insert_multiple($data);
+		$this->Staff_model->insert_multiple($data);
 
-		redirect("Pegawai_controller"); // Redirect ke halaman awal (ke controller siswa fungsi index)
+		redirect("Staff_controller"); // Redirect ke halaman awal (ke controller siswa fungsi index)
 	}
 
 	public function export(){
@@ -335,10 +445,10 @@ public function update()
 		// Settingan awal fil excel
 		$excel->getProperties()->setCreator('Ino Galwargan')
 			->setLastModifiedBy('Ino Galwargan')
-			->setTitle("Data Pegawai")
-			->setSubject("Pegawai")
-			->setDescription("Laporan Semua Data Pegawai")
-			->setKeywords("Data Pegawai");
+			->setTitle("Data staff")
+			->setSubject("staff")
+			->setDescription("Laporan Semua Data staff")
+			->setKeywords("Data staff");
 		// Buat sebuah variabel untuk menampung pengaturan style dari header tabel
 		$style_col = array(
 			'font' => array('bold' => true), // Set font nya jadi bold
@@ -383,10 +493,10 @@ public function update()
 		$excel->getActiveSheet()->getStyle('D3')->applyFromArray($style_col);
 		$excel->getActiveSheet()->getStyle('E3')->applyFromArray($style_col);
 		// Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-		$pegawai = $this->Pegawai_model->getAll();
+		$staff = $this->Staff_model->getAll();
 		$no = 1; // Untuk penomoran tabel, di awal set dengan 1
 		$numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
-		foreach($pegawai as $data){ // Lakukan looping pada variabel siswa
+		foreach($staff as $data){ // Lakukan looping pada variabel siswa
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->nik);
 			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->nama);
@@ -415,11 +525,11 @@ public function update()
 		// Set orientasi kertas jadi LANDSCAPE
 		$excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
 		// Set judul file excel nya
-		$excel->getActiveSheet(0)->setTitle("Laporan Data Pegawai");
+		$excel->getActiveSheet(0)->setTitle("Laporan Data staff");
 		$excel->setActiveSheetIndex(0);
 		// Proses file excel
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		header('Content-Disposition: attachment; filename="Data Pegawai.xlsx"'); // Set nama file excel nya
+		header('Content-Disposition: attachment; filename="Data staff.xlsx"'); // Set nama file excel nya
 		header('Cache-Control: max-age=0');
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 		$write->save('php://output');

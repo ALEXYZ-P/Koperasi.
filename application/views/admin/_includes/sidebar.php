@@ -31,8 +31,8 @@
 
 
         <li><a href="<?php echo base_url('Dashboard_controller') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Pegawai_controller') ?>"><i class="fa fa-fw fa-male"></i> <span>Pegawai</span></a>
-        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-users"></i> <span>Anggota</span></a>
+        <li><a href="<?php echo base_url('Staff_controller') ?>"><i class="fa fa-fw fa-male"></i> <span>Staff</span></a>
+        <li><a href="<?php echo base_url('Member_controller') ?>"><i class="fa fa-fw fa-users"></i> <span>Member</span></a>
         </li>
         <li class="treeview">
           <a href="#">
@@ -42,9 +42,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('Tabungan_controller') ?>"><i class="fa fa-circle-o"></i>Tabungan</a></li>
-            <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-circle-o"></i>Pinnjam</a></li>
-            <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Angsuran</a></li>
+            <li><a href="<?php echo base_url('Tabungan_controller') ?>"><i class="fa fa-circle-o"></i>Saving</a></li>
+            <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-circle-o"></i>Loan</a></li>
+            <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Installments</a></li>
           </ul>
         </li>
         <!--

@@ -9,14 +9,14 @@ class Pinjaman_controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("Anggota_model");
+        $this->load->model("Member_model");
         $this->load->model("Pinjaman_model");
         $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $data["user"] = $this->Anggota_model->getAll();
+        $data["user"] = $this->Member_model->getAll();
         $data["pinjaman"] = $this->Pinjaman_model->getALL();
         $this->load->view("pinjaman/lihat_pinjaman", $data);
     }
@@ -29,7 +29,7 @@ class Pinjaman_controller extends MY_Controller
     }
 
     public function add() {  
-        $data['users'] = $this->Anggota_model->get_users();
+        $data['users'] = $this->Member_model->get_users();
     
         $this->form_validation->set_rules('jumlah_pinjaman', 'jumlah_pinjaman', 'required|numeric');
         $validation = $this->form_validation;
@@ -62,10 +62,10 @@ class Pinjaman_controller extends MY_Controller
     }
 
     public function edit($id){
-        $anggota = $this->Anggota_model; //object model
+        $anggota = $this->Member_model; //object model
     	$pinjaman = $this->Pinjaman_model; //object model
         $validation = $this->form_validation; //object validasi
-        $validation->set_rules($pinjaman->rules()); //terapkan rules di Anggota_model.php
+        $validation->set_rules($pinjaman->rules()); //terapkan rules di Member_model.php
 
         if ($validation->run()) { //lakukan validasi form
             $pinjaman->update($id); // update data
@@ -73,14 +73,14 @@ class Pinjaman_controller extends MY_Controller
             redirect($_SERVER ['HTTP_REFERER']);
 
         }
-         // $data['anggota'] = $this->Anggota_model->getById($id);
+         // $data['anggota'] = $this->Member_model->getById($id);
      
         $data['pinjaman'] = $this->Pinjaman_model->getById($id);
         $this->load->view('pinjaman/edit_pinjaman', $data);
     }
 
     // public function hide($id){
-    // 	$this->Anggota_model->update($id);
+    // 	$this->Member_model->update($id);
     // 	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
     // 	redirect('Anggota_controller/index');
     // }

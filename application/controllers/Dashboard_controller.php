@@ -10,12 +10,12 @@ class Dashboard_controller extends MY_Controller {
 
 	public function staff()
 	{
-		$this->load->view("admin/dashboard_staff");
+		$this->load->view("admin/staff_dashboard");
 	}
 
-	public function anggota()
+	public function member()
 	{
-		$this->load->view("dasgota/dashboard_anggota");
+		$this->load->view("admin/member_dashboard");
 	}
 
 }

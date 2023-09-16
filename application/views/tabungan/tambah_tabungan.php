@@ -6,7 +6,19 @@
 <div class="wrapper">
 
   <?php $this->load->view("admin/_includes/header.php") ?>
-  <?php $this->load->view("admin/_includes/sidebar.php") ?>
+  
+  <!-- Sidebar -->
+  <?php
+        $level = $this->session->userdata('level');
+
+        if ($level === 'admin') {
+            $this->load->view("admin/_includes/sidebar.php");
+        } elseif ($level === 'staff') {
+            $this->load->view("admin/_includes/sb_staff.php");
+        } else {
+            $this->load->view("admin/_includes/sidebar.php");
+        }
+    ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -8,7 +8,7 @@ class Angsuran_controller extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("Anggota_model");
+		$this->load->model("Member_model");
 		$this->load->model("Pinjaman_model");
 		$this->load->model("Angsuran_model");
 		$this->load->library('form_validation');
@@ -31,7 +31,7 @@ class Angsuran_controller extends MY_Controller
 
 	public function list_anggota()
 	{
-		$data['anggota'] = $this->Anggota_model->getAll();
+		$data['anggota'] = $this->Member_model->getAll();
 		$this->load->view("angsuran/angsuran_anggota", $data);
 	}
 
@@ -43,7 +43,7 @@ class Angsuran_controller extends MY_Controller
 
 	public function add()
 	{
-		$data['users'] = $this->Anggota_model->get_users();
+		$data['users'] = $this->Member_model->get_users();
     
         $this->form_validation->set_rules('jumlah_angsuran', 'jumlah_angsuran', 'required|numeric');
         $validation = $this->form_validation;
@@ -70,10 +70,10 @@ class Angsuran_controller extends MY_Controller
 
 	public function edit($id)
 	{
-		$anggota = $this->Anggota_model; //object model
+		$anggota = $this->Member_model; //object model
 		$angsuran = $this->Angsuran_model; //object model
 		$validation = $this->form_validation; //object validasi
-		$validation->set_rules($angsuran->rules()); //terapkan rules di Anggota_model.php
+		$validation->set_rules($angsuran->rules()); //terapkan rules di Member_model.php
 
 		if ($validation->run()) { //lakukan validasi form
 			$angsuran->update($id); // update data
@@ -81,14 +81,14 @@ class Angsuran_controller extends MY_Controller
 			redirect($_SERVER ['HTTP_REFERER']);
 
 		}
-		// $data['anggota'] = $this->Anggota_model->getById($id);
+		// $data['anggota'] = $this->Member_model->getById($id);
 
 		$data['angsuran'] = $this->Angsuran_model->getById($id);
 		$this->load->view('angsuran/edit_angsuran', $data);
 	}
 
 	// public function hide($id){
-	// 	$this->Anggota_model->update($id);
+	// 	$this->Member_model->update($id);
 	// 	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
 	// 	redirect('Anggota_controller/index');
 	// }

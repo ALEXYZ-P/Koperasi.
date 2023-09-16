@@ -51,24 +51,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <h3 class="box-title">Pengisian Form</h3>
             </div>
             <!-- /.box-header -->
+            <div class="box-body">
             <!-- form start -->
             <form role="form" action="<?php echo base_url('Pinjaman_controller/proses_angsuran/'.$angsuran->id_pinjaman) ?>" method="post">
               <input type="hidden" name="id_pinjaman" value="<?php echo $angsuran->id_pinjaman?>" />
               
                 <div class="form-group">
                   <label>No Angsuran</label>
-                  <input name="no_angsuran" class="form-control <?php echo form_error('no_angsuran') ? 'is-invalid':'' ?>" placeholder="Masukan No Angsuran" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('no_angsuran') ?>
-                  </div>
+                  <input name="no_angsuran" class="form-control" placeholder="Masukan No Angsuran" type="text">
                 </div>
 
                 <div class="form-group">
                   <label>Jumlah Angsuran</label>
-                  <input name="jumlah_angsuran" class="form-control <?php echo form_error('jumlah_angsuran') ? 'is-invalid':'' ?>" placeholder="Masukan Jumlah Angsuran Tanpa (.)" type="text"/>
-                  <div class="invalid-feedback">
-                    <?php echo form_error('jumlah_angsuran') ?>
-                  </div>
+                  <input name="jumlah_angsuran" class="form-control " placeholder="Masukan Jumlah Angsuran Tanpa (.)" type="text">
+                  
                 </div>
               
               <!-- /.box-body -->
@@ -79,6 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
             </form>
           </div>
+      </div>
           <!-- /.box -->
 
         </div>

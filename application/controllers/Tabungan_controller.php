@@ -11,7 +11,7 @@ class Tabungan_controller extends MY_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model("Tabungan_model");
-        $this->load->model("Anggota_model");
+        $this->load->model("Member_model");
         $this->load->model("Jenis_model");
         
         
@@ -19,8 +19,8 @@ class Tabungan_controller extends MY_Controller
 
     public function index()
     {
-        $data["tabungan"] = $this->Anggota_model->getAll();
-        $data["user"] = $this->Anggota_model->getAll();
+        $data["tabungan"] = $this->Member_model->getAll();
+        $data["user"] = $this->Member_model->getAll();
         $data["tabungan"] = $this->Tabungan_model->getAll();
         $data["jenis_tabungan"] = $this->Jenis_model->getAll();
         $this->load->view("tabungan/lt_admin", $data);
@@ -39,7 +39,7 @@ class Tabungan_controller extends MY_Controller
         $jumlah_tabungan = $this->input->post('jumlah_tabungan');
         $id_jenis_tabungan = $this->input->post('id_jenis_tabungan');
 
-        $nama_user = $this->Anggota_model->getUserNameById($id_user);
+        $nama_user = $this->Member_model->getUserNameById($id_user);
         $jenis_tabungan = $this->Tabungan_model->getJenisTabunganNameById($id_jenis_tabungan);
 
         if ($nama_user && $jenis_tabungan) {
@@ -67,7 +67,7 @@ class Tabungan_controller extends MY_Controller
     
 
     public function add() {  
-        $data['users'] = $this->Anggota_model->get_users();
+        $data['users'] = $this->Member_model->get_users();
         $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
     
         $this->form_validation->set_rules('jumlah_tabungan', 'Jumlah Tabungan', 'required|numeric');
@@ -87,7 +87,7 @@ class Tabungan_controller extends MY_Controller
     
             $this->Tabungan_model->insert_tabungan($tabungan_data); 
             
-            $this->session->set_flashdata('success', 'Tabungan added successfully');
+            $this->session->set_flashdata('success', 'Savings have been added successfully.');
             redirect('tabungan_controller/index');
         }
     }
@@ -96,7 +96,7 @@ class Tabungan_controller extends MY_Controller
 
     /**public function add()
     {
-        $data['users'] = $this->Anggota_model->get_users();
+        $data['users'] = $this->Member_model->get_users();
         $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
 
         if ($this->input->post('submit')) {
@@ -119,10 +119,10 @@ class Tabungan_controller extends MY_Controller
     }*/
 
     public function edit($id){
-        $anggota = $this->Anggota_model; //object model
+        $anggota = $this->Member_model; //object model
     	$tabungan = $this->Tabungan_model; //object model
         $validation = $this->form_validation; //object validasi
-        $validation->set_rules($simpanan_pokok->rules()); //terapkan rules di Anggota_model.php
+        $validation->set_rules($simpanan_pokok->rules()); //terapkan rules di Member_model.php
 
         if ($validation->run()) { //lakukan validasi form
             $simpanan_pokok->update($id); // update data
@@ -135,7 +135,7 @@ class Tabungan_controller extends MY_Controller
     }
 
     public function hide($id){
-    	$this->Anggota_model->update($id);
+    	$this->Member_model->update_saving($id);
     	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
     	redirect('Anggota_controller/index');
     }

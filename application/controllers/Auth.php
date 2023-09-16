@@ -104,7 +104,7 @@ class Auth extends CI_Controller {
             'level' => 'member'
         );
         $this->session->set_userdata($session);
-        redirect('Dashboard_controller/anggota', $member);
+        redirect('Dashboard_controller/member', $member);
 
     } else {
         $this->session->set_flashdata('message', 'Username atau password salah');

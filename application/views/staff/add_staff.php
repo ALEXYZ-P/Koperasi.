@@ -30,9 +30,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     background-color: white; /* Make sure the color is lowercased */
 }
 
-
-
-
   </style>
 <?php $this->load->view("admin/_includes/head.php") ?>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -47,14 +44,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <section class="content-header">
         <h1>
-          Kelola
-          <small>Data Pegawai</small>
+          Manage
+          <small>Staff</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-male"></i>  Pegawai</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/index') ?>">Lihat Data Pegawai</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/add') ?>">Tambah Data Pegawai</a></li>
+          <li><a href="#"><i class="fa fa-fw fa-male"></i>  Staff</a></li>
+          <li><a href="<?php echo base_url('Staff_controller/index') ?>">See Staff</a></li>
+          <li><a href="<?php echo base_url('Staff_controller/add') ?>">Add Staff</a></li>
         </ol>
+        <?php 
+          if ($this->session->flashdata('msg0')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg0') .
+                  '</div>';
+          }elseif ($this->session->flashdata('msg1')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg1') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg2')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg2') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg3')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg3') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg4')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg4') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg12')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg12') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg13')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg13') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg14')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg14') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg23')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg23') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg24')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg24') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg34')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg34') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg1s')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg1s') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg2s')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg2s') .
+                    '</div>';
+          }elseif ($this->session->flashdata('msg3s')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg3s') .
+                    '</div>';
+          }elseif ($this->session->flashdata('pesa4s')) {
+            echo '<div class="alert alert-danger" >'
+             . $this->session->flashdata('msg4s') .
+                    '</div>';
+          }
+          
+        ?>
       </section>
 
 
@@ -66,11 +127,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- general form elements -->
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Pengisian Form</h3>
+                <h3 class="box-title">Form</h3>
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form role="form" action="<?php echo base_url('Pegawai_controller/add') ?>" method="POST">
+              <form role="form" action="<?php echo base_url('Staff_controller/add') ?>" method="POST">
                 <div class="box-body">
 
                 <div class="form-group">
@@ -99,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="password" >Password</label>
-                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="password" type="password" required/>
+                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Password" type="password" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('password') ?>
                     </div>
@@ -107,15 +168,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="nia" >NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="Masukan NIK" type="text" required/>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="text" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nia') ?>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="nama" >Nama</label>
-                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text" required>
+                    <label for="nama" >Name</label>
+                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Name" type="text" required>
                     <div class="invalid-feedback">
                       <?php echo form_error('nama') ?>
                     </div>
@@ -125,35 +186,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label for="jenis_kelamin" >Gender</label>
                     <div class="radio">
                       <label>
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki" >
-                        Laki-Laki
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Male" >
+                        Male
                       </label>
                     </div>
                     <div class="radio">
                       <label>
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Perempuan">
-                        Perempuan
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Female">
+                        Female
                       </label>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label for="alamat" >Alamat</label>
-                    <input name="alamat" class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" placeholder="Alamat" type="text" required/>
+                    <label for="alamat" >Address</label>
+                    <input name="alamat" class="form-control <?php echo form_error('Address') ? 'is-invalid':'' ?>" placeholder="Address" type="text" required/>
                     <div class="invalid-feedback">
-                      <?php echo form_error('alamat')?>
+                      <?php echo form_error('Address')?>
                     </div>
                   </div>
 
-
                   <div class="form-group">
-                    <label for="tempat_lahir" >Tempat, </label><label for="birthday" > tanggal Lahir</label>
+                    <label for="tempat_lahir" >Place, </label><label for="birthday" > Date of Birth</label>
                     <div class="input-container " >
-                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text" required/>
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Place of Birth" type="text" required/>
                       <div class="invalid-feedback">
                       <?php echo form_error('tempat_lahir')?>
                       </div>
-                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date" required/>
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Date of Birth" type="date" required/>
                       <div class="invalid-feedback">
                       <?php echo form_error('birthday')?>
                       </div>
@@ -165,7 +225,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Dapaag -->           
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
-                  <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancel</a>
+                  <a href="<?php echo base_url('Staff_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancel</a>
                 </div>
               </form>
             </div>
@@ -184,7 +244,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">Member <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Member</a>
           </div>
         </div>
         <!-- ./col -->

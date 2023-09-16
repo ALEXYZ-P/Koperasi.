@@ -34,11 +34,24 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>
-<?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+
+<!-- Sidebar -->
+<?php
+        $level = $this->session->userdata('level');
+
+        if ($level === 'admin') {
+            $this->load->view("admin/_includes/sidebar.php");
+        } elseif ($level === 'staff') {
+            $this->load->view("admin/_includes/sb_staff.php");
+        } else {
+            $this->load->view("admin/_includes/sidebar.php");
+        }
+    ?>
+    
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Alert -->
-    <?php if ($this->session->flashdata('success')): ?>
+    <!-- Alert 
+    <?php /**if ($this->session->flashdata('success')): ?>
       <div class="box-body">
         <div class="alert alert-info alert-dismissible">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -46,8 +59,8 @@
           <?php echo $this->session->flashdata('success'); ?>
         </div>
       </div>
-    <?php endif; ?>
-    <!-- Alert -->
+    <?php endif; */ ?>
+    Alert -->
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
@@ -59,8 +72,8 @@
               <a href="#"><center>
               <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle" id="img-circle" alt="User Image">
               </a></center> 
-              <h1><center><?php echo $this->session->userdata('username'); ?></center></h1>
-              <p><center><?php echo $this->session->userdata('level'); ?></center></p>
+              <h1><center><?php echo $nama; ?></center></h1>
+              <p><center><?php echo $level; ?></center></p>
               <br>
               
           </div>
@@ -68,11 +81,11 @@
           <table class="bio-table" >
             <tr>
                 <td class="active"><i class="fa fa-envelope"></i></a></td>
-                <td><right><?php echo $this->session->userdata('email'); ?></right></td>
+                <td><right><?php echo $email; ?></right></td>
             </tr>
             <tr>
                 <td><i class="fa fa-phone"></i></a></td>
-                <td><right><?php echo $this->session->userdata('nohp'); ?></right></td>
+                <td><right><?php echo $nohp; ?></right></td>
             </tr>
           </table>
          </div>
@@ -89,7 +102,7 @@
           <table class="bio-table" >
             <tr>
                 <td class="active"><i class="fa fa-calendar"></i></a></td>
-                <td><right><?php echo $this->session->userdata('tanggal'); ?></right></td>
+                <td><right><?php echo $tanggal; ?></right></td>
             </tr>
             
           </table>
@@ -108,32 +121,32 @@
     <tr class="bio-row">
             <td><span>NIK</span></td>
             <td> : </td>
-            <td><?php echo $this->session->userdata('nia'); ?></td>
+            <td><?php echo $nia; ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Full name</span></td>
             <td> : </td>
-            <td><?php echo $this->session->userdata('nama'); ?></td>
+            <td><?php echo $nama; ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Birthday</span></td>
             <td> : </td>
-            <td><?php echo $this->session->userdata('birthday'); ?></td>
+            <td><?php echo $birthday; ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Place of birth</span></td>
             <td> : </td>
-            <td><?php echo $this->session->userdata('tempat_lahir'); ?></td>
+            <td><?php echo $tempat_lahir; ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Gender</span></td>
             <td> : </td>
-            <td><?php echo $this->session->userdata('jenis_kelamin');?></td>
+            <td><?php echo $jenis_kelamin; ?></td>
         </tr>
         <tr class="bio-row">
             <td><span>Address</span></td>
             <td> : </td>
-            <td><?php echo $this->session->userdata('alamat'); ?></td>
+            <td><?php echo $alamat; ?></td>
         </tr>       
         
     </table>

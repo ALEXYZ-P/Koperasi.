@@ -1,11 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
-* 
-*/
-class Pegawai_model extends CI_Model
+class Member_model extends CI_Model
 {
-	//Dapaag
+	
 	private $_table= "user";
 
 	public $id_user;
@@ -85,14 +82,20 @@ class Pegawai_model extends CI_Model
 			'rules' => 'required']
 			
 		];
-	}*/
-	
+	}*/	
 
-	public function getstaff(){
-		$this->db->where('level', 'staff');
+	public function getuser(){
+		$this->db->where('level', 'member');
 		return $this->db->get($this->_table)->result();
 
 	}
+
+	public function checkData($data)
+    {
+        $this->db->where($data);
+        $query = $this->db->get('user');
+        return $query->num_rows();
+    }	
 	
 	public function getById($id){
 		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
@@ -103,7 +106,7 @@ class Pegawai_model extends CI_Model
 	}*/
 
 	public function detail($id_user) {
-		$this->db->where('level', 'staff');
+		$this->db->where('level', 'member');
 		$this->db->where('id_user', $id_user);
 		return $this->db->get($this->_table)->row_array();
     }
@@ -114,7 +117,7 @@ class Pegawai_model extends CI_Model
 		return $this->db->update('user', $data);
 	}*/
 
-	function get_staff_id($id_user)
+	function get_user_id($id_user)
 	{
 		$query = $this->db->get_where('user', array('id_user' => $id_user));
 		return $query;
@@ -140,6 +143,56 @@ class Pegawai_model extends CI_Model
 		$this->db->where('id_user', $id_user);
 		$this->db->update('user', $data);
 	}
+
+	public function getAll(){
+		$this->db->where('level', 'member'); // Tambahkan kondisi untuk level
+		return $this->db->get($this->_table)->result();
+	}
+	
+	public function get_users() {
+			$this->db->where('level', 'member');
+			$query = $this->db->get('user');
+			return $query->result_array();
+		}
+
+	public function update_saving($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday)
+	{
+		
+		$data = array(
+		'id_user' => $id_user,
+		'email' => $email,
+		'nohp' => $nohp,
+		'username' => $username,	
+		'password' => $password,
+		'nia' => $nia,
+		'nama' => $nama,
+		'jenis_kelamin' => $jenis_kelamin,
+		'alamat' => $alamat,
+		'tempat_lahir' => $tempat_lahir,
+		'birthday' => $birthday,
+
+		);
+		$this->db->where('id_user', $id_user);
+		$this->db->update('user', $data);
+	}
+
+	/**public function get_users() {
+        $this->db->select('id_user, nama'); // Select only id_user and nama columns
+        $query = $this->db->get('user'); // Replace 'user' with your actual table name
+        return $query->result();
+    }*/
+
+
+	/**public function getUserNameById($id_user) {
+        $this->db->select('nama');
+        $this->db->where('level', 'member');
+        $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            return $query->row()->nama;
+        }
+        return false;
+    }
+	*/
 
 		/**public function add()
     {
@@ -227,7 +280,7 @@ public function update_data($table, $set, $where)
 		);
 
 		$this->db->where('id_user', $id);
-	    $this->db->update('staff', $data); // Untuk mengeksekusi perintah update data
+	    $this->db->update('member', $data); // Untuk mengeksekusi perintah update data
 	}
 	*/
 

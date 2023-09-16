@@ -4,7 +4,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>
-<?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+<?php $this->load->view("admin/_includes/sb_member.php") ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <!-- Alert -->

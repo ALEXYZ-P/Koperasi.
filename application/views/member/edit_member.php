@@ -39,7 +39,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="wrapper">
 
     <?php $this->load->view("admin/_includes/header.php") ?>
-    <?php $this->load->view("admin/_includes/sidebar.php") ?>
+    <!-- Sidebar -->
+    <?php
+        $level = $this->session->userdata('level');
+
+        if ($level === 'admin') {
+            $this->load->view("admin/_includes/sidebar.php");
+        } elseif ($level === 'staff') {
+            $this->load->view("admin/_includes/sb_staff.php");
+        } else {
+            $this->load->view("admin/_includes/sidebar.php");
+        }
+    ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -47,13 +58,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <section class="content-header">
         <h1>
-          Kelola
-          <small>Data Pegawai</small>
+          Manage
+          <small>Member</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-male"></i>  Pegawai</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/index') ?>">Lihat Data Pegawai</a></li>
-          <li><a href="<?php echo base_url('Pegawai_controller/add') ?>">Edit Data Pegawai</a></li>
+          <li><a href="#"><i class="fa fa-fw fa-male"></i>  Member</a></li>
+          <li><a href="<?php echo base_url('Member_controller/index') ?>">See Member</a></li>
+          <li><a href="#">Edit Member</a></li>
         </ol>
       </section>
 
@@ -66,12 +77,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- general form elements -->
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Pengisian Form</h3>
+                <h3 class="box-title">Form</h3>
               </div>
               <!-- /.box-header -->
               <!-- form start -->
              
-            <form action="<?php echo base_url('Pegawai_controller/update'); ?>" method="post">
+            <form action="<?php echo base_url('Member_controller/update'); ?>" method="post">
               <div class="box-body">
               
               <input type="hidden" name="id_user" value="<?php echo $id_user?>">
@@ -117,10 +128,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
 
                   <div class="form-group">
-                    <label>Nama</label>
-                    <input name="nama" class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" placeholder="Masukan Nama" type="text" value="<?php echo $nama ?>">
+                    <label>Name</label>
+                    <input name="nama" class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>" placeholder="Name" type="text" value="<?php echo $nama ?>">
                     <div class="invalid-feedback">
-                      <?php echo form_error('nama') ?>
+                      <?php echo form_error('name') ?>
                     </div>
                   </div>
 
@@ -128,14 +139,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label>Gender</label>
                     <div class="radio">
                       <label>
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Laki-Laki"  <?php if ($jenis_kelamin === 'Laki-Laki') echo 'checked' ?>>
-                        Laki-Laki
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Male"  <?php if ($jenis_kelamin === 'Male') echo 'checked' ?>>
+                        Male
                       </label>
                     </div>
                     <div class="radio">
                       <label>
-                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Perempuan" <?php if ($jenis_kelamin === 'Perempuan') echo 'checked' ?>>
-                        Perempuan
+                        <input type="radio" class="<?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" name="jenis_kelamin" value="Female" <?php if ($jenis_kelamin === 'Female') echo 'checked' ?>>
+                        Female
                       </label>
                     </div>
                   </div>
@@ -150,13 +161,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                   <div class="form-group">
-                    <label>Tempat, tanggal Lahir</label>
+                    <label>Place and Date of Birth</label>
                     <div class="input-container " >
-                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Tempat Lahir" type="text" value="<?php echo $tempat_lahir ?>">
+                      <input name="tempat_lahir" id="half-width-form" class="half-width-form <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>" placeholder="Place of Birthday" type="text" value="<?php echo $tempat_lahir ?>">
                       <div class="invalid-feedback">
                       <?php echo form_error('tempat_lahir')?>
                       </div>
-                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Tanggal Lahir" type="date" value="<?php echo $birthday ?>">
+                      <input name="birthday" id="half-width-form" class="half-width-form <?php echo form_error('birthday') ? 'is-invalid':'' ?>" placeholder="Date of Birthday" type="date" value="<?php echo $birthday ?>">
                       <div class="invalid-feedback">
                       <?php echo form_error('birthday')?>
                       </div>
@@ -168,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="box-footer">
                 <!--<button class="btn btn-success" name="save" type="save"><i class="fa fa-fw fa-plus"></i>Update</button>-->
                 <input class="btn btn-success" name="save" type="submit" value="save">
-                <a href="<?php echo base_url('Pegawai_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>cancel</a>
+                <a href="<?php echo base_url('Member_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>cancel</a>
               </div>
             </form>
             

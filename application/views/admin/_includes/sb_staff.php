@@ -30,7 +30,7 @@
         <li class="header">Navigation</li>
 
         <li><a href="<?php echo base_url('Dashboard_controller/staff') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="<?php echo base_url('Anggota_controller') ?>"><i class="fa fa-fw fa-child"></i> <span>Member</span></a>
+        <li><a href="<?php echo base_url('Member_controller') ?>"><i class="fa fa-fw fa-users"></i> <span>Member</span></a>
         </li>
         <li class="treeview">
           <a href="#">
@@ -40,10 +40,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('Tabungan_controller') ?>"><i class="fa fa-circle-o"></i>Tabungan</a></li>
-            <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-circle-o"></i>Pinnjam</a></li>
-            <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Angsuran</a></li>
-            <li><a href="<?php echo base_url('Angsuran_controller/list_anggota') ?>"><i class="fa fa-circle-o"></i>Detail Angsuran</a></li>
+            <li><a href="<?php echo base_url('Tabungan_controller') ?>"><i class="fa fa-circle-o"></i>Saving</a></li>
+            <li><a href="<?php echo base_url('Pinjaman_controller') ?>"><i class="fa fa-circle-o"></i>Loan</a></li>
+            <li><a href="<?php echo base_url('Angsuran_controller') ?>"><i class="fa fa-circle-o"></i>Installments</a></li>
           </ul>
         </li>
         <!--
