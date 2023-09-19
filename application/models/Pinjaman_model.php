@@ -20,15 +20,15 @@ class Pinjaman_model extends CI_Model
 		return $this->db->get($this->_table)->result();
 	}
 
+	public function get_pinjaman() {
+		return $this->db->where('id_pinjaman', $id_pinjaman)->get('pinjaman')->row();
+		}
+
 	public function get_users() {
     // Ambil daftar pengguna dari database
     $query = $this->db->get('user');
     return $query->result();
 	}
-
-	 public function get_pinjaman_by_id($id_pinjaman) {
-        return $this->db->where('id_pinjaman', $id_pinjaman)->get('pinjaman')->row_array();
-    }
 
 	public function insert_pinjaman($pinjaman_data) {
         // Attempt to insert data into the "tabungan" table
@@ -113,17 +113,7 @@ class Pinjaman_model extends CI_Model
 	}
 
 	// Add this method to process the payment (deduct from total_peminjaman)
-	public function process_payment($id_pinjaman, $jumlah_angsuran) {
-	   
-	        // Insert the payment data into the angsuran table
-	        $payment_data = array(
-	            'id_pinjaman' => $id_pinjaman,
-	            'no_angsuran' => $no_angsuran,
-	            'jumlah_angsuran' => $jumlah_angsuran,
-	            // Add other payment details as needed
-	        );
-	        $this->db->insert('angsuran', $payment_data);
-	    }
+	
 	
 
 

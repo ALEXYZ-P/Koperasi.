@@ -88,33 +88,17 @@ class Pinjaman_controller extends MY_Controller
             // Pinjaman_controller.php
 
 // Add this method to display the "Tambah Angsuran" page
-    public function tambah_angsuran($id_pinjaman) {
+    public function tambah_angsuran() {
         // Load the Pinjaman_model to fetch loan details
-        $this->load->model('Pinjaman_model');
-        $loan_data = $this->Pinjaman_model->get_loan_details($id_pinjaman);
+        $this->load->model('Angsuran_model');
+        $data = $this->Angsuran_model->getALL();
 
         // Load a view for adding angsuran (payment)
-        $data['loan_data'] = $loan_data;
         $this->load->view('angsuran/tambah_angsuran', $data);
     }
 
     // Add this method to process the payment data
-    public function proses_angsuran() {
-        $this->load->model('Pinjaman_model');
-
-        // Get input data from the form
-        $id_pinjaman = $this->input->post('id_pinjaman');
-        $no_angsuran = $this->input->post('no_angsuran');
-        $jumlah_angsuran = $this->input->post('jumlah_angsuran');
-
-        // Process the payment (deduct from total_peminjaman)
-        $this->Pinjaman_model->process_payment($id_pinjaman, $jumlah_angsuran);
-
-        // You can add a success message to the session here if needed
-        
-        // Redirect to the page with the list of loans
-        redirect('Angsuran_controller/index'); // Change this to the appropriate URL
-    }
+    
 
 
     public function delete($id){

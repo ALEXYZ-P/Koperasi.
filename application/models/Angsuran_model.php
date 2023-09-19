@@ -26,9 +26,9 @@ class Angsuran_model extends CI_Model
         return $this->db->get('angsuran')->result_array();
     }
 
-    public function insert_angsuran($angsuran_data) {
+    public function insert_angsuran($data) {
         // Attempt to insert data into the "tabungan" table
-        $inserted = $this->db->insert('angsuran', $angsuran_data);
+        $inserted = $this->db->insert('angsuran', $data);
 
         return $inserted; // Return true if successful, false otherwise
     }
@@ -133,6 +133,22 @@ class Angsuran_model extends CI_Model
 		$this->db->update('angsuran', $data); // Untuk mengeksekusi perintah update data
 	}
 
+	public function process_payment($id_pinjaman, $no_angsuran, $jumlah_angsuran) {
+    // Insert the payment data into the angsuran table
+    $payment_data = array(
+        'id_pinjaman' => $id_pinjaman,
+        'no_angsuran' => $no_angsuran,
+        'jumlah_angsuran' => $jumlah_angsuran,
+        // Tambahkan detail pembayaran lainnya jika diperlukan
+    );
+    $this->db->insert('angsuran', $payment_data);
+    // Anda dapat menambahkan pesan sukses ke sesi di sini jika diperlukan
+
+    // Redirect ke halaman dengan daftar pinjaman atau halaman yang sesuai
+    redirect('Angsuran_controller/index'); // Ganti ini dengan URL yang sesuai
+}
+
+
 	// public function hide($id){
 	// 	$this->db->where('id_anggota', $id);
 	// 	$this->_table->update('set_aktif == False');
@@ -145,6 +161,22 @@ class Angsuran_model extends CI_Model
 		$this->db->where('id_angsuran', $id);
 		$this->db->delete('angsuran'); // Untuk mengeksekusi perintah delete data
 	}
+
+	public function proses_pembayaran($id_pinjaman,$no_angsuran, $jumlah_angsuran) {
+    // Insert the payment data into the angsuran table
+    $angsuran_data = array(
+        'id_pinjaman' => $id_pinjaman,
+        'no_angsuran' => $no_angsuran,
+        'jumlah_angsuran' => $jumlah_angsuran,
+        // Add other payment details as needed
+    );
+    $this->db->insert('angsuran', $angsuran_data);
+
+    // Lakukan perhitungan atau pembaruan yang diperlukan, seperti mengurangi sisa pinjaman
+
+    // Anda mungkin ingin menambahkan pesan sukses atau pesan kesalahan di sini
+}
+
 }
 
 

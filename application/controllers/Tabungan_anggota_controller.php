@@ -10,7 +10,7 @@ class Tabungan_anggota_controller extends MY_Controller
     {
         parent::__construct();
         
-        $this->load->model("Anggota_model");
+        $this->load->model("Member_model");
         $this->load->model("Tabungan_model");
         $this->load->model("Jenis_model");
         $this->load->library('form_validation');
@@ -19,7 +19,7 @@ class Tabungan_anggota_controller extends MY_Controller
     {
         $id_user = $this->session->userdata('id_user');
 
-        $data["user"] = $this->Anggota_model->getAll();
+        $data["user"] = $this->Member_model->getAll();
         $data["tabungan"] = $this->Tabungan_model->getTabunganByIdMember($id_user);
         $data["jenis_tabungan"] = $this->Jenis_model->getAll();
         $this->load->view("tabungan/lihat_tabungan", $data);
@@ -32,7 +32,7 @@ class Tabungan_anggota_controller extends MY_Controller
     }
     public function add($id)
     {   
-        $anggota = $this->Anggota_model;
+        $anggota = $this->Member_model;
         $tabungan = $this->Tabungan_model;
         $validation = $this->form_validation;
         $validation->set_rules($tabungan->rules());
@@ -41,14 +41,14 @@ class Tabungan_anggota_controller extends MY_Controller
             $this->session->set_flashdata('success', 'Tambah Simpanan Sebesar Rp. '.$tabungan->jumlah.' Berhasil Disimpan');
             redirect('Tabungan_controller/index');
         }
-        $data['anggota'] = $this->Anggota_model->getById($id);
+        $data['anggota'] = $this->Member_model->getById($id);
         $this->load->view("tabungan/tambah_tabungan", $data);
     }
     public function edit($id){
-        $anggota = $this->Anggota_model; //object model
+        $anggota = $this->Member_model; //object model
         $tabungan = $this->Tabungan_model; //object model
         $validation = $this->form_validation; //object validasi
-        $validation->set_rules($simpanan_pokok->rules()); //terapkan rules di Anggota_model.php
+        $validation->set_rules($simpanan_pokok->rules()); //terapkan rules di Member_model.php
         if ($validation->run()) { //lakukan validasi form
             $simpanan_pokok->update($id); // update data
             $this->session->set_flashdata('success', 'Data Simpanan Pokok Sebesar Rp. '.$tabungan->getById($id)->jumlah.' Berhasil Diubah');

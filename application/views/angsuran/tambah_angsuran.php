@@ -53,25 +53,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.box-header -->
             <div class="box-body">
             <!-- form start -->
-            <form role="form" action="<?php echo base_url('Pinjaman_controller/proses_angsuran/'.$angsuran->id_pinjaman) ?>" method="post">
-              <input type="hidden" name="id_pinjaman" value="<?php echo $angsuran->id_pinjaman?>" />
-              
+            <form role="form" action="<?php echo base_url('Angsuran_controller/add'); ?>" method="post">
+
                 <div class="form-group">
-                  <label>No Angsuran</label>
-                  <input name="no_angsuran" class="form-control" placeholder="Masukan No Angsuran" type="text">
+                <label for="id_pinjaman">No Pinjaman</label>
+                <select name="id_pinjaman" id="id_pinjaman" class="form-control">
+                <?php foreach ($pinjamans as $pinjaman) : ?>
+                <option value="<?php echo $pinjaman['id_pinjaman']; ?>"><?php echo $pinjaman['no_pinjaman']; ?></option>
+                <?php endforeach; ?>
+                </select>
+                </div>              
+
+                <div class="form-group">
+                <label for="no_angsuran">No Angsuran</label>
+                <input name="no_angsuran" id="no_angsuran" class="form-control" placeholder="No angsuran" type="text" required />
                 </div>
 
                 <div class="form-group">
-                  <label>Jumlah Angsuran</label>
-                  <input name="jumlah_angsuran" class="form-control " placeholder="Masukan Jumlah Angsuran Tanpa (.)" type="text">
-                  
+                <label for="jumlah_angsuran">Jumlah Angsuran</label>
+                <input name="jumlah_angsuran" id="jumlah_angsuran" class="form-control" placeholder="Jumlah Angsuran"   type="number" required />
                 </div>
               
               <!-- /.box-body -->
 
               <div class="box-footer">
                 <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <a href="<?php echo base_url('Angsuran_controller/listPinjamanAnggota') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Batal</a>
+                <a href="<?php echo base_url('Pinjaman_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Batal</a>
               </div>
             </form>
           </div>

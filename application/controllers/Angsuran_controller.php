@@ -41,11 +41,12 @@ class Angsuran_controller extends MY_Controller
 		$this->load->view("angsuran/list_angsuran_anggota", $data);
 	}
 
-	public function add()
-	{
-		$data['users'] = $this->Member_model->get_users();
+
+
+	public function add() {  
+        $data['pinjamans'] = $this->Pinjaman_model->get_pinjaman();
     
-        $this->form_validation->set_rules('jumlah_angsuran', 'jumlah_angsuran', 'required|numeric');
+        $this->form_validation->set_rules('jumlah_angsuran', 'Jumlah Angsuran', 'required|numeric');
         $validation = $this->form_validation;
     
         if ($this->form_validation->run() === FALSE) {
@@ -53,23 +54,23 @@ class Angsuran_controller extends MY_Controller
             $this->load->view('angsuran/tambah_angsuran', $data); // Pass $data to the view
         } else {
             
-            // Validation passed, insert data into the "angsuran" table
+            // Validation passed, insert data into the "tabungan" table
             $angsuran_data = array( // Use a different variable name
                 'id_pinjaman' => $this->input->post('id_pinjaman'),
                 'no_angsuran' => $this->input->post('no_angsuran'),
                 'jumlah_angsuran' => $this->input->post('jumlah_angsuran')
             );
-
+    
             $this->Angsuran_model->insert_angsuran($angsuran_data); 
             
-            $this->session->set_flashdata('success', 'Pinjaman added successfully');
-            redirect('angsuran_controller/index');
+            $this->session->set_flashdata('success', 'installments have been added successfully.');
+            redirect('Angsuran_controller/index');
         }
-		
-	}
+    }
 
 	public function edit($id)
 	{
+
 		$anggota = $this->Member_model; //object model
 		$angsuran = $this->Angsuran_model; //object model
 		$validation = $this->form_validation; //object validasi
@@ -109,4 +110,30 @@ class Angsuran_controller extends MY_Controller
 		$this->session->set_flashdata('success', 'Data Angsuran Berhasil Dihapus');
 		redirect($_SERVER['HTTP_REFERER']);
 	}
+
+	public function tambah_angsuran($id_pinjaman)
+{
+    // Anda dapat mengambil data pinjaman berdasarkan $id_pinjaman
+    $data['pinjaman'] = $this->Pinjaman_model->get_loan_details($id_pinjaman);
+
+    // Memuat halaman "Tambah Angsuran" dengan data pinjaman
+    $this->load->view('angsuran/tambah_angsuran', $data);
+}
+
+
+	public function proses_pembayaran() {
+    // Ambil data dari formulir
+    $id_pinjaman = $this->input->post('id_pinjaman');
+    $no_angsuran = $this->input->post('no_angsuran');
+    $jumlah_angsuran = $this->input->post('jumlah_angsuran');
+
+    // Simpan data pembayaran ke dalam tabel angsuran
+    $this->Angsuran_model->process_payment($id_pinjaman, $no_angsuran, $jumlah_angsuran);
+
+    // Redirect ke halaman yang sesuai, misalnya halaman "Lihat Pinjaman"
+    redirect('Angsuran_controller/index');
+}
+
+
+
 }
