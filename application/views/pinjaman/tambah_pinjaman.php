@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                 <div class="form-group">
                                     <label for="bunga">Bunga (% per bulan)</label>
-                                    <input name="bunga" id="bunga" class="form-control" placeholder="Bunga (% per bulan)" type="number" required />
+                                    <input name="bunga" id="bunga" class="form-control" placeholder="Bunga (% per bulan)" type="text" required />
                                 </div>
 
                                 <button class="btn btn-success" type="submit" name="submit"><i class="fa fa-fw fa-plus"></i>Save</button>

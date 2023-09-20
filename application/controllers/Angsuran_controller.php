@@ -45,6 +45,8 @@ class Angsuran_controller extends MY_Controller
 
 	public function add() {  
 		$data["pinjaman"] = $this->Pinjaman_model->getALL();    
+        $data['users'] = $this->Member_model->get_users();
+
 		
         $this->form_validation->set_rules('jumlah_angsuran', 'Jumlah Angsuran', 'required|numeric');
         $validation = $this->form_validation;

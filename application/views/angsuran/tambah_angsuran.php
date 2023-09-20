@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label for="id_pinjaman">No Pinjaman</label>
                 <select name="id_pinjaman" id="id_pinjaman" class="form-control">
                 <?php foreach ($pinjaman as $pinjaman_item) : ?>
-                <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['no_pinjaman']; ?> - <?php echo $pinjaman_item['jumlah_pinjaman'] ?></option>
+                <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['no_pinjaman']; ?> - <?php echo "Rp. " . (number_format($pinjaman_item['jumlah_pinjaman'],2,',','.')) ?></option>
                 <?php endforeach; ?>
                 </select>
                 </div>              
