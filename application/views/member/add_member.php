@@ -248,22 +248,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.box -->
 
           </div>
-           <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3><?php echo $total_Member ?></h3>
+          <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3><?php echo $total_users ?></h3>
 
-              <p>Total Member</p>
+                  <p>Total Member</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">Member</a>
+              </div>
             </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">Member</a>
-          </div>
-        </div>
-        <!-- ./col -->
+          <!-- ./col -->
           <!--/.col (left) -->
         </div>
         <!-- /.row -->
