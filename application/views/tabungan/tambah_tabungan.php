@@ -24,7 +24,6 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
 
-
     <!-- Alert -->
       <?php if ($this->session->flashdata('success')): ?>
         <div class="box-body">
@@ -63,11 +62,12 @@
                             <?php echo $this->session->flashdata('success'); ?>
 
                             <form action="<?php echo base_url('Tabungan_controller/add'); ?>" method="post">
+
                                 <div class="form-group">
                                     <label for="id_user">User</label>
                                     <select name="id_user" id="id_user" class="form-control">
                                         <?php foreach ($users as $user) : ?>
-                                            <option value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
+                                            <option id="example1" value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
