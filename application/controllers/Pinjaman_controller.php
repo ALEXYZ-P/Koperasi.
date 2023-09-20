@@ -17,7 +17,7 @@ class Pinjaman_controller extends MY_Controller
     public function index()
     {
         $data["user"] = $this->Member_model->getAll();
-        $data["pinjaman"] = $this->Pinjaman_model->getALL();
+        $data["pinjaman"] = $this->Pinjaman_model->get_pinjaman();
         $this->load->view("pinjaman/lihat_pinjaman", $data);
     }
 

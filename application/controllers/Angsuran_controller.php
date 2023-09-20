@@ -44,8 +44,8 @@ class Angsuran_controller extends MY_Controller
 
 
 	public function add() {  
-        $data['pinjamans'] = $this->Pinjaman_model->get_pinjaman();
-    
+		$data["pinjaman"] = $this->Pinjaman_model->getALL();    
+		
         $this->form_validation->set_rules('jumlah_angsuran', 'Jumlah Angsuran', 'required|numeric');
         $validation = $this->form_validation;
     
@@ -92,6 +92,8 @@ class Angsuran_controller extends MY_Controller
 	// 	$this->Member_model->update($id);
 	// 	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
 	// 	redirect('Anggota_controller/index');
+
+
 	// }
 
 	/**

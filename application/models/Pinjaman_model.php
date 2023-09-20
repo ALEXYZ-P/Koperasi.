@@ -17,11 +17,11 @@ class Pinjaman_model extends CI_Model
 	public $bunga;
 
 	public function getALL(){
-		return $this->db->get($this->_table)->result();
+    return $this->db->get($this->_table)->result_array();
 	}
 
 	public function get_pinjaman() {
-		return $this->db->where('id_pinjaman', $id_pinjaman)->get('pinjaman')->row();
+	return $this->db->get($this->_table)->result();
 		}
 
 	public function get_users() {
