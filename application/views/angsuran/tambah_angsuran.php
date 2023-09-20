@@ -58,8 +58,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group">
                 <label for="id_pinjaman">No Pinjaman</label>
                 <select name="id_pinjaman" id="id_pinjaman" class="form-control">
-                <?php foreach ($pinjamans as $pinjaman) : ?>
-                <option value="<?php echo $pinjaman['id_pinjaman']; ?>"><?php echo $pinjaman['no_pinjaman']; ?></option>
+                <?php foreach ($pinjaman as $pinjaman_item) : ?>
+                <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['no_pinjaman']; ?> - <?php echo $pinjaman_item['jumlah_pinjaman'] ?></option>
                 <?php endforeach; ?>
                 </select>
                 </div>              
