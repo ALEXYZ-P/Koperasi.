@@ -67,7 +67,7 @@
                                     <label for="id_user">User</label>
                                     <select name="id_user" id="id_user" class="form-control">
                                         <?php foreach ($users as $user) : ?>
-                                            <option id="example1" value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
+                                            <option id="id_user" value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

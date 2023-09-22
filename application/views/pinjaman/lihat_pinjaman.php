@@ -87,7 +87,7 @@
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
                         <td>
-                          <a class="btn btn-success" href="<?php echo site_url('Pinjaman_controller/tambah_angsuran/'.$value->id_pinjaman) ?>">Bayar Pinjaman</a>
+                          <a class="btn btn-success" href="<?php echo site_url('Angsuran_controller/add/'.$value->id_pinjaman) ?>">Bayar Pinjaman</a>
                           
                         </td>
                       </tr>
