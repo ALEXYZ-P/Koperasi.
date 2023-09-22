@@ -21,7 +21,7 @@
     }
 
     #img-circle {
-        padding: 50px;
+        padding: 20px;
        
     }
 
@@ -57,7 +57,7 @@
       <div class="panel">
           <div class="user-heading round">
               <a href="#"><center>
-              <img src="<?php echo base_url('assetAdmin/dist/img/user2-160x160.jpg')?> " class="img-circle" id="img-circle" alt="User Image">
+              <img src="<?php echo base_url('assetAdmin/dist/img/pfp1.jpg')?> " class="img-circle" id="img-circle" alt="User Image">
               </a></center> 
               <h1><center><?php echo $this->session->userdata('username'); ?></center></h1>
               <p><center><?php echo $this->session->userdata('level'); ?></center></p>

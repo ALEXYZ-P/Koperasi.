@@ -22,27 +22,36 @@ class Staff_controller extends MY_Controller
        	$this->load->helper('url');
 		$validation = $this->form_validation;
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('nohp', 'Phone Number', 'required|numeric|min_length[9]|max_length[15]');
+		$this->form_validation->set_rules('username', 'Username', 'required|min_length[4]');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
+		$this->form_validation->set_rules('nia', 'NIK', 'required|exact_length[16]');
         
 		$data = array(
 			'email'		=>$this->input->post('email'),
 			'nohp'		=>$this->input->post('nohp'),
-            'username' 	=> $this->input->post('username'), 			
+            'username' 	=> $this->input->post('username'),
+			'password' 	=> $this->input->post('password'),
             'nia' 		=> $this->input->post('nia'),
         );
     
-       $data1 = array('email' 		=> $this->input->post('email') );
-	   $data2 = array('nohp' 		=> $this->input->post('nohp') );
-	   $data3 = array('username'	=> $this->input->post('username') );
-	   $data4 = array('nia' 		=> $this->input->post('nia') );
-	  
-       //$this->form_validation->set_rules('password','PASSWORD','required');
-       //$this->form_validation->set_rules('cpassword','PASSWORD','required|matches[password]');
+		$data1 = array('email' 		=> $this->input->post('email') );
+		$data2 = array('nohp' 		=> $this->input->post('nohp') );
+		$data3 = array('username'	=> $this->input->post('username'));
+		$data4 = array('nia' 		=> $this->input->post('nia'));
+		
+		
+		//$this->form_validation->set_rules('password','PASSWORD','required');
+		//$this->form_validation->set_rules('cpassword','PASSWORD','required|matches[password]');
 
-       $result 	= $this->Staff_model->checkData($data);
-       $result1 = $this->Staff_model->checkData($data1);
-       $result2 = $this->Staff_model->checkData($data2);
-	   $result3 = $this->Staff_model->checkData($data3);
-       $result4 = $this->Staff_model->checkData($data4);
+		$result  = $this->Staff_model->checkData($data);
+		$result1 = $this->Staff_model->checkData($data1);
+		$result2 = $this->Staff_model->checkData($data2);
+		$result3 = $this->Staff_model->checkData($data3);
+		$result4 = $this->Staff_model->checkData($data4);
+		//$password = strlen($data['password']);
+    	//$nohp_length = strlen($data['nohp']);
+    	//$nia_length = strlen($data['nia']);
 	   
        	if ($result1 > 0 and $result2> 0 and $result3 > 0 and $result4 > 0 ) {
           	$this->session->set_flashdata('msg0', 'Oops! Email, Phone number, Username & NIK has been registered.');
@@ -104,9 +113,10 @@ class Staff_controller extends MY_Controller
 			$this->session->set_flashdata('msg4s', 'Oops! NIK has been registered.');
 	  	redirect (base_url('Staff_controller/add'));
 		
-		} else{
+		} else {
 
        if($this->form_validation->run() == FALSE) {
+		$this->session->set_flashdata('msg_error', form_error());
            $this->load->view('staff/add_staff');
        }else{
 		$data = array(

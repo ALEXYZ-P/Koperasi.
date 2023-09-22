@@ -22,6 +22,10 @@ class Member_controller extends MY_Controller
        	$this->load->helper('url');
 		$validation = $this->form_validation;
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('nohp', 'Phone Number', 'required|numeric|min_length[9]|max_length[15]');
+		$this->form_validation->set_rules('username', 'Username', 'required|min_length[4]');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
+		$this->form_validation->set_rules('nia', 'NIK', 'required|exact_length[16]');
         
 		$data = array(
 			'email'		=>$this->input->post('email'),
@@ -107,6 +111,7 @@ class Member_controller extends MY_Controller
 		} else{
 
        if($this->form_validation->run() == FALSE) {
+		$this->session->set_flashdata('msg_error', form_error());
            $this->load->view('Member/add_Member');
        }else{
 		$data = array(
