@@ -26,6 +26,16 @@ class Tabungan_controller extends MY_Controller
         $this->load->view("tabungan/lt_admin", $data);
     }
 
+    public function mv()
+    {
+        $id_user = $this->session->userdata('id_user');
+
+        $data["user"] = $this->Member_model->getAll();
+        $data["tabungan"] = $this->Tabungan_model->getTabunganByIdMember($id_user);
+        $data["jenis_tabungan"] = $this->Jenis_model->getAll();
+        $this->load->view("tabungan/lihat_tabungan", $data);
+    }
+
     public function detail($id){
         // $data['anggota'] = $this->SimpananPokok_model->detail_simpanan_pokokall();
         $data['tot'] = $this->Tabungan_model->total_tabungan($id);
