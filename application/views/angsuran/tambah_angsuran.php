@@ -8,18 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="wrapper">
 
   <?php $this->load->view("admin/_includes/header.php") ?>
-  <!-- Sidebar -->
-  <?php
-        $level = $this->session->userdata('level');
-
-        if ($level === 'admin') {
-            $this->load->view("admin/_includes/sidebar.php");
-        } elseif ($level === 'staff') {
-            $this->load->view("admin/_includes/sb_staff.php");
-        } else {
-            $this->load->view("admin/_includes/sidebar.php");
-        }
-    ?>
+  <?php $this->load->view("admin/_includes/sidebar.php") ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -70,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label for="id_pinjaman">No Pinjaman</label>
                 <select name="id_pinjaman" id="id_pinjaman" class="form-control">
                 <?php foreach ($pinjaman as $pinjaman_item) : ?>
-                <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['no_pinjaman']; ?> - <?php echo "Rp. " . (number_format($pinjaman_item['jumlah_pinjaman'],2,',','.')) ?></option>
+                <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['no_pinjaman']; ?> - <?php echo $pinjaman_item['jumlah_pinjaman'] ?></option>
                 <?php endforeach; ?>
                 </select>
                 </div>              
