@@ -39,7 +39,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
 	<div class="login-logo">
-		<a href="<?php echo base_url('Auth')?>"><b>Koperasi</b> Terserah</a>
+		<a href="<?php echo base_url('Auth')?>"><b>Cooperative</b> R</a>
 	</div>
 
 	<div style="color: red;margin-bottom: 15px;">

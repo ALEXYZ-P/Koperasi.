@@ -109,7 +109,7 @@ class Member_controller extends MY_Controller
 	  	redirect (base_url('Member_controller/add'));
 		
 		} else{
-
+			
        if($this->form_validation->run() == FALSE) {
 		$this->session->set_flashdata('msg_error', form_error());
            $this->load->view('Member/add_Member');
@@ -134,6 +134,7 @@ class Member_controller extends MY_Controller
 		
 		}
        }
+	   
 	}
         
         /**if ($this->form_validation->run() == FALSE) {
@@ -179,6 +180,7 @@ class Member_controller extends MY_Controller
 				'tempat_lahir'  => $i['tempat_lahir'],
 				'birthday'    	=> $i['birthday'],
 			);
+		$data['cm'] = $this->db->from("user")->where('level', 'member')->get()->num_rows();
 		$this->load->view('Member/edit_Member', $data);
 		} else {
 			echo "Data Was Not Found";

@@ -26,12 +26,16 @@ class Member_model extends CI_Model
         $this->db->insert('user', $data);
     }
 
-	public function get_user_count() {
-		$this->db->where('level', 'member');
-		$query = $this->db->count_all('user'); 
-		return $query;
-	  }
-	  
+	// public function get_user_count() {
+	// 	$this->db->where('level', 'member');
+	// 	$query = $this->db->count_all('user'); 
+	// 	return $query;
+	//   }
+	//   function count_user()
+	//   {
+	// 	$this->db->from("user")->where('level', 'member')->get()->num_rows();
+	   
+	//    }
 	  
 	
 	/**public function rules()

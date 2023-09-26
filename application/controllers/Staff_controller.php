@@ -184,6 +184,7 @@ class Staff_controller extends MY_Controller
 				'tempat_lahir'  => $i['tempat_lahir'],
 				'birthday'    	=> $i['birthday'],
 			);
+		$data['cs'] = $this->db->from("user")->where('level', 'staff')->get()->num_rows();
 		$this->load->view('staff/edit_staff', $data);
 		} else {
 			echo "Data Was Not Found";
