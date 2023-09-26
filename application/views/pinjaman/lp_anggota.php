@@ -46,9 +46,9 @@
               <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
               <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive">
-              <table id="example1" class="table table-bordered table-hover">
+           <!-- /.box-header -->
+           <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -56,8 +56,7 @@
                       <th>Nama</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
-                      <th>Lama (Bulan)</th>
-                      <th>Bunga</th>
+                      <th>Lama</th>
                       
                     </tr>
                   </thead>
@@ -65,6 +64,7 @@
                     <?php $no = 1; ?>
                     <?php foreach ($user as $users): ?>
                       <?php foreach ($pinjaman as $value): ?>
+                          <?php if ($value->id_user === $users->id_user): ?>
                             <tr>
                               <td><?php echo $no++ ?></td>
                               <td><?php echo ($users->nia) ?></td>
@@ -72,11 +72,11 @@
                               <td><?php echo ($value->jumlah_pinjaman) ?></td>
                               <td><?php echo ($value->tanggal_pinjaman) ?></td>
                               <td><?php echo ($value->lama) ?></td>
-                              <td><?php echo ($value->bunga) ?></td>
                               
                             </tr>
-                      <?php endforeach; ?>
-                    <?php endforeach; ?>
+                          <?php endif; ?>
+                        <?php endforeach; ?>
+                      <?php endforeach; ?>      
                   </tbody>
                   <tfoot>
                     <tr>
@@ -85,16 +85,15 @@
                       <th>Nama</th>
                       <th>Jumlah</th>
                       <th>Tanggal</th>
-                      <th>Lama (Bulan)</th>
-                      <th>Bunga</th>
+                      <th>Lama</th>
                       
                     </tr>
                   </tfoot>
                 </table>
+              </div>
+              <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- /.box -->
         </div>
         <!-- /.col -->
       </div>
