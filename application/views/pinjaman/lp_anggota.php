@@ -5,7 +5,7 @@
 <div class="wrapper">
 
   <?php $this->load->view("admin/_includes/header.php") ?>
-  <?php $this->load->view("admin/_includes/sb_anggota.php") ?>
+  <?php $this->load->view("admin/_includes/sb_member.php") ?>
   
 
   <!-- Content Wrapper. Contains page content -->
@@ -52,48 +52,42 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>Jumlah Pinjaman</th>
-                      <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Aksi</th>
+                      <th>NIK</th>
+                      <th>Nama</th>
+                      <th>Jumlah</th>
+                      <th>Tanggal</th>
+                      <th>Lama (Bulan)</th>
+                      <th>Bunga</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no = 1;?>
-                    <?php foreach ($pinjaman as $value): ?>
-                    <?php foreach ($user as $users): {
-                      # code...
-                    } ?>
-                      <tr>
-                        <td><?php cetak($no++) ?></td>
-                         <td><?php cetak($users->nama)  ?></td>
-                        <td><?php cetak($value->no_pinjaman)  ?></td>
-                        <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
-                        <td><?php cetak($value->lama)  ?></td>
-                        <td><?php echo ($value->bunga)."%"  ?></td>
-                        <td>
-                          <a class="btn btn-ref" href="<?php echo site_url('Pinjaman_controller/edit/'.$value->id_pinjaman) ?>"><i class="fa fa-fw fa-edit"></i></a>
-                          <a href="#!" onclick="deleteConfirm('<?php echo site_url('Pinjaman_controller/delete/'.$value->id_pinjaman) ?>')" class="btn btn-mandarin"><i class="fa fa-fw fa-trash"></i></a>
-                          
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
+                    <?php $no = 1; ?>
+                    <?php foreach ($user as $users): ?>
+                      <?php foreach ($pinjaman as $value): ?>
+                            <tr>
+                              <td><?php echo $no++ ?></td>
+                              <td><?php echo ($users->nia) ?></td>
+                              <td><?php echo ($users->nama) ?></td>
+                              <td><?php echo ($value->jumlah_pinjaman) ?></td>
+                              <td><?php echo ($value->tanggal_pinjaman) ?></td>
+                              <td><?php echo ($value->lama) ?></td>
+                              <td><?php echo ($value->bunga) ?></td>
+                              
+                            </tr>
+                      <?php endforeach; ?>
                     <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>Jumlah Pinjaman</th>
-                      <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Aksi</th>
+                      <th>NIK</th>
+                      <th>Nama</th>
+                      <th>Jumlah</th>
+                      <th>Tanggal</th>
+                      <th>Lama (Bulan)</th>
+                      <th>Bunga</th>
+                      
                     </tr>
                   </tfoot>
                 </table>

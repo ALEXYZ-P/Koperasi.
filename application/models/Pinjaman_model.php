@@ -17,7 +17,8 @@ class Pinjaman_model extends CI_Model
 	public $bunga;
 
 	public function getALL(){
-    return $this->db->get($this->_table)->result_array();
+		
+		return $this->db->get($this->_table)->result();
 	}
 
 	public function get_pinjaman() {
@@ -29,6 +30,12 @@ class Pinjaman_model extends CI_Model
     $query = $this->db->get('user');
     return $query->result();
 	}
+
+	public function getPinjamanByIdMember($id_user){
+		$this->db->where('id_user', $id_user);
+        $query = $this->db->get('pinjaman');
+        return $query->result();
+}
 
 	public function insert_pinjaman($pinjaman_data) {
         // Attempt to insert data into the "tabungan" table
