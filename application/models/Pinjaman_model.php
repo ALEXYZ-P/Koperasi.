@@ -35,7 +35,7 @@ class Pinjaman_model extends CI_Model
 		$this->db->where('id_user', $id_user);
         $query = $this->db->get('pinjaman');
         return $query->result();
-}
+	}
 
 	public function insert_pinjaman($pinjaman_data) {
         // Attempt to insert data into the "tabungan" table

@@ -43,7 +43,7 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('Tabungan_controller/mv') ?>"><i class="fa fa-circle-o"></i>Saving</a></li>
             <li><a href="<?php echo base_url('Pinjaman_controller/mv') ?>"><i class="fa fa-circle-o"></i>loan</a></li>
-            <li><a href="<?php echo base_url('Angsuran_anggota_controller') ?>"><i class="fa fa-circle-o"></i>Installments</a></li>
+            <li><a href="<?php echo base_url('Angsuran_controller/mv') ?>"><i class="fa fa-circle-o"></i>Installments</a></li>
           </ul>
         </li>
         <!--
