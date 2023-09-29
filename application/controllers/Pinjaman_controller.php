@@ -21,6 +21,16 @@ class Pinjaman_controller extends MY_Controller
         $this->load->view("pinjaman/lihat_pinjaman", $data);
     }
 
+    public function mv()
+    {
+        $id_user = $this->session->userdata('id_user');
+
+        $data["user"] = $this->Member_model->getAll(); 
+        $data["pinjaman"] = $this->Pinjaman_model->getPinjamanByIdMember($id_user);
+        
+        $this->load->view("pinjaman/lp_anggota", $data);
+    }
+
     public function detail($id){
         // $data['anggota'] = $this->SimpananWajib_model->detail_simpanan_pokokall();
         $data['simpanan_wajib'] = $this->SimpananWajib_model->detail_simpanan_wajib($id);
@@ -63,7 +73,7 @@ class Pinjaman_controller extends MY_Controller
 
     public function edit($id){
         $anggota = $this->Member_model; //object model
-        $pinjaman = $this->Pinjaman_model; //object model
+    	$pinjaman = $this->Pinjaman_model; //object model
         $validation = $this->form_validation; //object validasi
         $validation->set_rules($pinjaman->rules()); //terapkan rules di Member_model.php
 
@@ -80,9 +90,9 @@ class Pinjaman_controller extends MY_Controller
     }
 
     // public function hide($id){
-    //  $this->Member_model->update($id);
-    //  $this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
-    //  redirect('Anggota_controller/index');
+    // 	$this->Member_model->update($id);
+    // 	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
+    // 	redirect('Anggota_controller/index');
     // }
 
             // Pinjaman_controller.php
@@ -102,8 +112,8 @@ class Pinjaman_controller extends MY_Controller
 
 
     public function delete($id){
-        $this->Pinjaman_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
-        $this->session->set_flashdata('success', 'Data Pinjaman Berhasil Dihapus');
-        redirect($_SERVER['HTTP_REFERER']);
-    }
+	    $this->Pinjaman_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php
+	    $this->session->set_flashdata('success', 'Data Pinjaman Berhasil Dihapus');
+	    redirect($_SERVER['HTTP_REFERER']);
+	}
 }

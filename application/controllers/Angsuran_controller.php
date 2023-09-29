@@ -21,6 +21,17 @@ class Angsuran_controller extends MY_Controller
 		$this->load->view("angsuran/lihat_angsuran", $data);
     }
 
+    public function mv()
+    {
+    	$id_user = $this->session->userdata('id_user');
+    	$id_pinjaman = $this->session->userdata('id_pinjaman');
+
+        $data["user"] = $this->Member_model->getAll();
+        $data["pinjaman"] = $this->Pinjaman_model->getPinjamanByIdMember($id_user);
+        $data["angsuran"] = $this->Angsuran_model->getAngsuranByIdPinjam($id_pinjaman);
+        $this->load->view("angsuran/ci_member", $data);
+    }
+
 	public function detail($id)
 	{
 		// $data['anggota'] = $this->SimpananWajib_model->detail_simpanan_pokokall();
@@ -57,6 +68,7 @@ class Angsuran_controller extends MY_Controller
             // Validation passed, insert data into the "tabungan" table
             $angsuran_data = array( // Use a different variable name
                 'id_pinjaman' => $this->input->post('id_pinjaman'),
+                'id_user' => $this->input->post('id_user'),
                 'no_angsuran' => $this->input->post('no_angsuran'),
                 'jumlah_angsuran' => $this->input->post('jumlah_angsuran')
             );

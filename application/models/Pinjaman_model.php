@@ -20,6 +20,11 @@ class Pinjaman_model extends CI_Model
     return $this->db->get($this->_table)->result_array();
 	}
 
+	public function get(){
+		
+		return $this->db->get($this->_table)->result();
+	}
+
 	public function get_pinjaman() {
 	return $this->db->get($this->_table)->result();
 		}
@@ -59,6 +64,11 @@ class Pinjaman_model extends CI_Model
         return $query->result();
 	}
 
+	public function getPinjamanByIdMember($id_user){
+		$this->db->where('id_user', $id_user);
+        $query = $this->db->get('pinjaman');
+        return $query->result();
+    }
 	// public function detail_simpanan_pokokall(){
 	// 	$this->db->select('*');
  //        $this->db->from('simpanan_wajib');
@@ -132,3 +142,4 @@ class Pinjaman_model extends CI_Model
 
 
 ?>
+	

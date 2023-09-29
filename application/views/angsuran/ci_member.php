@@ -2,17 +2,13 @@
 <html>
 <?php $this->load->view("admin/_includes/head.php") ?>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-
-  <?php $this->load->view("admin/_includes/header.php") ?>
-  <?php $this->load->view("admin/_includes/sb_member.php") ?>
-  
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-
-     <!-- Alert -->
+  <div class="wrapper">
+    <?php $this->load->view("admin/_includes/header.php") ?>
+    <?php $this->load->view("admin/_includes/sb_member.php") ?>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <!-- Alert -->
       <?php if ($this->session->flashdata('success')): ?>
         <div class="box-body">
           <div class="alert alert-info alert-dismissible">
@@ -23,70 +19,74 @@
         </div>
       <?php endif; ?>
       <!-- Alert -->
-
-
-    <section class="content-header">
-      <h1>
-        Kelola
-        <small>Data Pinjaman</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pinjaman</a></li>
-        <li><a href="#">Lihat Data Pinjaman</a></li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <a href="<?php echo base_url('Pinjaman_controller/list_anggota') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
-              <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
-              <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
-            </div>
-           <!-- /.box-header -->
-           <div class="box-body table-responsive">
+      <section class="content-header">
+        <h1>
+          Kelola
+          <small>Data Anggota Koperasi</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-fw fa-child"></i> Tabungan</a></li>
+          <li><a href="#">Lihat Data Tabungan</a></li>
+        </ol>
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body table-responsive">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
+                      <th>Nama Peminjam</th>
+                      <th>No Pinjaman</th>
+                      <th>No Angsuran</th>
+                      <th>Jumlah Pinjaman</th>
+                      <th>Tanggal Peminjaman</th>
                       <th>Lama</th>
-                      
+                      <th>Total Bunga</th>
+                      <th>Jumlah Angsuran</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php $no = 1; ?>
-                    <?php foreach ($pinjaman as $pinjam): ?>
+                    <?php foreach ($user as $users): ?>
                       <?php foreach ($angsuran as $value): ?>
-                          <?php if ($value->id_pinjaman === $pinjam->id_pinjaman): ?>
+                        <?php foreach ($pinjaman as $pinjam): ?>
+                          <?php if ($value->id_user === $users->id_user && $value->id_user === $pinjam->id_user): ?>
                             <tr>
                               <td><?php echo $no++ ?></td>
-                              <td><?php echo ($pinjam->nia) ?></td>
-                              <td><?php echo ($pinjam->nama) ?></td>
-                              <td><?php echo ($value->jumlah_pinjaman) ?></td>
-                              <td><?php echo ($value->tanggal_pinjaman) ?></td>
-                              <td><?php echo ($value->lama) ?></td>
+                              <td><?php echo ($users->nama) ?></td>
+                              <td><?php echo ($pinjam->no_pinjaman) ?></td>
+                              <td><?php echo ($value->no_angsuran) ?></td>
+                              <td><?php echo ($pinjam->jumlah_pinjaman) ?></td>
+                              <td><?php echo ($pinjam->tanggal_pinjaman) ?></td>
+                              <td><?php echo ($pinjam->lama) ?></td>
+                              <td><?php echo ($pinjam->bunga) ?></td>
+                              <td><?php echo ($value->jumlah_angsuran) ?></td>
                               
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
-                      <?php endforeach; ?>      
+                      <?php endforeach; ?>
+                    <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
+                      <th>Nama Peminjam</th>
+                      <th>No Pinjaman</th>
+                      <th>No Angsuran</th>
+                      <th>Jumlah Pinjaman</th>
+                      <th>Tanggal Peminjaman</th>
                       <th>Lama</th>
-                      
+                      <th>Total Bunga</th>
+                      <th>Jumlah Angsuran</th>
                     </tr>
                   </tfoot>
                 </table>
@@ -94,22 +94,21 @@
               <!-- /.box-body -->
             </div>
             <!-- /.box -->
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php $this->load->view("admin/_includes/footer.php") ?>
-  <?php $this->load->view("admin/_includes/control_sidebar.php") ?>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <?php $this->load->view("admin/_includes/footer.php") ?>
+    <?php $this->load->view("admin/_includes/control_sidebar.php") ?>
   <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
-
-<!-- Logout Delete Confirmation-->
+   immediately after the control sidebar -->
+   <div class="control-sidebar-bg"></div>
+ </div>
+ <!-- Logout Delete Confirmation-->
  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

@@ -22,6 +22,12 @@ class Angsuran_model extends CI_Model
     return $query->result();
 }
 
+	public function getAngsuranByIdPinjam($id_pinjaman){
+		$this->db->where('id_pinjaman', $id_pinjaman);
+        $query = $this->db->get('angsuran');
+        return $query->result();
+    }
+
 	 public function get_data_angsuran() {
         return $this->db->get('angsuran')->result_array();
     }
