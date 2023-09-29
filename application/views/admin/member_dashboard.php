@@ -40,7 +40,9 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+            <?php if ($tabungan->id_user === $user->id_user && $tabungan->id_jenis_tabungan === $jenis_tabungan->id_jenis_tabungan): ?>
+              <h3><?php echo $ms; ?></h3>
+            <?php endif; ?>
 
               <p>Total Hutang</p>
             </div>

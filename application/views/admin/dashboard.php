@@ -40,14 +40,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo $st; ?></h3>
 
-              <p>Total Hutang</p>
+              <p>Savings Total</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Hutang <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('Tabungan_controller') ?>" class="small-box-footer">Savings <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -55,14 +55,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+               <h3><?php echo $lt; ?></h3> 
 
-              <p>Total Piutang</p>
+              <p>Receivables Total</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Piutang <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('pinjaman_controller') ?>" class="small-box-footer">Receivables <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -70,7 +70,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+            <h3><?php echo $st; ?></h3>
 
               <p>Total Kredit</p>
             </div>

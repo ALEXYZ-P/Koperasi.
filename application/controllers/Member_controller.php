@@ -237,6 +237,7 @@ class Member_controller extends MY_Controller
 				'tanggal'		=> $i['tanggal'],
 				'level'			=> $i['level']
 			);
+			
             $this->load->view("Member/member_detail", $data);
         } else {
             echo "Member tidak ditemukan";
@@ -246,6 +247,7 @@ class Member_controller extends MY_Controller
 
 	public function profile() {
         $data['user'] = $this->Member_model->getuser();
+		$data['ms'] = $this->db->select_sum('jumlah_tabungan')->get('tabungan')->row()->jumlah_tabungan;
         $this->load->view("Member/Member_profile", $data);
     }
 

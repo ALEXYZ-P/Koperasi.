@@ -39,7 +39,7 @@ class Tabungan_model extends CI_Model
 		$this->db->where('id_user', $id_user);
         $query = $this->db->get('tabungan');
         return $query->result();
-}
+    }
 
 public function getListJenis(){
 		$this->db->select('*');

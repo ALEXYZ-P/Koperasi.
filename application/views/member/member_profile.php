@@ -149,7 +149,7 @@
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Tabungan Pokok</h4>
-                              <p>Lorem</p>
+                              <p><?php echo $ms; ?></p>
                               <p>ipsum</p>
                           </div>
                       </div>
