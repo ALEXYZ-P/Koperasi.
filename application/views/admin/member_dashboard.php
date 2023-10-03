@@ -40,16 +40,15 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-            <?php if ($tabungan->id_user === $user->id_user && $tabungan->id_jenis_tabungan === $jenis_tabungan->id_jenis_tabungan): ?>
-              <h3><?php echo $ms; ?></h3>
-            <?php endif; ?>
+              <h4><?php echo $total_savings; ?></h4>
 
-              <p>Total Hutang</p>
+
+              <p>Total Savings</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Hutang <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('Tabungan_controller/mv') ?>" class="small-box-footer">Savings <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -57,14 +56,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h4><?php echo $total_debt; ?></h4>
 
-              <p>Total Piutang</p>
+              <p>Total Debt</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Piutang <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('Pinjaman_controller/mv') ?>" class="small-box-footer">Loan <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -72,14 +71,14 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h4><?php echo $total_savings; ?></h4>
 
               <p>Total Kredit</p>
             </div>
             <div class="icon">
               <i class="ion ion-card"></i>
             </div>
-            <a href="#" class="small-box-footer">Kredit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('angsuran_controller/mv') ?>" class="small-box-footer">Kredit <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -87,7 +86,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h4><?php echo $total_savings; ?></h4>
 
               <p>Total Member</p>
             </div>

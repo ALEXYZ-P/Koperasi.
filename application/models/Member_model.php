@@ -96,7 +96,6 @@ class Member_model extends CI_Model
 	public function getuser(){
 		$this->db->where('level', 'member');
 		return $this->db->get($this->_table)->result();
-
 	}
 
 	public function checkData($data)

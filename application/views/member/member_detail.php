@@ -155,15 +155,14 @@
            </div>
           </div>
          <div>
-              <div class="col-md-6">
+         <div class="col-md-6">
                   <div class="panel">
                       <div class="panel-body">
                           <div class="bio-chart">
                           </div>
                               <div class="bio-desk">
-                              <h4 class="terques">Tabungan Pokok</h4>
-                              <p><?php echo $ms; ?></p>
-                              <p>ipsum</p>
+                              <h4 class="terques">Total Savings</h4>
+                              <p><?php echo $total_savings; ?></p>
                           </div>
                       </div>
                   </div>
@@ -175,8 +174,7 @@
                           </div>
                           <div class="bio-desk">
                               <h4 class="terques">Qurban </h4>
-                              <p>Lorem</p>
-                              <p>ipsum</p>
+                              <p><?php echo $total_savings; ?></p>
                           </div>
                       </div>
                   </div>
@@ -188,8 +186,7 @@
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Tabungan Pokok</h4>
-                              <p>Lorem</p>
-                              <p>ipsum</p>
+                              <p><?php echo $total_savings; ?></p>
                           </div>
                       </div>
                   </div>
@@ -201,24 +198,25 @@
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Tabungan Pokok</h4>
-                              <p>Lorem</p>
-                              <p>ipsum</p>
+                              <p><?php echo $total_savings; ?></p>
                           </div>
                       </div>
                   </div>
-              </div><div class="col-md-6">
+              </div>
+              <div class="col-md-6">
                   <div class="panel">
                       <div class="panel-body">
                           <div class="bio-chart">
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Pinjaman</h4>
-                              <p>loerem</p>
-                              <p>ipsum</p>
+                              <p><?php echo $total_debt; ?></p>
+                              
                           </div>
                       </div>
                   </div>
-              </div><div class="col-md-6">
+              </div>
+              <div class="col-md-6">
                   <div class="panel">
                       <div class="panel-body">
                           <div class="bio-chart">
@@ -226,7 +224,6 @@
                               <div class="bio-desk">
                               <h4 class="terques">Angsuran</h4>
                               <p>Lorem</p>
-                              <p>ipsum</p>
                           </div>
                       </div>
                   </div>
