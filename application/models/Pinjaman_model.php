@@ -15,6 +15,8 @@ class Pinjaman_model extends CI_Model
 	public $tanggal_pinjaman;
 	public $lama;
 	public $bunga;
+	public $total_peminjaman;
+	public $cicilan;
 
 	public function getALL(){
     return $this->db->get($this->_table)->result_array();
@@ -27,7 +29,13 @@ class Pinjaman_model extends CI_Model
 
 	public function get_pinjaman() {
 	return $this->db->get($this->_table)->result();
-		}
+	}
+
+	public function getTotalDebt($id_user) {
+        $this->db->select_sum('jumlah_pinjaman');
+        $this->db->where('id_user', $id_user);
+        return $this->db->get($this->_table)->row()->jumlah_pinjaman;
+    }
 
 	public function get_users() {
     // Ambil daftar pengguna dari database

@@ -39,14 +39,14 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h4><?php echo $st; ?></h4>
 
-              <p>Total Hutang</p>
+              <p>Savings Total</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Hutang <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('Tabungan_controller') ?>" class="small-box-footer">Savings <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -54,14 +54,14 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+               <h4><?php echo $lt; ?></h4> 
 
-              <p>Total Piutang</p>
+              <p>Receivables Total</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Piutang <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('pinjaman_controller') ?>" class="small-box-footer">Receivables <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -69,7 +69,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+            <h4><?php echo $st; ?></h4>
 
               <p>Total Kredit</p>
             </div>
@@ -84,25 +84,20 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
-
+            <h4><?php echo $cm; ?></h4>
               <p>Total Member</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">Member <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('Member_controller') ?>" class="small-box-footer">Member <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
       </div>
       <!-- /.row -->
       <!-- Main row -->
-     
-
-              
-
-              
+          
           <!-- Calendar -->
           <div class="box box-solid bg-green-gradient">
             <div class="box-header">

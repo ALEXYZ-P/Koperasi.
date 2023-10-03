@@ -9,6 +9,7 @@ class Member_controller extends MY_Controller
 		$this->load->library(array('form_validation','session'));
        	$this->load->helper(array('url','form'));
         $this->load->model("Member_model");
+		$this->load->model("Tabungan_model");
     }
 
     public function index()
@@ -246,9 +247,14 @@ class Member_controller extends MY_Controller
     }
 
 	public function profile() {
+		$id_user = $this->session->userdata('id_user');
+		
         $data['user'] = $this->Member_model->getuser();
-		$data['ms'] = $this->db->select_sum('jumlah_tabungan')->get('tabungan')->row()->jumlah_tabungan;
-        $this->load->view("Member/Member_profile", $data);
+
+		$data['total_savings'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->get('tabungan')->row()->jumlah_tabungan;
+		$data['total_debt'] = $this->db->select_sum('total_peminjaman')->where('id_user', $id_user)->get('pinjaman')->row()->total_peminjaman;
+
+        $this->load->view("member/member_profile", $data);
     }
 
 	

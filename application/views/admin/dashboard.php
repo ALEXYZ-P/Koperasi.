@@ -40,7 +40,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $st; ?></h3>
+              <h4><?php echo $st; ?></h4>
 
               <p>Savings Total</p>
             </div>
@@ -55,7 +55,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-               <h3><?php echo $lt; ?></h3> 
+               <h4><?php echo $lt; ?></h4> 
 
               <p>Receivables Total</p>
             </div>
@@ -70,7 +70,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-            <h3><?php echo $st; ?></h3>
+            <h4><?php echo $st; ?></h4>
 
               <p>Total Kredit</p>
             </div>
@@ -85,7 +85,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-            <h3><?php echo $cm; ?></h3>
+            <h4><?php echo $cm; ?></h4>
               <p>Total Member</p>
             </div>
             <div class="icon">

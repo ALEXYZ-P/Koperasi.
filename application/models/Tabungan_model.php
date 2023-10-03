@@ -41,7 +41,13 @@ class Tabungan_model extends CI_Model
         return $query->result();
     }
 
-public function getListJenis(){
+    // public function getTotalSavings($id_user) {
+    //     $this->db->select_sum('jumlah_tabungan');
+    //     $this->db->where('id_user', $id_user);
+    //     return $this->db->get($this->_table)->row()->jumlah_tabungan;
+    // }
+
+    public function getListJenis(){
 		$this->db->select('*');
 		$this->db->from('jenis_tabungan');
 		$this->db->join('tabugan', 'jenis_tabungan.id_jenis_tabungan = tabungan.id_jenis_tabungan');

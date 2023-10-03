@@ -144,11 +144,11 @@ class Tabungan_controller extends MY_Controller
         $this->load->view('tabungan/edit_tabungan', $data);
     }
 
-    public function hide($id){
-    	$this->Member_model->update_saving($id);
-    	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
-    	redirect('Anggota_controller/index');
-    }
+    // public function hide($id){
+    // 	$this->Member_model->update_saving($id);
+    // 	$this->session->set_flashdata('success', 'Data Pegawai Berhasil Dihapus');
+    // 	redirect('Anggota_controller/index');
+    // }
 
     public function delete($id){
 	    $this->Tabungan_model->delete($id); // Panggil fungsi delete() yang ada di SiswaModel.php

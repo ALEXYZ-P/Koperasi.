@@ -6,9 +6,12 @@ class Dashboard_controller extends MY_Controller {
 	public function __construct()
     {
         parent::__construct();
+		$this->load->library(array('form_validation','session'));
+       	$this->load->helper(array('url','form'));
         $this->load->model("Member_model");
 		$this->load->model("Tabungan_model");
 		$this->load->model("Jenis_model");
+		$this->load->model("pinjaman_model");
     }
 
 	public function index(){
@@ -27,20 +30,14 @@ class Dashboard_controller extends MY_Controller {
 	public function member(){
 		$id_user = $this->session->userdata('id_user');
 
-        $data["user"] = $this->Member_model->getAll();
-        $data["tabungan"] = $this->Tabungan_model->getTabunganByIdMember($id_user);
-        $data["jenis_tabungan"] = $this->Jenis_model->getAll();
+		$data['total_savings'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->get('tabungan')->row()->jumlah_tabungan;
+		$data['total_debt'] = $this->db->select_sum('total_peminjaman')->where('id_user', $id_user)->get('pinjaman')->row()->total_peminjaman;
 
-		$data['ms'] = $this->db->select_sum('jumlah_tabungan')->get('tabungan')->row()->jumlah_tabungan;
-	
-		$this->load->view("admin/member_dashboard");
+		// $total_debt = $this->Pinjaman_model->getTotalDebt($id_user);
+		// $data['total_debt'] = $total_debt;
+
+		$this->load->view("admin/member_dashboard", $data);
 	}
 	
-	public function countUser()
-	{
-	 $data['cm'] = $this->Member_model->count_user();
-	 $this->load->view('admin/dashboard', $data);
-	}
+	
 }
-
-/* End of file Controllername.php */
