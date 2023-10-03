@@ -89,7 +89,7 @@
                               <td><?php echo "Rp. " . (number_format($value->jumlah_angsuran,2,',','.')) ?></td>
                              
                               <td>
-                                <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Tabungan</a>
+
                               </td>
                             </tr>
                   <?php endforeach; ?>

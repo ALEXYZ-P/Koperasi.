@@ -106,7 +106,7 @@ class Member_model extends CI_Model
         return $query->num_rows();
     }	
 	
-	public function getById($id){
+	public function getById($id_user){
 		return $this->db->get_where($this->_table, ["id_user" => $id])->row();
 	}
 

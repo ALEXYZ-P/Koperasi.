@@ -69,6 +69,12 @@ class Pinjaman_model extends CI_Model
         $query = $this->db->get('pinjaman');
         return $query->result();
     }
+
+    public function getIdUserByPinjaman($id_pinjaman) {
+        $this->db->where('id_user', $id_pinjaman);
+        $query = $this->db->get('pinjaman');
+        return $query->row();
+    }
 	// public function detail_simpanan_pokokall(){
 	// 	$this->db->select('*');
  //        $this->db->from('simpanan_wajib');

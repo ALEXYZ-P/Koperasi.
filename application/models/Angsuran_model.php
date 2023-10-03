@@ -183,6 +183,7 @@ class Angsuran_model extends CI_Model
     // Anda mungkin ingin menambahkan pesan sukses atau pesan kesalahan di sini
 }
 
+
 }
 
 

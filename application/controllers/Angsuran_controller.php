@@ -24,11 +24,10 @@ class Angsuran_controller extends MY_Controller
     public function mv()
     {
     	$id_user = $this->session->userdata('id_user');
-    	$id_pinjaman = $this->session->userdata('id_pinjaman');
 
         $data["user"] = $this->Member_model->getAll();
         $data["pinjaman"] = $this->Pinjaman_model->getPinjamanByIdMember($id_user);
-        $data["angsuran"] = $this->Angsuran_model->getAngsuranByIdPinjam($id_pinjaman);
+        $data["angsuran"] = $this->Angsuran_model->getALL();
         $this->load->view("angsuran/ci_member", $data);
     }
 
@@ -54,31 +53,51 @@ class Angsuran_controller extends MY_Controller
 
 
 
-	public function add() {  
-		$data["pinjaman"] = $this->Pinjaman_model->getALL();    
-		
-        $this->form_validation->set_rules('jumlah_angsuran', 'Jumlah Angsuran', 'required|numeric');
-        $validation = $this->form_validation;
+	public function add() {
+    $data['pinjaman'] = $this->Pinjaman_model->getAll();
+
+    // Tangkap id_pinjaman dari input form
+    $id_pinjaman = $this->input->post('id_pinjaman');
     
-        if ($this->form_validation->run() === FALSE) {
-            // Validation failed, show the form again with errors
-            $this->load->view('angsuran/tambah_angsuran', $data); // Pass $data to the view
-        } else {
-            
-            // Validation passed, insert data into the "tabungan" table
-            $angsuran_data = array( // Use a different variable name
-                'id_pinjaman' => $this->input->post('id_pinjaman'),
-                'id_user' => $this->input->post('id_user'),
-                'no_angsuran' => $this->input->post('no_angsuran'),
-                'jumlah_angsuran' => $this->input->post('jumlah_angsuran')
-            );
-    
-            $this->Angsuran_model->insert_angsuran($angsuran_data); 
-            
-            $this->session->set_flashdata('success', 'installments have been added successfully.');
-            redirect('Angsuran_controller/index');
-        }
+    if ($id_pinjaman) {
+        // Jika id_pinjaman terpilih, ambil id_user yang terkait
+        $data['id_user'] = $this->Pinjaman_model->getIdUserByPinjaman($id_pinjaman);
+    } else {
+        // Jika id_pinjaman belum terpilih, inisialisasi $data['id_user']
+        $data['id_user'] = array();
     }
+
+    $this->form_validation->set_rules('jumlah_angsuran', 'Jumlah Angsuran', 'required|numeric');
+    $validation = $this->form_validation;
+
+    if ($this->form_validation->run() === FALSE) {
+        // Validasi gagal, tampilkan form dengan error
+        $this->load->view('angsuran/tambah_angsuran', $data);
+    } else {
+        // Validasi berhasil, masukkan data ke tabel "angsuran"
+        $angsuran_data = array(
+            'id_pinjaman' => $this->input->post('id_pinjaman'),
+            'id_user' => $this->input->post('id_user'),
+            'no_angsuran' => $this->input->post('no_angsuran'),
+            'jumlah_angsuran' => $this->input->post('jumlah_angsuran')
+        );
+
+        $this->Angsuran_model->insert_angsuran($angsuran_data);
+
+        $this->session->set_flashdata('success', 'Installments have been added successfully.');
+        redirect('Angsuran_controller/index');
+    }
+}
+
+	public function get_id_user() {
+    $id_pinjaman = $this->input->post('id_pinjaman');
+    $id_user_options = $this->Pinjaman_model->getIdUserByPinjaman($id_pinjaman);
+
+    // Kembalikan data ID User dalam format JSON
+    header('Content-Type: application/json');
+    echo json_encode($id_user_options);
+}
+
 
 	public function edit($id)
 	{

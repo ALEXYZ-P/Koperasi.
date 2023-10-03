@@ -70,7 +70,7 @@
                       <th>Tanggal Peminjaman</th>
                       <th>Lama</th>
                       <th>Total Bunga</th>
-                      <th>Aksi</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -86,10 +86,7 @@
                         <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
-                        <td>
-                          <a class="btn btn-success" href="<?php echo site_url('Angsuran_controller/add/'.$value->id_pinjaman) ?>">Bayar Pinjaman</a>
-                          
-                        </td>
+                        <td><?php cetak($value->status) ?></td>
                       </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>

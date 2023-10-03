@@ -40,7 +40,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $st; ?></h3>
+              <h4><?php echo "Rp. " . (number_format($st,2,',','.')); ?></h4>
 
               <p>Savings Total</p>
             </div>
@@ -55,7 +55,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-               <h3><?php echo $lt; ?></h3> 
+               <h4><?php echo "Rp. " . (number_format($lt,2,',','.')); ?></h4> 
 
               <p>Receivables Total</p>
             </div>
@@ -70,7 +70,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-            <h3><?php echo $st; ?></h3>
+            <h4><?php echo "Rp. " . (number_format($st,2,',','.')); ?></h4>
 
               <p>Total Kredit</p>
             </div>
@@ -85,7 +85,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-            <h3><?php echo $cm; ?></h3>
+            <h4><?php echo $cm; ?></h4>
               <p>Total Member</p>
             </div>
             <div class="icon">
@@ -104,7 +104,7 @@
             <div class="box-header">
               <i class="fa fa-calendar"></i>
 
-              <h3 class="box-title">Calendar</h3>
+              <h4 class="box-title">Calendar</h4>
               <!-- tools box -->
               <div class="pull-right box-tools">
                 <!-- button with a dropdown -->

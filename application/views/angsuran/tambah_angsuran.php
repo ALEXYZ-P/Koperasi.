@@ -3,6 +3,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <!DOCTYPE html>
 <html>
+<style>
+
+  .input-container {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Align items vertically */
+    padding: 0px; /* Add some padding for better spacing */
+    border: 1px none;
+    background-color: white;
+}
+  .half-width-form {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: center; /* Align items vertically */
+    width: 49%; /* Take full width of the container */
+    padding: 7px; /* Add some padding for better spacing */
+    border: 1px solid #ccc;
+    background-color: white; /* Make sure the color is lowercased */
+}
+
+</style>
 <?php $this->load->view("admin/_includes/head.php") ?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -54,17 +75,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-body">
             <!-- form start -->
             <form role="form" action="<?php echo base_url('Angsuran_controller/add'); ?>" method="post">
-
-                <div class="form-group">
-                <label for="id_pinjaman">No Pinjaman</label>
-                <select name="id_pinjaman" id="id_pinjaman" class="form-control">
+              <div class="form-group" >
+             <label for="id_pinjaman">Pilih ID Pinjaman:</label>
+                <select name="id_pinjaman" id="id_pinjaman" class="half-width-form">
+                  <option value="">Pilih ID Pinjaman</option>
                 <?php foreach ($pinjaman as $pinjaman_item) : ?>
-                  <?php foreach ($user as $users): ?>
-                <option value="<?php echo $users['id_user']; ?>"><?php echo $users['nama']; ?> - <?php echo $pinjaman_item['no_pinjaman'] ?></option>
-                  <?php endforeach; ?>
+                  <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['id_pinjaman']; ?></option>
                 <?php endforeach; ?>
                 </select>
-                </div>              
+
+                <!-- Bagian Select ID User -->
+                <label for="id_user">Pilih ID User:</label>
+                <select name="id_user" id="id_user" class="half-width-form">
+    <!-- Pilihan id_user akan diisi secara dinamis oleh JavaScript -->
+                </select>          
+                </div>       
+                    
 
                 <div class="form-group">
                 <label for="no_angsuran">No Angsuran</label>
@@ -106,6 +132,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- ./wrapper -->
 <?php $this->load->view("admin/_includes/bottom_script_view.php") ?>
 <!-- page script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#id_pinjaman').on('change', function() {
+        var id_pinjaman = $(this).val();
+        $.ajax({
+            url: '<?php echo base_url('angsuran_controller/get_id_user'); ?>',
+            method: 'post',
+            data: {id_pinjaman: id_pinjaman},
+            dataType: 'json',
+            success: function(data) {
+                $('#id_user').html('<option value="">Pilih ID User</option>');
+                $.each(data, function(index, value) {
+                    $('#id_user').append('<option value="' + value.id_user + '">' + value.id_user + '</option>');
+                });
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.error('AJAX Error: ' + textStatus, errorThrown);
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
   
