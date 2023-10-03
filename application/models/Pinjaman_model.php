@@ -79,7 +79,7 @@ class Pinjaman_model extends CI_Model
     }
 
     public function getIdUserByPinjaman($id_pinjaman) {
-        $this->db->where('id_user', $id_pinjaman);
+        $this->db->where('id_pinjaman', $id_pinjaman);
         $query = $this->db->get('pinjaman');
         return $query->row();
     }

@@ -145,7 +145,7 @@ $(document).ready(function() {
             success: function(data) {
                 $('#id_user').html('<option value="">Pilih ID User</option>');
                 $.each(data, function(index, value) {
-                    $('#id_user').append('<option value="' + value.id_user + '">' + value.id_user + '</option>');
+                    $('#id_user').html('<option value="' + data.id_user + '">' + data.id_user + '</option>');
                 });
             },
             error: function(xhr, textStatus, errorThrown) {
