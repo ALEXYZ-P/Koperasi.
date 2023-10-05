@@ -23,8 +23,11 @@ class Dashboard_controller extends MY_Controller {
 	}
 
 	public function staff(){
+		$data['st'] = $this->db->select_sum('jumlah_tabungan')->get('tabungan')->row()->jumlah_tabungan;
+		$data['lt'] = $this->db->select_sum('total_peminjaman')->get('pinjaman')->row()->total_peminjaman;
+		$data['cm'] = $this->db->from("user")->where('level', 'member')->get()->num_rows();
 	
-		$this->load->view("admin/staff_dashboard");
+		$this->load->view("admin/staff_dashboard", $data);
 	}
 
 	public function member(){
@@ -32,7 +35,8 @@ class Dashboard_controller extends MY_Controller {
 
 		$data['total_savings'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->get('tabungan')->row()->jumlah_tabungan;
 		$data['total_debt'] = $this->db->select_sum('total_peminjaman')->where('id_user', $id_user)->get('pinjaman')->row()->total_peminjaman;
-
+		$data['ci'] = $this->db->from("angsuran")->where('id_user', $id_user)->where('id_angsuran')->get()->num_rows();
+		$data['cm'] = $this->db->from("user")->where('level', 'member')->get()->num_rows();
 		// $total_debt = $this->Pinjaman_model->getTotalDebt($id_user);
 		// $data['total_debt'] = $total_debt;
 

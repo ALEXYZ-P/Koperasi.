@@ -42,12 +42,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <section class="content-header">
       <h1>
-        Kelola
-        <small>Data Simpanan Pokok</small>
+        Manage
+        <small>loan</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('Pinjaman_controller/list_anggota') ?>"><i class="fa fa-fw fa-child"></i>Lihat Data Anggota</a></li>
-        <li><a href="#">Tambah Simpanan Pokok</a></li>
+        <li><a href="<?php echo base_url('Pinjaman_controller/list_anggota') ?>"><i class="fa fa-fw fa-money"></i>Loan</a></li>
+        <li><a href="#">Add Loan</a></li>
       </ol>
     </section>
     

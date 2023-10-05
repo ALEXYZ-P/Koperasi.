@@ -51,8 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <small>Staff</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-male"></i>  Staff</a></li>
-          <li><a href="<?php echo base_url('Staff_controller/index') ?>">See Staff</a></li>
+          <li><a href="<?php echo base_url('Staff_controller/index') ?>"><i class="fa fa-fw fa-male"></i>  Staff</a></li>
+          <!-- <li><a href="<?php echo base_url('Staff_controller/index') ?>">See Staff</a></li> -->
           <li><a href="#">Edit Staff</a></li>
         </ol>
       </section>

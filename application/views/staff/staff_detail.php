@@ -48,6 +48,18 @@
       </div>
     <?php endif; */ ?>
     Alert -->
+
+    <section class="content-header">
+          <h1>
+            Manage
+            <small>Staff</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="<?php echo base_url('Staff_controller/index') ?>"><i class="fa fa-fw fa-male"></i>  Staff</a></li>
+            <li><a href="#">Staff Details</a></li>
+          </ol>
+        </section>
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
 

@@ -39,12 +39,12 @@
 
     <section class="content-header">
       <h1>
-        Kelola
-        <small>Data Pinjaman</small>
+        Manage
+        <small>Loan</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pinjaman</a></li>
-        <li><a href="#">Lihat Data Pinjaman</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-money"></i> Loan</a></li>
+        <!-- <li><a href="#">Lihat Data Pinjaman</a></li> -->
       </ol>
     </section>
 
@@ -55,8 +55,8 @@
           <div class="box">
             <div class="box-header">
               <a href="<?php echo base_url('Pinjaman_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
-              <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
-              <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
+              <!-- <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
+              <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button> -->
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">

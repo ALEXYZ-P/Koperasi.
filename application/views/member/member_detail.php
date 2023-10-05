@@ -61,6 +61,18 @@
       </div>
     <?php endif; */ ?>
     Alert -->
+
+    <section class="content-header">
+      <h1>
+        Manage
+        <small>member</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?php echo base_url('Member_controller/') ?>"><i class="fa fa-fw fa-users"></i>  Member</a></li>
+        <li><a href="#">Member details</a></li>
+      </ol>
+    </section>
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
 

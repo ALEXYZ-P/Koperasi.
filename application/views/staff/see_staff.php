@@ -30,8 +30,8 @@
             <small>Staff</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Staff</a></li>
-            <li><a href="#">See Staff</a></li>
+            <li><a href="#"><i class="fa fa-fw fa-male"></i>  Staff</a></li>
+            <!-- <li><a href="#">See Staff</a></li> -->
           </ol>
         </section>
 
@@ -42,8 +42,8 @@
               <div class="box">
                 <div class="box-header">
                   <a href="<?php echo base_url('Staff_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Add</a>
-                  <a href="<?php echo base_url("Staff_controller/export"); ?>" class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</a>
-                  <a class="btn btn-ijo" href="<?php echo base_url("Staff_controller/form"); ?>"><i class="fa fa-fw fa-upload"></i>Import Data</a>
+                  <!-- <a href="<?php echo base_url("Staff_controller/export"); ?>" class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</a>
+                  <a class="btn btn-ijo" href="<?php echo base_url("Staff_controller/form"); ?>"><i class="fa fa-fw fa-upload"></i>Import Data</a> -->
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">

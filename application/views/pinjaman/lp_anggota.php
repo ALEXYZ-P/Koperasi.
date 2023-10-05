@@ -27,12 +27,12 @@
 
     <section class="content-header">
       <h1>
-        Kelola
-        <small>Data Pinjaman</small>
+        Manage
+        <small>loan</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Pinjaman</a></li>
-        <li><a href="#">Lihat Data Pinjaman</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-money"></i> Loan</a></li>
+        <!-- <li><a href="#">Lihat Data Pinjaman</a></li> -->
       </ol>
     </section>
 

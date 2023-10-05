@@ -62,8 +62,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <small>Member</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-male"></i>  Member</a></li>
-          <li><a href="<?php echo base_url('Member_controller/index') ?>">See Member</a></li>
+          <li><a href="<?php echo base_url('Member_controller/index') ?>"><i class="fa fa-fw fa-users"></i>  Member</a></li>
+          <!-- <li><a href="<?php echo base_url('Member_controller/index') ?>">See Member</a></li> -->
           <li><a href="#">Edit Member</a></li>
         </ol>
       </section>

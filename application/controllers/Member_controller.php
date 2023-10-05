@@ -10,6 +10,7 @@ class Member_controller extends MY_Controller
        	$this->load->helper(array('url','form'));
         $this->load->model("Member_model");
 		$this->load->model("Tabungan_model");
+		$this->load->model("Jenis_model");
     }
 
     public function index()
@@ -116,17 +117,17 @@ class Member_controller extends MY_Controller
            $this->load->view('Member/add_Member');
        }else{
 		$data = array(
-			'email' => $this->input->post('email'),
-			'nohp' => $this->input->post('nohp'),
-			'username' => $this->input->post('username'),
-			'password' => md5($this->input->post('password')),
-			'nia' => $this->input->post('nia'),
-			'nama' => $this->input->post('nama'),
+			'email' 		=> $this->input->post('email'),
+			'nohp' 			=> $this->input->post('nohp'),
+			'username' 		=> $this->input->post('username'),
+			'password' 		=> md5($this->input->post('password')),
+			'nia' 			=> $this->input->post('nia'),
+			'nama' 			=> $this->input->post('nama'),
 			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-			'alamat' => $this->input->post('alamat'),
-			'tempat_lahir' => $this->input->post('tempat_lahir'),
-			'birthday' => $this->input->post('birthday'),
-			'level' => 'member'
+			'alamat' 		=> $this->input->post('alamat'),
+			'tempat_lahir' 	=> $this->input->post('tempat_lahir'),
+			'birthday' 		=> $this->input->post('birthday'),
+			'level' 		=> 'member'
 		);
 		
 		$this->Member_model->insert_user($data); 
@@ -194,7 +195,7 @@ class Member_controller extends MY_Controller
 		$email 			= $this->input->post('email');
    		$nohp 			= $this->input->post('nohp');
    		$username 		= $this->input->post('username');
-		$password 		= $this->input->post('password');
+		$password 		= md5($this->input->post('password'));
    		$nia 			= $this->input->post('nia');
    		$nama 			= $this->input->post('nama');
    		$jenis_kelamin 	= $this->input->post('jenis_kelamin');
@@ -251,7 +252,12 @@ class Member_controller extends MY_Controller
 		
         $data['user'] = $this->Member_model->getuser();
 
-		$data['total_savings'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->get('tabungan')->row()->jumlah_tabungan;
+		$data['ps'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '1')->get('tabungan')->row()->jumlah_tabungan;
+		$data['vs'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '2')->get('tabungan')->row()->jumlah_tabungan;
+		$data['md'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '3')->get('tabungan')->row()->jumlah_tabungan;
+		$data['sp'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '4')->get('tabungan')->row()->jumlah_tabungan;
+
+
 		$data['total_debt'] = $this->db->select_sum('total_peminjaman')->where('id_user', $id_user)->get('pinjaman')->row()->total_peminjaman;
 
         $this->load->view("member/member_profile", $data);

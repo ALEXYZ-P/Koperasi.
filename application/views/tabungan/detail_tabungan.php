@@ -37,12 +37,12 @@
 
       <section class="content-header">
         <h1>
-          Kelola
-          <small>Data Anggota Koperasi</small>
+          Manage
+          <small>Saving</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-child"></i> Anggota</a></li>
-          <li><a href="<?php echo base_url('SimpananPokok_controller') ?>">Lihat Data Anggota</a></li>
+          <li><a href="#"><i class="fa fa-fw fa-child"></i> savings</a></li>
+          <!-- <li><a href="<?php echo base_url('SimpananPokok_controller') ?>">Lihat Data Anggota</a></li> -->
         </ol>
       </section>
 

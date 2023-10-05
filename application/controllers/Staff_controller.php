@@ -120,17 +120,17 @@ class Staff_controller extends MY_Controller
            $this->load->view('staff/add_staff');
        }else{
 		$data = array(
-			'email' => $this->input->post('email'),
-			'nohp' => $this->input->post('nohp'),
-			'username' => $this->input->post('username'),
-			'password' => md5($this->input->post('password')),
-			'nia' => $this->input->post('nia'),
-			'nama' => $this->input->post('nama'),
+			'email' 		=> $this->input->post('email'),
+			'nohp' 			=> $this->input->post('nohp'),
+			'username' 		=> $this->input->post('username'),
+			'password' 		=> md5($this->input->post('password')),
+			'nia' 			=> $this->input->post('nia'),
+			'nama' 			=> $this->input->post('nama'),
 			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-			'alamat' => $this->input->post('alamat'),
-			'tempat_lahir' => $this->input->post('tempat_lahir'),
-			'birthday' => $this->input->post('birthday'),
-			'level' => 'staff'
+			'alamat' 		=> $this->input->post('alamat'),
+			'tempat_lahir' 	=> $this->input->post('tempat_lahir'),
+			'birthday' 		=> $this->input->post('birthday'),
+			'level' 		=> 'staff'
 		);
 		
 		$this->Staff_model->insert_user($data); 
@@ -197,7 +197,7 @@ class Staff_controller extends MY_Controller
 		$email 			= $this->input->post('email');
    		$nohp 			= $this->input->post('nohp');
    		$username 		= $this->input->post('username');
-		$password 		= $this->input->post('password');
+		$password 		= md5($this->input->post('password'));
    		$nia 			= $this->input->post('nia');
    		$nama 			= $this->input->post('nama');
    		$jenis_kelamin 	= $this->input->post('jenis_kelamin');

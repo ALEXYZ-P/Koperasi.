@@ -27,8 +27,8 @@
       <small><?php echo $this->session->userdata('level'); ?></small>
 		</h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <!-- <li class="active">Dashboard</li> -->
       </ol>
     </section>
 
@@ -40,7 +40,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h4><?php echo $total_savings; ?></h4>
+              <h4><?php echo "Rp. " . (number_format($total_savings,2,',','.')); ?></h4>
 
 
               <p>Total Savings</p>
@@ -56,9 +56,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h4><?php echo $total_debt; ?></h4>
+              <h4><?php echo "Rp. " . (number_format($total_debt,2,',','.')); ?></h4>
 
-              <p>Total Debt</p>
+              <p>Total Loan</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -71,9 +71,9 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h4><?php echo $total_savings; ?></h4>
+              <h4><?php echo $ci; ?></h4>
 
-              <p>Total Kredit</p>
+              <p>Total Installment</p>
             </div>
             <div class="icon">
               <i class="ion ion-card"></i>
@@ -86,7 +86,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h4><?php echo $total_savings; ?></h4>
+              <h4><?php echo $cm; ?></h4>
 
               <p>Total Member</p>
             </div>
