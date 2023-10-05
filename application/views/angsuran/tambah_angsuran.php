@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="form-group">
                 <label for="jumlah_angsuran">Jumlah Angsuran</label>
-                <input name="jumlah_angsuran" id="jumlah_angsuran" class="form-control" placeholder="Jumlah Angsuran"   type="number" required />
+                <input name="jumlah_angsuran" id="jumlah_angsuran" class="form-control" placeholder="Jumlah Angsuran" value="<?php echo $cicilan ?>" type="number" required />
                 </div>
               
               <!-- /.box-body -->

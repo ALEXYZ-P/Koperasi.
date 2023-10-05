@@ -37,6 +37,16 @@ class Pinjaman_model extends CI_Model
         return $this->db->get($this->_table)->row()->jumlah_pinjaman;
     }
 
+    public function ambilCicilan($id_pinjaman) {
+        $query = $this->db->get_where('pinjaman', array('id_pinjaman' => $id_pinjaman));
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->cicilan; // Mengembalikan nilai cicilan
+        } else {
+            return null; // Jika ID pinjaman tidak ditemukan
+        }
+    }
+
 	public function get_users() {
     // Ambil daftar pengguna dari database
     $query = $this->db->get('user');
