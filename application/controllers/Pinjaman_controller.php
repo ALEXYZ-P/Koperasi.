@@ -63,7 +63,7 @@ class Pinjaman_controller extends MY_Controller
 
             $total_pinjaman = $pinjaman_data['cicilan'] * $pinjaman_data['lama'];
             $pinjaman_data['total_peminjaman'] = $total_pinjaman;
-    
+
             $this->Pinjaman_model->insert_pinjaman($pinjaman_data); 
             
             $this->session->set_flashdata('success', 'Pinjaman added successfully');
