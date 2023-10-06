@@ -226,7 +226,7 @@
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Angsuran</h4>
-                              <p>Lorem</p>
+                              <p><?php echo $ci; ?></p>
                           </div>
                       </div>
                   </div>

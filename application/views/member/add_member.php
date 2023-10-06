@@ -159,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="nohp" >Phone Number</label>
-                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text" required/>
+                    <input name="nohp" class="form-control <?php echo form_error('nohp') ? 'is-invalid':'' ?>" placeholder="Phone Number" type="text" maxlength="15" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nohp') ?>
                     </div>
@@ -167,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="username" >Username</label>
-                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text" required/>
+                    <input name="username" class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>" placeholder="username" type="text" minlength="4" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('username') ?>
                     </div>
@@ -175,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="password" >Password</label>
-                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Password" type="password" required/>
+                    <input name="password" class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" placeholder="Password" type="password" minlength="4"required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('password') ?>
                     </div>
@@ -183,7 +183,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="nia" >NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="text" required/>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="text" minlength="16" maxlength="16" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nia') ?>
                     </div>

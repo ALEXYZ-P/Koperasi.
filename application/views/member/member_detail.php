@@ -44,7 +44,7 @@
         } elseif ($level === 'staff') {
             $this->load->view("admin/_includes/sb_staff.php");
         } else {
-            $this->load->view("admin/_includes/sidebar.php");
+            echo "error";
         }
     ?>
     
@@ -173,8 +173,8 @@
                           <div class="bio-chart">
                           </div>
                               <div class="bio-desk">
-                              <h4 class="terques">Total Savings</h4>
-                              <p><?php echo $total_savings; ?></p>
+                              <h4 class="terques">Principal Saved</h4>
+                              <p><?php echo "Rp. " . (number_format($ps,2,',','.')); ?></p>
                           </div>
                       </div>
                   </div>
@@ -185,8 +185,8 @@
                           <div class="bio-chart">
                           </div>
                           <div class="bio-desk">
-                              <h4 class="terques">Qurban </h4>
-                              <p><?php echo $total_savings; ?></p>
+                              <h4 class="terques">Voluntary save </h4>
+                              <p><?php echo "Rp. " . (number_format($vs,2,',','.')); ?></p>
                           </div>
                       </div>
                   </div>
@@ -197,8 +197,8 @@
                           <div class="bio-chart">
                           </div>
                               <div class="bio-desk">
-                              <h4 class="terques">Tabungan Pokok</h4>
-                              <p><?php echo $total_savings; ?></p>
+                              <h4 class="terques">Mandatory Deposits</h4>
+                              <p><?php echo "Rp. " . (number_format($md,2,',','.')); ?></p>
                           </div>
                       </div>
                   </div>
@@ -209,8 +209,8 @@
                           <div class="bio-chart">
                           </div>
                               <div class="bio-desk">
-                              <h4 class="terques">Tabungan Pokok</h4>
-                              <p><?php echo $total_savings; ?></p>
+                              <h4 class="terques">Saved Plan</h4>
+                              <p><?php echo "Rp. " . (number_format($sp,2,',','.')); ?></p>
                           </div>
                       </div>
                   </div>
@@ -222,7 +222,7 @@
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Pinjaman</h4>
-                              <p><?php echo $total_debt; ?></p>
+                              <p><?php echo "Rp. " . (number_format($total_debt,2,',','.')); ?></p>
                               
                           </div>
                       </div>
@@ -235,7 +235,7 @@
                           </div>
                               <div class="bio-desk">
                               <h4 class="terques">Angsuran</h4>
-                              <p>Lorem</p>
+                              <p><?php echo $ci; ?></p>
                           </div>
                       </div>
                   </div>

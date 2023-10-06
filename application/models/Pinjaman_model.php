@@ -166,4 +166,3 @@ class Pinjaman_model extends CI_Model
 
 
 ?>
-	

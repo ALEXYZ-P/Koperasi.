@@ -215,6 +215,10 @@ class Member_controller extends MY_Controller
 		if ($this->Member_model->delete($id)) {
 			$this->session->set_flashdata('success', 'Member has been successfully deleted');
 			redirect(site_url('Member_controller/index'));
+		}else {
+
+			$this->session->set_flashdata('error', 'User data must be blank.');
+			redirect('Member_controller/index');
 		}
 	}
 
@@ -239,7 +243,15 @@ class Member_controller extends MY_Controller
 				'tanggal'		=> $i['tanggal'],
 				'level'			=> $i['level']
 			);
-			
+
+
+		$data['ps'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '1')->get('tabungan')->row()->jumlah_tabungan;
+		$data['vs'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '2')->get('tabungan')->row()->jumlah_tabungan;
+		$data['md'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '3')->get('tabungan')->row()->jumlah_tabungan;
+		$data['sp'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '4')->get('tabungan')->row()->jumlah_tabungan;
+		$data['total_debt'] = $this->db->select_sum('total_peminjaman')->where('id_user', $id_user)->get('pinjaman')->row()->total_peminjaman;
+		$data['ci'] = $this->db->from("angsuran")->where('id_user', $id_user)->where('id_angsuran')->get()->num_rows();
+
             $this->load->view("Member/member_detail", $data);
         } else {
             echo "Member tidak ditemukan";
@@ -256,9 +268,8 @@ class Member_controller extends MY_Controller
 		$data['vs'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '2')->get('tabungan')->row()->jumlah_tabungan;
 		$data['md'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '3')->get('tabungan')->row()->jumlah_tabungan;
 		$data['sp'] = $this->db->select_sum('jumlah_tabungan')->where('id_user', $id_user)->where('id_jenis_tabungan', '4')->get('tabungan')->row()->jumlah_tabungan;
-
-
 		$data['total_debt'] = $this->db->select_sum('total_peminjaman')->where('id_user', $id_user)->get('pinjaman')->row()->total_peminjaman;
+		$data['ci'] = $this->db->from("angsuran")->where('id_user', $id_user)->where('id_angsuran')->get()->num_rows();
 
         $this->load->view("member/member_profile", $data);
     }
