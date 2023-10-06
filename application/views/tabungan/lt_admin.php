@@ -55,8 +55,6 @@
             <div class="box">
               <div class="box-header">
                 <a href="<?php echo base_url('Tabungan_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
-                <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
-                <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
               </div>
               <!-- /.box-header -->
               <div class="box-body table-responsive">
@@ -65,11 +63,10 @@
                     <tr>
                       <th>No</th>
                       <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Jenis Tabungan</th>
-                      <th>Tanggal</th>
-                      <th>Aksi</th>
+                      <th>Name</th>
+                      <th>Sum</th>
+                      <th>Type</th>
+                      <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -85,28 +82,20 @@
                               <td><?php echo "Rp. " . (number_format($value->jumlah_tabungan,2,',','.')) ?></td>
                               <td><?php echo $jenis->nama_jenis_tabungan ?></td>
                               <td><?php echo $value->tanggal_tabung ?></td>
-                             
-                              <td>
-                                <a class="btn btn-success" href="<?php echo site_url('SimpananPokok_controller/detail/'.$value->id_anggota) ?>"></i>Detail Tabungan</a>
-                              </td>
                             </tr>
                           <?php endif; ?>
                       <?php endforeach; ?>
                     <?php endforeach; ?>
                   <?php endforeach; ?>
                   </tbody>
-
-                  
-
                   <tfoot>
                     <tr>
                       <th>No</th>
                       <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Jenis Tabungan</th>
-                      <th>Tanggal</th>
-                      <th>Aksi</th>
+                      <th>Name</th>
+                      <th>Sum</th>
+                      <th>Type</th>
+                      <th>Date</th>
                     </tr>
                   </tfoot>
                 </table>

@@ -40,10 +40,10 @@
     <section class="content-header">
       <h1>
         Manage
-        <small>Loan</small>
+        <small>Receivable</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-money"></i> Loan</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-money"></i>Receivable</a></li>
         <!-- <li><a href="#">Lihat Data Pinjaman</a></li> -->
       </ol>
     </section>
@@ -64,12 +64,14 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>Jumlah Pinjaman</th>
-                      <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
+                      <th>Name</th>
+                      <th>No</th>
+                      <th>Sum</th>
+                      <th>Date</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment/M</th>
+                      <th>Total</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -86,6 +88,8 @@
                         <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
+                        <td><?php cetak($value->cicilan) ?></td>
+                        <td><?php cetak($value->total_peminjaman) ?></td>
                         <td><?php cetak($value->status) ?></td>
                       </tr>
                     <?php endif; ?>
@@ -95,13 +99,15 @@
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>Jumlah Pinjaman</th>
-                      <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Aksi</th>
+                      <th>Name</th>
+                      <th>No</th>
+                      <th>Sum</th>
+                      <th>Date</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment/M</th>
+                      <th>Total</th>
+                      <th>Status</th>
                     </tr>
                   </tfoot>
                 </table>

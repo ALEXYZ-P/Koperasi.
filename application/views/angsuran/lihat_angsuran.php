@@ -54,8 +54,6 @@
           <div class="box">
             <div class="box-header">
               <a href="<?php echo base_url('Angsuran_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
-              <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
-              <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
@@ -63,15 +61,14 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>No Angsuran</th>
-                      <th>Jumlah Pinjaman</th>
+                      <th>Name</th>
+                      <th>Debt Number</th>
+                      <th>Installment Number</th>
+                      <th>Debt Count</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment Count</th>
                       <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Jumlah Angsuran</th>
-                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -83,29 +80,24 @@
                               <td><?php echo $value->no_pinjaman ?></td>
                               <td><?php echo $value->no_angsuran ?></td>
                               <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                              <td><?php echo $value->tanggal_pinjaman ?></td>
                               <td><?php echo $value->lama ?></td>
                               <td><?php echo $value->bunga ?></td>
                               <td><?php echo "Rp. " . (number_format($value->jumlah_angsuran,2,',','.')) ?></td>
-                             
-                              <td>
-
-                              </td>
+                              <td><?php echo $value->tanggal_pinjaman ?></td>
                             </tr>
                   <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>No Angsuran</th>
-                      <th>Jumlah Pinjaman</th>
+                      <th>Name</th>
+                      <th>Debt Number</th>
+                      <th>Installment Number</th>
+                      <th>Debt Count</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment Count</th>
                       <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Jumlah Angsuran</th>
-                      <th>Aksi</th>
                     </tr>
                   </tfoot>
                 </table>

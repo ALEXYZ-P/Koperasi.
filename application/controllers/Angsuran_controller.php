@@ -56,11 +56,9 @@ class Angsuran_controller extends MY_Controller
 	public function add() {
     $data['pinjaman'] = $this->Pinjaman_model->getAll();
 
-
-
     // Tangkap id_pinjaman dari input form
     $id_pinjaman = $this->input->post('id_pinjaman');
-    $data['cicilan'] = $this->Pinjaman_model->ambilCicilan($id_pinjaman);
+    
     
     if ($id_pinjaman) {
         // Jika id_pinjaman terpilih, ambil id_user yang terkait
