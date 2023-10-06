@@ -1,5 +1,6 @@
 <?php $this->load->view("admin/_includes/head.php") ?>
 
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php $this->load->view("admin/_includes/header.php") ?>
@@ -26,8 +27,8 @@
       <small><?php echo $this->session->userdata('level'); ?></small>
 		</h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <!-- <li class="active">Dashboard</li> -->
       </ol>
     </section>
 
@@ -39,7 +40,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h4><?php echo $st; ?></h4>
+              <h4><?php echo "Rp. " . (number_format($st,2,',','.')); ?></h4>
 
               <p>Savings Total</p>
             </div>
@@ -54,7 +55,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-               <h4><?php echo $lt; ?></h4> 
+               <h4><?php echo "Rp. " . (number_format($lt,2,',','.')); ?></h4> 
 
               <p>Receivables Total</p>
             </div>
@@ -69,14 +70,14 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-            <h4><?php echo $st; ?></h4>
+            <h4><?php echo $ci; ?></h4>
 
-              <p>Total Kredit</p>
+              <p>Total Installment</p>
             </div>
             <div class="icon">
               <i class="ion ion-card"></i>
             </div>
-            <a href="#" class="small-box-footer">Kredit <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?php echo base_url('angsuran_controller') ?>" class="small-box-footer">Installment <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -103,7 +104,7 @@
             <div class="box-header">
               <i class="fa fa-calendar"></i>
 
-              <h3 class="box-title">Calendar</h3>
+              <h4 class="box-title">Calendar</h4>
               <!-- tools box -->
               <div class="pull-right box-tools">
                 <!-- button with a dropdown -->
