@@ -52,11 +52,15 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
-                      <th>Lama</th>
+                      <th>Name</th>
+                      <th>No</th>
+                      <th>Sum</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment/M</th>
+                      <th>Total</th>
+                      <th>Date</th>
+                      <th>Status</th>
                       
                     </tr>
                   </thead>
@@ -67,12 +71,15 @@
                           <?php if ($value->id_user === $users->id_user): ?>
                             <tr>
                               <td><?php echo $no++ ?></td>
-                              <td><?php echo ($users->nia) ?></td>
                               <td><?php echo ($users->nama) ?></td>
+                              <td><?php echo ($value->no_pinjaman) ?></td>
                               <td><?php echo ($value->jumlah_pinjaman) ?></td>
-                              <td><?php echo ($value->tanggal_pinjaman) ?></td>
                               <td><?php echo ($value->lama) ?></td>
-                              
+                              <td><?php echo ($value->bunga) ?></td>
+                              <td><?php echo ($value->cicilan) ?></td>
+                              <td><?php echo ($value->total_peminjaman) ?></td>
+                              <td><?php cetak($value->tanggal_pinjaman)  ?></td>
+                              <td><?php cetak($value->status) ?></td>
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
@@ -81,12 +88,15 @@
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
-                      <th>Lama</th>
-                      
+                      <th>Name</th>
+                      <th>No</th>
+                      <th>Sum</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment/M</th>
+                      <th>Total</th>
+                      <th>Date</th>
+                      <th>Status</th>                      
                     </tr>
                   </tfoot>
                 </table>

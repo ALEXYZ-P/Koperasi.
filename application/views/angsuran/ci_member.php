@@ -21,12 +21,11 @@
       <!-- Alert -->
       <section class="content-header">
         <h1>
-          Kelola
-          <small>Data Anggota Koperasi</small>
+          Manage
+          <small>Installment</small>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-fw fa-child"></i> Tabungan</a></li>
-          <li><a href="#">Lihat Data Tabungan</a></li>
+          <li><a href="#"><i class="fa fa-fw fa-money"></i>Installment</a></li>
         </ol>
       </section>
       <!-- Main content -->
@@ -43,14 +42,14 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>No Angsuran</th>
-                      <th>Jumlah Pinjaman</th>
-                      <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Jumlah Angsuran</th>
+                      <th>Name</th>
+                      <th>Debt Number</th>
+                      <th>Installment Number</th>
+                      <th>Debt Count</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment Count</th>
+                      <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -65,11 +64,10 @@
                               <td><?php echo ($pinjam->no_pinjaman) ?></td>
                               <td><?php echo ($value->no_angsuran) ?></td>
                               <td><?php echo ($pinjam->jumlah_pinjaman) ?></td>
-                              <td><?php echo ($pinjam->tanggal_pinjaman) ?></td>
                               <td><?php echo ($pinjam->lama) ?></td>
                               <td><?php echo ($pinjam->bunga) ?></td>
                               <td><?php echo ($value->jumlah_angsuran) ?></td>
-                              
+                              <td><?php echo ($pinjam->tanggal_pinjaman) ?></td>
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
@@ -79,14 +77,14 @@
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>Nama Peminjam</th>
-                      <th>No Pinjaman</th>
-                      <th>No Angsuran</th>
-                      <th>Jumlah Pinjaman</th>
-                      <th>Tanggal Peminjaman</th>
-                      <th>Lama</th>
-                      <th>Total Bunga</th>
-                      <th>Jumlah Angsuran</th>
+                      <th>Name</th>
+                      <th>Debt Number</th>
+                      <th>Installment Number</th>
+                      <th>Debt Count</th>
+                      <th>Long</th>
+                      <th>Interest</th>
+                      <th>Installment Count</th>
+                      <th>Date</th>
                     </tr>
                   </tfoot>
                 </table>

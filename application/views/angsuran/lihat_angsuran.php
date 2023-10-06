@@ -38,12 +38,11 @@
 
     <section class="content-header">
       <h1>
-        Kelola
-        <small>Data Angsuran</small>
+        Manage
+        <small>Installment</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-user-plus"></i> Angsuran</a></li>
-        <li><a href="#">Lihat Data Angsuran</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-money"></i>Installment</a></li>
       </ol>
     </section>
 
@@ -53,7 +52,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <a href="<?php echo base_url('Angsuran_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
+              <a href="<?php echo base_url('Angsuran_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Add</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">

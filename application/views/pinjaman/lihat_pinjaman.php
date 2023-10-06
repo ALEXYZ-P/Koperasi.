@@ -54,7 +54,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <a href="<?php echo base_url('Pinjaman_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Tambah</a>
+              <a href="<?php echo base_url('Pinjaman_controller/add') ?>" class="btn btn-tosca"><i class="fa fa-fw fa-plus"></i>Add</a>
               <!-- <button class="btn btn-carot"><i class="fa fa-fw fa-download"></i>Export Data</button>
               <button class="btn btn-ijo"><i class="fa fa-fw fa-upload"></i>Import Data</button> -->
             </div>
@@ -67,11 +67,11 @@
                       <th>Name</th>
                       <th>No</th>
                       <th>Sum</th>
-                      <th>Date</th>
                       <th>Long</th>
                       <th>Interest</th>
                       <th>Installment/M</th>
                       <th>Total</th>
+                      <th>Date</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -85,11 +85,11 @@
                         <td><?php cetak($us->nama)  ?></td>
                         <td><?php cetak($value->no_pinjaman)  ?></td>
                         <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->lama)  ?></td>
                         <td><?php cetak($value->bunga)  ?></td>
                         <td><?php cetak($value->cicilan) ?></td>
                         <td><?php cetak($value->total_peminjaman) ?></td>
+                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
                         <td><?php cetak($value->status) ?></td>
                       </tr>
                     <?php endif; ?>
@@ -102,11 +102,11 @@
                       <th>Name</th>
                       <th>No</th>
                       <th>Sum</th>
-                      <th>Date</th>
                       <th>Long</th>
                       <th>Interest</th>
                       <th>Installment/M</th>
                       <th>Total</th>
+                      <th>Date</th>
                       <th>Status</th>
                     </tr>
                   </tfoot>

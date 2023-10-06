@@ -44,11 +44,10 @@
                     <tr>
                       <th>No</th>
                       <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
-                      <th>Jenis Tabungan</th>
-                      
+                      <th>Name</th>
+                      <th>Sum</th>
+                      <th>Type</th>
+                      <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,9 +61,8 @@
                               <td><?php echo ($users->nia) ?></td>
                               <td><?php echo ($users->nama) ?></td>
                               <td><?php echo ($value->jumlah_tabungan) ?></td>
-                              <td><?php echo ($value->tanggal_tabung) ?></td>
                               <td><?php echo ($jenis->nama_jenis_tabungan) ?></td>
-                              
+                              <td><?php echo ($value->tanggal_tabung) ?></td>
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
@@ -75,11 +73,10 @@
                     <tr>
                       <th>No</th>
                       <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Jumlah</th>
-                      <th>Tanggal</th>
-                      <th>Jenis Tabungan</th>
-                      
+                      <th>Name</th>
+                      <th>Sum</th>
+                      <th>Type</th>
+                      <th>Date</th>
                     </tr>
                   </tfoot>
                 </table>
