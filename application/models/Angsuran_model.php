@@ -62,25 +62,25 @@ class Angsuran_model extends CI_Model
 		return $query->result();
 	}
 
-	public function detail_simpanan_wajib($id)
-	{
-		$this->db->select('*');
-		$this->db->from('simpanan_wajib');
-		$this->db->join('anggota', 'simpanan_wajib.id_anggota = anggota.id_anggota');
-		$this->db->where('anggota.id_anggota', $id);
-		$query = $this->db->get();
-		return $query->result();
-	}
+	// public function detail_simpanan_wajib($id)
+	// {
+	// 	$this->db->select('*');
+	// 	$this->db->from('simpanan_wajib');
+	// 	$this->db->join('anggota', 'simpanan_wajib.id_anggota = anggota.id_anggota');
+	// 	$this->db->where('anggota.id_anggota', $id);
+	// 	$query = $this->db->get();
+	// 	return $query->result();
+	// }
 
-	public function total_simpanan_wajib($id)
-	{
-		$this->db->select_sum('s.jumlah');
-		$this->db->from('simpanan_wajib as s');
-		$this->db->join('anggota as a', 's.id_anggota = a.id_anggota');
-		$this->db->where('a.id_anggota', $id);
-		$query = $this->db->get();
-		return $query->result();
-	}
+	// public function total_simpanan_wajib($id)
+	// {
+	// 	$this->db->select_sum('s.jumlah');
+	// 	$this->db->from('simpanan_wajib as s');
+	// 	$this->db->join('anggota as a', 's.id_anggota = a.id_anggota');
+	// 	$this->db->where('a.id_anggota', $id);
+	// 	$query = $this->db->get();
+	// 	return $query->result();
+	// }
 
 	public function detail_angsuran($id)
 	{

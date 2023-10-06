@@ -238,7 +238,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
                  
                 <!-- /.box-body -->
-                <!-- Dapaag -->           
+                         
                 <div class="box-footer">
                   <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
                   <a href="<?php echo base_url('Member_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancel</a>
@@ -248,9 +248,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.box -->
 
           </div>
-          <!-- ./col ->
-            <div class="col-lg-3 col-xs-6">
-              <!- small box ->
+          <!-- ./col -> -->
+            <!-- <div class="col-lg-3 col-xs-6">
+              <!- small box -> ->
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php echo $cm ?></h3>
@@ -262,9 +262,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <a href="#" class="small-box-footer"></a>
               </div>
-            </div>
-          <!- ./col -->
-          <!--/.col (left) -->
+            </div> -->
+          <!--./col -->
+          <!-- /.col (left) -->
         </div>
         <!-- /.row -->
       </section>
