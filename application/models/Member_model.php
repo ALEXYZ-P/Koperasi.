@@ -118,7 +118,12 @@ class Member_model extends CI_Model
 		$this->db->where('id_user', $id_user);
 		return $this->db->get($this->_table)->row_array();
     }
-    
+	        
+	public function countMember() {
+		$data['cm'] = $this->db->from("user")->where('level', 'member')->get()->num_rows();
+		return $data;
+
+	}
 
 	/**public function update_data($id, $data) {
 		$this->db->where('id_user', $id);

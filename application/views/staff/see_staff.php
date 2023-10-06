@@ -50,12 +50,12 @@
                   <table id="example1" class="table table-bordered table-hover"><!--search bar--> 
                   <thead>
                     <tr>
-                      <th>Num</th>
+                      <th>No</th>
                       <th>NIK</th>
                       <th>Name</th>
                       <th>Gender</th>
                       <th>Address</th>
-                      <th>No Handphone</th>
+                      <th>Phone Number</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -81,12 +81,12 @@
                   </tbody>
                   <thead>
                     <tr>
-                      <th>Num</th>
+                      <th>No</th>
                       <th>NIK</th>
                       <th>Name</th>
                       <th>Gender</th>
                       <th>Address</th>
-                      <th>No Handphone</th>
+                      <th>Phone Number</th>
                       <th>Actions</th>
                     </tr>
                   </thead>

@@ -22,6 +22,7 @@ class Member_controller extends MY_Controller
 	public function add() {
 		$this->load->library('session');
        	$this->load->helper('url');
+		// $data["cm"] = $this->Member_model->countMember();
 		$validation = $this->form_validation;
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('nohp', 'Phone Number', 'required|numeric|min_length[9]|max_length[15]');
@@ -136,9 +137,9 @@ class Member_controller extends MY_Controller
 		
 		}
        }
-	   
 	}
-        
+
+
         /**if ($this->form_validation->run() == FALSE) {
             $this->load->view('Member/tambah_Member');
         } else {
@@ -206,6 +207,12 @@ class Member_controller extends MY_Controller
 		$this->Member_model->update($id_user, $email, $nohp, $username, $password, $nia, $nama, $jenis_kelamin, $alamat, $tempat_lahir, $birthday);
 		$this->session->set_flashdata('success', 'The Member has been successfully changed');
 		redirect('Member_controller/index');
+	}
+
+	public function cu()
+	{
+	$data['cm'] = $this->db->from("user")->where('level', 'member')->get()->num_rows();
+		$this->load->view("admin/_includes/count_user.php", $data);
 	}
 
 	public function delete($id=null)

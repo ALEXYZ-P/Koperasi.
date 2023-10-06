@@ -173,7 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group">
                     <label for="nia" >NIK</label>
-                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="number" minlength="16" maxlength="16" required/>
+                    <input name="nia" class="form-control <?php echo form_error('nia') ? 'is-invalid':'' ?>" placeholder="NIK" type="text" minlength="16" maxlength="16" required/>
                     <div class="invalid-feedback">
                       <?php echo form_error('nia') ?>
                     </div>
@@ -240,7 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <!-- <div class="small-box bg-red">
             <div class="inner">
               <h3><?php echo $total_staff ?></h3>
 
@@ -250,7 +250,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="ion ion-person-add"></i>
             </div>
             <a href="#" class="small-box-footer">Member</a>
-          </div>
+          </div> -->
         </div>
         <!-- ./col -->
           <!--/.col (left) -->
