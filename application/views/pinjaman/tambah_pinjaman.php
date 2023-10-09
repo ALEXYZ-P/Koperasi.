@@ -69,6 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="form-group">
                                     <label for="id_user">User</label>
                                     <select name="id_user" id="id_user" class="form-control">
+                                            <option>Pilih User</option>
                                         <?php foreach ($users as $user) : ?>
                                             <option value="<?php echo $user['id_user']; ?>"><?php echo $user['nama']; ?></option>
                                         <?php endforeach; ?>
