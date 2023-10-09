@@ -62,7 +62,7 @@
                   <table id="example1" class="table table-bordered table-hover"><!--search bar--> 
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th><center>No</th>
                       <th>NIK</th>
                       <th>Name</th>
                       <th>Gender</th>
@@ -75,7 +75,7 @@
                     <?php $no = 1;?>
                     <?php foreach ($user as $value): ?>
                       <tr>
-                        <td><?php cetak($no++) ?></td>
+                        <td><center><?php cetak($no++) ?></td>
                         <td><?php cetak($value->nia)  ?></td>
                         <td><?php cetak($value->nama ) ?></td>
                         <td><?php cetak($value->jenis_kelamin)  ?></td>
@@ -93,7 +93,7 @@
                   </tbody>
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th><center>No</th>
                       <th>NIK</th>
                       <th>Name</th>
                       <th>Gender</th>

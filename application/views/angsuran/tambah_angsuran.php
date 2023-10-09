@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     border: 1px none;
     background-color: white;
 }
+
   .half-width-form {
     display: flex; /* Use flexbox */
     justify-content: space-between; /* Distribute space between elements */
@@ -51,12 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <section class="content-header">
       <h1>
-        Kelola
-        <small>Data Angsuran</small>
+        Manage
+        <small> Installment</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('Angsuran_controller/') ?>"><i class="fa fa-fw fa-child"></i>Lihat Data Angsuran</a></li>
-        <li><a href="#">Tambah Angsuran</a></li>
+        <li><a href="<?php echo base_url('Angsuran_controller/') ?>"><i class="fa fa-fw fa-child"></i>  Installment</a></li>
+        <li><a href="#">Add Installment</a></li>
       </ol>
     </section>
     
@@ -69,23 +70,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Pengisian Form</h3>
+              <h3 class="box-title">Form</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             <!-- form start -->
             <form role="form" action="<?php echo base_url('Angsuran_controller/add'); ?>" method="post">
               <div class="form-group" >
-             <label for="id_pinjaman">Pilih ID Pinjaman:</label>
+             <label for="id_pinjaman">Select Loan ID :</label>
                 <select name="id_pinjaman" id="id_pinjaman" class="half-width-form">
-                  <option value="">Pilih ID Pinjaman</option>
+                  <option value="">Select Loan ID </option>
                 <?php foreach ($pinjaman as $pinjaman_item) : ?>
                   <option value="<?php echo $pinjaman_item['id_pinjaman']; ?>"><?php echo $pinjaman_item['id_pinjaman']; ?></option>
                 <?php endforeach; ?>
                 </select>
 
                 <!-- Bagian Select ID User -->
-                <label for="id_user">Pilih ID User:</label>
+                <label for="id_user">Select ID User:</label>
                 <select name="id_user" id="id_user" class="half-width-form">
     <!-- Pilihan id_user akan diisi secara dinamis oleh JavaScript -->
                 </select>          
@@ -93,20 +94,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
 
                 <div class="form-group">
-                <label for="no_angsuran">No Angsuran</label>
-                <input name="no_angsuran" id="no_angsuran" class="form-control" placeholder="No angsuran" type="text" required />
+                <label for="no_angsuran">Installment Number</label>
+                <input name="no_angsuran" id="no_angsuran" class="form-control" class="half-width-form <?php echo form_error('no_angsuran') ? 'is-invalid':'' ?>" placeholder="No angsuran" type="text" required />
+                  <div class="invalid-feedback">
+                    <?php echo form_error('no_angsuran')?>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                <label for="jumlah_angsuran">Jumlah Angsuran</label>
+                <label for="jumlah_angsuran">The Amount of Installment Proposed</label>
                 <input name="jumlah_angsuran" id="jumlah_angsuran" class="form-control" placeholder="Jumlah Angsuran" value="<?php echo $cicilan ?>" type="number" required />
                 </div>
               
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Simpan</button>
-                <a href="<?php echo base_url('Pinjaman_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Batal</a>
+                <button class="btn btn-success" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
+                <a href="<?php echo base_url('Pinjaman_controller/index') ?>" class="btn btn-danger" type="reset"><i style="margin-left: -3px;"  ></i>Cancle</a>
               </div>
             </form>
           </div>

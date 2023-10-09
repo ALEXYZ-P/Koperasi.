@@ -51,17 +51,17 @@
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>No</th>
-                      <th>Sum</th>
-                      <th>Long</th>
-                      <th>Interest</th>
+                      <th><center>Loan Number</th>
+                      <th>Loan count</th>
+                      <th><center>Loan period</th>
+                      <th><center>Interest</th>
+                      <th>Total Interest</th>
                       <th>Installment/M</th>
                       <th>Total</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                       <th>Status</th>
-                      
                     </tr>
                   </thead>
                   <tbody>
@@ -70,15 +70,16 @@
                       <?php foreach ($pinjaman as $value): ?>
                           <?php if ($value->id_user === $users->id_user): ?>
                             <tr>
-                              <td><?php echo $no++ ?></td>
+                              <td><center><?php echo $no++ ?></td>
                               <td><?php echo ($users->nama) ?></td>
-                              <td><?php echo ($value->no_pinjaman) ?></td>
-                              <td><?php echo ($value->jumlah_pinjaman) ?></td>
-                              <td><?php echo ($value->lama) ?></td>
-                              <td><?php echo ($value->bunga) ?></td>
-                              <td><?php echo ($value->cicilan) ?></td>
-                              <td><?php echo ($value->total_peminjaman) ?></td>
-                              <td><?php cetak($value->tanggal_pinjaman)  ?></td>
+                              <td><center><?php echo ($value->no_pinjaman) ?></td>
+                              <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
+                              <td><center><?php echo ($value->lama) ?></td>
+                              <td><center><?php echo ($value->bunga) ?></td>
+                              <td><?php echo "Rp. " . (number_format($value->total_bunga,2,',','.')) ?></center></td>
+                              <td><?php echo "Rp. " . (number_format($value->cicilan,2,',','.')) ?></center></td>
+                              <td><center><?php echo "Rp. " . (number_format($value->total_peminjaman,2,',','.')) ?></center></td>
+                              <td><center><?php cetak($value->tanggal_pinjaman)  ?></td>
                               <td><?php cetak($value->status) ?></td>
                             </tr>
                           <?php endif; ?>
@@ -86,17 +87,18 @@
                       <?php endforeach; ?>      
                   </tbody>
                   <tfoot>
-                    <tr>
-                      <th>No</th>
+                  <tr>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>No</th>
-                      <th>Sum</th>
-                      <th>Long</th>
-                      <th>Interest</th>
+                      <th><center>Loan Number</th>
+                      <th>Loan count</th>
+                      <th><center>Loan period</th>
+                      <th><center>Interest</th>
+                      <th>Total Interest</th>
                       <th>Installment/M</th>
                       <th>Total</th>
-                      <th>Date</th>
-                      <th>Status</th>                      
+                      <th><center>Date</th>
+                      <th>Status</th>
                     </tr>
                   </tfoot>
                 </table>

@@ -1,17 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- *
- */
+
 class Angsuran_model extends CI_Model
 {
 
 	private $_table = "angsuran";
-
+	
 	public $id_pinjaman;
 	public $no_angsuran;
+	public $id_user;
 	public $jumlah_angsuran;
 	public $tanggal;
+	
 
 	public function getALL() {
     $this->db->select('angsuran.*, pinjaman.no_pinjaman, pinjaman.jumlah_pinjaman, pinjaman.tanggal_pinjaman, pinjaman.lama, pinjaman.bunga, user.nama');

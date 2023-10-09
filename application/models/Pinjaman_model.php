@@ -15,6 +15,8 @@ class Pinjaman_model extends CI_Model
 	public $tanggal_pinjaman;
 	public $lama;
 	public $bunga;
+	public $bunga_bulan;
+	public $total_bunga;
 	public $total_peminjaman;
 	public $cicilan;
 

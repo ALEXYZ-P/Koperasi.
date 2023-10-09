@@ -42,12 +42,11 @@
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>NIK</th>
-                      <th>Name</th>
-                      <th>Sum</th>
-                      <th>Type</th>
-                      <th>Date</th>
+                      <th><center>No</th>
+                      <th><center>Name</th>
+                      <th><center>Saving Count</th>
+                      <th><center>Type</th>
+                      <th><center>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -57,12 +56,11 @@
                         <?php foreach ($jenis_tabungan as $jenis): ?>
                           <?php if ($value->id_user === $users->id_user && $value->id_jenis_tabungan === $jenis->id_jenis_tabungan): ?>
                             <tr>
-                              <td><?php echo $no++ ?></td>
-                              <td><?php echo ($users->nia) ?></td>
-                              <td><?php echo ($users->nama) ?></td>
-                              <td><?php echo ($value->jumlah_tabungan) ?></td>
-                              <td><?php echo ($jenis->nama_jenis_tabungan) ?></td>
-                              <td><?php echo ($value->tanggal_tabung) ?></td>
+                              <td><center><?php echo $no++ ?></td>
+                              <td><center><?php echo ($users->nama) ?></td>
+                              <td><center><?php echo ($value->jumlah_tabungan) ?></td>
+                              <td><center><?php echo ($jenis->nama_jenis_tabungan) ?></td>
+                              <td><center><?php echo ($value->tanggal_tabung) ?></td>
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
@@ -71,12 +69,11 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>No</th>
-                      <th>NIK</th>
-                      <th>Name</th>
-                      <th>Sum</th>
-                      <th>Type</th>
-                      <th>Date</th>
+                      <th><center>No</th>
+                      <th><center>Name</th>
+                      <th><center>Saving Count</th>
+                      <th><center>Type</th>
+                      <th><center>Date</th>
                     </tr>
                   </tfoot>
                 </table>

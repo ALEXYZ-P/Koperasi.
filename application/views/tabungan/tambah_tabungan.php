@@ -16,7 +16,7 @@
         } elseif ($level === 'staff') {
             $this->load->view("admin/_includes/sb_staff.php");
         } else {
-            $this->load->view("admin/_includes/sidebar.php");
+            echo "error";
         }
     ?>
 
@@ -31,7 +31,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="icon fa fa-info"></i>Alert!</h4>
             <?php echo $this->session->flashdata('success'); ?><br>
-            <a href="<?php echo base_url('Anggota_controller/detail/'.$user->id_user) ?>">Saya Mengerti</a>
+            <a href="<?php echo base_url('Anggota_controller/detail/'.$user->id_user) ?>">I agree</a>
           </div>
         </div>
       <?php endif; ?>
@@ -39,12 +39,12 @@
 
     <section class="content-header">
       <h1>
-        Tambah
-        <small>Tabungan</small>
+        Manage
+        <small>Savings</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('') ?>"><i class="fa fa-fw fa-child"></i>Kelola Tabnungan</a></li>
-        <li><a href="#">Tambah Tabungan</a></li>
+        <li><a href="<?php echo base_url('') ?>"><i class="fa fa-fw fa-child"></i>Savings</a></li>
+        <li><a href="#">Add Savings</a></li>
       </ol>
     </section>
     
@@ -55,7 +55,7 @@
                 <div class="col-md-8">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Form tambah tabungan</h3>
+                            <h3 class="box-title">Form</h3>
                         </div>
                         <div class="box-body">
                             <?php echo validation_errors('<div class="alert alert-danger">', '</div>'); ?>
@@ -73,12 +73,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="jumlah_tabungan">Jumlah Tabungan</label>
-                                    <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control" placeholder="Jumlah tabungan" type="text"/>
+                                    <label for="jumlah_tabungan">Amount of Savings</label>
+                                    <input name="jumlah_tabungan" id="jumlah_tabungan" class="form-control" placeholder="Amount of savings" type="text"/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="id_jenis_tabungan">Jenis Tabungan</label>
+                                    <label for="id_jenis_tabungan">Types of Savings</label>
                                     <select name="id_jenis_tabungan" id="id_jenis_tabungan" class="form-control">
                                         <?php foreach ($jenis_tabungan as $jenis) : ?>
                                             <option value="<?php echo $jenis['id_jenis_tabungan']; ?>"><?php echo $jenis['nama_jenis_tabungan']; ?></option>

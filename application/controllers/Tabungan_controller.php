@@ -80,7 +80,7 @@ class Tabungan_controller extends MY_Controller
         $data['users'] = $this->Member_model->get_users();
         $data['jenis_tabungan'] = $this->Tabungan_model->get_jenis_tabungan();
     
-        $this->form_validation->set_rules('jumlah_tabungan', 'Jumlah Tabungan', 'required|numeric');
+        $this->form_validation->set_rules('jumlah_tabungan', 'Amount of Savings', 'required|numeric');
         $validation = $this->form_validation;
     
         if ($this->form_validation->run() === FALSE) {

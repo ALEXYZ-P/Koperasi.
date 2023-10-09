@@ -15,7 +15,7 @@
         } elseif ($level === 'staff') {
             $this->load->view("admin/_includes/sb_staff.php");
         } else {
-            $this->load->view("admin/_includes/sidebar.php");
+            echo "error";
         }
     ?>
 
@@ -60,12 +60,11 @@
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>NIK</th>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>Sum</th>
+                      <th>Saving Count</th>
                       <th>Type</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -75,12 +74,11 @@
                         <?php foreach ($jenis_tabungan as $jenis): ?>
                           <?php if ($value->id_user === $users->id_user && $value->id_jenis_tabungan === $jenis->id_jenis_tabungan): ?>
                             <tr>
-                              <td><?php echo $no++ ?></td>
-                              <td><?php echo $users->nia ?></td>
+                              <td><center><?php echo $no++ ?></td>
                               <td><?php echo $users->nama ?></td>
                               <td><?php echo "Rp. " . (number_format($value->jumlah_tabungan,2,',','.')) ?></td>
                               <td><?php echo $jenis->nama_jenis_tabungan ?></td>
-                              <td><?php echo $value->tanggal_tabung ?></td>
+                              <td><center><?php echo $value->tanggal_tabung ?></td>
                             </tr>
                           <?php endif; ?>
                       <?php endforeach; ?>
@@ -88,13 +86,12 @@
                   <?php endforeach; ?>
                   </tbody>
                   <tfoot>
-                    <tr>
-                      <th>No</th>
-                      <th>NIK</th>
+                  <tr>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>Sum</th>
+                      <th>Saving Count</th>
                       <th>Type</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                     </tr>
                   </tfoot>
                 </table>

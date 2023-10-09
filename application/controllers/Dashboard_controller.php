@@ -21,6 +21,7 @@ class Dashboard_controller extends MY_Controller {
 		$data['ci'] = $this->db->from("angsuran")->where('id_angsuran')->get()->num_rows();
 		$data['cm'] = $this->db->from("user")->where('level', 'member')->get()->num_rows();
 		$this->load->view("admin/dashboard", $data);
+		//Wumb0.01
 	}
 
 	public function staff(){

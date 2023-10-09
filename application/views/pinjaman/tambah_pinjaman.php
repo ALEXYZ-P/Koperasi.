@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } elseif ($level === 'staff') {
             $this->load->view("admin/_includes/sb_staff.php");
         } else {
-            $this->load->view("admin/_includes/sidebar.php");
+          echo "error";
         }
     ?>
 
@@ -65,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.box-header -->
             <!-- form start -->
             <form action="<?php echo base_url('Pinjaman_controller/add'); ?>" method="post">
+            <div class="box-body">
                                 <div class="form-group">
                                     <label for="id_user">User</label>
                                     <select name="id_user" id="id_user" class="form-control">
@@ -75,28 +76,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="no_pinjaman">No Pinjaman</label>
-                                    <input name="no_pinjaman" id="no_pinjaman" class="form-control" placeholder="No pinjaman" type="text" required />
+                                    <label for="no_pinjaman">Loan Number</label>
+                                    <input name="no_pinjaman" id="no_pinjaman" class="form-control" class="half-width-form <?php echo form_error('no_pinjaman') ? 'is-invalid':'' ?>" placeholder="Loan Number" type="text" required />
+                                    <div class="invalid-feedback">
+                                    <?php echo form_error('no_pinjaman')?>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="jumlah_pinjaman">Jumlah Pinjaman</label>
-                                    <input name="jumlah_pinjaman" id="jumlah_pinjaman" class="form-control" placeholder="Jumlah pinjaman" step="0,1" type="number" required />
+                                    <label for="jumlah_pinjaman">The Amount of Loan Proposed</label>
+                                    <input name="jumlah_pinjaman" id="jumlah_pinjaman" class="form-control" placeholder="The Amount of Loan Proposed" step="0,1" type="number" required />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="lama">Lama (bulan)</label>
-                                    <input name="lama" id="lama" class="form-control" placeholder="Lama (bulan)" type="number" required />
+                                    <label for="lama">loan period (Month)</label>
+                                    <input name="lama" id="lama" class="form-control" placeholder="loan period (Month)" type="number" required />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="bunga">Bunga (% per bulan)</label>
-                                    <input name="bunga" id="bunga" class="form-control" placeholder="Bunga (% per bulan)" type="text" required />
+                                    <label for="bunga">Interest (% / Month)</label>
+                                    <input name="bunga" id="bunga" class="form-control" placeholder="Interest (% / Month)" type="text" required />
                                 </div>
 
                                 <button class="btn btn-success" type="submit" name="submit"><i class="fa fa-fw fa-plus"></i>Save</button>
                                 <a href="<?php echo base_url('Pinjaman_controller/index') ?>" class="btn btn-danger" type="button"><i style="margin-left: -3px;"></i>Cancel</a>
-                            </form>
+              </div>                              
+            </form>
           </div>
           <!-- /.box -->
 

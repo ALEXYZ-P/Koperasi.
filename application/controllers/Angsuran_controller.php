@@ -1,8 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * author inogalwargan
- */
+
 class Angsuran_controller extends MY_Controller
 {
 	public function __construct()
@@ -69,6 +67,7 @@ class Angsuran_controller extends MY_Controller
     }
 
     $this->form_validation->set_rules('jumlah_angsuran', 'Jumlah Angsuran', 'required|numeric');
+	$this->form_validation->set_rules('no_angsuran', 'Loan Number', 'required|is_unique[angsuran.no_angsuran]');
     $validation = $this->form_validation;
 
     if ($this->form_validation->run() === FALSE) {

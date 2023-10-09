@@ -15,7 +15,7 @@
         } elseif ($level === 'staff') {
             $this->load->view("admin/_includes/sb_staff.php");
         } else {
-            $this->load->view("admin/_includes/sidebar.php");
+            echo "error";
         }
     ?>
   
@@ -40,10 +40,10 @@
     <section class="content-header">
       <h1>
         Manage
-        <small>Receivable</small>
+        <small>Loan</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-fw fa-money"></i>Receivable</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-money"></i>Loan</a></li>
         <!-- <li><a href="#">Lihat Data Pinjaman</a></li> -->
       </ol>
     </section>
@@ -63,15 +63,16 @@
               <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>No</th>
-                      <th>Sum</th>
-                      <th>Long</th>
-                      <th>Interest</th>
+                      <th><center>Loan Number</th>
+                      <th>Loan count</th>
+                      <th><center>Loan period</th>
+                      <th><center>Interest</th>
+                      <th>Total Interest</th>
                       <th>Installment/M</th>
                       <th>Total</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -81,16 +82,17 @@
                     <?php foreach ($pinjaman as $value): ?>
                       <?php if ($value->id_user === $us->id_user): ?>
                       <tr>
-                        <td><?php cetak($no++) ?></td>
-                        <td><?php cetak($us->nama)  ?></td>
-                        <td><?php cetak($value->no_pinjaman)  ?></td>
-                        <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></td>
-                        <td><?php cetak($value->lama)  ?></td>
-                        <td><?php cetak($value->bunga)  ?></td>
-                        <td><?php cetak($value->cicilan) ?></td>
-                        <td><?php cetak($value->total_peminjaman) ?></td>
-                        <td><?php cetak($value->tanggal_pinjaman)  ?></td>
-                        <td><?php cetak($value->status) ?></td>
+                        <td><center><?php cetak($no++) ?></center></td>
+                        <td><?php cetak($us->nama)  ?></center></td>
+                        <td><center><?php cetak($value->no_pinjaman)  ?></center></td>
+                        <td><?php echo "Rp. " . (number_format($value->jumlah_pinjaman,2,',','.')) ?></center></td>
+                        <td><center><?php cetak($value->lama)  ?></center></td>
+                        <td><center><?php cetak($value->bunga)  ?></center></td>
+                        <td><?php echo "Rp. " . (number_format($value->total_bunga,2,',','.')) ?></center></td>
+                        <td><?php echo "Rp. " . (number_format($value->cicilan,2,',','.')) ?></center></td>
+                        <td><?php echo "Rp. " . (number_format($value->total_peminjaman,2,',','.')) ?></center></td>
+                        <td><center><?php cetak($value->tanggal_pinjaman)  ?></center></td>
+                        <td><?php cetak($value->status) ?></center></td>
                       </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>
@@ -98,15 +100,16 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>No</th>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>No</th>
-                      <th>Sum</th>
-                      <th>Long</th>
-                      <th>Interest</th>
+                      <th><center>Loan Number</th>
+                      <th>Loan count</th>
+                      <th><center>Loan period</th>
+                      <th><center>Interest</th>
+                      <th>Total Interest</th>
                       <th>Installment/M</th>
                       <th>Total</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                       <th>Status</th>
                     </tr>
                   </tfoot>

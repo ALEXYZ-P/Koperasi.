@@ -41,15 +41,15 @@
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>Debt Number</th>
-                      <th>Installment Number</th>
+                      <th><center>Debt Number</th>
+                      <th><center>Installment Number</th>
                       <th>Debt Count</th>
-                      <th>Long</th>
-                      <th>Interest</th>
+                      <th><center>Loan period</th>
+                      <th><center>Interest</th>
                       <th>Installment Count</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -59,15 +59,15 @@
                         <?php foreach ($pinjaman as $pinjam): ?>
                           <?php if ($value->id_user === $users->id_user && $value->id_user === $pinjam->id_user): ?>
                             <tr>
-                              <td><?php echo $no++ ?></td>
+                              <td><center><?php echo $no++ ?></td>
                               <td><?php echo ($users->nama) ?></td>
-                              <td><?php echo ($pinjam->no_pinjaman) ?></td>
-                              <td><?php echo ($value->no_angsuran) ?></td>
+                              <td><center><?php echo ($pinjam->no_pinjaman) ?></td>
+                              <td><center><?php echo ($value->no_angsuran) ?></td>
                               <td><?php echo ($pinjam->jumlah_pinjaman) ?></td>
-                              <td><?php echo ($pinjam->lama) ?></td>
-                              <td><?php echo ($pinjam->bunga) ?></td>
+                              <td><center><?php echo ($pinjam->lama) ?></td>
+                              <td><center><?php echo ($pinjam->bunga) ?></td>
                               <td><?php echo ($value->jumlah_angsuran) ?></td>
-                              <td><?php echo ($pinjam->tanggal_pinjaman) ?></td>
+                              <td><center><?php echo ($pinjam->tanggal_pinjaman) ?></td>
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
@@ -75,16 +75,16 @@
                     <?php endforeach; ?>
                   </tbody>
                   <tfoot>
-                    <tr>
-                      <th>No</th>
+                  <tr>
+                      <th><center>No</th>
                       <th>Name</th>
-                      <th>Debt Number</th>
-                      <th>Installment Number</th>
+                      <th><center>Debt Number</th>
+                      <th><center>Installment Number</th>
                       <th>Debt Count</th>
-                      <th>Long</th>
-                      <th>Interest</th>
+                      <th><center>Loan period</th>
+                      <th><center>Interest</th>
                       <th>Installment Count</th>
-                      <th>Date</th>
+                      <th><center>Date</th>
                     </tr>
                   </tfoot>
                 </table>

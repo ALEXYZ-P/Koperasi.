@@ -41,7 +41,9 @@ class Pinjaman_controller extends MY_Controller
     public function add() {  
         $data['users'] = $this->Member_model->get_users();
     
-        $this->form_validation->set_rules('jumlah_pinjaman', 'jumlah_pinjaman', 'required|numeric');
+        $this->form_validation->set_rules('jumlah_pinjaman', 'jumlah_pinjaman', 'required|numeric'); 
+        $this->form_validation->set_rules('no_pinjaman', 'Loan Number', 'required|is_unique[pinjaman.no_pinjaman]');
+
         $validation = $this->form_validation;
     
         if ($this->form_validation->run() === FALSE) {
@@ -58,14 +60,16 @@ class Pinjaman_controller extends MY_Controller
                 'bunga' => $this->input->post('bunga')
             );
 
-            $cicilan = ($pinjaman_data['jumlah_pinjaman'] / $pinjaman_data['lama']) + (($pinjaman_data['jumlah_pinjaman'] * $pinjaman_data['bunga'] / 100) / $pinjaman_data['lama']);
+            $total_bunga = (($pinjaman_data['jumlah_pinjaman'] * $pinjaman_data['bunga'] / 100) * ($pinjaman_data['lama']/12) / $pinjaman_data['lama']) * $pinjaman_data['lama'];
+            $pinjaman_data['total_bunga'] = $total_bunga;
+
+            $cicilan = ($pinjaman_data['jumlah_pinjaman'] / $pinjaman_data['lama']) + (($pinjaman_data['jumlah_pinjaman'] * $pinjaman_data['bunga'] / 100) * ($pinjaman_data['lama']/12) / $pinjaman_data['lama']);
             $pinjaman_data['cicilan'] = $cicilan;
 
             $total_pinjaman = $pinjaman_data['cicilan'] * $pinjaman_data['lama'];
             $pinjaman_data['total_peminjaman'] = $total_pinjaman;
 
             $this->Pinjaman_model->insert_pinjaman($pinjaman_data); 
-            
             $this->session->set_flashdata('success', 'Pinjaman added successfully');
             redirect('pinjaman_controller/index');
         }
